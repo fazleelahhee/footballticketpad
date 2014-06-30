@@ -29,7 +29,8 @@ class NewsController extends BaseController {
     public function index() {
 
         $news = $this->news->paginate(null, true);
-        return View::make('backend.news.index', compact('news'));
+        return View::make('backend.news.index', compact('news'))
+            ->with('menu', 'news');
     }
 
     /**
@@ -39,7 +40,8 @@ class NewsController extends BaseController {
      */
     public function create() {
 
-        return View::make('backend.news.create');
+        return View::make('backend.news.create')
+            ->with('menu', 'news/new');;
     }
 
     /**

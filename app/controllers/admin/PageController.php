@@ -15,9 +15,8 @@ class PageController extends BaseController {
     protected $page;
 
     public function __construct(Page $page) {
-
-        $this->page = $page;
-        View::share('active', 'modules');
+//        $this->page = $page;
+//        View::share('active', 'modules');
     }
 
     /**
@@ -26,8 +25,8 @@ class PageController extends BaseController {
      * @return Response
      */
     public function index() {
-
-        $pages = $this->page->paginate();
+        //$pages = $this->page->paginate();
+        $pages = array();
         return View::make('backend.page.index', compact('pages'));
     }
 
@@ -37,8 +36,8 @@ class PageController extends BaseController {
      * @return Response
      */
     public function create() {
-
-        return View::make('backend.page.create');
+        return View::make('backend.page.create')
+            ->with('menu', 'page/new');
     }
 
     /**

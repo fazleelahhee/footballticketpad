@@ -1,46 +1,89 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            {{ HTML::link('/admin','Bond CMS', array('class' => 'navbar-brand')) }}
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li @if(isset($active) && $active=="home") class="active" @endif><a href="{{ url('/admin') }}"><span class="glyphicon glyphicon-home"></span>Dashboard</a></li>
-                <li><a href="{{ url('/admin/menu') }}"><span class="glyphicon glyphicon-list-alt"></span>Menu</a></li>
-                <li class="dropdown {{ ((isset($active) && $active=='modules') ? 'active' : '') }}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tint"></span>Modules <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                       <li>{{ HTML::link('/admin/news','News') }}</li>
-                       <li>{{ HTML::link('/admin/page','Pages') }}</li>
-                       <li>{{ HTML::link('/admin/photo_gallery','Photo Gallery') }}</li>
-                    </ul>
+<nav>
+    <ul>
+        <li class="{{ $menu == 'dashboard'?'active': '' }}" >
+            <a href="/{{ Config::get('bondcms.admin_prefix') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+        </li>
+        @yield('nev_menu_after_dashboard')
+        <li class="{{ in_array($menu, array('pages', 'pages/new', 'pages/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Pages</span></a>
+            <ul>
+                <li class="{{ $menu == 'pages'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages">Pages</a>
                 </li>
-                 <li class="dropdown {{ ((isset($active) && $active=='blog') ? 'active' : '') }}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span>Blog <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>{{ HTML::link('/admin/article','Article') }}</li>
-                        <li>{{ HTML::link('/admin/category','Category') }}</li>
-                    </ul>
+
+                <li class="{{ $menu == 'pages/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages/new">Add New</a>
                 </li>
-                <li class="dropdown {{ ((isset($active) && $active=='plugins') ? 'active' : '') }}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tint"></span>Plugins <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>{{ HTML::link('/admin/slider','Slider Managment') }}</li>
-                    </ul>
+
+                <li class="{{ $menu == 'pages/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages/edit">Edit</a>
                 </li>
-                <li @if(isset($active) && $active=="user") class="active" @endif><a href="{{ url('/admin/user') }}"><span class="glyphicon glyphicon-user"></span>Users</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li @if(isset($active) && $active=="form-post") class="active" @endif><a href="{{ url('/admin/form-post') }}"><span class="glyphicon glyphicon-envelope"></span>Inbox <span class="label label-info">{{ $formPostCount }}</span></a></li>
-                <li @if(isset($active) && $active=="logs") class="active" @endif><a href="{{ url('/admin/log') }}"><span class="glyphicon glyphicon-pushpin"></span>Logs</a></li>
-                <li @if(isset($active) && $active=="settings") class="active" @endif><a href="{{ url('/admin/settings') }}"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
-                <li><a href="{{ url('/admin/logout') }}"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+        </li>
+        @yield('nev_menu_after_pages')
+        <li class="{{ in_array($menu, array('media', 'media/new'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Media</span></a>
+            <ul>
+                <li class="{{ $menu == 'media'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages">Media</a>
+                </li>
+
+                <li class="{{ $menu == 'media/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages/new">Add New</a>
+                </li>
             </ul>
-        </div>
-    </div>
-</div>
+        </li>
+        @yield('nev_menu_after_media')
+        <li class="{{ in_array($menu, array('appearance', 'appearance/menu', 'appearance/themes', 'appearance/header'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Appearance</span></a>
+            <ul>
+                <li class="{{ $menu == 'appearance/menu'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/appearance/menu">Menu</a>
+                </li>
+
+                <li class="{{ $menu == 'appearance/themes'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/appearance/themes">Themes</a>
+                </li>
+
+                <li class="{{ $menu == 'appearance/header'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/appearance/header">Header</a>
+                </li>
+            </ul>
+        </li>
+        @yield('nev_menu_after_appearance')
+        <li class="{{ in_array($menu, array('users', 'users/new', 'users/group', 'users/permission'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Users</span></a>
+            <ul>
+                <li class="{{ $menu == 'users'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/users">Users</a>
+                </li>
+
+                <li class="{{ $menu == 'users/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/users/new">Add New</a>
+                </li>
+
+                <li class="{{ $menu == 'users/group'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/users/group">Group</a>
+                </li>
+
+                <li class="{{ $menu == 'users/permission'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/users/permission">Permission</a>
+                </li>
+            </ul>
+        </li>
+        @yield('nev_menu_after_users')
+        <li class="{{ in_array($menu, array('settings', 'settings/general', 'settings/website'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Settings</span></a>
+            <ul>
+                <li class="{{ $menu == 'settings/general'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/settings/general">General</a>
+                </li>
+
+                <li class="{{ $menu == 'settings/website'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/settings/website">Website</a>
+                </li>
+            </ul>
+        </li>
+        @yield('nev_menu_end')
+    </ul>
+</nav>

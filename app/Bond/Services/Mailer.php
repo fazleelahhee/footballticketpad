@@ -9,7 +9,7 @@ class Mailer implements MailInterface {
 
         Mail::send($view, $data, function ($message) use ($email, $subject) {
 
-            $message->from('noreply@sfcms.com');
+            $message->from('noreply@bondmedia.co.uk');
             $message->to($email)->subject($subject);
         });
     }
@@ -18,7 +18,7 @@ class Mailer implements MailInterface {
 
         Mail::queue($view, $data, function ($message) use ($email, $subject) {
 
-            $message->from('noreply@sfcms.com');
+            $message->from('noreply@bondmedia.co.uk');
             $message->to($email)->subject($subject);
         });
     }

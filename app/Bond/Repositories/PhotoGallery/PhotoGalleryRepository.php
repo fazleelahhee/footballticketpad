@@ -37,7 +37,7 @@ class PhotoGalleryRepository extends Validator implements BaseRepositoryInterfac
 
     public function __construct(PhotoGallery $photoGallery) {
 
-        $config = Config::get('sfcms');
+        $config = Config::get('bondcms');
         $this->perPage = $config['modules']['per_page'];
         $this->width = $config['modules']['photo_gallery']['thumb_size']['width'];
         $this->height = $config['modules']['photo_gallery']['thumb_size']['height'];

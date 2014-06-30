@@ -28,7 +28,7 @@ class ArticleRepository extends Validator implements BaseRepositoryInterface {
 
     public function __construct(Article $article) {
 
-        $config = Config::get('sfcms');
+        $config = Config::get('bondcms');
         $this->perPage = $config['modules']['per_page'];
         $this->article = $article;
     }

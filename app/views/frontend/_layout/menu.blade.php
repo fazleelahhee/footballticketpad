@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {{ HTML::link('/','sf', array('class' => 'navbar-brand')) }}
+            {{ HTML::link('/','Bond CMS', array('class' => 'navbar-brand')) }}
         </div>
 
         <div id="nav-main" class="collapse navbar-collapse navbar-ex1-collapse">

@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'name' => '',
+	'name' => 'Fazle Elahee',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,6 +26,6 @@ return array(
 	|
 	*/
 
-	'email' => '',
+	'email' => 'fe@bondmedia.co.uk',
 
 );

@@ -58,7 +58,7 @@ Please check the system requirements before installing Bond CMS.
 3. Enter your database details into `app/config/database.php`.
 4. Run `php artisan app:install` to setup and seed your database.
 5. Default admin, email: admin@admin.com, password: admin
-6. Settings `app/config/sfcms.php`. (optional)
+6. Settings `app/config/bondcms.php`. (optional)
   * Cache enable / disable
   * image folder
   * post per page

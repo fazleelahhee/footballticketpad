@@ -11,7 +11,7 @@ class TagRepository {
 
     public function __construct(Tag $tag) {
 
-        $config = Config::get('sfcms');
+        $config = Config::get('bondcms');
         $this->perPage = $config['modules']['per_page'];
         $this->tag = $tag;
     }

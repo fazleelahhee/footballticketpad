@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 
-Route::group((Config::get('sfcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
+Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
 
     // frontend dashboard
     Route::get('/', ['as' => 'dashboard', 'uses' => 'HomeController@index']);
@@ -50,12 +50,14 @@ Route::post('/contact', array('as' => 'dashboard.contact.post', 'uses' => 'FormP
 |--------------------------------------------------------------------------
 */
 
-Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin', 'before' => 'auth.admin'), function () {
+Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' => 'App\Controllers\Admin', 'before' => array('auth.admin', 'assets_admin')), function () {
 
     // admin dashboard
     Route::get('/', array('as' => 'admin.dashboard', function () {
 
-        return View::make('backend/_layout/dashboard')->with('active', 'home');
+        return View::make('backend/_layout/dashboard')
+            ->with('active', 'home')
+            ->with('menu', 'dashboard');
     }));
 
     // user
@@ -152,34 +154,33 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin', 
 
     // log
     Route::any('log', ['as'=>'admin.log', 'uses'=>'LogController@index']);
+
+    // filemanager
+    Route::get('filemanager/show', 'FilemanagerController@index');
 });
 
-// filemanager
-Route::get('filemanager/show', function () {
 
-    return View::make('backend/plugins/filemanager');
-})->before('auth.admin');
 
-// login
-Route::get('/admin/login', array('as' => 'admin.login', function () {
+//// login
+//Route::get('/'.Config::get('bondcms.admin_prefix').'/login', array('as' => 'admin.login', 'before'=> 'assets_admin', function () {
+//
+//    return View::make('backend/auth/login');
+//}));
 
-    return View::make('backend/auth/login');
-}));
-
-Route::group(array('namespace' => 'App\Controllers\Admin'), function () {
+Route::group(array('namespace' => 'App\Controllers\Admin','before'=> 'assets_admin' ), function () {
 
     // admin auth
-    Route::get('admin/logout', array('as' => 'admin.logout', 'uses' => 'AuthController@getLogout'));
-    Route::get('admin/login', array('as' => 'admin.login', 'uses' => 'AuthController@getLogin'));
-    Route::post('admin/login', array('as' => 'admin.login.post', 'uses' => 'AuthController@postLogin'));
+    Route::get('/'.Config::get('bondcms.admin_prefix').'/logout', array('as' => 'admin.logout', 'uses' => 'AuthController@getLogout'));
+    Route::get('/'.Config::get('bondcms.admin_prefix').'/login', array('as' => 'admin.login', 'uses' => 'AuthController@getLogin'));
+    Route::post('/'.Config::get('bondcms.admin_prefix').'/login', array('as' => 'admin.login.post', 'uses' => 'AuthController@postLogin'));
 
     // admin password reminder
-    Route::get('admin/forgot-password', array('as' => 'admin.forgot.password', 'uses' => 'AuthController@getForgotPassword'));
-    Route::post('admin/forgot-password', array('as' => 'admin.forgot.password.post', 'uses' => 'AuthController@postForgotPassword'));
+    Route::get('/'.Config::get('bondcms.admin_prefix').'/forgot-password', array('as' => 'admin.forgot.password', 'uses' => 'AuthController@getForgotPassword'));
+    Route::post('/'.Config::get('bondcms.admin_prefix').'/forgot-password', array('as' => 'admin.forgot.password.post', 'uses' => 'AuthController@postForgotPassword'));
 
-    Route::get('admin/{id}/reset/{code}', array('as' => 'admin.reset.password', 'uses' => 'AuthController@getResetPassword'))
+    Route::get('/'.Config::get('bondcms.admin_prefix').'/{id}/reset/{code}', array('as' => 'admin.reset.password', 'uses' => 'AuthController@getResetPassword'))
         ->where('id', '[0-9]+');
-    Route::post('admin/reset-password', array('as' => 'admin.reset.password.post', 'uses' => 'AuthController@postResetPassword'));
+    Route::post('/'.Config::get('bondcms.admin_prefix').'/reset-password', array('as' => 'admin.reset.password.post', 'uses' => 'AuthController@postResetPassword'));
 });
 
 /*
@@ -190,7 +191,6 @@ Route::group(array('namespace' => 'App\Controllers\Admin'), function () {
 
 // error
 App::error(function (Exception $exception) {
-
     Log::error($exception);
     $error = $exception->getMessage();
     return Response::view('errors.error', compact('error'));
@@ -198,6 +198,5 @@ App::error(function (Exception $exception) {
 
 // 404 page not found
 App::missing(function () {
-
     return Response::view('errors.missing', array(), 404);
 });

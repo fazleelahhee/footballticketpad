@@ -23,7 +23,7 @@ class SliderController extends BaseController {
 
         View::share('active', 'plugins');
 
-        $config = Config::get('sfcms');
+        $config = Config::get('bondcms');
         $this->width = $config['modules']['slider']['image_size']['width'];
         $this->height = $config['modules']['slider']['image_size']['height'];
         $this->imgDir = $config['modules']['slider']['image_dir'];

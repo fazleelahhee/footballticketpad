@@ -104,14 +104,14 @@ class AuthController extends BaseController {
             /*
             Mail::send('emails.auth.reset-password', $formData, function ($message) {
 
-                $message->from('noreply@sfcms.com', 'Bond CMS Team');
-                $message->to('user@sfcms.com', 'Lorem Lipsum')->subject('Reset Password');
+                $message->from('noreply@bondmedia.co.uk', 'Bond CMS Team');
+                $message->to('user@bondmedia.co.uk', 'Lorem Lipsum')->subject('Reset Password');
             });
             */
 
             /*
             $mailer = new Mailer;
-            $mailer->send('emails.auth.reset-password', 'user@sfcms.com', 'Reset Password', $formData);
+            $mailer->send('emails.auth.reset-password', 'user@bondmedia.co.uk', 'Reset Password', $formData);
             */
 
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {

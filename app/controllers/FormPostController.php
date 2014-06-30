@@ -43,13 +43,13 @@ class FormPostController extends BaseController {
         /*
         Mail::send('emails.contact-form.form', $formData, function ($message) {
             $message->from(Input::get('sender_email'), Input::get('sender_name_surname'));
-            $message->to('noreply@sfcms.com', 'Lorem Lipsum')->subject(Input::get('subject'));
+            $message->to('noreply@bondmedia.co.uk', 'Lorem Lipsum')->subject(Input::get('subject'));
         });
         */
 
         /*
         $mailer = new Mailer;
-        $mailer->send('emails.contact-form.form', 'admin@sfcms.com', Input::get('subject'), $formData);
+        $mailer->send('emails.contact-form.form', 'admin@bondmedia.co.uk', Input::get('subject'), $formData);
         */
 
         $formPost = new FormPost();

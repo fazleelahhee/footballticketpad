@@ -1,30 +1,18 @@
 @extends('backend/_layout/layout')
 @section('content')
 
-{{ HTML::script('ckeditor/ckeditor.js') }}
+{{
+
+}}
 {{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
+{{ HTML::style('bootstrap_datepicker/css/datepicker.css') }}
+
+{{ HTML::script('ckeditor/ckeditor.js') }}
 {{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
 {{ HTML::script('assets/js/jquery.slug.js') }}
-
-{{ HTML::style('bootstrap_datepicker/css/datepicker.css') }}
 {{ HTML::script('bootstrap_datepicker/js/bootstrap-datepicker.js') }}
 {{ HTML::script('bootstrap_datepicker/js/locales/bootstrap-datepicker.tr.js') }}
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#title").slug();
 
-        $('#datetime').datepicker({
-            format: "yyyy-mm-dd",
-            todayBtn: "linked",
-            orientation: "top auto"
-        });
-
-        if ($('#tag').length != 0) {
-            var elt = $('#tag');
-            elt.tagsinput();
-        }
-    });
-</script>
 <div class="container">
     <div class="page-header">
         <h3>
@@ -112,4 +100,23 @@
         };
     </script>
 </div>
+@stop
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#title").slug();
+
+        $('#datetime').datepicker({
+            format: "yyyy-mm-dd",
+            todayBtn: "linked",
+            orientation: "top auto"
+        });
+
+        if ($('#tag').length != 0) {
+            var elt = $('#tag');
+            elt.tagsinput();
+        }
+    });
+</script>
 @stop

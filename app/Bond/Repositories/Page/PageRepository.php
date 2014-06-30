@@ -24,7 +24,7 @@ class PageRepository extends Validator implements BaseRepositoryInterface {
 
     public function __construct(Page $page) {
 
-        $config = Config::get('sfcms');
+        $config = Config::get('bondcms');
         $this->perPage = $config['modules']['per_page'];
         $this->page = $page;
     }
@@ -41,7 +41,10 @@ class PageRepository extends Validator implements BaseRepositoryInterface {
 
     public function paginate($perPage = null) {
 
-        return $this->page->paginate(($perPage) ? $perPage : $this->perPage);
+        if($this->page instanceof Page) {
+            return $this->page->paginate(($perPage) ? $perPage : $this->perPage);
+        }
+        return $perPage;
     }
 
     public function find($id) {

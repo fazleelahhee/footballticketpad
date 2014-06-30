@@ -23,7 +23,7 @@ class CategoryRepository extends Validator implements BaseRepositoryInterface {
     public function __construct(Category $category) {
 
         $this->category = $category;
-        $config = Config::get('sfcms');
+        $config = Config::get('bondcms');
         $this->perPage = $config['modules']['per_page'];
     }
 

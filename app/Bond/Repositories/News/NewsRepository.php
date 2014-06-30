@@ -25,7 +25,7 @@ class NewsRepository extends Validator implements BaseRepositoryInterface {
 
     public function __construct(News $news) {
 
-        $config = Config::get('sfcms');
+        $config = Config::get('bondcms');
         $this->perPage = $config['modules']['per_page'];
         $this->news = $news;
     }
