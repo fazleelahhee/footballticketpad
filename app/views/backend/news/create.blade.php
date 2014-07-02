@@ -1,17 +1,19 @@
 @extends('backend/_layout/layout')
 @section('content')
 
+{{  Assets::setStyles([
+    'bootstrap-tagsinput' => 'js/plugin/bootstrap-tags/bootstrap-tagsinput.css',
+    'datepicker'          => 'js/plugin/bootstrap-datepicker/datepicker.css'
+], true) }}
+
 {{
-
+    Assets::setScripts([
+        'bootstrap-tagsinput'       => 'js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js',
+        'slug'                      => 'js/plugin/jquery-slug/jquery.slug.js',
+        'bootstrap-datepicker'      => 'js/plugin/bootstrap-datepicker/bootstrap-datepicker.js',
+        'bootstrap-datepicker.tr'   => 'js/plugin/bootstrap-datepicker/locales/bootstrap-datepicker.tr.js',
+    ], true);
 }}
-{{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
-{{ HTML::style('bootstrap_datepicker/css/datepicker.css') }}
-
-{{ HTML::script('ckeditor/ckeditor.js') }}
-{{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
-{{ HTML::script('assets/js/jquery.slug.js') }}
-{{ HTML::script('bootstrap_datepicker/js/bootstrap-datepicker.js') }}
-{{ HTML::script('bootstrap_datepicker/js/locales/bootstrap-datepicker.tr.js') }}
 
 <div class="container">
     <div class="page-header">
@@ -71,7 +73,7 @@
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
-            {{ Form::textarea('content', null, array('class'=>'form-control', 'id' => 'content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
+            {{ Form::textarea('content', null, array('class'=>'form-control', 'id' => 'page_content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
             @if ($errors->first('content'))
             <span class="help-block">{{ $errors->first('content') }}</span>
             @endif
@@ -92,17 +94,19 @@
     <br>
     {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
-    <script type="text/javascript">
-        window.onload = function () {
-            CKEDITOR.replace('content', {
-                "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
-            });
-        };
-    </script>
+
 </div>
 @stop
 
-@section('scripts')
+@section('script')
+<script src="{{ Assets::Path('js/plugin/ckeditor/ckeditor.js', true) }}"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        CKEDITOR.replace('page_content', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
+        });
+    };
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#title").slug();

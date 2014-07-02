@@ -102,5 +102,15 @@ return array(
     |
     */
 
-    'assets_cache_path'  => 'assets/cache/backend'
+    'assets_cache_path'  => 'assets/cache/backend',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Upload Directory
+    |--------------------------------------------------------------------------
+    | Set template to display
+    |
+    */
+    'upload_directory'  => 'uploads',
+
 );

@@ -266,7 +266,7 @@
             <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
                 <img src="{{ Assets::Path('img/avatars/sunny.png', true) }}" alt="me" class="online"/>
                 <span>
-                    john.doe
+                    {{ User::getUserName() }}
                 </span>
                 <i class="fa fa-angle-down"></i>
             </a>
@@ -454,7 +454,7 @@ you can add as many as you like
     });
 </script>
 
-@yield('script');
+@yield('script')
 
 <!-- Your GOOGLE ANALYTICS CODE Below -->
 <script type="text/javascript">

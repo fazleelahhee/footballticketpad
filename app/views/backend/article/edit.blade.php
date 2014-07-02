@@ -5,16 +5,7 @@
 {{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
 {{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
 {{ HTML::script('assets/js/jquery.slug.js') }}
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#title").slug();
 
-        if ($('#tag').length != 0) {
-            var elt = $('#tag');
-            elt.tagsinput();
-        }
-    });
-</script>
 <div class="container">
     <div class="page-header">
         <h3>
@@ -155,4 +146,17 @@
         };
     </script>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#title").slug();
+
+        if ($('#tag').length != 0) {
+            var elt = $('#tag');
+            elt.tagsinput();
+        }
+    });
+</script>
 @stop

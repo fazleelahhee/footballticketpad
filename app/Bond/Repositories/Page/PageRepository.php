@@ -1,13 +1,17 @@
 <?php namespace Bond\Repositories\Page;
 
-use Page;
+use DB;
+use Pages;
 use Config;
 use Response;
+use Bond\Traits\GridPagination;
 use Bond\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Bond\Exceptions\Validation\ValidationException;
 use Bond\Repositories\AbstractValidator as Validator;
 
 class PageRepository extends Validator implements BaseRepositoryInterface {
+
+    use GridPagination;
 
     protected $perPage;
     protected $page;
@@ -22,7 +26,10 @@ class PageRepository extends Validator implements BaseRepositoryInterface {
         'content' => 'required|min:5'
     ];
 
-    public function __construct(Page $page) {
+    public function __construct(Pages $page =  null) {
+
+        if(empty($page))
+            $page = new Pages();
 
         $config = Config::get('bondcms');
         $this->perPage = $config['modules']['per_page'];
@@ -48,7 +55,7 @@ class PageRepository extends Validator implements BaseRepositoryInterface {
     }
 
     public function find($id) {
-
+        // return DB::table('pages')->where('id', $id)->first();
         return $this->page->findOrFail($id);
     }
 

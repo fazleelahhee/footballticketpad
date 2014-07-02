@@ -10,14 +10,16 @@
                 <li class="{{ $menu == 'pages'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages">Pages</a>
                 </li>
+                @if($menu == 'pages/edit')
+                    <li class="{{ $menu == 'pages/edit'?'active': '' }}" >
+                        <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages/edit">Edit</a>
+                    </li>
 
-                <li class="{{ $menu == 'pages/new'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages/new">Add New</a>
-                </li>
-
-                <li class="{{ $menu == 'pages/edit'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages/edit">Edit</a>
-                </li>
+                @else
+                    <li class="{{ $menu == 'pages/new'?'active': '' }}" >
+                        <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages/new">Add New</a>
+                    </li>
+                @endif
             </ul>
         </li>
         @yield('nev_menu_after_pages')

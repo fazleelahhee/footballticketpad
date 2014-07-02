@@ -51,12 +51,27 @@ class AssetCache  extends Facade
             $cachePath = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."js";
             $cacheFileName = md5(implode('-', static::$js_path)).".js";
             $cacheFilePath = $cachePath.DIRECTORY_SEPARATOR.$cacheFileName;
+            $yuiCompressor = public_path().DIRECTORY_SEPARATOR."yuicompressor-2.4.8.jar";
+
             //is file exists
             if(!file_exists($cacheFilePath)) {
                 $content = '';
                 foreach(static::$js_path as $val)
                 {
-                    $content .= ";". file_get_contents(public_path().DIRECTORY_SEPARATOR.$val).PHP_EOL;
+                    if(preg_match('/.min./', $val)) {
+                        $content .= ";". file_get_contents(public_path().DIRECTORY_SEPARATOR.$val).PHP_EOL;
+                    } else {
+                        //compress it
+                        $fileToCompress = public_path().DIRECTORY_SEPARATOR.$val;
+                        $destName = uniqid('js_');
+                        $response = shell_exec("java -jar {$yuiCompressor} {$fileToCompress} -o /tmp/{$destName}");
+                        if(file_exists("/tmp/{$destName}")) {
+                            $content .= ";". file_get_contents("/tmp/{$destName}");
+                        } else {
+                            $content .= ";". file_get_contents($fileToCompress);
+                        }
+
+                    }
                 }
                 file_put_contents($cacheFilePath, $content);
                 unset($content);
@@ -91,11 +106,11 @@ class AssetCache  extends Facade
                 if(static::$admin) {
                     $target = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.admin_assets')."img";
                     $link = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR.'img';
-                    symlink($target,$link);
+                    @symlink($target,$link);
 
                     $target = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.admin_assets')."fonts";
                     $link = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR.'fonts';
-                    symlink($target, $link);
+                    @symlink($target, $link);
                 }
 
 

@@ -1,13 +1,7 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ HTML::style('assets/css/style-backend.css') }}
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#levels').change(function(){
-            $('#level-form').submit();
-        });
-    });
-</script>
+
 <div class="container">
     <h2>Logs</h2>
     {{ Form::open(array('action' => 'App\Controllers\Admin\LogController@index', 'id' => 'level-form')) }}
@@ -35,4 +29,14 @@
         </ul>
     </div>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#levels').change(function(){
+            $('#level-form').submit();
+        });
+    });
+</script>
 @stop

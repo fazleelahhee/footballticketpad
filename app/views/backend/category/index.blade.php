@@ -1,10 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#notification').show().delay(4000).fadeOut(700);
-    });
-</script>
+
 <div class="container">
     {{ Notification::showAll() }}
     <div class="panel panel-default">
@@ -81,4 +77,12 @@
         </ul>
     </div>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#notification').show().delay(4000).fadeOut(700);
+    });
+</script>
 @stop

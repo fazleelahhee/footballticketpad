@@ -6,17 +6,19 @@ use View;
 use Input;
 use Validator;
 use Response;
+use Request;
 use Notification;
-use Bond\Repositories\Page\PageRepository as Page;
+use Page;
+use Bond\Repositories\Page\PageRepository as PagePepo;
 use Bond\Exceptions\Validation\ValidationException;
 
 class PageController extends BaseController {
 
     protected $page;
 
-    public function __construct(Page $page) {
-//        $this->page = $page;
-//        View::share('active', 'modules');
+    public function __construct(PagePepo $page) {
+        $this->page = $page;
+        View::share('active', 'modules');
     }
 
     /**
@@ -25,9 +27,7 @@ class PageController extends BaseController {
      * @return Response
      */
     public function index() {
-        //$pages = $this->page->paginate();
-        $pages = array();
-        return View::make('backend.page.index', compact('pages'));
+        return Redirect::to('admin/pages');
     }
 
     /**
@@ -37,7 +37,7 @@ class PageController extends BaseController {
      */
     public function create() {
         return View::make('backend.page.create')
-            ->with('menu', 'page/new');
+            ->with('menu', 'page/create');
     }
 
     /**
@@ -75,8 +75,7 @@ class PageController extends BaseController {
      * @return Response
      */
     public function edit($id) {
-
-        $page = $this->page->find($id);
+        $page = Page::find($id);
         return View::make('backend.page.edit', compact('page'));
     }
 
@@ -107,13 +106,14 @@ class PageController extends BaseController {
 
         $this->page->destroy($id);
         Notification::success('Page was successfully deleted');
-        return Redirect::action('App\Controllers\Admin\PageController@index');
+        return Redirect::action('App\Controllers\Admin\PageAdminController@showPages');
     }
 
     public function confirmDestroy($id) {
 
         $page = $this->page->find($id);
-        return View::make('backend.page.confirm-destroy', compact('page'));
+        return View::make('backend.page.confirm-destroy', compact('page'))
+            ->with('menu', 'page/destroy');
     }
 
     public function togglePublish($id) {

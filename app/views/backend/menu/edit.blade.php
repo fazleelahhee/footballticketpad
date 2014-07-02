@@ -1,24 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-<script type="text/javascript">
-$(document).ready(function(){
 
-    $('.type').change(function(){
-            var selected = $('input[class="type"]:checked').val();
-            if(selected == "custom"){
-                $('.modules').css('display', 'none');
-                $('.url').css('display', 'block');
-            }
-            else {
-                $('.modules').css('display', 'block');
-                $('.url').css('display', 'none');
-            }
-        }
-    );
-
-    $(".type").trigger("change");
-});
-</script>
 <div class="container">
     {{ Notification::showAll() }}
     <div class="panel panel-default">
@@ -99,4 +81,26 @@ $(document).ready(function(){
         </div>
     </div>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.type').change(function(){
+                var selected = $('input[class="type"]:checked').val();
+                if(selected == "custom"){
+                    $('.modules').css('display', 'none');
+                    $('.url').css('display', 'block');
+                }
+                else {
+                    $('.modules').css('display', 'block');
+                    $('.url').css('display', 'none');
+                }
+            }
+        );
+
+        $(".type").trigger("change");
+    });
+</script>
 @stop

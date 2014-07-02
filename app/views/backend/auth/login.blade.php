@@ -168,7 +168,8 @@
 </div>
 
 <!--================================================== -->
-
+{{     Assets::setScripts([
+'bondcms'              => "js/bondcms.js" ], true) }}
 {{ Assets::dumpScripts(Config::get('bondcms.assets_debug')) }}
 
 <!--[if IE 8]>

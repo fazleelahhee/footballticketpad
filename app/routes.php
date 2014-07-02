@@ -60,8 +60,17 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
             ->with('menu', 'dashboard');
     }));
 
+    //media
+    Route::get('media', 'MediaController@showMedia');
+    Route::post('media/upload', 'MediaController@uploadAction');
+    //page
+    Route::get('pages', 'PageAdminController@showPages');
+    Route::post('pages/list', 'PageAdminController@listAction');
+    Route::get('pages/edit/{id}', 'PageAdminController@editAction')->where('id', '[0-9]+');
+    Route::get('pages/new', 'PageAdminController@newAction');
     // user
     Route::resource('user', 'UserController');
+
     Route::get('user/{id}/delete', array('as' => 'admin.user.delete', 'uses' => 'UserController@confirmDestroy'))
         ->where('id', '[0-9]+');
 
@@ -109,6 +118,8 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
         ->where('id', '[0-9]+');
     Route::post('page/{id}/toggle-menu', array('as' => 'admin.page.toggle-menu', 'uses' => 'PageController@toggleMenu'))
         ->where('id', '[0-9]+');
+
+
 
     // ajax - form post
     Route::post('form-post/{id}/toggle-answer', array('as' => 'admin.form-post.toggle-answer', 'uses' => 'FormPostController@toggleAnswer'))

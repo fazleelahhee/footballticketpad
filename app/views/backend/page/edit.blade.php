@@ -28,7 +28,7 @@
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
-            {{ Form::textarea('content', $page->content, array('class'=>'form-control', 'id' => 'content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
+            {{ Form::textarea('content', $page->content, array('class'=>'form-control', 'id' => 'page_content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
             @if ($errors->first('content'))
             <span class="help-block">{{ $errors->first('content') }}</span>
             @endif
@@ -49,12 +49,16 @@
     <!-- Form actions -->
     {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
-    <script>
-        window.onload = function () {
-            CKEDITOR.replace('content', {
-                "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
-            });
-        };
-    </script>
+
 </div>
+@stop
+
+@section('script')
+<script>
+    window.onload = function () {
+        CKEDITOR.replace('page_content', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
+        });
+    };
+</script>
 @stop

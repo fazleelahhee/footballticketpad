@@ -32,7 +32,8 @@ class ArticleController extends BaseController {
     public function index() {
 
         $articles = $this->article->paginate(null, true);
-        return View::make('backend.article.index', compact('articles'));
+        return View::make('backend.article.index', compact('articles'))
+            ->with('menu', 'article');
     }
 
     /**

@@ -9,17 +9,7 @@
 {{ HTML::style('bootstrap_datepicker/css/datepicker.css') }}
 {{ HTML::script('bootstrap_datepicker/js/bootstrap-datepicker.js') }}
 {{ HTML::script('bootstrap_datepicker/js/locales/bootstrap-datepicker.tr.js') }}
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#title").slug();
 
-        $('#datetime').datepicker({
-            format: "yyyy-mm-dd",
-            todayBtn: "linked",
-            orientation: "top auto"
-        });
-    });
-</script>
 <div class="container">
     <div class="page-header">
         <h3>
@@ -107,4 +97,18 @@
         };
     </script>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#title").slug();
+
+        $('#datetime').datepicker({
+            format: "yyyy-mm-dd",
+            todayBtn: "linked",
+            orientation: "top auto"
+        });
+    });
+</script>
 @stop

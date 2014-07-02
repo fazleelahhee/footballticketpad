@@ -131,12 +131,15 @@
     <!-- Form actions -->
     {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
-    <script type="text/javascript">
-        window.onload = function () {
-            CKEDITOR.replace('content', {
-                "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
-            });
-        };
-    </script>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    window.onload = function () {
+        CKEDITOR.replace('content', {
+            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
+        });
+    };
+</script>
 @stop

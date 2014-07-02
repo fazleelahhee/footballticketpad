@@ -1,29 +1,5 @@
 @extends('backend/_layout/layout')
 @section('content')
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#notification').show().delay(4000).fadeOut(700);
-
-        // answer settings
-        $(".answer").bind("click", function (e) {
-            var id = $(this).attr('id');
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "{{ url('/admin/form-post/" + id + "/toggle-answer/') }}",
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/images/answered.png" : "{{url('/')}}/assets/images/not_answered.png";
-                        $("#answer-image-" + id).attr('src', imagePath);
-                    }
-                },
-                error: function () {
-                    alert("error");
-                }
-            })
-        });
-    });
-</script>
 <div class="container">
     {{ Notification::showAll() }}
     <div class="panel panel-default">
@@ -98,4 +74,31 @@
 
     </div>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#notification').show().delay(4000).fadeOut(700);
+
+        // answer settings
+        $(".answer").bind("click", function (e) {
+            var id = $(this).attr('id');
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "{{ url('/admin/form-post/" + id + "/toggle-answer/') }}",
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/images/answered.png" : "{{url('/')}}/assets/images/not_answered.png";
+                        $("#answer-image-" + id).attr('src', imagePath);
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        });
+    });
+</script>
 @stop

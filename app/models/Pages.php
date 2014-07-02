@@ -2,7 +2,7 @@
 
 use Bond\Interfaces\BaseModelInterface as BaseModelInterface;
 
-class Page extends BaseModel implements BaseModelInterface {
+class Pages extends BaseModel implements BaseModelInterface {
 
     public $table = 'pages';
     protected $fillable = ['title', 'content', 'is_published'];

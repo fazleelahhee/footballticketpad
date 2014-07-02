@@ -1,115 +1,211 @@
 @extends('backend/_layout/layout')
-@section('content')
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $('#notification').show().delay(4000).fadeOut(700);
-
-        // publish settings
-        $(".publish").bind("click", function (e) {
-            var id = $(this).attr('id');
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "{{ url('/admin/page/" + id + "/toggle-publish/') }}",
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/images/publish.png" : "{{url('/')}}/assets/images/not_publish.png";
-                        $("#publish-image-" + id).attr('src', imagePath);
-                    }
-                },
-                error: function () {
-                    alert("error");
-                }
-            })
-        });
-    });
-</script>
-<div class="container">
-    {{ Notification::showAll() }}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Pages</h3>
-        </div>
-        <div class="panel-body">
-            <div class="pull-left">
-                <div class="btn-toolbar">
-                    <a href="{{ URL::route('admin.page.create') }}" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-plus"></span>&nbsp;New Page
-                    </a>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            @if($pages->count())
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Created Date</th>
-                        <th>Updated Date</th>
-                        <th>Action</th>
-                        <th>Settings</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach( $pages as $page )
-                    <tr>
-                        <td> {{ link_to_route( 'admin.page.show', $page->title, $page->id, array( 'class' => 'btn btn-link btn-xs' )) }}</td>
-                        <td>{{{ $page->created_at }}}</td>
-                        <td>{{{ $page->updated_at }}}</td>
-                        <td>
-                            <div class="btn-group">
-                                <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Action
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ URL::route('admin.page.show', array($page->id)) }}">
-                                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show Page
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ URL::route('admin.page.edit', array($page->id)) }}">
-                                            <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Page
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="{{ URL::route('admin.page.delete', array($page->id)) }}">
-                                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete Page
-                                        </a>
-                                    </li>
-                                     <li class="divider"></li>
-                                    <li>
-                                        <a target="_blank" href="{{ $page->url }}">
-                                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;View On Site
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="#" id="{{ $page->id }}" class="publish"><img id="publish-image-{{ $page->id }}" src="{{url('/')}}/assets/images/{{ ($page->is_published) ? 'publish.png' : 'not_publish.png'  }}"/></a>
-                        </td>
-                    </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-            @else
-            <div class="alert alert-danger">No results found</div>
-            @endif
-        </div>
-    </div>
-
-    <div class="pull-left">
-        <ul class="pagination">
-            {{ $pages->links() }}
-        </ul>
-    </div>
-</div>
+@section('breadcrumb')
+<li>Home</li><li>Pages</li>
 @stop
+
+{{
+    Assets::setScripts([
+        'jquery.dataTables'         => 'js/plugin/datatables/jquery.dataTables.min.js',
+        'dataTables.colVis'         => 'js/plugin/datatables/dataTables.colVis.min.js',
+        'dataTables.tableTools'     => 'js/plugin/datatables/dataTables.tableTools.min.js',
+        'dataTables.bootstrap'      => 'js/plugin/datatables/dataTables.bootstrap.min.js',
+    ], true);
+}}
+
+@section('content')
+
+<div class="row">
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+        <h1 class="page-title txt-color-blueDark">
+            <i class="fa fa-table fa-fw "></i>
+            Pages
+        </h1>
+    </div>
+
+</div>
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+    <!-- row -->
+    <div class="row">
+
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+                <!-- widget options:
+                                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                                                data-widget-colorbutton="false"
+                                                data-widget-editbutton="false"
+                                                data-widget-togglebutton="false"
+                                                data-widget-deletebutton="false"
+                                                data-widget-fullscreenbutton="false"
+                                                data-widget-custombutton="false"
+                                                data-widget-collapsed="true"
+                                                data-widget-sortable="false"
+
+                                                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+                    <h2>Available Pages</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+
+                        <table id="dt_basic" class="table table-striped table-bordered table-hover" width="100%">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Title</th>
+                                <th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i> URI </th>
+                                <th><i class="fa fa-fw fa-phone text-muted hidden-md hidden-sm hidden-xs"></i>Status</th>
+                                <th><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>Updated at</th>
+                                <th><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>Created at</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+        </article>
+        <!-- WIDGET END -->
+
+    </div>
+
+    <!-- end row -->
+
+    <!-- end row -->
+
+</section>
+<!-- end widget grid -->
+
+@stop
+
+@section ('script')
+<script>
+    $(document).ready(function() {
+        $('#dt_basic').dataTable({
+            serverSide: true,
+            ajax: {
+                url: "/{{ Config::get('bondcms.admin_prefix') }}/pages/list",
+                type: 'POST'
+            }
+        });
+
+
+        /* END BASIC */
+
+        /* COLUMN FILTER  */
+        var otable = $('#datatable_fixed_column').DataTable({
+            //"bFilter": false,
+            //"bInfo": false,
+            //"bLengthChange": false
+            //"bAutoWidth": false,
+            //"bPaginate": false,
+            //"bStateSave": true // saves sort state using localStorage
+            "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>"+
+                "t"+
+                "<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+
+        });
+
+        // custom toolbar
+        $("div.toolbar").html('<div class="text-right"><img src="img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
+
+        // Apply the filter
+        $("#datatable_fixed_column thead th input[type=text]").on( 'keyup change', function () {
+
+            otable
+                .column( $(this).parent().index()+':visible' )
+                .search( this.value )
+                .draw();
+
+        } );
+        /* END COLUMN FILTER */
+
+        /* COLUMN SHOW - HIDE */
+        $('#datatable_col_reorder').dataTable({
+            "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'C>r>"+
+                "t"+
+                "<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
+        });
+
+        /* END COLUMN SHOW - HIDE */
+
+        /* TABLETOOLS */
+        $('#datatable_tabletools').dataTable({
+
+            // Tabletools options:
+            //   https://datatables.net/extensions/tabletools/button_options
+            "sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'T>r>"+
+                "t"+
+                "<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>",
+            "oTableTools": {
+                "aButtons": [
+                    "copy",
+                    "csv",
+                    "xls",
+                    {
+                        "sExtends": "pdf",
+                        "sTitle": "SmartAdmin_PDF",
+                        "sPdfMessage": "SmartAdmin PDF Export",
+                        "sPdfSize": "letter"
+                    },
+                    {
+                        "sExtends": "print",
+                        "sMessage": "Generated by SmartAdmin <i>(press Esc to close)</i>"
+                    }
+                ],
+                "sSwfPath": "js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+            }
+        });
+
+        /* END TABLETOOLS */
+
+        var edit_page_url = "pages/edit/";
+        var delete_url = "page/";
+
+        $('#dt_basic_wrapper').on('click', '.edit-node', function (e) {
+            e.preventDefault();
+            var page_id = $(this).attr('href');
+            window.location = edit_page_url+page_id;
+        });
+
+        $('#dt_basic_wrapper').on('click', '.delete-node', function (e) {
+            e.preventDefault();
+            var page_id = $(this).attr('href');
+            window.location = delete_url+page_id+"/delete";
+        });
+
+    })
+</script>
+@stop
+
+

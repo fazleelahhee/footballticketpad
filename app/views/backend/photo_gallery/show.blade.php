@@ -2,13 +2,7 @@
 @section('content')
 {{ HTML::style('ckeditor/contents.css') }}
 {{ HTML::script('assets/js/jquery.lazyload.min.js') }}
-<script type="text/javascript">
-    $(function () {
-        $("img.lazy").lazyload({
-            effect: "fadeIn"
-        });
-    });
-</script>
+
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -62,4 +56,14 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    $(function () {
+        $("img.lazy").lazyload({
+            effect: "fadeIn"
+        });
+    });
+</script>
 @stop
