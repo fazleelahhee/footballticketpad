@@ -27,11 +27,11 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Media</span></a>
             <ul>
                 <li class="{{ $menu == 'media'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages">Media</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/media">Media</a>
                 </li>
 
                 <li class="{{ $menu == 'media/new'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages/new">Add New</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/media/new">Add New</a>
                 </li>
             </ul>
         </li>

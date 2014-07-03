@@ -118,8 +118,12 @@
         $("#media-upload").dropzone({
             //url: "/file/post",
             addRemoveLinks : true,
-            maxFilesize: 0.5,
-            dictResponseError: 'Error uploading file!'
+            maxFilesize: 50,
+            dictResponseError: 'Error uploading file!',
+            success: function (file, response) {
+                //TODO: display file upload success or error message to client.
+                console.log(response);
+            }
         });
     })
 </script>
