@@ -1,19 +1,8 @@
-<?php
+<?php namespace Bond\Filemanager;
 
-/**
- *    Filemanager PHP class
- *
- *    filemanager.class.php
- *    class for the filemanager.php connector
- *
- * @license    MIT License
- * @author        Riaan Los <mail (at) riaanlos (dot) nl>
- * @author        Simon Georget <simon (at) linea21 (dot) com>
- * @copyright    Authors
- */
+
 class Filemanager
 {
-
     protected $config = array();
     protected $language = array();
     protected $get = array();
@@ -30,7 +19,7 @@ class Filemanager
     public function __construct($extraConfig = '')
     {
 
-        $content = file_get_contents("../../scripts/filemanager.config.js");
+        $content = file_get_contents(public_path("filemanager/scripts/filemanager.config.js"));
         $config  = json_decode($content, true);
 
         $this->config = $config;
@@ -40,7 +29,10 @@ class Filemanager
             $this->setup($extraConfig);
         }
 
-        $this->root       = dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR;
+        //$this->root       = dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR;
+
+        $this->root  = public_path().DIRECTORY_SEPARATOR."filemanager".DIRECTORY_SEPARATOR;
+
         $this->properties = array(
             'Date Created'  => null,
             'Date Modified' => null,

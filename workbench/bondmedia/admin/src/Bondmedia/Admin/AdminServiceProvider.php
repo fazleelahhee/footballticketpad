@@ -35,6 +35,7 @@ class AdminServiceProvider extends ServiceProvider {
             $loader->alias('User', 'Bondmedia\Admin\Facades\User');
             $loader->alias('Template', 'Bondmedia\Admin\Facades\Template');
             $loader->alias('Assets', 'Bondmedia\Admin\Facades\AssetCache');
+            $loader->alias('BMAdmin', 'Bondmedia\Admin\Facades\BondAdmin');
         });
 	}
 

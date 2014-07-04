@@ -63,6 +63,14 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     //media
     Route::get('media', 'MediaController@showMedia');
     Route::post('media/upload', 'MediaController@uploadAction');
+    Route::get('media/list', 'MediaController@showListAction');
+    Route::post('media/list_json', 'MediaController@listJsonAction');
+    Route::any('media/filemanager', 'MediaController@filemanagerAction');
+
+    Route::get('media/edit/{id}', 'MediaController@editAction')->where('id', '[0-9]+');
+    Route::any('media/destroy/{id}', 'MediaController@destroy')->where('id', '[0-9]+');
+    Route::get('media/delete/{id}', 'MediaController@deleteAction')->where('id', '[0-9]+');
+
     //page
     Route::get('pages', 'PageAdminController@showPages');
     Route::post('pages/list', 'PageAdminController@listAction');
@@ -166,11 +174,13 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     // log
     Route::any('log', ['as'=>'admin.log', 'uses'=>'LogController@index']);
 
-    // filemanager
-    Route::get('filemanager/show', 'FilemanagerController@index');
+
 });
 
-
+Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => array('auth.admin', 'assets_admin')), function () {
+// filemanager
+Route::get('filemanager/show', 'FilemanagerController@index');
+});
 
 //// login
 //Route::get('/'.Config::get('bondcms.admin_prefix').'/login', array('as' => 'admin.login', 'before'=> 'assets_admin', function () {

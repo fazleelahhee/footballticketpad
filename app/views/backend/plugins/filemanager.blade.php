@@ -67,7 +67,7 @@
     <script type="text/javascript" src="/filemanager/scripts/jquery.contextmenu/jquery.contextMenu-1.01.js"></script>
     <script type="text/javascript" src="/filemanager/scripts/jquery.impromptu-3.2.min.js"></script>
     <script type="text/javascript" src="/filemanager/scripts/jquery.tablesorter-2.7.2.min.js"></script>
-    <script type="text/javascript" src="/filemanager/scripts/filemanager.min.js"></script>
+    <script type="text/javascript" src="/filemanager/scripts/filemanager.js"></script>
 </div>
 </body>
 </html>

@@ -41,7 +41,8 @@ var config = (function () {
 
 
 // Sets paths to connectors based on language selection.
-var fileConnector = 'connectors/' + config.options.lang + '/filemanager.' + config.options.lang;
+//var fileConnector = 'connectors/' + config.options.lang + '/filemanager.' + config.options.lang;
+var fileConnector = "/admin/media/filemanager";
 
 var capabilities = new Array('select', 'download', 'rename', 'delete');
 

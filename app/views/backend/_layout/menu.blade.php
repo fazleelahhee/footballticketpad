@@ -30,9 +30,14 @@
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/media">Media</a>
                 </li>
 
-                <li class="{{ $menu == 'media/new'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/media/new">Add New</a>
+                <li class="{{ $menu == 'media/list'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/media/list">List</a>
                 </li>
+                @if($menu == 'media/edit')
+                <li class="{{ $menu == 'media/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/media/edit">Edit</a>
+                </li>
+                @endif
             </ul>
         </li>
         @yield('nev_menu_after_media')
