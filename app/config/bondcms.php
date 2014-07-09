@@ -7,8 +7,9 @@ return array(
     | Cache config (true or false)
     |--------------------------------------------------------------------------
     */
-    'cache' => false,
+    'cache' => true,
 
+    'cache_time' => 5,
     /*
     |--------------------------------------------------------------------------
     | Modules config
@@ -103,7 +104,7 @@ return array(
     */
 
     'assets_cache_path'  => 'assets/cache/backend',
-
+    'assets_cache_path_frontend'  => 'assets/cache/frontend',
     /*
     |--------------------------------------------------------------------------
     | Upload Directory

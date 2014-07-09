@@ -13,7 +13,7 @@ class AssetCache  extends Facade
     private static $css_path = array();
 
 
-    public static function setStyles(array $css_path, $admin = false)
+    public static function setStyles(array $css_path, $admin = false, $first=false)
     {
         if($admin) {
             $path = Config::get('bondcms.admin_assets');
@@ -21,11 +21,24 @@ class AssetCache  extends Facade
                 $css_path[$key] = $path.$css;
             }
             static::$admin = true;
+        } else {
+            $ds = DIRECTORY_SEPARATOR;
+            $theme = Config::get('bondcms.theme');
+            $path = "assets{$ds}frontend{$ds}{$theme}{$ds}";
+
+            foreach($css_path as $key=>$css) {
+                $css_path[$key] = $path.$css;
+            }
         }
-        self::$css_path = array_merge(self::$css_path, $css_path);
+        if($first) {
+            self::$css_path = array_merge($css_path, self::$css_path);
+        } else {
+            self::$css_path = array_merge(self::$css_path, $css_path);
+        }
+
     }
 
-    public static function setScripts(array $file, $admin = false)
+    public static function setScripts(array $file, $admin = false, $first=false)
     {
         if($admin) {
             $path = Config::get('bondcms.admin_assets');
@@ -34,8 +47,20 @@ class AssetCache  extends Facade
             }
           static::$admin = true;
 
+        } else {
+            $ds = DIRECTORY_SEPARATOR;
+            $theme = Config::get('bondcms.theme');
+            $path = "assets{$ds}frontend{$ds}{$theme}{$ds}";
+            foreach($file as $key=>$js) {
+                $file[$key] = $path.$js;
+            }
         }
-        self::$js_path = array_merge(self::$js_path, $file);
+        if($first) {
+            self::$js_path = array_merge($file, self::$js_path);
+        } else {
+            self::$js_path = array_merge(self::$js_path, $file);
+        }
+
     }
 
 
@@ -48,7 +73,12 @@ class AssetCache  extends Facade
                 echo HTML::script("{$val}?$version");
             }
         } else {
-            $cachePath = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."js";
+            if(static::$admin) {
+                $cachePath = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."js";
+            } else {
+                $cachePath = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path_frontend').DIRECTORY_SEPARATOR."js";
+            }
+
             $cacheFileName = md5(implode('-', static::$js_path)).".js";
             $cacheFilePath = $cachePath.DIRECTORY_SEPARATOR.$cacheFileName;
             $yuiCompressor = public_path().DIRECTORY_SEPARATOR."yuicompressor-2.4.8.jar";
@@ -76,7 +106,12 @@ class AssetCache  extends Facade
                 file_put_contents($cacheFilePath, $content);
                 unset($content);
             }
-            echo HTML::script(Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."js".DIRECTORY_SEPARATOR.$cacheFileName);
+
+            if(static::$admin) {
+                echo HTML::script(Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."js".DIRECTORY_SEPARATOR.$cacheFileName);
+            } else {
+                echo HTML::script(Config::get('bondcms.assets_cache_path_frontend').DIRECTORY_SEPARATOR."js".DIRECTORY_SEPARATOR.$cacheFileName);
+            }
         }
     }
 
@@ -90,7 +125,11 @@ class AssetCache  extends Facade
                 echo HTML::style("{$val}?$version");
             }
         } else {
-            $cachePath = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."css";
+            if(static::$admin) {
+                $cachePath = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."css";
+            } else {
+                $cachePath = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path_frontend').DIRECTORY_SEPARATOR."css";
+            }
             $cacheFileName = md5(implode('-', static::$css_path)).".css";
             $cacheFilePath = $cachePath.DIRECTORY_SEPARATOR.$cacheFileName;
             //is file exists
@@ -106,16 +145,40 @@ class AssetCache  extends Facade
                 if(static::$admin) {
                     $target = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.admin_assets')."img";
                     $link = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR.'img';
+                    @unlink($link);
                     @symlink($target,$link);
 
                     $target = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.admin_assets')."fonts";
                     $link = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR.'fonts';
+                    @unlink($link);
+                    @symlink($target, $link);
+                } else {
+                    $ds = DIRECTORY_SEPARATOR;
+                    $theme = Config::get('bondcms.theme');
+                    $themePath = public_path()."{$ds}assets{$ds}frontend{$ds}{$theme}{$ds}";
+                    $target = $themePath."bootstrap";
+
+                    $link = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path_frontend').DIRECTORY_SEPARATOR.'bootstrap';
+                    @unlink($link);
+                    @symlink($target,$link);
+                    $target = $themePath."images";
+                    $link = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path_frontend').DIRECTORY_SEPARATOR.'images';
+                    @unlink($link);
+                    @symlink($target,$link);
+
+                    $target = $themePath."fonts";
+                    $link = public_path().DIRECTORY_SEPARATOR.Config::get('bondcms.assets_cache_path_frontend').DIRECTORY_SEPARATOR.'fonts';
+                    @unlink($link);
                     @symlink($target, $link);
                 }
 
 
             }
-            echo HTML::style(Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."css".DIRECTORY_SEPARATOR.$cacheFileName);
+            if(static::$admin) {
+                echo HTML::style(Config::get('bondcms.assets_cache_path').DIRECTORY_SEPARATOR."css".DIRECTORY_SEPARATOR.$cacheFileName);
+            } else {
+                echo HTML::style(Config::get('bondcms.assets_cache_path_frontend').DIRECTORY_SEPARATOR."css".DIRECTORY_SEPARATOR.$cacheFileName);
+            }
         }
     }
 
@@ -133,9 +196,13 @@ class AssetCache  extends Facade
         if(empty($url)) {
             return '';
         }
-
         if($admin) {
             $path = Config::get('bondcms.admin_assets');
+            echo HTML::image($path.$url, $alt, $attributes);
+        } else {
+            $ds = DIRECTORY_SEPARATOR;
+            $theme = Config::get('bondcms.theme');
+            $path = "{$ds}assets{$ds}frontend{$ds}{$theme}{$ds}";
             echo HTML::image($path.$url, $alt, $attributes);
         }
     }
@@ -149,7 +216,10 @@ class AssetCache  extends Facade
             $path = Config::get('bondcms.admin_assets');
             echo $path.$url;
         } else {
-            echo $url;
+            $ds = DIRECTORY_SEPARATOR;
+            $theme = Config::get('bondcms.theme');
+            $path = "{$ds}assets{$ds}frontend{$ds}{$theme}{$ds}";
+            echo $path.$url;
         }
     }
 

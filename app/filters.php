@@ -79,6 +79,17 @@ Route::filter('assets_admin', function () {
         'app'               => "js/app.min.js"
     ], true);
 });
+
+Route::filter('assets_admin', function () {
+    Assets::setStyles([
+    ]);
+
+    Assets::setScripts([
+        'jquery'            => 'assets/js/jquery.2.0.3.js',
+        'holder'            => 'assets/js/holder.js'
+    ]);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

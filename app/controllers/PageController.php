@@ -19,6 +19,6 @@ class PageController extends BaseController {
     public function show($id) {
 
         $page = $this->page->find($id);
-        return View::make('frontend.page.show', compact('page'));
+        return View::make(Template::name('frontend.%s.page.show'), compact('page'));
     }
 }

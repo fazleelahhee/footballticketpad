@@ -4,6 +4,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Cache;
+use Config;
 use Str;
 
 /**
@@ -21,10 +22,10 @@ class CacheFilter {
      * @param Request $request
      */
     public function fetch(Route $route, Request $request) {
-
         $key = $this->makeCacheKey($request->url());
-
-        if (Cache::has($key)) return Cache::get($key);
+        if (Cache::has($key)) {
+            return Cache::get($key);
+        }
     }
 
     /**
@@ -35,10 +36,10 @@ class CacheFilter {
      * @param Response $response
      */
     public function put(Route $route, Request $request, Response $response) {
-
         $key = $this->makeCacheKey($request->url());
-
-        if (!Cache::has($key)) Cache::put($key, $response->getContent(), 60);
+        if (!Cache::has($key)){
+            Cache::put($key, $response->getContent(), Config::get('bondcms.cache_time'));
+        }
     }
 
     /**
@@ -48,6 +49,6 @@ class CacheFilter {
      */
     protected function makeCacheKey($url) {
 
-        return 'route-' . Str::slug($url);
+        return 'route-' . Str::slug($url).'-'.Config::get('bondcms.assets_debug');
     }
 }

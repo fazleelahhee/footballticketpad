@@ -1,14 +1,8 @@
 @extends('backend/_layout/layout')
 @section('content')
 
-{{ HTML::script('ckeditor/ckeditor.js') }}
 {{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
-{{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
-{{ HTML::script('assets/js/jquery.slug.js') }}
-
 {{ HTML::style('bootstrap_datepicker/css/datepicker.css') }}
-{{ HTML::script('bootstrap_datepicker/js/bootstrap-datepicker.js') }}
-{{ HTML::script('bootstrap_datepicker/js/locales/bootstrap-datepicker.tr.js') }}
 
 <div class="container">
     <div class="page-header">
@@ -68,7 +62,7 @@
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
-            {{ Form::textarea('content', $news->content, array('class'=>'form-control', 'id' => 'content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
+            {{ Form::textarea('content', $news->content, array('class'=>'form-control', 'id' => 'content_page', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
             @if ($errors->first('content'))
             <span class="help-block">{{ $errors->first('content') }}</span>
             @endif
@@ -89,17 +83,18 @@
     <br>
     {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
-    <script>
-        window.onload = function () {
-            CKEDITOR.replace('content', {
-                "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
-            });
-        };
-    </script>
+
 </div>
 @stop
 
 @section('script')
+{{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
+{{ HTML::script('assets/js/jquery.slug.js') }}
+{{ HTML::script('bootstrap_datepicker/js/bootstrap-datepicker.js') }}
+{{ HTML::script('bootstrap_datepicker/js/locales/bootstrap-datepicker.tr.js') }}
+
+@include('backend.partials.ckeditor')
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#title").slug();

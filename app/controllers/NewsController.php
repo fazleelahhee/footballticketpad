@@ -19,7 +19,7 @@ class NewsController extends BaseController {
     public function index() {
 
         $news = $this->news->paginate();
-        return View::make('frontend.news.index', compact('news'));
+        return View::make(Template::name('frontend.%s.news.index'), compact('news'));
     }
 
     /**
@@ -29,6 +29,6 @@ class NewsController extends BaseController {
     public function show($id, $slug = null) {
 
         $news = $this->news->find($id);
-        return View::make('frontend.news.show', compact('news'));
+        return View::make(Template::name('frontend.%s.news.show'), compact('news'));
     }
 }

@@ -1,9 +1,8 @@
 @extends('backend/_layout/layout')
 @section('content')
-{{ HTML::script('ckeditor/ckeditor.js') }}
 {{ HTML::style('dropzone/css/basic.css') }}
 {{ HTML::style('dropzone/css/dropzone.css') }}
-{{ HTML::script('dropzone/dropzone.js') }}
+
 <div class="container">
     <div class="page-header">
         <h3>
@@ -110,7 +109,7 @@
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
-            {{ Form::textarea('content', $photo_gallery->content, array('class'=>'form-control', 'id' => 'content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
+            {{ Form::textarea('content', $photo_gallery->content, array('class'=>'form-control', 'id' => 'content_page', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
             @if ($errors->first('content'))
             <span class="help-block">{{ $errors->first('content') }}</span>
             @endif
@@ -135,11 +134,6 @@
 @stop
 
 @section('script')
-<script type="text/javascript">
-    window.onload = function () {
-        CKEDITOR.replace('content', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
-        });
-    };
-</script>
+{{ HTML::script('dropzone/dropzone.js') }}
+@include('backend.partials.ckeditor')
 @stop

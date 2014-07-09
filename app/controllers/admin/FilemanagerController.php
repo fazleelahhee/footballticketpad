@@ -15,4 +15,8 @@ class FilemanagerController extends BaseController {
         $data = array( 'admin_url' => "" );
         return View::make('backend.plugins.filemanager', $data);
     }
+
+    public function showInAdmin() {
+        return View::make('backend.plugins.in-admin')->with('menu', 'filemanager');
+    }
 }

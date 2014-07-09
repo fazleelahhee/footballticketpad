@@ -44,7 +44,8 @@ class ArticleController extends BaseController {
     public function create() {
 
         $categories = $this->category->lists();
-        return View::make('backend.article.create', compact('categories'));
+        return View::make('backend.article.create', compact('categories'))
+            ->with('menu', 'article/create');
     }
 
     /**
@@ -72,7 +73,8 @@ class ArticleController extends BaseController {
     public function show($id) {
 
         $article = $this->article->find($id);
-        return View::make('backend.article.show', compact('article'));
+        return View::make('backend.article.show', compact('article'))
+            ;
     }
 
     /**
@@ -92,7 +94,8 @@ class ArticleController extends BaseController {
 
         $tags = substr($tags, 1);
         $categories = $this->category->lists();
-        return View::make('backend.article.edit', compact('article', 'tags', 'categories'));
+        return View::make('backend.article.edit', compact('article', 'tags', 'categories'))
+            ->with('menu', 'article/edit');
     }
 
     /**
@@ -129,7 +132,8 @@ class ArticleController extends BaseController {
     public function confirmDestroy($id) {
 
         $article = $this->article->find($id);
-        return View::make('backend.article.confirm-destroy', compact('article'));
+        return View::make('backend.article.confirm-destroy', compact('article'))
+            ->with('menu', 'article/edit');
     }
 
     public function togglePublish($id) {

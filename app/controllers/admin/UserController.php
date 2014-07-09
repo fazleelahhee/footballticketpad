@@ -21,7 +21,8 @@ class UserController extends BaseController {
         $users = User::orderBy('created_at', 'DESC')
             ->paginate(10);
 
-        return View::make('backend.user.index', compact('users'))->with('active', 'user');
+        return View::make('backend.user.index', compact('users'))->with('active', 'user')
+            ->with('menu', 'users');
     }
 
     /**
@@ -31,7 +32,8 @@ class UserController extends BaseController {
      */
     public function create() {
 
-        return View::make('backend.user.create');
+        return View::make('backend.user.create')
+            ->with('menu', 'users/new');
     }
 
     /**

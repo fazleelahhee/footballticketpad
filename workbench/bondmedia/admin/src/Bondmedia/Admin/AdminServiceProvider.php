@@ -32,8 +32,8 @@ class AdminServiceProvider extends ServiceProvider {
         {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias('Page', 'Bondmedia\Admin\Facades\Page');
-            $loader->alias('User', 'Bondmedia\Admin\Facades\User');
-            $loader->alias('Template', 'Bondmedia\Admin\Facades\Template');
+            $loader->alias('BMUser', 'Bondmedia\Admin\Facades\BMUser');
+            //$loader->alias('Template', 'Bondmedia\Admin\Facades\Template');
             $loader->alias('Assets', 'Bondmedia\Admin\Facades\AssetCache');
             $loader->alias('BMAdmin', 'Bondmedia\Admin\Facades\BondAdmin');
         });

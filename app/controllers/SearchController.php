@@ -6,13 +6,13 @@ class SearchController extends BaseController {
 
         $q = Input::get('search');
 
-        View::composer('frontend/_layout/menu', function ($view) use ($q) {
+        View::composer(Template::name('frontend.%s._layout.menu'), function ($view) use ($q) {
 
             $view->with('q', $q);
         });
 
         $result = Search::search($q);
         $paginator = Paginator::make($result, count($result), 10);
-        return View::make('frontend.search.index', compact('paginator', 'q'));
+        return View::make(Template::name('frontend.%s.search.index'), compact('paginator', 'q'));
     }
 }

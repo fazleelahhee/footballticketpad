@@ -39,7 +39,7 @@ Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch'
     Route::get('/rss', array('as' => 'rss', 'uses' => 'RssController@index'));
 
     // search
-    Route::get('/search', ['as'=>'admin.search', 'uses'=>'SearchController@index']);
+    Route::get('/search', ['as' => 'admin.search', 'uses' => 'SearchController@index']);
 });
 
 Route::post('/contact', array('as' => 'dashboard.contact.post', 'uses' => 'FormPostController@postContact'), array('before' => 'csrf'));
@@ -128,7 +128,6 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
         ->where('id', '[0-9]+');
 
 
-
     // ajax - form post
     Route::post('form-post/{id}/toggle-answer', array('as' => 'admin.form-post.toggle-answer', 'uses' => 'FormPostController@toggleAnswer'))
         ->where('id', '[0-9]+');
@@ -139,7 +138,8 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     Route::post('/photo-gallery-delete-image', array('as' => 'admin.photo.gallery.delete.image', 'uses' => 'PhotoGalleryController@deleteImage'));
 
     // settings
-    Route::get('/settings', array('as' => 'admin.settings', 'uses' => 'SettingController@index'));
+    Route::get('/settings/website', array('as' => 'admin.settings', 'uses' => 'SettingController@index'));
+    Route::get('/settings/general', array('as' => 'admin.settings', 'uses' => 'SettingController@generalSettings'));
     Route::post('/settings', array('as' => 'admin.settings.save', 'uses' => 'SettingController@save'), array('before' => 'csrf'));
 
     // form post
@@ -172,14 +172,16 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
         ->where('id', '[0-9]+');
 
     // log
-    Route::any('log', ['as'=>'admin.log', 'uses'=>'LogController@index']);
+    Route::any('log', ['as' => 'admin.log', 'uses' => 'LogController@index']);
 
+    //filemanager
+    Route::get('filemanager/show-admin', 'FilemanagerController@showInAdmin');
 
 });
 
 Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => array('auth.admin', 'assets_admin')), function () {
-// filemanager
-Route::get('filemanager/show', 'FilemanagerController@index');
+    // filemanager
+    Route::get('filemanager/show', 'FilemanagerController@index');
 });
 
 //// login
@@ -188,20 +190,19 @@ Route::get('filemanager/show', 'FilemanagerController@index');
 //    return View::make('backend/auth/login');
 //}));
 
-Route::group(array('namespace' => 'App\Controllers\Admin','before'=> 'assets_admin' ), function () {
-
+Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_admin'), function () {
     // admin auth
-    Route::get('/'.Config::get('bondcms.admin_prefix').'/logout', array('as' => 'admin.logout', 'uses' => 'AuthController@getLogout'));
-    Route::get('/'.Config::get('bondcms.admin_prefix').'/login', array('as' => 'admin.login', 'uses' => 'AuthController@getLogin'));
-    Route::post('/'.Config::get('bondcms.admin_prefix').'/login', array('as' => 'admin.login.post', 'uses' => 'AuthController@postLogin'));
+    Route::get('/' . Config::get('bondcms.admin_prefix') . '/logout', array('as' => 'admin.logout', 'uses' => 'AuthController@getLogout'));
+    Route::get('/' . Config::get('bondcms.admin_prefix') . '/login', array('as' => 'admin.login', 'uses' => 'AuthController@getLogin'));
+    Route::post('/' . Config::get('bondcms.admin_prefix') . '/login', array('as' => 'admin.login.post', 'uses' => 'AuthController@postLogin'));
 
     // admin password reminder
-    Route::get('/'.Config::get('bondcms.admin_prefix').'/forgot-password', array('as' => 'admin.forgot.password', 'uses' => 'AuthController@getForgotPassword'));
-    Route::post('/'.Config::get('bondcms.admin_prefix').'/forgot-password', array('as' => 'admin.forgot.password.post', 'uses' => 'AuthController@postForgotPassword'));
+    Route::get('/' . Config::get('bondcms.admin_prefix') . '/forgot-password', array('as' => 'admin.forgot.password', 'uses' => 'AuthController@getForgotPassword'));
+    Route::post('/' . Config::get('bondcms.admin_prefix') . '/forgot-password', array('as' => 'admin.forgot.password.post', 'uses' => 'AuthController@postForgotPassword'));
 
-    Route::get('/'.Config::get('bondcms.admin_prefix').'/{id}/reset/{code}', array('as' => 'admin.reset.password', 'uses' => 'AuthController@getResetPassword'))
+    Route::get('/' . Config::get('bondcms.admin_prefix') . '/{id}/reset/{code}', array('as' => 'admin.reset.password', 'uses' => 'AuthController@getResetPassword'))
         ->where('id', '[0-9]+');
-    Route::post('/'.Config::get('bondcms.admin_prefix').'/reset-password', array('as' => 'admin.reset.password.post', 'uses' => 'AuthController@postResetPassword'));
+    Route::post('/' . Config::get('bondcms.admin_prefix') . '/reset-password', array('as' => 'admin.reset.password.post', 'uses' => 'AuthController@postResetPassword'));
 });
 
 /*

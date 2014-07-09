@@ -19,6 +19,6 @@ class CategoryController extends BaseController {
     public function index($title) {
 
         $articles = $this->category->getArticlesByTitle($title);
-        return View::make('frontend.category.index', compact('articles'));
+        return View::make(Template::name('frontend.%s.category.index'), compact('articles'));
     }
 }

@@ -31,7 +31,8 @@ class MenuController extends BaseController {
 
         $items = $this->menu->orderBy('order', 'asc')->get();
         $menus = $this->menu->getMenuHTML($items);
-        return View::make('backend.menu.index', compact('menus'));
+        return View::make('backend.menu.index', compact('menus'))
+            ->with('menu', 'menu');
     }
 
     /**
@@ -42,7 +43,8 @@ class MenuController extends BaseController {
     public function create() {
 
         $options = $this->menu->getMenuOptions();
-        return View::make('backend.menu.create', compact('options'));
+        return View::make('backend.menu.create', compact('options'))
+            ->with('menu', 'menu');
     }
 
     /**

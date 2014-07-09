@@ -81,7 +81,8 @@ class NewsController extends BaseController {
     public function edit($id) {
 
         $news = $this->news->find($id);
-        return View::make('backend.news.edit', compact('news'));
+        return View::make('backend.news.edit', compact('news'))
+            ->with('menu', 'news/edit');
     }
 
     /**
@@ -117,7 +118,8 @@ class NewsController extends BaseController {
     public function confirmDestroy($id) {
 
         $news = $this->news->find($id);
-        return View::make('backend.news.confirm-destroy', compact('news'));
+        return View::make('backend.news.confirm-destroy', compact('news'))
+            ->with('menu', 'news/edit');
     }
 
     public function togglePublish($id) {

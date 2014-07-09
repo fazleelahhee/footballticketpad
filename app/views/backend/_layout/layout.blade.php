@@ -38,7 +38,7 @@
           media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
     <link rel="apple-touch-startup-image" href="{{ Assets::Path('img/splash/iphone.png', true) }}"
           media="screen and (max-device-width: 320px)">
-
+    @yield('style')
 </head>
 <body class="">
 <!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
@@ -266,7 +266,7 @@
             <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
                 <img src="{{ Assets::Path('img/avatars/sunny.png', true) }}" alt="me" class="online"/>
                 <span>
-                    {{ User::getUserName() }}
+                    {{ BMUser::getUserName() }}
                 </span>
                 <i class="fa fa-angle-down"></i>
             </a>

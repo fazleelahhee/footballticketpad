@@ -20,7 +20,8 @@ class FormPostController extends BaseController {
 
         $formPosts = FormPost::orderBy('created_at', 'DESC')
                             ->paginate(15);
-        return View::make('backend.form_post.index', compact('formPosts'))->with('active', 'form-post');
+        return View::make('backend.form_post.index', compact('formPosts'))->with('active', 'form-post')
+            ->with('menu', 'formpost');
     }
 
     /**
@@ -32,7 +33,8 @@ class FormPostController extends BaseController {
     public function show($id) {
 
         $formPost = FormPost::findOrFail($id);
-        return View::make('backend.form_post.show', compact('formPost'))->with('active', 'form-post');
+        return View::make('backend.form_post.show', compact('formPost'))->with('active', 'form-post')
+            ->with('menu', 'show-form');
     }
 
     /**

@@ -19,6 +19,6 @@ class TagController extends BaseController {
     public function index($slug) {
 
         $articles = $this->tag->bySlug($slug);
-        return View::make('frontend.tag.index', compact('articles'));
+        return View::make(Template::name('frontend.%s.tag.index'), compact('articles'));
     }
 }

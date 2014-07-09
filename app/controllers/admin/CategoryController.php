@@ -26,7 +26,8 @@ class CategoryController extends BaseController {
     public function index() {
 
         $categories = $this->category->paginate();
-        return View::make('backend.category.index', compact('categories'));
+        return View::make('backend.category.index', compact('categories'))
+            ->with('menu', 'category');
     }
 
     /**
@@ -36,7 +37,8 @@ class CategoryController extends BaseController {
      */
     public function create() {
 
-        return View::make('backend.category.create');
+        return View::make('backend.category.create')
+            ->with('menu', 'category/create');
     }
 
     /**
@@ -76,7 +78,8 @@ class CategoryController extends BaseController {
     public function edit($id) {
 
         $category = $this->category->find($id);
-        return View::make('backend.category.edit', compact('category'));
+        return View::make('backend.category.edit', compact('category'))
+            ->with('menu', 'category/edit');
     }
 
     /**
@@ -117,6 +120,6 @@ class CategoryController extends BaseController {
     public function confirmDestroy($id) {
 
         $category = $this->category->find($id);
-        return View::make('backend.category.confirm-destroy', compact('category'));
+        return View::make('backend.category.confirm-destroy', compact('category'))->with('menu', 'category/edit');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Article as Article;
-use Page as Page;
+use Pages as Page;
 use News as News;
 use PhotoGallery as PhotoGallery;
 use Bond\Repositories\Article\ArticleRepository as ArticleRepository;
@@ -149,7 +149,12 @@ class Menu extends Eloquent {
     public function getModuleUrl($option){
 
         $pieces = explode('-', $option);
-        $reflection = new ReflectionClass(ucfirst($pieces[0]));
+        if($pieces[0] == 'page') {
+            $reflection = new ReflectionClass(ucfirst("$pieces[0]s"));
+        } else {
+            $reflection = new ReflectionClass(ucfirst($pieces[0]));
+        }
+
         $module = $reflection->newInstance();
         $module = $module::find($pieces[1]);
         return $module->url;

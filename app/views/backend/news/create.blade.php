@@ -73,7 +73,7 @@
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
-            {{ Form::textarea('content', null, array('class'=>'form-control', 'id' => 'page_content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
+            {{ Form::textarea('content', null, array('class'=>'form-control', 'id' => 'content_page', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
             @if ($errors->first('content'))
             <span class="help-block">{{ $errors->first('content') }}</span>
             @endif
@@ -99,14 +99,9 @@
 @stop
 
 @section('script')
-<script src="{{ Assets::Path('js/plugin/ckeditor/ckeditor.js', true) }}"></script>
-<script type="text/javascript">
-    window.onload = function () {
-        CKEDITOR.replace('page_content', {
-            "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
-        });
-    };
-</script>
+
+@include('backend.partials.ckeditor')
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#title").slug();

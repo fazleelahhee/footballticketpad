@@ -13,7 +13,7 @@ class FormPostController extends BaseController {
 
     public function getContact() {
 
-        return View::make('frontend.contact.form');
+        return View::make(Template::name('frontend.%s.contact.form'));
     }
 
     public function postContact() {

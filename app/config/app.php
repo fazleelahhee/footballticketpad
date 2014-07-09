@@ -131,6 +131,7 @@ return array(
         'Bond\Providers\SearchServiceProvider',
         'Bond\Providers\FeederServiceProvider',
         'Bond\Providers\LogViewerServiceProvider',
+        'Bond\Providers\TemplateServiceProvider',
         'Bondmedia\Admin\AdminServiceProvider',
     ),
 

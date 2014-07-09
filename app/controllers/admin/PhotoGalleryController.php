@@ -31,7 +31,8 @@ class PhotoGalleryController extends BaseController {
     public function index() {
 
         $photo_galleries = $this->photoGallery->paginate();
-        return View::make('backend.photo_gallery.index', compact('photo_galleries'));
+        return View::make('backend.photo_gallery.index', compact('photo_galleries'))
+            ->with('menu', 'gallery');
     }
 
     /**
@@ -49,7 +50,7 @@ class PhotoGalleryController extends BaseController {
 
         try {
             $id = $this->photoGallery->create($attributes);
-            return Redirect::to("/admin/photo_gallery/" . $id . "/edit");
+            return Redirect::to("/admin/photo_gallery/" . $id . "/edit")->with('menu','gallery/edit');
         } catch (ValidationException $e) {
         }
     }
@@ -63,7 +64,8 @@ class PhotoGalleryController extends BaseController {
     public function show($id) {
 
         $photo_gallery = $this->photoGallery->find($id);
-        return View::make('backend.photo_gallery.show', compact('photo_gallery'));
+        return View::make('backend.photo_gallery.show', compact('photo_gallery'))
+            ->with('menu','gallery/edit');
     }
 
     /**
@@ -75,7 +77,7 @@ class PhotoGalleryController extends BaseController {
     public function edit($id) {
 
         $photo_gallery = $this->photoGallery->find($id);
-        return View::make('backend.photo_gallery.edit', compact('photo_gallery'));
+        return View::make('backend.photo_gallery.edit', compact('photo_gallery'))->with('menu','gallery/edit');
     }
 
     /**

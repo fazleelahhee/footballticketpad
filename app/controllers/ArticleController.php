@@ -23,7 +23,7 @@ class ArticleController extends BaseController {
     public function index() {
 
         $articles = $this->article->paginate();
-        return View::make('frontend.article.index', compact('articles'));
+        return View::make(Template::name('frontend.%s.article.index'), compact('articles'));
     }
 
     /**
@@ -34,7 +34,7 @@ class ArticleController extends BaseController {
 
         $article = $this->article->find($id);
 
-        View::composer('frontend/_layout/layout', function ($view) use ($article) {
+        View::composer(Template::name('frontend.%s._layout.layout'), function ($view) use ($article) {
 
             $view->with('meta_keywords', $article->meta_keywords);
             $view->with('meta_description', $article->meta_description);
@@ -42,6 +42,6 @@ class ArticleController extends BaseController {
 
         $categories = $this->category->all();
         $tags = $this->tag->all();
-        return View::make('frontend.article.show', compact('article', 'categories', 'tags'));
+        return View::make(Template::name('frontend.%s.article.show'), compact('article', 'categories', 'tags'));
     }
 }

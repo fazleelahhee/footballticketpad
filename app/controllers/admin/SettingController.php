@@ -12,7 +12,15 @@ class SettingController extends BaseController {
     public function index() {
 
         $setting = Setting::findOrFail(1);
-        return View::make('backend.setting.setting', compact('setting'))->with('active', 'settings');
+        return View::make('backend.setting.setting', compact('setting'))
+            ->with('active', 'settings')
+            ->with('menu', 'settings/website');
+    }
+
+    public function generalSettings() {
+        return View::make('backend.setting.general')
+            ->with('active', 'settings')
+            ->with('menu', 'settings/general');
     }
 
     public function save() {

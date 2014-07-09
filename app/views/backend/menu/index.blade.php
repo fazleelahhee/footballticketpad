@@ -1,7 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ HTML::style('assets/css/menu-managment.css') }}
-{{ HTML::script('assets/js/jquery.nestable.js') }}
 <div class="container">
     {{ Notification::showAll() }}
     <div class="panel panel-default">
@@ -33,6 +32,7 @@
 @stop
 
 @section('script')
+{{ HTML::script('assets/js/jquery.nestable.js') }}
 <script type="text/javascript">
     $(document).ready(function () {
 

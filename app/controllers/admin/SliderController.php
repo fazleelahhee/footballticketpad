@@ -38,7 +38,8 @@ class SliderController extends BaseController {
 
         $sliders = Slider::orderBy('created_at', 'DESC')
             ->paginate(15);
-        return View::make('backend.slider.index', compact('sliders'));
+        return View::make('backend.slider.index', compact('sliders'))
+            ->with('menu', 'slider');
     }
 
     /**
@@ -74,7 +75,8 @@ class SliderController extends BaseController {
         $slider = Slider::with('images')->findOrFail($id);
 
         $types = ['home' => 'Home'];
-        return View::make('backend.slider.edit', compact('slider', 'types'));
+        return View::make('backend.slider.edit', compact('slider', 'types'))
+            ->with('menu', 'slider/edit');
     }
 
     /**
@@ -120,7 +122,8 @@ class SliderController extends BaseController {
     public function confirmDestroy($id) {
 
         $slider = Slider::findOrFail($id);
-        return View::make('backend.slider.confirm-destroy', compact('slider'));
+        return View::make('backend.slider.confirm-destroy', compact('slider'))
+            ->with('menu', 'slider');
     }
 
     public function upload($id) {
