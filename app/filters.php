@@ -57,6 +57,7 @@ Route::filter('assets_admin', function () {
         'smartadmin-production' => "css/smartadmin-production.min.css",
         'smartadmin-skins'      => "css/smartadmin-skins.min.css",
         'demo'                  => "css/demo.min.css",
+        'bond'                  => "css/bond-admin-style.css"
 
     ], true);
 
@@ -78,16 +79,6 @@ Route::filter('assets_admin', function () {
         'demo'              => "js/demo.min.js",
         'app'               => "js/app.min.js"
     ], true);
-});
-
-Route::filter('assets_admin', function () {
-    Assets::setStyles([
-    ]);
-
-    Assets::setScripts([
-        'jquery'            => 'assets/js/jquery.2.0.3.js',
-        'holder'            => 'assets/js/holder.js'
-    ]);
 });
 
 /*

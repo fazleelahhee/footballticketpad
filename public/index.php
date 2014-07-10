@@ -5,7 +5,7 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylorotwell@gmail.com>
  */
-$app_start = microtime(true);
+//$app_start = microtime(true);
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -48,6 +48,6 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 
 $app->run();
 
-$end = microtime(true);
+//$end = microtime(true);
 
-echo "<!-- Loaded in ".($end - $app_start)." seconds -->";
+//echo "<!-- Loaded in ".($end - $app_start)." seconds -->";

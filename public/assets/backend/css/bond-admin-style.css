@@ -1,0 +1,9 @@
+.admin-page .widget-body .fade {display: none; opacity: 1;}
+.admin-page .widget-body .fade.in {display: block}
+.admin-page .widget-body .btn-success {bottom: 10px;}
+
+
+
+
+#myTabContent {min-height: 300px;}
+#publish-date {width: 200px;}
