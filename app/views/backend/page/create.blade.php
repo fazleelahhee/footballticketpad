@@ -87,11 +87,11 @@
                     <!-- widget edit box -->
 
                     <div class="widget-body">
-                        <div class="page-header">
-                            <h3>
-                                New Page
-                            </h3>
-                        </div>
+<!--                        <div class="page-header">-->
+<!--                            <h3>-->
+<!--                                New Page-->
+<!--                            </h3>-->
+<!--                        </div>-->
                         <!-- content -->
                         <div id="myTabContent" class="tab-content">
                             {{ Form::open(array('action' => 'App\Controllers\Admin\PageController@store')) }}
@@ -185,11 +185,33 @@
                             </div>
 
                             <div class="tab-pane fade" id="s3">
+                                <div class="control-group {{ $errors->has('template') ? 'has-error' : '' }}">
+                                    <label class="control-label" for="title">Template</label>
 
+                                    <div class="controls">
+                                        {{ Form::select('template', array('default' => 'Default', 'one-column' => 'One Column'), 'default', array('class'=>'form-control', 'id'=>'template')) }}
+                                        @if ($errors->first('template'))
+                                        <span class="help-block">{{ $errors->first('template') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <br>
                             </div>
 
                             <div class="tab-pane fade" id="s4">
+                                <div class="control-group {{ $errors->has('feature_image') ? 'has-error' : '' }}">
+                                    <label class="control-label" for="title">Feature Image</label>
 
+                                    <div class="controls feature-image-container">
+                                        <input name="feature_image" value="" type="hidden" id="feature_image"/>
+                                        {{ Form::button('Feature Image',  array('class'=>'btn btn-info', 'id'=>'feature_image_btn')) }}
+                                        {{ Form::button('Remove',  array('class'=>'btn btn-info', 'id'=>'remove_feature_image_btn', 'style'=>"display: none")) }}
+                                        @if ($errors->first('feature_image'))
+                                        <span class="help-block">{{ $errors->first('feature_image') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <br>
                             </div>
 
                             <div class="tab-pane fade" id="s5">
@@ -223,10 +245,67 @@ Assets::setScripts([
 @parent
 @include('backend.partials.ckeditor')
 <script type="text/javascript">
+
+    window.AppFileManager = {};
+
+    function SetUrl(p,w,h) {
+        AppFileManager.setImage(p,w,h);
+    }
+
+    (function ($, f) {
+        f.fileManagerWindow =null;
+        f.elem = null;
+        f.openFileManager = function () {
+            this.fileManagerWindow = window.open("/filemanager/show?CKEditorFuncNum=1&langCode=en", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=100, left=500, width=600, height=400");
+        };
+        f.closeFileManager = function () {
+            if(this.fileManagerWindow) {
+                this.fileManagerWindow.close();
+                this.fileManagerWindow = null;
+            }
+        };
+        f.setImage= function(p,w,h) {
+            this.closeFileManager();
+            if(p) {
+                var pathExtract = /^[a-z]+:\/\/\/?[^\/]+(\/[^?]*)/i;
+                var imageUrl = (pathExtract.exec(p))[1];
+                if(imageUrl) {
+                    var image = $('<img class="feature-img-preview" src="'+imageUrl+'" style="max-width:300px; max-height:200px;" />');
+                    this.elem.prepend("<hr class='image-preview-div' style='margin-top: 10px;' />");
+                    this.elem.prepend(image);
+                    this.elem.find('.feature_image').val(imageUrl);
+                    this.elem.find('#remove_feature_image_btn').css({display: 'block'});
+                }
+            }
+        }
+
+        $.fn.fileManager = function () {
+            f.elem = $(this).closest('.feature-image-container');
+            f.openFileManager();
+        }
+
+        $.fn.removeFeatureImage = function () {
+            var elem = $(this).closest('.feature-image-container');
+            elem.find(".feature-img-preview").remove();
+            elem.find(".image-preview-div").remove();
+            elem.find('.feature_image').val('');
+            elem.find('#remove_feature_image_btn').css({display: 'none'});
+        }
+    })(jQuery, AppFileManager)
+
     $(function() {
         $('#publish-date').datetimepicker({
             language: 'en-GB'
         });
+
+        $('#feature_image_btn').click(function () {
+            $(this).fileManager();
+        });
+
+        $('#remove_feature_image_btn').click(function () {
+            $(this).removeFeatureImage();
+        });
+
     });
 </script>
 @stop
