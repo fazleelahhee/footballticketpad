@@ -12,3 +12,5 @@
 */
 
 Artisan::add(new AppCommand);
+
+Artisan::add(new pageMetaTest);

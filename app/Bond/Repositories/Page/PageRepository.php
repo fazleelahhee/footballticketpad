@@ -2,6 +2,7 @@
 
 use DB;
 use Pages;
+use PagesMeta;
 use Config;
 use Response;
 use Bond\Traits\GridPagination;
@@ -66,7 +67,6 @@ class PageRepository extends Validator implements BaseRepositoryInterface {
         if ($this->isValid($attributes)) {
 
             $this->page->fill($attributes)->save();
-            return true;
         }
 
         throw new ValidationException('Page validation failed', $this->getErrors());

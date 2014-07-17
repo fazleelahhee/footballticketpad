@@ -14,7 +14,7 @@ class AddMoreFieldsOnPage extends Migration {
 	{
         $prefix = DB::getTablePrefix();
         DB::statement("ALTER TABLE {$prefix}pages add `name` VARCHAR(255)");
-        DB::statement("ALTER TABLE {$prefix}pages add `uri_path` VARCHAR(255)");
+        DB::statement("ALTER TABLE {$prefix}pages add `slug` VARCHAR(255)");
         DB::statement("ALTER TABLE {$prefix}pages ADD `parent_id` INT");
         DB::statement("ALTER TABLE {$prefix}pages ADD `meta_title` VARCHAR(160) AFTER uri_path ");
         DB::statement("ALTER TABLE {$prefix}pages ADD `meta_content` VARCHAR(160) AFTER meta_title");
@@ -30,7 +30,7 @@ class AddMoreFieldsOnPage extends Migration {
 	public function down()
 	{
         $prefix = DB::getTablePrefix();
-        DB::statement("ALTER TABLE {$prefix}page drop uri_path");
+        DB::statement("ALTER TABLE {$prefix}page drop slug");
         DB::statement("ALTER TABLE {$prefix}page DROP meta_title");
         DB::statement("ALTER TABLE {$prefix}page DROP meta_content");
         DB::statement("ALTER TABLE {$prefix}page DROP meta_description");

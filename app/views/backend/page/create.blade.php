@@ -8,10 +8,18 @@
 
 {{
     Assets::setStyles([
-        'bootstrap-datepicker'         => 'js/plugin/jquery-datetime/jquery.datetimepicker.css',
+        'bootstrap-datepicker'          => 'js/plugin/jquery-datetime/jquery.datetimepicker.css',
+        'bootstrap-tagsinput'           => 'js/plugin/bootstrap-tags/bootstrap-tagsinput.css'
     ], true);
 }}
 
+
+{{
+Assets::setScripts([
+    'bootstrap-tagsinput'       => 'js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js',
+    'slug'                      => 'js/plugin/jquery-slug/jquery.slug.js'
+], true);
+}}
 @section('content')
 
 <div class="row">
@@ -108,6 +116,23 @@
                                     </div>
                                 </div>
                                 <br>
+
+                                <!-- Slug -->
+                                <div class="control-group {{ $errors->has('slug') ? 'has-error' : '' }}">
+                                    <label class="control-label" for="title">Slug</label>
+
+                                    <div class="controls">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">www.bondmedia.co.uk/</span>
+                                            {{ Form::text('slug', null, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
+                                        </div>
+                                        @if ($errors->first('slug'))
+                                        <span class="help-block">{{ $errors->first('slug') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <br>
+
                                 <!-- Content -->
                                 <div class="control-group {{ $errors->has('content') ? 'has-error' : '' }}">
                                     <label class="control-label" for="title">Content</label>
@@ -273,7 +298,7 @@ Assets::setScripts([
                     var image = $('<img class="feature-img-preview" src="'+imageUrl+'" style="max-width:300px; max-height:200px;" />');
                     this.elem.prepend("<hr class='image-preview-div' style='margin-top: 10px;' />");
                     this.elem.prepend(image);
-                    this.elem.find('.feature_image').val(imageUrl);
+                    this.elem.find('#feature_image').val(imageUrl);
                     this.elem.find('#remove_feature_image_btn').css({display: 'block'});
                 }
             }
@@ -288,7 +313,7 @@ Assets::setScripts([
             var elem = $(this).closest('.feature-image-container');
             elem.find(".feature-img-preview").remove();
             elem.find(".image-preview-div").remove();
-            elem.find('.feature_image').val('');
+            elem.find('#feature_image').val('');
             elem.find('#remove_feature_image_btn').css({display: 'none'});
         }
     })(jQuery, AppFileManager)
@@ -306,6 +331,21 @@ Assets::setScripts([
             $(this).removeFeatureImage();
         });
 
+    });
+
+    $(document).ready(function () {
+        $("#title").slug();
+
+        $('#datetime').datepicker({
+            format: "yyyy-mm-dd",
+            todayBtn: "linked",
+            orientation: "top auto"
+        });
+
+        if ($('#tag').length != 0) {
+            var elt = $('#tag');
+            elt.tagsinput();
+        }
     });
 </script>
 @stop

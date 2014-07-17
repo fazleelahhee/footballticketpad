@@ -38,7 +38,7 @@ class PageAdminController extends BaseController {
         $columns = array(
             0   =>  'id',
             1   =>  'title',
-            2   =>  'uri_path',
+            2   =>  'slug',
             3   =>  'is_published',
             4   =>  'updated_at',
             5   =>  'created_at'
