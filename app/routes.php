@@ -211,6 +211,11 @@ Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_a
 |--------------------------------------------------------------------------
 */
 
+Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
+    //should be an end
+    Route::any( '{all}', 'IndexController@showPage')->where('all', '.*');
+});
+
 // error
 App::error(function (Exception $exception) {
     Log::error($exception);

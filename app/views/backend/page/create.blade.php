@@ -116,6 +116,18 @@ Assets::setScripts([
                                     </div>
                                 </div>
                                 <br>
+                                <!-- parent -->
+                                <div class="control-group {{ $errors->has('parent_id') ? 'has-error' : '' }}">
+                                    <label class="control-label" for="title">Parent page</label>
+
+                                    <div class="controls">
+                                        {{ Form::select('parent_id', $pages , 0, array('class'=>'form-control', 'id'=>'parent_id')) }}
+                                        @if ($errors->first('parent_id'))
+                                        <span class="help-block">{{ $errors->first('parent_id') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <br>
 
                                 <!-- Slug -->
                                 <div class="control-group {{ $errors->has('slug') ? 'has-error' : '' }}">
@@ -123,7 +135,7 @@ Assets::setScripts([
 
                                     <div class="controls">
                                         <div class="input-group">
-                                            <span class="input-group-addon">www.bondmedia.co.uk/</span>
+                                            <span class="input-group-addon">{{ BMAdmin::siteUrl() }}/</span>
                                             {{ Form::text('slug', null, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
                                         </div>
                                         @if ($errors->first('slug'))
@@ -146,12 +158,12 @@ Assets::setScripts([
                                 </div>
                                 <br>
                                 <!-- Published -->
-                                <div class="control-group {{ $errors->has('publish_date') ? 'has-error' : '' }}">
+                                <div class="control-group {{ $errors->has('publication_date') ? 'has-error' : '' }}">
                                     <label class="control-label" for="title">Publication Date</label>
                                     <div class="controls">
-                                        {{ Form::text('publish_date', null, array('data-format'=>"dd/MM/yyyy hh:mm", 'class'=>'form-control ', 'id' => 'publish-date', 'placeholder'=>'Publication Date', 'value'=>Input::old('publish_date'))) }}
-                                        @if ($errors->first('publish_date'))
-                                        <span class="help-block">{{ $errors->first('publish_date') }}</span>
+                                        {{ Form::text('publication_date', null, array('data-format'=>"dd/MM/yyyy hh:mm", 'class'=>'form-control ', 'id' => 'publication-date', 'placeholder'=>'Publication Date', 'value'=>Input::old('publication_date'))) }}
+                                        @if ($errors->first('publication_date'))
+                                        <span class="help-block">{{ $errors->first('publication_date') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -319,7 +331,7 @@ Assets::setScripts([
     })(jQuery, AppFileManager)
 
     $(function() {
-        $('#publish-date').datetimepicker({
+        $('#publication-date').datetimepicker({
             language: 'en-GB'
         });
 
@@ -334,7 +346,9 @@ Assets::setScripts([
     });
 
     $(document).ready(function () {
-        $("#title").slug();
+        $("#title").slug({
+            parent: "#parent_id :selected"
+        });
 
         $('#datetime').datepicker({
             format: "yyyy-mm-dd",
@@ -346,6 +360,19 @@ Assets::setScripts([
             var elt = $('#tag');
             elt.tagsinput();
         }
+
+
+        $('#parent_id').change(function (e) {
+            var selected = $('#parent_id :selected').html();
+            var slug = $("#slug").val().replace(/^.*\/|\.[^.]*$/g, '');
+
+            if(selected == 'parent') {
+                $("#slug").val(slug);
+            } else {
+                $("#slug").val(selected +"/"+slug);
+            }
+
+        });
     });
 </script>
 @stop

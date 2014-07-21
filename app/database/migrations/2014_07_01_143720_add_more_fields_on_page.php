@@ -30,13 +30,13 @@ class AddMoreFieldsOnPage extends Migration {
 	public function down()
 	{
         $prefix = DB::getTablePrefix();
-        DB::statement("ALTER TABLE {$prefix}page drop slug");
-        DB::statement("ALTER TABLE {$prefix}page DROP meta_title");
-        DB::statement("ALTER TABLE {$prefix}page DROP meta_content");
-        DB::statement("ALTER TABLE {$prefix}page DROP meta_description");
-        DB::statement("ALTER TABLE {$prefix}page DROP parent_chain");
-        DB::statement("ALTER TABLE {$prefix}page DROP name");
-        DB::statement("ALTER TABLE {$prefix}page DROP parent_id");
+        DB::statement("ALTER TABLE {$prefix}pages drop slug");
+        DB::statement("ALTER TABLE {$prefix}pages DROP meta_title");
+        DB::statement("ALTER TABLE {$prefix}pages DROP meta_content");
+        DB::statement("ALTER TABLE {$prefix}pages DROP meta_description");
+        DB::statement("ALTER TABLE {$prefix}pages DROP parent_chain");
+        DB::statement("ALTER TABLE {$prefix}pages DROP name");
+        DB::statement("ALTER TABLE {$prefix}pages DROP parent_id");
 	}
 
 }

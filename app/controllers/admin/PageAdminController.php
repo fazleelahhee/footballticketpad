@@ -4,6 +4,7 @@ use BaseController;
 use Redirect;
 use View;
 use Input;
+use Pages;
 use Validator;
 use Response;
 use Request;
@@ -57,6 +58,8 @@ class PageAdminController extends BaseController {
     }
 
     public function newAction() {
+        $pages = new Pages();
+        View::share('pages', array_merge([0=>'parent'], $pages->getPages()));
         return View::make('backend.page.create')
             ->with('menu', 'pages/new');
     }

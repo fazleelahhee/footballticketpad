@@ -6,11 +6,9 @@ class PagesMeta extends Eloquent{
 
     public function setMetaKey($options) {
         $requiredElems = array('page_id', 'meta_keyword', 'meta_content');
-
         $pageMeta = $this->where('page_id', '=', $options['page_id'])
             ->where('meta_keyword', '=', $options['meta_keyword'])
             ->first();
-
         if(!$pageMeta) {
             $pageMeta = new PagesMeta();
         }
@@ -21,7 +19,6 @@ class PagesMeta extends Eloquent{
                 $pageMeta->attributes[$val] = $options[$val];
             }
         }
-
         $pageMeta->touch();
         $pageMeta->save();
     }
@@ -30,11 +27,9 @@ class PagesMeta extends Eloquent{
         $output = $this->where('page_id', '=', $options['page_id'])
             ->where('meta_keyword', '=', $options['meta_keyword'])
             ->first();
-
         if(!$output) {
             return null;
         }
-
         return $output;
     }
 
