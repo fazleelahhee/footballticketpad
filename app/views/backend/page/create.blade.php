@@ -187,9 +187,9 @@ Assets::setScripts([
                                     <label class="control-label" for="metaTitle">Meta Title</label>
 
                                     <div class="controls">
-                                        {{ Form::text('meta_title', null, array('class'=>'form-control', 'id' => 'metaTitle', 'placeholder'=>'Meta Title', 'value'=>Input::old('meta_title'))) }}
+                                        {{ Form::text('meta_title', null, array('class'=>'form-control', 'id' => 'meta-title', 'placeholder'=>'Meta Title', 'value'=>Input::old('meta_title'))) }}
                                         @if ($errors->first('metaTitle'))
-                                            <span class="help-block">{{ $errors->first('metaTitle') }}</span>
+                                            <span class="help-block">{{ $errors->first('meta_title') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@ Assets::setScripts([
 
                                     <div class="controls">
                                         {{ Form::textarea('meta_keyword', null, array('class'=>'form-control', 'id' => 'meta-keyword', 'placeholder'=>'Meta Keyword', 'value'=>Input::old('meta_keyword'))) }}
-                                        @if ($errors->first('meta_content'))
+                                        @if ($errors->first('meta_keyword'))
                                         <span class="help-block">{{ $errors->first('meta_keyword') }}</span>
                                         @endif
                                     </div>

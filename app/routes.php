@@ -72,7 +72,8 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     Route::get('media/delete/{id}', 'MediaController@deleteAction')->where('id', '[0-9]+');
 
     //page
-    Route::get('pages', 'PageAdminController@showPages');
+    Route::get('pages', array('as'=>'admin.page.index','uses'=>'PageAdminController@showPages'));
+
     Route::post('pages/list', 'PageAdminController@listAction');
     Route::get('pages/edit/{id}', 'PageAdminController@editAction')->where('id', '[0-9]+');
     Route::get('pages/new', 'PageAdminController@newAction');

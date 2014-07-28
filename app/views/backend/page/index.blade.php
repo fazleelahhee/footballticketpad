@@ -23,7 +23,7 @@
     </div>
 
 </div>
-
+{{ Notification::showAll() }}
 <!-- widget grid -->
 <section id="widget-grid" class="">
 
