@@ -1,17 +1,77 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
-<div class="container">
-    <div class="page-header">
-        <h3>
-            Article Create
-            <div class="pull-right">
-                {{ HTML::link('/admin/article','Back', array('class'=>'btn btn-primary')) }}
-            </div>
-        </h3>
-    </div>
-    {{ Form::open(array('action' => 'App\Controllers\Admin\ArticleController@store')) }}
 
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1 class="page-title txt-color-blueDark"><!-- PAGE HEADER --><i class="fa-fw fa fa-pencil-square-o"></i> Article <span>>
+                                New Article </span></h1>
+        </div>
+    </div>
+
+    <section id="widget-grid" class="admin-page">
+
+    <!-- row -->
+    <div class="row">
+
+    <!-- NEW WIDGET START -->
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+    <div class="alert alert-danger hidden-lg hidden-md hidden-sm">
+        <b>Please note:</b>
+        This plugin is non-responsive
+    </div>
+
+    <!-- Widget ID (each widget will need unique ID)-->
+
+    <div class="jarviswidget jarviswidget-sortable" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" role="widget" style="">
+    <!-- widget options:
+    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+    data-widget-colorbutton="false"
+    data-widget-editbutton="false"
+    data-widget-togglebutton="false"
+    data-widget-deletebutton="false"
+    data-widget-fullscreenbutton="false"
+    data-widget-custombutton="false"
+    data-widget-collapsed="true"
+    data-widget-sortable="false"
+
+    -->
+    <header role="heading">
+        <span class="widget-icon"> <i class="fa fa-file-image-o txt-color-darken"></i> </span>
+        <h2 class="hidden-xs hidden-sm">New Article</h2>
+
+        <ul class="nav nav-tabs pull-right in" id="myTab">
+
+            <li class="active">
+                <a data-toggle="tab" href="#s1"><i class="fa fa-crop text-success"></i> <span class="hidden-mobile hidden-tablet">Content</span></a>
+            </li>
+
+            <li>
+                <a data-toggle="tab" href="#s2"><i class="fa fa-crop text-primary"></i> <span class="hidden-mobile hidden-tablet">SEO</span></a>
+            </li>
+
+        </ul>
+
+        <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+    </header>
+
+    <!-- widget div-->
+    <div role="content">
+        <!-- widget edit box -->
+
+        <div class="widget-body">
+            <!--                        <div class="page-header">-->
+            <!--                            <h3>-->
+            <!--                                New Page-->
+            <!--                            </h3>-->
+            <!--                        </div>-->
+            <!-- content -->
+            <div id="myTabContent" class="tab-content">
+
+    {{ Form::open(array('action' => 'App\Controllers\Admin\ArticleController@store')) }}
+    <div class="tab-pane fade active in" id="s1">
     <!-- Title -->
     <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Title</label>
@@ -80,65 +140,65 @@
     </div>
     <br>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th-list">
-                </span>META DATA</a>
-            </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <!-- Meta Description -->
-                        <div class="control-group {{ $errors->has('meta_description') ? 'has-error' : '' }}">
-                            <label class="control-label" for="title">Meta Description</label>
-
-                            <div class="controls">
-                                {{ Form::text('meta_description', null, array('class'=>'form-control', 'id' => 'meta_description', 'placeholder'=>'Meta Description', 'value'=>Input::old('meta_description'))) }}
-                                @if ($errors->first('meta_description'))
-                                <span class="help-block">{{ $errors->first('meta_description') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <br>
 
 
-                        <!-- Meta Keywords -->
-                        <div class="control-group {{ $errors->has('meta_keywords') ? 'has-error' : '' }}">
-                            <label class="control-label" for="title">Meta Keywords</label>
+        <!-- Published -->
+        <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
 
-                            <div class="controls">
-                                {{ Form::textarea('meta_keywords', null, array('class'=>'form-control', 'id' => 'meta_keywords', 'placeholder'=>'Meta Keywords', 'value'=>Input::old('meta_keywords'))) }}
-                                @if ($errors->first('meta_keywords'))
-                                <span class="help-block">{{ $errors->first('meta_keywords') }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <br>
-                    </div>
-                </div>
+            <div class="controls">
+                <label class="checkbox">{{ Form::checkbox('is_published', 'is_published') }} Publish ?</label>
+                @if ($errors->first('is_published'))
+                <span class="help-block">{{ $errors->first('is_published') }}</span>
+                @endif
             </div>
         </div>
     </div>
 
-    <!-- Published -->
-    <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
+    <div class="tab-pane fade" id="s2">
+        <div class="row">
+            <div class="col-md-12">
 
-        <div class="controls">
-            <label class="checkbox">{{ Form::checkbox('is_published', 'is_published') }} Publish ?</label>
-            @if ($errors->first('is_published'))
-            <span class="help-block">{{ $errors->first('is_published') }}</span>
-            @endif
+                <!-- Meta Description -->
+                <div class="control-group {{ $errors->has('meta_description') ? 'has-error' : '' }}">
+                    <label class="control-label" for="title">Meta Description</label>
+
+                    <div class="controls">
+                        {{ Form::text('meta_description', null, array('class'=>'form-control', 'id' => 'meta_description', 'placeholder'=>'Meta Description', 'value'=>Input::old('meta_description'))) }}
+                        @if ($errors->first('meta_description'))
+                        <span class="help-block">{{ $errors->first('meta_description') }}</span>
+                        @endif
+                    </div>
+                </div>
+                <br>
+
+
+                <!-- Meta Keywords -->
+                <div class="control-group {{ $errors->has('meta_keywords') ? 'has-error' : '' }}">
+                    <label class="control-label" for="title">Meta Keywords</label>
+
+                    <div class="controls">
+                        {{ Form::textarea('meta_keywords', null, array('class'=>'form-control', 'id' => 'meta_keywords', 'placeholder'=>'Meta Keywords', 'value'=>Input::old('meta_keywords'))) }}
+                        @if ($errors->first('meta_keywords'))
+                        <span class="help-block">{{ $errors->first('meta_keywords') }}</span>
+                        @endif
+                    </div>
+                </div>
+                <br>
+            </div>
         </div>
     </div>
     <br>
     {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
+    </div>
+        </div>
+    </div> <!-- end widget div -->
+    </div>
+    </article>
 
-</div>
+    </div>
+    </section>
+
 @stop
 
 @section('script')

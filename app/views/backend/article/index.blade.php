@@ -1,7 +1,14 @@
 @extends('backend/_layout/layout')
 @section('content')
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark">
+                <i class="fa fa-table fa-fw "></i>
+                Articles
+            </h1>
+        </div>
 
-<div class="container">
+    </div>
     {{ Notification::showAll() }}
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -93,7 +100,7 @@
             {{ $articles->links() }}
         </ul>
     </div>
-</div>
+    <div style="clear:both"> </div>
 @stop
 
 @section('script')
