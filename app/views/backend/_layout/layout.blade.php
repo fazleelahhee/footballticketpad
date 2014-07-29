@@ -98,34 +98,7 @@
         <!-- END AJAX-DROPDOWN -->
     </div>
 
-    <!-- projects dropdown -->
-    <div class="project-context hidden-xs">
 
-        <span class="label">Projects:</span>
-        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i
-                class="fa fa-angle-down"></i></span>
-
-        <!-- Suggestion: populate this list with fetch and push technique -->
-        <ul class="dropdown-menu">
-            <li>
-                <a href="javascript:void(0);">Online e-merchant management system - attaching integration with the
-                    iOS</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">Notes on pipeline upgradee</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">Assesment Report for merchant account</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
-            </li>
-        </ul>
-        <!-- end dropdown-menu-->
-
-    </div>
-    <!-- end projects dropdown -->
 
     <!-- pulled right: nav area -->
     <div class="pull-right">
@@ -225,31 +198,6 @@
                         class="fa fa-arrows-alt"></i></a> </span>
         </div>
         <!-- end fullscreen button -->
-
-        <!-- multiple lang dropdown : find all flags in the flags page -->
-        <ul class="header-dropdown-list hidden-xs">
-            <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ Assets::Path('img/blank.gif') }}"
-                                                                                 class="flag flag-us"
-                                                                                 alt="United States"> <span> US </span>
-                    <i class="fa fa-angle-down"></i> </a>
-                <ul class="dropdown-menu pull-right">
-                    <li class="active">
-                        <a href="javascript:void(0);"><img src="{{ Assets::Path('img/blank.gif') }}" class="flag flag-us" alt="United States">
-                            US</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="{{ Assets::Path('img/blank.gif') }}" class="flag flag-es" alt="Spanish">
-                            Spanish</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"><img src="{{ Assets::Path('img/blank.gif') }}" class="flag flag-de" alt="German"> German</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <!-- end multiple lang -->
-
     </div>
     <!-- end pulled right: nav area -->
 
