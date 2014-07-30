@@ -1,6 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-<div class="container">
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">{{ $user->first_name . ' ' . $user->last_name }} Profile</h3>
@@ -47,5 +47,5 @@
             </table>
         </div>
     </div>
-</div>
+
 @stop

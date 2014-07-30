@@ -49,7 +49,7 @@ class PageRepository extends Validator implements BaseRepositoryInterface
     public function lists()
     {
 
-        return $this->page->get()->lists('title', 'id');
+        return $this->page->get()->lists('title', 'slug');
     }
 
     public function paginate($perPage = null)

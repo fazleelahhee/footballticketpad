@@ -1,6 +1,6 @@
 @extends('backend/_layout/layout')
 @section('content')
-<div class="container">
+
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -90,5 +90,5 @@
             {{ Form::close() }}
         </div>
     </div>
-</div>
+
 @stop

@@ -169,6 +169,24 @@
             </ul>
         </li>
         @yield('nev_menu_after_filemanager')
+        <li class="{{ in_array($menu, array('users', 'users/new', 'users/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Users</span></a>
+            <ul>
+                <li class="{{ $menu == 'users'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/user">Users</a>
+                </li>
+                @if($menu != 'users/edit')
+                <li class="{{ $menu == 'users/new'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/user/create">New User</a>
+                </li>
+                @else
+                <li class="{{ $menu == 'users/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/#">Edit User</a>
+                </li>
+                @endif
+            </ul>
+        </li>
+        @yield('nev_menu_after_user')
         <li class="{{ in_array($menu, array('settings', 'settings/general', 'settings/website'))? 'active':'' }}">
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Settings</span></a>
             <ul>

@@ -4,7 +4,7 @@
 {{ HTML::style('assets/bootstrap/css/bootstrap-tagsinput.css') }}
 {{ HTML::style('bootstrap_datepicker/css/datepicker.css') }}
 
-<div class="container">
+
     <div class="page-header">
         <h3>
             News Update
@@ -84,7 +84,6 @@
     {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
 
-</div>
 @stop
 
 @section('script')

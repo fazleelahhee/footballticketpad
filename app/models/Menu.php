@@ -96,7 +96,7 @@ class Menu extends Eloquent {
         $pageOpts = $page->lists();
 
         foreach ($pageOpts as $k => $v) {
-           $opts['Page']['page-' . $k] = $v;
+           $opts['Page'][$k] = $v;
         }
 
         $photoGallery = new PhotoGalleryRepository(new PhotoGallery);

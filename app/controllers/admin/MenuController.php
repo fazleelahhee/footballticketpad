@@ -57,10 +57,10 @@ class MenuController extends BaseController {
         $formData = Input::all();
 
         if ($formData['type'] == 'module') {
-
-            $option = $formData['option'];
-            $url = $this->menu->getUrl($option);
-            $formData['url'] = $url;
+//
+//            $option = $formData['option'];
+//            $url = $this->menu->getUrl($option);
+            $formData['url'] = "/{$formData['option']}";
         }
 
         $host = $_SERVER['SERVER_NAME'];

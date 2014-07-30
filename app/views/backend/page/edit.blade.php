@@ -91,7 +91,7 @@ Assets::setScripts([
                     <!--                        </div>-->
                     <!-- content -->
                     <div id="myTabContent" class="tab-content">
-                        {{ Form::open(array('action' => 'App\Controllers\Admin\PageController@store')) }}
+                        {{ Form::open(array('action' => array('App\Controllers\Admin\PageController@update', $page->id),'method' => 'PATCH' )) }}
                         <div class="tab-pane fade active in" id="s1">
                             <!-- Title -->
                             <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
@@ -215,7 +215,7 @@ Assets::setScripts([
                                 <label class="control-label" for="title">Template</label>
 
                                 <div class="controls">
-                                    {{ Form::select('template', array('default' => 'Default', 'one-column' => 'One Column'), $template, array('class'=>'form-control', 'id'=>'template')) }}
+                                    {{ Form::select('template', $templates , $template, array('class'=>'form-control', 'id'=>'template')) }}
                                     @if ($errors->first('template'))
                                     <span class="help-block">{{ $errors->first('template') }}</span>
                                     @endif

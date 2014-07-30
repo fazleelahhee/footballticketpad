@@ -5,6 +5,7 @@ use Redirect;
 use View;
 use Input;
 use Pages;
+use Template;
 use PagesMeta;
 use Validator;
 use Response;
@@ -61,6 +62,7 @@ class PageAdminController extends BaseController
         $pagesMeta = new PagesMeta();
         View::share('feature_image', @$pagesMeta->getMetaKey(['page_id' => $id, 'meta_keyword' => 'feature_image'])->meta_content);
         View::share('template', @$pagesMeta->getMetaKey(['page_id' => $id, 'meta_keyword' => 'template'])->meta_content);
+        View::share('templates', Template::getTemplates());
 
         return View::make('backend.page.edit')
             ->with('page', $page)
@@ -71,6 +73,7 @@ class PageAdminController extends BaseController
     {
         $pages = new Pages();
         View::share('pages', array_merge([0 => 'parent'], $pages->getPages()));
+        View::share('templates', Template::getTemplates());
         return View::make('backend.page.create')
             ->with('menu', 'pages/new');
     }

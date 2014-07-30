@@ -1,6 +1,7 @@
 <?php
 
 use Bond\Repositories\Page\PageRepository as Page;
+use Template;
 
 class PageController extends BaseController {
 
@@ -17,8 +18,12 @@ class PageController extends BaseController {
      * @return \Illuminate\View\View
      */
     public function show($id) {
-
+        $template = 'frontend.%s.';
         $page = $this->page->find($id);
-        return View::make(Template::name('frontend.%s.page.show'), compact('page'));
+        $template = $template.Template::getTemplate(PagesMeta::getMetaKey([
+                'page_id' => $id,
+                'meta_keyword' => 'template'
+            ])->meta_content);
+        return View::make(Template::name($template), compact('page'));
     }
 }

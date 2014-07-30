@@ -15,7 +15,7 @@
     ], true);
 }}
 
-<div class="container">
+
     <div class="page-header">
         <h3>
             News Create
@@ -95,7 +95,7 @@
     {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
 
-</div>
+
 @stop
 
 @section('script')

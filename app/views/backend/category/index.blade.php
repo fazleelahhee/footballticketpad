@@ -1,7 +1,7 @@
 @extends('backend/_layout/layout')
 @section('content')
 
-<div class="container">
+
     {{ Notification::showAll() }}
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -76,7 +76,7 @@
             {{ $categories->links() }}
         </ul>
     </div>
-</div>
+
 @stop
 
 @section('script')

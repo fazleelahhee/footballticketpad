@@ -103,7 +103,8 @@ class UserController extends BaseController {
     public function edit($id) {
 
         $user = Sentry::findUserById($id);
-        return View::make('backend.user.edit', compact('user'))->with('active', 'user');
+        return View::make('backend.user.edit', compact('user'))->with('active', 'user')
+            ->with('menu', 'users/edit');;
     }
 
     /**

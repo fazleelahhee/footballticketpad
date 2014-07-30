@@ -226,7 +226,7 @@ Assets::setScripts([
                                     <label class="control-label" for="title">Template</label>
 
                                     <div class="controls">
-                                        {{ Form::select('template', array('default' => 'Default', 'one-column' => 'One Column'), 'default', array('class'=>'form-control', 'id'=>'template')) }}
+                                        {{ Form::select('template', $templates, 'default', array('class'=>'form-control', 'id'=>'template')) }}
                                         @if ($errors->first('template'))
                                         <span class="help-block">{{ $errors->first('template') }}</span>
                                         @endif
