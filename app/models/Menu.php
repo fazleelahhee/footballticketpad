@@ -176,7 +176,7 @@ class Menu extends Eloquent {
             }
         }
 
-        return $result ? "\n<ul class='" . (($starter) ? ' nav navbar-nav navbar-right ' : null) . ((!$starter) ? ' dropdown-menu ' : null) . "'>\n$result</ul>\n" : null;
+        return $result ? "\n<ul id=\"menu-header\" class='" . (($starter) ? ' nav navbar-nav navbar-right nav-bar horizontal' : null) . ((!$starter) ? ' dropdown-menu ' : null) . "'>\n$result</ul>\n" : null;
     }
 
     public function getFrontMenuHTML($items) {

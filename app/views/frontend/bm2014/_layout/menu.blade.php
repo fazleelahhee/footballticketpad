@@ -1,7 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: bondmediamac
- * Date: 30/07/2014
- * Time: 18:22
- */ 
+<!-- ######################## Main Menu ######################## -->
+<nav>
+    <div class="twelve columns header_nav">
+        <div class="row">
+            {{ $menus }}
+        </div>
+    </div>
+
+</nav>

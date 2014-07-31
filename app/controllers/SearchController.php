@@ -13,6 +13,7 @@ class SearchController extends BaseController {
 
         $result = Search::search($q);
         $paginator = Paginator::make($result, count($result), 10);
+        View::share('body_class', 'search');
         return View::make(Template::name('frontend.%s.search.index'), compact('paginator', 'q'));
     }
 }

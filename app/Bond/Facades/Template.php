@@ -26,7 +26,21 @@ class Template extends Facade {
 
     public static function getTemplate($templateName = 'default') {
         $templates = static::getTemplates();
+        if(empty($templateName)) {
+            $templateName = 'default';
+        }
         return str_replace(['.blade.php', '.php'],'',$templates[$templateName]);
+    }
+
+    public static function getBodyClass($node, $templateName) {
+        $output[] =  $node->id;
+        $output[] =  get_class($node);
+        $output[] =  get_class($node)."-".$node->id;
+        $output[] =  $node->slug;
+        if(!empty($templateName)) {
+            $output[] = $templateName;
+        }
+        return str_replace([',', '/'], '-', strtolower(implode(' ',$output)));
     }
 
     private static function getTemplateConfig() {
@@ -49,27 +63,4 @@ class Template extends Facade {
     }
 }
 
-?>
 
-<?php foreach( $review_metadata as $meta ): ?>
-    <?php $entry_meta = _review_meta($review_id, $meta); ?>
-    <?php if( !is_null( $entry_meta ) && $entry_meta != '' && $meta != 'rating' ): ?>
-        <li id="meta-<?php echo $meta; ?>" class="meta-tag">
-            <?php if( !in_array( $meta, array( 'venue', 'start', 'end' ) ) ): ?>
-                <span class="key"><?php echo ucfirst( str_replace('_', ' ', $meta ) ); ?>:</span>
-            <?php endif; ?>
-            <?php if( !in_array( $meta, array( 'start', 'end' ) ) ): ?>
-                <span class="value"><?php echo $entry_meta; ?></span>
-            <?php else: ?>
-                <?php if( $meta == 'start' ): ?>
-                    <span class="value date review-dates">
-													<span class="start"><?php echo date( "M j", strtotime( _review_meta($review_id, 'start') ) ); ?></span>
-													<span>to</span>
-													<span class="end"><?php echo date( "M j", strtotime( _review_meta($review_id, 'end') ) ); ?></span>
-												</span>
-                    <div class="details_divider"></div>
-                <?php endif; ?>
-            <?php endif; ?>
-        </li>
-    <?php endif; ?>
-<?php endforeach; ?>

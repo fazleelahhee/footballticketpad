@@ -19,11 +19,11 @@ class PageController extends BaseController {
      */
     public function show($id) {
         $template = 'frontend.%s.';
-        $page = $this->page->find($id);
+        $node = $this->page->find($id);
         $template = $template.Template::getTemplate(PagesMeta::getMetaKey([
                 'page_id' => $id,
                 'meta_keyword' => 'template'
             ])->meta_content);
-        return View::make(Template::name($template), compact('page'));
+        return View::make(Template::name($template), compact('node'));
     }
 }

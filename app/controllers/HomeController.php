@@ -10,9 +10,11 @@ class HomeController extends BaseController {
     }
 
     public function index() {
-
         $slider = $this->slider->with('images')->get()->first();
         if (isset($slider)) $images = $slider->images;
-        return View::make(Template::name('frontend.%s._layout.dashboard'), compact('images'));
+        $template = 'frontend.%s.';
+        $template = $template.Template::getTemplate('home');
+        View::share('body_class', 'home');
+        return View::make(Template::name($template), compact('images'));
     }
 }

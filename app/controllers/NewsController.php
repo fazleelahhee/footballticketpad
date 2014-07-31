@@ -19,6 +19,7 @@ class NewsController extends BaseController {
     public function index() {
 
         $news = $this->news->paginate();
+        View::share('body_class', 'news');
         return View::make(Template::name('frontend.%s.news.index'), compact('news'));
     }
 
@@ -29,6 +30,7 @@ class NewsController extends BaseController {
     public function show($id, $slug = null) {
 
         $news = $this->news->find($id);
+        View::share('body_class', 'news');
         return View::make(Template::name('frontend.%s.news.show'), compact('news'));
     }
 }

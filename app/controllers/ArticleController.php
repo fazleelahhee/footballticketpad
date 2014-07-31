@@ -40,6 +40,8 @@ class ArticleController extends BaseController {
             $view->with('meta_description', $article->meta_description);
         });
 
+        View::share('body_class', 'articles');
+
         $categories = $this->category->all();
         $tags = $this->tag->all();
         return View::make(Template::name('frontend.%s.article.show'), compact('article', 'categories', 'tags'));

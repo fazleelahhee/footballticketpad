@@ -16,18 +16,24 @@ class IndexController extends BaseController {
     */
 
     public function showPage($url) {
-        $page = Pages::parseUri($url);
-        if(!$page) {
+        $node = Pages::parseUri($url);
+        if(!$node) {
             App::abort(404);
         }
         $template = 'frontend.%s.';
         $pagesMeta = new PagesMeta();
-        $template = $template.Template::getTemplate($pagesMeta->getMetaKey([
-                'page_id' => $page->id,
+
+        $template = $template.Template::getTemplate(@$pagesMeta->getMetaKey([
+                'page_id' => $node->id,
                 'meta_keyword' => 'template'
             ])->meta_content);
 
-        return View::make(Template::name($template), compact('page'));
+        View::share('body_class',Template::getBodyClass($node, Template::getTemplate(@$pagesMeta->getMetaKey([
+            'page_id' => $node->id,
+            'meta_keyword' => 'template'
+        ])->meta_content)));
+
+        return View::make(Template::name($template), compact('node'));
     }
 
 }

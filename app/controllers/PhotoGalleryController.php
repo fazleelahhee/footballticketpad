@@ -19,6 +19,7 @@ class PhotoGalleryController extends BaseController {
     public function show($id) {
 
         $photo_gallery = $this->photoGallery->find($id);
+        View::share('body_class', 'photo-gallery');
         return View::make(Template::name('frontend.%s.photo_gallery.show'), compact('photo_gallery'));
     }
 }
