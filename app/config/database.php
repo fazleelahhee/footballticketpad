@@ -29,7 +29,7 @@ return array(
 	'default' => 'mysql',
 
 	/*
-	|--------------------------------------------------------------------------
+	|------------------------- -------------------------------------------------
 	| Database Connections
 	|--------------------------------------------------------------------------
 	|
@@ -56,7 +56,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'sf_cms',
-			'username'  => 'root',
+			'username'  => 'should-not-call',
 			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',

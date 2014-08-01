@@ -1,7 +1,7 @@
 <?PHP
 
 // Frontend
-View::composer(Template::name('frontend.%s._layout.menu'), 'Bond\Composers\MenuComposer');
+View::composer(Template::name('frontend.%s._layout.header'), 'Bond\Composers\MenuComposer');
 View::composer(Template::name('frontend.%s._layout.layout'), 'Bond\Composers\SettingComposer');
 
 // Backend

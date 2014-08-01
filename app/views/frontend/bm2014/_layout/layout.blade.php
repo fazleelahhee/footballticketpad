@@ -34,7 +34,7 @@
 
 <body class="{{ $body_class }}">
 
-@include(Template::name('frontend.%s._layout.menu'))
+@include(Template::name('frontend.%s._layout.header'))
 @yield('content')
 @include(Template::name('frontend.%s._layout.footer'))
 <!-- ######################## Scripts ######################## -->
