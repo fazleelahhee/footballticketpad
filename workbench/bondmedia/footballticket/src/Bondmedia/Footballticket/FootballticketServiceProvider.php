@@ -18,7 +18,7 @@ class FootballticketServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('bondmedia/footballticket');
+		$this->package('bondmedia/footballticket', 'footballticket');
 	}
 
 	/**
@@ -38,7 +38,7 @@ class FootballticketServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array();
+		return array('footballticket');
 	}
 
 }

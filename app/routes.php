@@ -208,6 +208,14 @@ Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_a
 
 /*
 |--------------------------------------------------------------------------
+| Football tickets
+|--------------------------------------------------------------------------
+*/
+Route::get('/ticket/registration', array('as' => 'ticket.registrations', 'uses' => 'CustomerController@registrationAction'));
+
+
+/*
+|--------------------------------------------------------------------------
 | General Routes
 |--------------------------------------------------------------------------
 */
