@@ -11,7 +11,8 @@ class TicketSoap extends Facade {
 
     private static function connect() {
         try {
-            static::$client = new SoapClient(Config::get('api.mage_soap_api_url').'api/soap/?wsdl');
+            $url = Config::get('api.mage_soap_api_url');
+            static::$client = new \SoapClient($url.'api/soap/?wsdl');
             static::$session = static::$client->login(Config::get('api.mage_soap_api_user'), Config::get('api.mage_soap_api_key'));
         } catch (\Exception $e) {
             throw new Exception($e->getMessage(), $e->getCode());
@@ -20,7 +21,7 @@ class TicketSoap extends Facade {
         }
 
     }
-    public static function process($action, array $options) {
+    public static function process($action, array $options = array()) {
         if(!static::$client|| !static::$session) {
             static::connect();
         }
@@ -30,6 +31,9 @@ class TicketSoap extends Facade {
         }
 
         if(static::$client instanceof \SoapClient) {
+            if(empty($options)) {
+                return static::$client->call(static::$session,$action);
+            }
             return static::$client->call(static::$session,$action, $options);
         } else {
             throw new Exception('Can not create soap connection');

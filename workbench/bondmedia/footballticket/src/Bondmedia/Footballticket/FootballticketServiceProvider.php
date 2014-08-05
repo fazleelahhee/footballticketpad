@@ -28,7 +28,11 @@ class FootballticketServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+        $this->app->booting(function()
+        {
+            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+            $loader->alias('TicketSoap', 'Bondmedia\Footballticket\Facades\TicketSoap');
+        });
 	}
 
 	/**

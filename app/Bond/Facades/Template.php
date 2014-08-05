@@ -43,6 +43,17 @@ class Template extends Facade {
         return str_replace([',', '/'], '-', strtolower(implode(' ',$output)));
     }
 
+
+    public static function getTemplatesWithPath() {
+        $output = [];
+        $templates = static::getTemplates();
+        $theme = Config::get('bondcms.theme');
+        foreach($templates as $template) {
+            $output[] = "frontend.{$theme}.".str_replace(['.blade.php', '.php'],'',$template);
+        }
+
+        return $output;
+    }
     private static function getTemplateConfig() {
         $paths = Config::get('view.paths');
         $themeConfig = Cache::get(static::$cacheKey);
