@@ -1,5 +1,6 @@
 <?php namespace Bondmedia\Footballticket;
 
+use Bondmedia\Footballticket\ShortCode\RegistrationForm;
 use Illuminate\Support\ServiceProvider;
 
 class FootballticketServiceProvider extends ServiceProvider {
@@ -32,6 +33,11 @@ class FootballticketServiceProvider extends ServiceProvider {
         {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias('TicketSoap', 'Bondmedia\Footballticket\Facades\TicketSoap');
+        });
+
+        $this->app->bind('registration-form', function($app)
+        {
+            return new RegistrationForm();
         });
 	}
 

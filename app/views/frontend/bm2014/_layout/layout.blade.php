@@ -57,6 +57,9 @@
     //    $('ul#menu-header').nav-bar();
     //]]>
 </script>
+
+{{ Assets::dumpOnPageScripts() }}
+
 <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', "{{ $settings['ga_code']  or 'ga_code' }}"]);
