@@ -11,7 +11,7 @@
     <meta name="description" content="{{ isset($meta_description) ? $meta_description : ($settings['meta_description']) }}">
     <meta name="keywords" content="{{ isset($meta_keywords) ? $meta_keywords : ($settings['meta_keywords']) }}">
     <meta name="author" content="{{ isset($author) ? $author : '' }}">
-
+	<link href='http://fonts.googleapis.com/css?family=Roboto:500,100' rel='stylesheet' type='text/css'>
     {{
         Assets::setStyles(
         [

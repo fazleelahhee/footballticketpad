@@ -3,6 +3,7 @@
 {{ HTML::style('ckeditor/contents.css') }}
 @stop
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -17,5 +18,6 @@
         </div>
     </div>
 </div>
+
 @include(Template::name('frontend.%s.sidebars.side1'))
 @stop
