@@ -11,7 +11,7 @@ class AssetCache  extends Facade
     private static $admin = false;
     private static $js_path = array();
     private static $css_path = array();
-
+    private static $onPageJs = array();
 
     public static function setStyles(array $css_path, $admin = false, $first=false)
     {
@@ -247,5 +247,30 @@ class AssetCache  extends Facade
         %ix';
         $text = preg_replace($re, " ", $text);
         return $text;
+    }
+
+    public static function jsStart() {
+        ob_start();
+    }
+
+
+    public static function jsEnd() {
+        $jsContent = ob_get_contents();
+        ob_end_clean();
+        if(!empty($jsContent)) {
+            static::$onPageJs[] = $jsContent;
+        }
+    }
+
+    public static function dumpOnPageScripts()
+    {
+        $output = '';
+        if(!empty(static::$onPageJs)) {
+            foreach(static::$onPageJs as $content) {
+                $output .= $content.PHP_EOL;
+            }
+        }
+
+        return $output;
     }
 }

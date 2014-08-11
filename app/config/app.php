@@ -133,6 +133,7 @@ return array(
         'Bond\Providers\LogViewerServiceProvider',
         'Bond\Providers\TemplateServiceProvider',
         'Bondmedia\Admin\AdminServiceProvider',
+        'Bondmedia\Footballticket\FootballticketServiceProvider'
     ),
 
     /*

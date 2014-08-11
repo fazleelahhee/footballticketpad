@@ -18,7 +18,7 @@
 <!-- ######################## Section ######################## -->
 <section class="section_light">
     <div class="row">
-        {{ $node->content }}
+        {{ Template::doShortCode($node->content) }}
     </div>
 </section>
 @stop

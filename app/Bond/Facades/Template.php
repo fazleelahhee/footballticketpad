@@ -1,6 +1,7 @@
 <?php namespace Bond\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use App;
 use Config;
 use Cache;
 use Carbon\Carbon;
@@ -43,6 +44,33 @@ class Template extends Facade {
         return str_replace([',', '/'], '-', strtolower(implode(' ',$output)));
     }
 
+
+    public static function getTemplatesWithPath() {
+        $output = [];
+        $templates = static::getTemplates();
+        $theme = Config::get('bondcms.theme');
+        foreach($templates as $template) {
+            $output[] = "frontend.{$theme}.".str_replace(['.blade.php', '.php'],'',$template);
+        }
+
+        return $output;
+    }
+
+    public static function doShortCode($content) {
+        if(preg_match_all('/{{(.*?)}}/',$content, $matches)) {
+            $i= 0;
+            foreach($matches[1] as $match) {
+                $code = explode(' ',$match);
+                $object = App::make($code[0]);
+                if(method_exists($object, 'render')) {
+                    $content = str_replace($matches[0][$i], $object->render(),  $content);
+                }
+
+                $i++;
+            }
+        }
+        return $content;
+    }
     private static function getTemplateConfig() {
         $paths = Config::get('view.paths');
         $themeConfig = Cache::get(static::$cacheKey);
@@ -61,6 +89,8 @@ class Template extends Facade {
         }
         return ['templates' =>  [] ] ;
     }
+
+
 }
 
 
