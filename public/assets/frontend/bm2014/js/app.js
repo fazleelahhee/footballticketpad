@@ -44,5 +44,16 @@
       }, 0);
     });
   }
+  
+  
+  $( ".menubtn" ).click(function() {
+	$( ".header_nav" ).slideToggle( "slow", function() {
+	// Animation complete.
+	});
+	$( this ).toggleClass ('active')
+  });
+  
+  
+  
 
 })(jQuery, this);

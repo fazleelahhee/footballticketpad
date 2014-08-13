@@ -39,6 +39,7 @@ body {font-family: 'Roboto', sans-serif; font-weight:lighter}
 
 
 
+
 .lsf {
 
   font-family: 'LigatureSymbols';
@@ -178,7 +179,13 @@ header {background: url(../images/trans.png) repeat; clear:both; padding: 0px}
 
 
 
-.header_nav {background: #fafafa; padding: 0; display:none; z-index: 999}
+.header_nav {background: none repeat scroll 0 0 #fafafa;
+    display: none;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    z-index: 999;}
 
 .header_nav_fullwidth {background: #fafafa; padding: 10px 0 2px; margin-bottom: 25px; box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4)}
 
@@ -307,16 +314,26 @@ dl.tabs dd.active {
 }
 
 
-
 dl.tabs dd.active a {background: #fff}
 
-
+.header_nav:before { background:url(../images/menu-tip.png);
+ content: "";
+    height: 9px;
+    position: absolute;
+    right: 12px;
+    top: -6px;
+    width: 14px;}
 
 .nav-bar {margin-top: 0; background: none}
 
 .nav-bar > li {border: 0; padding: 0; font-family: 'Open Sans Condensed',sans-serif; letter-spacing: 1px; box-shadow: none}
 
-.nav-bar > li > a:first-child {font-size: 16px; text-transform: uppercase; padding: 0 25px}
+.nav-bar > li > a:first-child {  border-bottom: 1px solid #efefef;
+    font-size: 14px;
+    padding: 0 10px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 120px;}
 
 .nav-bar > li:last-child {border: 0; box-shadow: none}
 
@@ -1296,6 +1313,18 @@ aside {
     margin-top: -131px;
     width: 100%;
 }
+
+.banner-home {
+     float: left;
+    margin-bottom: 20px;
+    margin-top: -131px;
+    width: 100%;
+}
+.two-column-left .banner-home {
+    margin-bottom: 0px;
+
+}
+
 .overlay {width: 100%; text-align:center}	
 .blockrow {
     clear: both;
@@ -1517,3 +1546,126 @@ footer .full .support-text { font-weight:500;}
 .ftp-line .yellowline { background:#fed265}
 .ftp-line .pinkline { background:#e13d7f}
 .ftp-line .blueline { background:#57cadd}
+
+.social a span { float:right; height:20px; width:20px; background:url(../images/social.png) no-repeat }
+.social a.twitter span {
+    background-position: -38px 0;
+}
+.social a.facebook span { background-position:0 0}
+.social a.youtube span {
+    background-position: -87px 0;
+}
+.social .icon {
+    margin-bottom: 17px;
+    margin-left: 40px;
+    margin-top: 17px;
+}
+.copyright {
+   font-size: 12px !important;
+    margin: 17px 0;
+    padding-left: 0 !important;
+    text-align: left;
+}
+.copyright a { color:#FFFFFF
+}
+.columns.four.accepted-cards {
+    margin-top: 9px;
+}
+.btn:hover {
+ -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
+    transition: background 0.7s;}
+.btn:hover { background:#df3273;
+ -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
+    transition: background 0.7s;}
+
+.two-column-left .site-content {
+
+    min-height: 560px;
+
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 5px !important;
+}
+
+.page-header { font-size: 24px; background:url(../images/trans.png); width:auto; color:white;
+
+  -webkit-border-radius: 0 12px 0 0 ; 
+  -moz-border-radius:  0 12px 0 0 ; 
+  border-radius:  0 12px 0 0; }
+  
+  .page-header {
+ -webkit-border-radius: 0 12px 0 0 ; 
+  -moz-border-radius:  0 12px 0 0 ; 
+  border-radius:  0 12px 0 0; 
+   background: url("../images/trans.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 28px;
+    margin-left: -22px; position:absolute; top:-89px; 
+    padding: 12px 12px 12px 27px;
+    width: 260px !important;
+
+}
+.black {  background: none repeat scroll 0 0 black;
+    display: inline-block;
+    width: 100%;
+}
+.black img { background:black;
+  -webkit-transition: opacity 0.7s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 0.7s;
+	  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=100);
+
+  /* Netscape */
+  -moz-opacity: 1;
+
+  /* Safari 1.x */
+  -khtml-opacity: 1;
+
+  /* Good browsers */
+  opacity: 1;}
+.black:hover img { background:black;
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+
+  /* Netscape */
+  -moz-opacity: 0.5;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.5;
+
+  /* Good browsers */
+  opacity: 0.5;
+    -webkit-transition: opacity 0.7s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 0.7s;}
+.home .site-content {
+
+    min-height: 270px;
+
+} 
+ .inner-banner {
+    vertical-align: top;
+} 
+
+.sidebar .hottickets {
+ box-shadow: 0 0 13px #666;
+  -webkit-box-shadow: 0 0 13px #666;
+}
+
+p {
+    font-weight: lighter;
+}
+
+.banner-home img:hover {
+    opacity: 1 !important;
+}
+.site-content { position: relative}
+.menu-container {  float: right;
+    position: relative;}
