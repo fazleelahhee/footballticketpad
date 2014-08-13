@@ -13,7 +13,7 @@
     <h2>Two Column Page Template </h2>
     <div class="row">
         <div class="col-lg-12">
-            <p>{{ $node->content }}</p>
+            <p>{{ Template::doShortCode($node->content) }}</p>
         </div>
     </div>
 </div>
