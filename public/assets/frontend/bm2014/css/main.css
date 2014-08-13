@@ -13,8 +13,7 @@
 /* CSS */
 
 
-body {font-family: 'Roboto', sans-serif; font-weight:lighter;
-background: black; padding-top: 107px}
+body {font-family: 'Roboto', sans-serif; font-weight:lighter; background: white; padding-top: 107px}
 
 @font-face {
 
@@ -1276,12 +1275,12 @@ header .btn, header .menubtn { margin-left:15px; margin-top:15px;}
 .menubtn {border:1px solid #5D5C5C; cursor:pointer;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px; 
-  border-radius: 20px; height:40px; line-height:40px; width:40px; float:right; background:url(../images/menubtn.png) no-repeat 0 0;
+  border-radius: 20px; height:40px; line-height:40px; width:40px; float:right; background: url(../images/menubtn.png);
   -webkit-transition: all 0.7s; /* For Safari 3.1 to 6.0 */
     transition: all 0.7s; }
 .menubtn.active {background:url(../images/menubtn.png) no-repeat 0 -40px;
 border:1px solid #e13d7f;
--webkit-transition: all 0.7s; /* For Safari 3.1 to 6.0 */
+-webkit-transition: all 0.7s; 
     transition: all 0.7s; }
 
 .loginbtn { background:#2d2d2d}	
