@@ -4,20 +4,45 @@
 @stop
 @section('content')
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header"><small>{{ e($node->title) }}</small></h1>
-            @yield('partial/breadcrumbs', Breadcrumbs::render('page.show', $node))
-        </div>
-    </div>
-    <h2>Two Column Page Template </h2>
-    <div class="row">
-        <div class="col-lg-12">
-            <p>{{ Template::doShortCode($node->content) }}</p>
-        </div>
-    </div>
-</div>
+<!---------sidebar------------>
+<section class="main">
 
-@include(Template::name('frontend.%s.sidebars.side1'))
-@stop
+        <div class="row">
+            @include(Template::name('frontend.%s.sidebars.side1'))
+        </div>
+</section>
+<!---------sidebar------------>
+
+
+
+<section class="banner-home">
+
+ 	
+    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+    
+    <span class="ftp-line">
+    	<span class="greenline"></span>
+        <span class="yellowline"></span>
+        <span class="pinkline"></span>
+        <span class="blueline"></span>
+    </span>	
+    
+    
+</section>
+
+
+
+
+<!---------main content------------>
+<div class="row">
+     <div class="site-content">
+        <h1 class="page-header">{{ e($node->title) }}</h1>               
+        
+        {{ $node->content }}          
+                            
+     </div>
+</div>
+<!---------main content------------>
+
+    
+@stop    

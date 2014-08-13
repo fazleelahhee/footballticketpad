@@ -171,15 +171,26 @@
 
         <div class="twelve columns footer">
         
-        	<span class="copyright">&copy; Football ticket pad |  Terms &amp; conditions |  Privacy policy</span>
+        	<span class="copyright columns four">&copy; Football ticket pad |  <a href="#"> Terms &amp; conditions </a> |   <a href="#"> Privacy policy </a> </span>
+            
+            <img class="columns four accepted-cards" src="{{ Assets::Path('images/cards.png') }}" alt="Credit Cards" />
             
             
+            <div class="social columns four">
+            	
+                <a href="#" class="twitter">
+                	<span class="icon"></span>
+                </a>
+                <a href="#" class="facebook">
+                	<span class="icon"></span>
+                </a>
+                <a href="#" class="youtube">
+                	<span class="icon"></span>
+                </a>
+                
+            </div>
             
         
-            <a href="http://twitter.com/dieterarno" class="lsf-icon" style="font-size:16px; margin-right:15px" title="twitter">Twitter</a>
-            <a href="http://csstemplateheaven.com/csstemplateheaven" class="lsf-icon" style="font-size:16px; margin-right:15px" title="facebook">Facebook</a>
-            <a href="http://csstemplateheaven.com/csstemplateheaven" class="lsf-icon" style="font-size:16px; margin-right:15px" title="pinterest">Pinterest</a>
-            <a href="http://twitter.com/dieterarno" class="lsf-icon" style="font-size:16px" title="instagram">Instagram</a>
         </div>
 
     </div>

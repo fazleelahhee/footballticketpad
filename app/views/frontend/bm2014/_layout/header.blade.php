@@ -8,19 +8,16 @@
         <a href="/"><img class="logo" src="{{ Assets::Path('images/main_logo.png') }}" alt="Football Ticket Pad" /></a>
         
         
-        
-        <span class="menubtn">
-        	<img class="logo" src="{{ Assets::Path('images/menubtn.png') }}" alt="Menu" />
+        <span class="menu-container">
+            <span class="menubtn">
+              
+            </span>
+            
+            <nav class="header_nav">
+                  {{ $menus }}
+            </nav>
         </span>
-        
-        <nav style="display:none">
-            <div class="twelve columns header_nav">
-                <div class="row">
-                    {{ $menus }}
-                </div>
-            </div>
-        
-        </nav>
+    
         
 
         <a href="/"><span class="btn loginbtn">LOGIN</span></a>
