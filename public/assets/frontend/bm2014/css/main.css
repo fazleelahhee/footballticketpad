@@ -1917,4 +1917,4 @@ table.responsive th {  background: none repeat scroll 0 0 white !important;
 -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
     transition: background 0.7s;}
 
-.team-summary, fadeIn { display:none}
+.team-summary, .fadeIn { display:none}
