@@ -37,7 +37,7 @@
 <div class="row">
      <div class="site-content">
         <h1 class="page-header">{{ e($node->title) }}</h1>               
-        
+        hhhhh
         {{ $node->content }}          
                             
      </div>
