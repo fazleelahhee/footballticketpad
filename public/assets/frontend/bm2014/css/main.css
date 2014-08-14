@@ -1858,17 +1858,24 @@ header .searcharea .bigbox-search-button {
   border-collapse: collapse;
 }
 .responsive .btn {
-   
- border: medium none;
+   border: medium none;
     float: right;
+    font-size: 14px;
     height: 30px;
+    line-height: 30px;
     margin-left: 13px;
-    padding: 9px 20px;
+    padding: 0 20px;
     width: 84px;
 }
 .responsive td {
+color: #616060;
+    font-weight: 400;
     vertical-align: middle;
+	 padding: 16px 10px;
 }
+
+
+
 table tbody tr:nth-child(2n) {
     background: none repeat scroll 0 0 #f2f2f2 !important; border-top:1px solid #e6e6e6;
 }
