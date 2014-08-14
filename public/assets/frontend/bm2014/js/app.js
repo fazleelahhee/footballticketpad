@@ -75,8 +75,6 @@
 	});
 
   	//fade in animation
-    $( ".team-summary" ).fadeIn( "slow", function() {
-	// Animation complete
-	});
+    $( ".team-summary" ).fadeIn().delay(2000).fadeIn(2200);
 
 })(jQuery, this);
