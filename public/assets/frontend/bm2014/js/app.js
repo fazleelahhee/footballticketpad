@@ -75,6 +75,6 @@
 	});
 
   	//fade in animation
-    $( ".team-summary" ).fadeIn().delay(2000).fadeIn(2200);
+    $( ".team-summary" ).delay(2000).fadeIn(2200);
 
 })(jQuery, this);
