@@ -1726,3 +1726,10 @@ header .searcharea .bigbox-search-button {
   border-radius: 50%; 
 }
 
+.active .toggle-arrow { background:url("../images/arrows.png") no-repeat scroll 9px -42px #e13d7f; height:30px; width:30px;
+	-webkit-border-radius: 50%; position:absolute; right:10px; top:5px; 
+  -moz-border-radius: 50%; 
+  border-radius: 50%; 
+}
+
+.active.accordion-toggle {border: 1px solid #e13d7f; color: #e13d7f;}
