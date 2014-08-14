@@ -19,11 +19,13 @@
     </span>	
     
     
+    <div class="second-navs">
+		<div class="row">x</div>
+	</div>
+
+    
 </section>
 
-<section class="second-navs">
-	<div class="row">x</div>
-</section>
 
 
 <!---------main content------------>
