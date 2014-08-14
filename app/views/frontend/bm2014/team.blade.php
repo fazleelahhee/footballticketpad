@@ -95,7 +95,7 @@
         
         <!---------FAZLEEEEEE listing------------>
       	
-        <table>
+        <table class="responsive">
         	<thead>
             	<th>Game</th>
                 <th>Date</th>
