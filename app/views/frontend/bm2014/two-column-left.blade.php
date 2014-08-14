@@ -35,8 +35,11 @@
 
 <!---------main content------------>
 <div class="row">
+
+	 <h1 class="page-header">{{ e($node->title) }}</h1>   
+
      <div class="site-content">
-        <h1 class="page-header">{{ e($node->title) }}</h1>               
+                     
         
         {{ $node->content }}          
                             
