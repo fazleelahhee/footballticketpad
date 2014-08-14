@@ -1857,4 +1857,18 @@ header .searcharea .bigbox-search-button {
 .responsive { width:100%;
 }
 .responsive .btn {
+   
+ border: medium none;
+    float: right;
+    height: 30px;
+    margin-left: 13px;
+    padding: 9px 20px;
+    width: 84px;
+}
+
+table.responsive {
+    background: none repeat scroll 0 0 #fff;
+    border: medium none;
+    border-radius: 3px;
+    margin: 0 0 18px;
 }
