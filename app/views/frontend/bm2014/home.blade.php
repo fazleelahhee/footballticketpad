@@ -48,6 +48,13 @@
          <article class="three columns">
             <div class="panel">
            	 <a class="black" href="#">
+             
+             <span class="hovereffect">
+				<img class="plushover" src="{{ Assets::Path('images/pluspng.png') }}" alt="plus" />
+                <img class="ftplinehover" src="{{ Assets::Path('images/ftpline.png') }}" alt="line" />
+             </span>
+             
+             
              <img src="{{ Assets::Path('images/toure.jpg') }}" alt="test" />
              </a>
                 <h4>Premiership tickets</h4>
