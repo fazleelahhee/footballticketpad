@@ -8,7 +8,8 @@
         "two-column-right":"two-column-right.blade.php",
         "three-column":"three-column.blade.php",
 		"faq":"faq.blade.php",
-		"team":"team.blade.php"
+		"team":"team.blade.php",
+		"account":"account.blades.php"
     },
     "screenshort": ""
 }
