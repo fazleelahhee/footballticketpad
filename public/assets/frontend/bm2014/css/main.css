@@ -1719,13 +1719,20 @@ header .searcharea .bigbox-search-button {
     width: 100%;
 }
 
-.panel:hover .plushover {  margin-top: 47px;}
+.panel:hover .plushover {  margin-top: 47px;
+-webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+    transition: all 1s;}
 .plushover {
     margin-top: 147px;
+	 -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+    transition: all 1s;
 }
 
 
-.panel:hover .ftplinehover { position:absolute; top:0px; left:0px;}
+.panel:hover .ftplinehover { position:absolute; top:0px; left:0px;
+-webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+    transition: all 1s;}
 .ftplinehover { position:absolute; top:-20px; left:0px;
-    margin-top: 147px;
+-webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+    transition: all 1s;
 }
