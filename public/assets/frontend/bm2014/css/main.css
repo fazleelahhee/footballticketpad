@@ -1743,37 +1743,16 @@ header .searcharea .bigbox-search-button {
 
 .active.accordion-toggle {border: 1px solid #e13d7f; color: #e13d7f;}
 
-.hovereffect { position:absolute; left:0; top:0px; width:100%;
+.hovereffect {height: 144px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
 }
-.hovereffect {
-	 /* IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 
-  /* IE 5-7 */
-  filter: alpha(opacity=0);
-
-  /* Netscape */
-  -moz-opacity: 0;
-
-  /* Safari 1.x */
-  -khtml-opacity: 0;
-
-  /* Good browsers */
-  opacity: 0;}
-
-.panel:hover .hovereffect {
- /* IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-
-  /* IE 5-7 */
-  filter: alpha(opacity=100);
-
-  /* Netscape */
-  -moz-opacity: 1;
-
-  /* Safari 1.x */
-  -khtml-opacity: 1;
-
-  /* Good browsers */
-  opacity: 1;
+.panel:hover .plushover {  margin-top: 47px;}
+.plushover {
+    margin-top: 147px;
 }
