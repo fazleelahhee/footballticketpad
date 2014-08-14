@@ -7,7 +7,7 @@
         "two-column-left":"two-column-left.blade.php",
         "two-column-right":"two-column-right.blade.php",
         "three-column":"three-column.blade.php",
-		"faq":"faq.blade.php"
+		"faq":"faq.blade.php",
 		"team":"team.blade.php"
     },
     "screenshort": ""
