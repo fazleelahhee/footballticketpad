@@ -52,23 +52,23 @@
                 
                 <ul>
                   <li>
-                  	 <span class="label"><strong>Nickname:</strong></span>
+                  	 <span class="labeltitle"><strong>Nickname:</strong></span>
                      <span class="data">The Blues / The pensioners</span>
                   </li>	
                   <li>
-                  	 <span class="label"><strong>Founded:</strong></span>
+                  	 <span class="labeltitle"><strong>Founded:</strong></span>
                      <span class="data">1905</span>
                   </li>
                   <li>
-                  	 <span class="label"><strong>Rivals:</strong></span>
+                  	 <span class="labeltitle"><strong>Rivals:</strong></span>
                      <span class="data">Fulham / Tottenham / QPR</span>
                   </li>
                   <li>
-                  	 <span class="label"><strong>Record goal scorer:</strong></span>
+                  	 <span class="labeltitle"><strong>Record goal scorer:</strong></span>
                      <span class="data">Frank Lampard</span>
                   </li>
                   <li>
-                  	 <span class="label"><strong>Record signing:</strong></span>
+                  	 <span class="labeltitle"><strong>Record signing:</strong></span>
                      <span class="data">Torres - 50m</span>
                   </li>
                 </ul>
