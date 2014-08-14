@@ -1700,5 +1700,9 @@ header .searcharea .bigbox-search-button {
   margin-top: 16px;
   width: 45px;
 }
+.accordion-toggle {cursor: pointer;}
+  .accordion-content {display: none;}
+  .accordion-content.default {display: block;}
+
 
 
