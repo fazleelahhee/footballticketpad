@@ -1918,3 +1918,10 @@ transition: background 0.7s;
 transition: background 0.7s;}
 
 .team-summary, .fadeIn { display:none}
+
+.one-column .site-content, 
+.one-column .teaminfo {
+    float: right;
+    min-height: 10px;
+    width: 100%;
+}
