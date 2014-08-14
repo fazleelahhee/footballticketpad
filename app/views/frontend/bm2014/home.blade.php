@@ -42,59 +42,72 @@
 
 <!---------content------------>
 <div class="row">
-        <div class="site-content">
-                            
-                            
-         <article class="three columns">
-            <div class="panel">
-           	 <a class="black" href="#">
-             
-             <span class="hovereffect">
-				<img class="plushover" src="{{ Assets::Path('images/pluspng.png') }}" alt="plus" />
-                <img class="ftplinehover" src="{{ Assets::Path('images/ftpline.png') }}" alt="line" />
-             </span>
-             
-             
-             <img src="{{ Assets::Path('images/toure.jpg') }}" alt="test" />
-             </a>
-                <h4>Premiership tickets</h4>
-               
-                <a href="#" class="pink-btn small">VIEW</a>
-            </div>
-        </article>
+	<div class="site-content">
 		
         
-        <article class="three columns">
-            <div class="panel">
-           	 <a class="black" href="#"><img src="{{ Assets::Path('images/messi.jpg') }}" alt="test" /></a>
-                <h4>La Liga tickets</h4>
-               
-                <a href="#" class="pink-btn small">VIEW</a>
-            </div>
-        </article>
-        
         
         <article class="three columns">
-            <div class="panel">
-           	 <a class="black" href="#"><img src="{{ Assets::Path('images/robben.jpg') }}" alt="test" /></a>
-                <h4>Bundesliga tickets</h4>
-               
-                <a href="#" class="pink-btn small">VIEW</a>
-            </div>
-        </article>
+		<div class="panel">
+			<a href="#">
+			<span class="hovereffect">
+			<img class="plushover" src="{{ Assets::Path('images/pluspng.png') }}" alt="plus"/>
+			<img class="ftplinehover" src="{{ Assets::Path('images/ftpline.png') }}" alt="line"/>
+			</span>
+			<img src="{{ Assets::Path('images/toure.jpg') }}" alt="test"/>
+			</a>
+			<h4>Premiership tickets</h4>
+			<a href="#" class="pink-btn small">VIEW</a>
+		</div>
+		</article>
         
         
-        <article class="three columns">
-            <div class="panel">
-           	 <a class="black" href="#"><img src="{{ Assets::Path('images/cavani.jpg') }}" alt="test" /></a>
-             <h4>Ligue tickets</h4>
-               
-                <a href="#" class="pink-btn small">VIEW</a>
-            </div>
-        </article>
-     
-                            
-      </div>
+        
+		<article class="three columns">
+		<div class="panel">
+			<a href="#">
+			<span class="hovereffect">
+			<img class="plushover" src="{{ Assets::Path('images/pluspng.png') }}" alt="plus"/>
+			<img class="ftplinehover" src="{{ Assets::Path('images/ftpline.png') }}" alt="line"/>
+			</span>
+			<img src="{{ Assets::Path('images/messi.jpg') }}" alt="test"/></a>
+			<h4>La Liga tickets</h4>
+			<a href="#" class="pink-btn small">VIEW</a>
+		</div>
+		</article>
+        
+        
+        
+		<article class="three columns">
+		<div class="panel">
+			<a href="#">
+			<span class="hovereffect">
+			<img class="plushover" src="{{ Assets::Path('images/pluspng.png') }}" alt="plus"/>
+			<img class="ftplinehover" src="{{ Assets::Path('images/ftpline.png') }}" alt="line"/>
+			</span>
+			<img src="{{ Assets::Path('images/robben.jpg') }}" alt="test"/></a>
+			<h4>Bundesliga tickets</h4>
+			<a href="#" class="pink-btn small">VIEW</a>
+		</div>
+		</article>
+        
+        
+        
+		<article class="three columns">
+		<div class="panel">
+			<a href="#">
+			<span class="hovereffect">
+			<img class="plushover" src="{{ Assets::Path('images/pluspng.png') }}" alt="plus"/>
+			<img class="ftplinehover" src="{{ Assets::Path('images/ftpline.png') }}" alt="line"/>
+			</span>
+			<img src="{{ Assets::Path('images/cavani.jpg') }}" alt="test"/>
+			</a>
+			<h4>Ligue tickets</h4>
+			<a href="#" class="pink-btn small">VIEW</a>
+		</div>
+		</article>
+        
+        
+	</div>
 </div>
 <!---------content------------>
 
