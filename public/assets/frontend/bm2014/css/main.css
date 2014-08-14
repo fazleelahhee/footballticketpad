@@ -1807,14 +1807,20 @@ header .searcharea .bigbox-search-button {
 .team-summary {
     color: white;
     float: right;
+    margin-top: 33px;
+    width: 390px;
 }
 .team-summary .small-title {
-
+    display: inline-block;
+    margin-bottom: 14px;
 }
 .team-summary ul { margin:0px; padding:0px; list-style:none}
 .team-summary ul  li { width:100%}
-.team-summary ul  li span { width:50%; float:left}
-
+.team-summary ul  li span {  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    float: left;
+    text-align: left;
+    width: 50%;}
+.team-summary ul  li span.label { border-right:1px solid #fff}
 .teaminfo .page-header {
    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     float: left;
