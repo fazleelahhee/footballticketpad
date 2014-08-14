@@ -1707,11 +1707,13 @@ header .searcharea .bigbox-search-button {
 }
 .accordion-content.default {display: block;}
 
-.accordion-toggle {   border: 1px solid #c1c1c1; font-weight:500;
-
+.accordion-toggle {    border: 1px solid #c1c1c1;
     color: #878787;
-    font-size: 19px;
-    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 9px !important;
+    margin-top: 1px;
+    padding: 10px 10px 10px 20px;
     position: relative;
  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
   -webkit-border-radius: 22px; 
@@ -1723,8 +1725,13 @@ header .searcharea .bigbox-search-button {
   border-radius: 22px; }
 
 
-.toggle-arrow { background:url("../images/arrows.png") no-repeat scroll 9px -42px #c1c1c1; height:30px; width:30px;
-	-webkit-border-radius: 50%; position:absolute; right:10px; top:5px; 
+.toggle-arrow {   background: url("../images/arrows.png") no-repeat scroll 9px -42px #c1c1c1;
+    height: 30px;
+    position: absolute;
+    right: 6px;
+    top: 4px;
+    width: 30px;
+	-webkit-border-radius: 50%; 
   -moz-border-radius: 50%; 
   border-radius: 50%; 
 }
