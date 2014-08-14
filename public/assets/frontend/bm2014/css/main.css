@@ -1716,8 +1716,44 @@ header .searcharea .bigbox-search-button {
     position: absolute;
     text-align: center;
     top: 0;
-    width: 100%;
+    width: 100%; background:url(../images/trans.png);
+	 /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+
+  /* Netscape */
+  -moz-opacity: 0;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0;
+
+  /* Good browsers */
+  opacity: 0;
+  	 -webkit-transition: opacity 0.2s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 02s;
 }
+.panel:hover .hovereffect {
+	/* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+
+  /* Netscape */
+  -moz-opacity: 1;
+
+  /* Safari 1.x */
+  -khtml-opacity: 1;
+
+  /* Good browsers */
+  opacity: 1s;
+	 -webkit-transition: opacity 0.2s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 02s;
+	}
+
+
 
 .panel:hover .plushover {  margin-top: 47px;
 -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
@@ -1730,9 +1766,9 @@ header .searcharea .bigbox-search-button {
 
 
 .panel:hover .ftplinehover { position:absolute; top:0px; left:0px;
--webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
-    transition: all 1s;}
+-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: all 0.5s;}
 .ftplinehover { position:absolute; top:-20px; left:0px;
--webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
-    transition: all 1s;
+-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: all 0.5s;
 }
