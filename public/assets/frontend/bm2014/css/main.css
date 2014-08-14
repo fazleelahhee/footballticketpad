@@ -1895,3 +1895,6 @@ table.responsive {
 }
 table.responsive th {  background: none repeat scroll 0 0 white !important;
     border-bottom: 1px solid #ccc; font-weight:500 !important}
+
+
+.team-summary { display:none}

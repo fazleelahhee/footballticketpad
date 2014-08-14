@@ -72,11 +72,11 @@
       //Hide the other panels
       $(".accordion-content").not($(this).next()).slideUp('slow');
 	  
-	   
+	});
 
-   });
-
-  
-  
+  	//fade in animation
+    $( ".team-summary" ).fadeIn( "slow", function() {
+	// Animation complete
+	});
 
 })(jQuery, this);
