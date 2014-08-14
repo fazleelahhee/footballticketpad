@@ -1854,6 +1854,10 @@ header .searcharea .bigbox-search-button {
 
 .pinkbtn { background:#e13d7f; color:#FFFFFF}
 .bluebtn {background:#57cadd; color:#FFFFFF}
+.pinkbtn:hover { background:#c82f6d; color:#FFFFFF}
+.bluebtn:hover {background:#3499aa; color:#FFFFFF}
+
+
 .responsive { width:100%;
   border-collapse: collapse;
 }
@@ -1865,7 +1869,7 @@ header .searcharea .bigbox-search-button {
     line-height: 30px;
     margin-left: 13px;
     padding: 0 20px;
-    width: 84px;
+    width: 84px; cursor:pointer;
 }
 .responsive td {
 color: #616060;
