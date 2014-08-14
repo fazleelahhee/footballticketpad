@@ -75,8 +75,8 @@
 	});
 
   	//fade in animation
-    $( ".team-summary" ).delay(1000).fadeIn(2200);
-	$( ".fadeIn" ).delay(500).fadeIn(1800);
+    $( ".team-summary" ).delay(1000).fadeIn(4000);
+	$( ".fadeIn" ).delay(500).fadeIn(200);
 	
 	//odd even
 	$ ('.blockrow:even').addClass ('even');
