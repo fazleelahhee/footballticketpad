@@ -18,7 +18,7 @@
 <section class="banner-home">
 
  	
-    <img class="inner-banner" src="{{ Assets::Path('images/banner-robben.jpg') }}" alt="test" />
+    <img class="inner-banner" src="{{ Assets::Path('images/chelsea.jpg') }}" alt="test" />
     
     <span class="ftp-line">
     	<span class="greenline"></span>
@@ -36,7 +36,48 @@
 <!---------main content------------>
 <div class="row">
 
-	  <h1 class="page-header">{{ e($node->title) }}</h1>      
+	  
+      
+      <div class="teaminfo">
+      		
+            <img src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
+            <h1 class="page-header">{{ e($node->title) }}</h1>      
+            
+            
+            <div class="team-summary">
+            	<span class="small-title">
+                	Club Fact File:
+                </span>
+                
+                <ul>
+                  <li>
+                  	 <span class="label"><strong>Nickname:</strong></span>
+                     <span class="data">The Blues / The pensioners</span>
+                  </li>	
+                  <li>
+                  	 <span class="label"><strong>Founded:</strong></span>
+                     <span class="data">1905</span>
+                  </li>
+                  <li>
+                  	 <span class="label"><strong>Rivals:</strong></span>
+                     <span class="data">Fulham / Tottenham / QPR</span>
+                  </li>
+                  <li>
+                  	 <span class="label"><strong>Record goal scorer:</strong></span>
+                     <span class="data">Frank Lampard</span>
+                  </li>
+                  <li>
+                  	 <span class="label"><strong>Record signing:</strong></span>
+                     <span class="data">Torres - 50m</span>
+                  </li>
+                </ul>
+                
+            </div>
+            
+            
+      </div>
+      
+      
       	
     
      <div class="site-content">
