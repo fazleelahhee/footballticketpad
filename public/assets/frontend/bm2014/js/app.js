@@ -77,4 +77,8 @@
   	//fade in animation
     $( ".team-summary" ).delay(1000).fadeIn(2200);
 
+	//odd even
+	$ ('blockrow:even').addClass ('even');
+    $ ('blockrow:odd').addClass ('odd');
+
 })(jQuery, this);
