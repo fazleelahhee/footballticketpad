@@ -42,7 +42,7 @@
         
         <div class="searcharea">
                 <form id="form-home">
-                    <input class="forminput" placeholder="eg. Champions League Final" >
+                    <input class="forminput" >
                     <input class="bigbox-search-button" type="button"></button>
                 </form>
          </div>
