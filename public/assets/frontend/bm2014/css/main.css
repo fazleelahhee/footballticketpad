@@ -1932,10 +1932,10 @@ transition: background 0.7s;}
 
 
 .second-navs {
-    background: none repeat scroll 0 0 red;
+    background: #212326;
     display: inline-block;
     height: 48px;
-    margin-top: -31px;
+    margin-top: -11px;
     text-align: center;
     vertical-align: top;
     width: 100%;
