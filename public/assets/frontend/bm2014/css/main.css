@@ -1872,3 +1872,4 @@ table.responsive {
     border-radius: 3px;
     margin: 0 0 18px;
 }
+table.responsive th { background:white !important}
