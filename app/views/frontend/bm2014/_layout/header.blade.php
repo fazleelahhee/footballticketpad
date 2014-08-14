@@ -19,6 +19,17 @@
         </span>
     
         
+         <div class="searcharea">
+                <form id="form-home">
+                    <input class="forminput" placeholder="eg. Champions League Final" >
+                    <input class="bigbox-search-button" type="button"></button>
+                </form>
+                
+         </div>
+        
+        
+        
+        
 
         <a href="/"><span class="btn loginbtn">LOGIN</span></a>
         
