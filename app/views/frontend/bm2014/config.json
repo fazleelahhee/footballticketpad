@@ -9,7 +9,7 @@
         "three-column":"three-column.blade.php",
 		"faq":"faq.blade.php",
 		"team":"team.blade.php",
-		"account":"account.blades.php"
+		"account":"account.blade.php"
     },
     "screenshort": ""
 }
