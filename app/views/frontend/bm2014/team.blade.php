@@ -38,7 +38,7 @@
 <div class="row">
 
 	  
-      
+      <!---------FAZLEEEEEE this area need management------------>
       <div class="teaminfo">
       		
             <img class="club-logo" src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
@@ -47,7 +47,7 @@
             
             <div class="team-summary">
             	<span class="small-title">
-                	Club Fact File:
+                	<strong>Club Fact File:</strong>
                 </span>
                 
                 <ul>
@@ -77,7 +77,7 @@
             
             
       </div>
-      
+       <!---------FAZLEEEEEE this area need management------------>
       
       	
     
@@ -90,13 +90,16 @@
         
         {{ $node->content }} 
         
-        <!---------FAZLEEEEEE take this area for faq shortcode------------>
+        
+        
+        
+        <!---------FAZLEEEEEE listing------------>
       	
         
         
         
         
-        <!---------FAZLEEEEEE take this area for faq shortcode------------>
+        <!---------FAZLEEEEEE listing------------>
         
         
         
