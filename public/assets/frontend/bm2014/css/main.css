@@ -1857,7 +1857,10 @@ header .searcharea .bigbox-search-button {
 .pinkbtn:hover { background:#c82f6d; color:#FFFFFF}
 .bluebtn:hover {background:#3499aa; color:#FFFFFF}
 
+strong, b {
+    font-weight: 500 !important;
 
+}
 .responsive { width:100%;
   border-collapse: collapse;
 }
