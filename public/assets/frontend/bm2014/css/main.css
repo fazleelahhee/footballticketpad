@@ -13,7 +13,7 @@
 /* CSS */
 
 
-body {font-family: 'Roboto', sans-serif; font-weight:lighter; background: white; padding-top: 107px}
+body {font-family: 'Roboto', sans-serif; font-weight:lighter; background: white; padding-top: 107px; overflow-x:hidden}
 
 @font-face {
 
@@ -39,7 +39,10 @@ body {font-family: 'Roboto', sans-serif; font-weight:lighter; background: white;
 
 
 
-
+.row {
+    position: relative;
+    width: 1220px;
+}
 .lsf {
 
   font-family: 'LigatureSymbols';
@@ -1800,4 +1803,29 @@ header .searcharea .bigbox-search-button {
 .ftplinehover { position:absolute; top:-20px; left:0px;
 -webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
     transition: all 0.5s;
+}
+.team-summary {
+    color: white;
+    float: right;
+}
+.team-summary .small-title {
+
+}
+.team-summary ul { margin:0px; padding:0px; list-style:none}
+.team-summary ul  li { width:100%}
+.team-summary ul  li span { width:50%; float:left}
+
+.teaminfo .page-header {
+    float: left;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.club-logo { float:left}
+.teaminfo {
+  background: none repeat scroll 0 0 red;
+  height: 235px !important;
+  min-height: 10px !important;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

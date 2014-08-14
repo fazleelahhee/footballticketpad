@@ -41,7 +41,7 @@
       
       <div class="teaminfo">
       		
-            <img src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
+            <img class="club-logo" src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
             <h1 class="page-header">{{ e($node->title) }}</h1>      
             
             
