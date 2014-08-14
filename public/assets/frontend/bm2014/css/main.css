@@ -1896,11 +1896,11 @@ table.responsive {
 table.responsive th {  background: none repeat scroll 0 0 white !important;
     border-bottom: 1px solid #ccc; font-weight:500 !important}
 
-.responsive tr { 
+.responsive tr td { 
 -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
     transition: background 0.7s;
 }
-.responsive tr:hover { background:#d8edd3;
+.responsive tr:hover td { background:#d8edd3;
 -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
     transition: background 0.7s;
 }
