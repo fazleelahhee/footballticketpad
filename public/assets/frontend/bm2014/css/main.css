@@ -1669,14 +1669,14 @@ p {
 .menu-container {  float: right;
     position: relative;}
 
-.searcharea.innersearch {
+header .searcharea {
      float: right;
     margin-right: 10px;
     position: static;
     width: 370px;
 }
 
-.searcharea.innersearch .forminput {
+header .searcharea .forminput {
  border: medium none;
     border-radius: 20px 0 0 20px;
     float: left; color:#FFFFFF;
@@ -1688,7 +1688,7 @@ p {
     width: 324px; background:url(../images/innersearch.png) repeat;
 }	
 	
-.searcharea.innersearch .bigbox-search-button {
+header .searcharea .bigbox-search-button {
   background: url(../images/searchsmall.png) no-repeat center center #767575;
   border: medium none;
   cursor: pointer;
