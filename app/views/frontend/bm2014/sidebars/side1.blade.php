@@ -222,7 +222,7 @@
             	
             
                 <!-- repeater -->
-                <a href="#">
+                <a href="/chelsea-fc">
                 <span class="blockrow">
                 	
                     <span class="date">
@@ -241,7 +241,7 @@
                 
                 
                 <!-- repeater -->
-                <a href="#">
+                <a href="/chelsea-fc">
                 <span class="blockrow">
                 	
                     <span class="date">
@@ -262,7 +262,7 @@
                 
                 
                 <!-- repeater -->
-                <a href="#">
+                <a href="/chelsea-fc">
                 <span class="blockrow">
                 	
                     <span class="date">
@@ -281,7 +281,7 @@
                 
                 
                 <!-- repeater -->
-                <a href="#">
+                <a href="/chelsea-fc">
                 <span class="blockrow">
                 	
                     <span class="date">
@@ -300,7 +300,7 @@
                 
                 
                 <!-- repeater -->
-                <a href="#">
+                <a href="/chelsea-fc">
                 <span class="blockrow">
                 	
                     <span class="date">
