@@ -1385,8 +1385,16 @@ aside {
     width: 33px;
 }
 .topteams .game { text-align:left; text-indent:10px; font-weight:500}
-.topteams .blockrow { background:#e7e7e7;}
+.topteams .blockrow {
+    background: none repeat scroll 0 0 #f2f2f2;
+}
+.topteams .blockrow:nth-child(2n) {
+    background: none repeat scroll 0 0 #E5E5E5;
+}
 .topteams .blockrow:hover { background:#eeeeee;}
+
+
+
 .site-content,
 .teaminfo {
     float: right;
@@ -1904,4 +1912,8 @@ table.responsive th {  background: none repeat scroll 0 0 white !important;
 -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
     transition: background 0.7s;
 }
+.topteams .blockrow:hover {background:#d8edd3;
+-webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
+    transition: background 0.7s;}
+
 .team-summary { display:none}
