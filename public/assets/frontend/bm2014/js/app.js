@@ -58,7 +58,10 @@
   
   //accordion for faq page
   $('#accordion').find('.accordion-toggle').click(function(){
-
+	  
+	  //Expand or collapse this panel
+      $(this).toggleClass ('active');
+	  	
       //Expand or collapse this panel
       $(this).next().slideToggle('fast');
 
