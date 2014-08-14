@@ -95,9 +95,98 @@
         
         <!---------FAZLEEEEEE listing------------>
       	
-        
-        
-        
+        <table>
+        	<thead>
+            	<th>Game</th>
+                <th>Date</th>
+                <th>Price from:</th>
+                <th>&nbsp;</th>
+            </thead>
+            
+            <tbody>
+            	
+                
+                
+                <tr>
+                	<td>
+                    	<span class="game">
+                    		Burnley <span class="vs">vs</span> Chelsea
+                    	</span>
+                    </td>
+                    <td>
+                    	Saturday 16th August 2014
+                    </td>
+                    <td>
+                    	&pound;59.99
+                    </td>
+                    <td>
+                    	<input class="btn pinkbtn" type="button" value="BUY">
+                        <input class="btn bluebtn" type="button" value="SELL">
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                	<td>
+                    	<span class="game">
+                    		Burnley <span class="vs">vs</span> Chelsea
+                    	</span>
+                    </td>
+                    <td>
+                    	Saturday 16th August 2014
+                    </td>
+                    <td>
+                    	&pound;59.99
+                    </td>
+                    <td>
+                    	<input class="btn pinkbtn" type="button" value="BUY">
+                        <input class="btn bluebtn" type="button" value="SELL">
+                    </td>
+                </tr>
+                
+                
+                
+                <tr>
+                	<td>
+                    	<span class="game">
+                    		Burnley <span class="vs">vs</span> Chelsea
+                    	</span>
+                    </td>
+                    <td>
+                    	Saturday 16th August 2014
+                    </td>
+                    <td>
+                    	&pound;59.99
+                    </td>
+                    <td>
+                    	<input class="btn pinkbtn" type="button" value="BUY">
+                        <input class="btn bluebtn" type="button" value="SELL">
+                    </td>
+                </tr>                                
+
+
+
+                <tr>
+                	<td>
+                    	<span class="game">
+                    		Burnley <span class="vs">vs</span> Chelsea
+                    	</span>
+                    </td>
+                    <td>
+                    	Saturday 16th August 2014
+                    </td>
+                    <td>
+                    	&pound;59.99
+                    </td>
+                    <td>
+                    	<input class="btn pinkbtn" type="button" value="BUY">
+                        <input class="btn bluebtn" type="button" value="SELL">
+                    </td>
+                </tr>
+
+                
+            </tbody>
+        </table>
         
         <!---------FAZLEEEEEE listing------------>
         
