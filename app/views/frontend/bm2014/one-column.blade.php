@@ -4,21 +4,48 @@
 @stop
 @section('content')
 
-<!-- ######################## Header ######################## -->
-<header>
-    <div class="row">
-        <article>
-            <div class="twelve columns">
-                <h1>{{ e($node->title) }}</h1>
-                @yield('partial/breadcrumbs', Breadcrumbs::render('page.show', $node))
-            </div>
-        </article>
-    </div>
-</header>
-<!-- ######################## Section ######################## -->
-<section class="section_light">
-    <div class="row">
-        {{ Template::doShortCode($node->content) }}
-    </div>
+
+<!---------sidebar------------>
+<section class="main">
+
+        <div class="row">
+            @include(Template::name('frontend.%s.sidebars.side1'))
+        </div>
 </section>
+<!---------sidebar------------>
+
+
+
+<section class="banner-home">
+
+ 	
+    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+    
+    <span class="ftp-line">
+    	<span class="greenline"></span>
+        <span class="yellowline"></span>
+        <span class="pinkline"></span>
+        <span class="blueline"></span>
+    </span>	
+    
+    
+</section>
+
+
+
+
+<!---------main content------------>
+<div class="row">
+
+	 <h1 class="page-header">{{ e($node->title) }} onecolumntests</h1>   
+
+     <div class="site-content">
+                     
+        {{ $node->content }}          
+                            
+     </div>
+</div>
+<!---------main content------------>
+
+
 @stop
