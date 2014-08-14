@@ -1721,11 +1721,10 @@ header .searcharea .bigbox-search-button {
   border-radius: 22px; }
 
 
-.toggle-arrow {   background: url("../images/arrows.png") no-repeat scroll 9px -42px #c1c1c1;
+.toggle-arrow {   background: url("../images/arrows.png") no-repeat scroll 10px -41px #c1c1c1;
     height: 30px;
     position: absolute;
-    right: 6px;
-    top: 4px;
+   right:6px; top:6px; 
     width: 30px;
 	
 	-webkit-border-radius: 50%; 
@@ -1736,12 +1735,7 @@ header .searcharea .bigbox-search-button {
     transition: background 0.7s; 
 }
 
-.active .toggle-arrow { background:url("../images/arrows.png") no-repeat scroll 9px 11px #e13d7f; height:30px; width:30px;
- position:absolute; right:10px; top:5px; 
- 
-	-webkit-border-radius: 50%;
-  -moz-border-radius: 50%; 
-  border-radius: 50%;
+.active .toggle-arrow { background:url("../images/arrows.png") no-repeat scroll 10px 12px #e13d7f;
   
    -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
     transition: background 0.7s; 
