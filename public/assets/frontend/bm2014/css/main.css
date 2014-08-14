@@ -1731,8 +1731,7 @@ header .searcharea .bigbox-search-button {
 
   /* Good browsers */
   opacity: 0;
-  	 -webkit-transition: opacity 0.2s; /* For Safari 3.1 to 6.0 */
-    transition: opacity 0.2s;
+  	
 }
 .panel:hover .hovereffect {
 	/* IE 8 */
@@ -1748,9 +1747,8 @@ header .searcharea .bigbox-search-button {
   -khtml-opacity: 1;
 
   /* Good browsers */
-  opacity: 1s;
-	 -webkit-transition: opacity 0.2s; /* For Safari 3.1 to 6.0 */
-    transition: opacity 0.2s;
+  opacity: 1;
+
 	}
 
 
