@@ -1686,3 +1686,12 @@ p {
     width: 324px; background:url(../images/innersearch.png) repeat;
 }	
 	
+.searcharea.innersearch .bigbox-search-button {
+  background: url(../images/searchsmall.png) no-repeat center center #767575;
+  border: medium none;
+  cursor: pointer;
+  float: left;
+  height: 36px;
+  margin-top: 16px;
+  width: 45px;
+}
