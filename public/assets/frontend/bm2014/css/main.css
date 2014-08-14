@@ -1386,7 +1386,7 @@ aside {
 .topteams .blockrow:hover { background:#eeeeee;}
 .site-content {
     float: right;
-    min-height: 330px;
+    min-height: 540px;
     width: 920px;
 }
 footer { background: none repeat scroll 0 0 #202020;
