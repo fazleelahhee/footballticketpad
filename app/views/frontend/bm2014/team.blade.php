@@ -17,8 +17,9 @@
 
 <section class="banner-home">
 
- 	
-    <img class="inner-banner" src="{{ Assets::Path('images/chelsea.jpg') }}" alt="test" />
+ 	<span class="club-effect">
+   	 <img class="inner-banner" src="{{ Assets::Path('images/chelsea.jpg') }}" alt="test" />
+    </span>
     
     <span class="ftp-line">
     	<span class="greenline"></span>

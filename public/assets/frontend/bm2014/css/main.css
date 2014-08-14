@@ -1620,9 +1620,12 @@ h2 {
 
 } 
  .inner-banner {
+    max-width: none;
+    min-height: 360px;
     vertical-align: top;
+    width: 1920px;
 } 
-
+.club-effect { background:black;}
 .sidebar .hottickets {
  box-shadow: 0 0 13px #666;
   -webkit-box-shadow: 0 0 13px #666;
@@ -1644,6 +1647,8 @@ header .searcharea {
     margin-right: 10px;
     position: static;
     width: 370px;
+	box-shadow: 0 0 0px none !important;
+	  -webkit-box-shadow: 0 0 0px none !important;
 }
 
 header .searcharea .forminput {
