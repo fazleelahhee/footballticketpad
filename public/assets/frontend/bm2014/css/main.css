@@ -1921,11 +1921,22 @@ transition: background 0.7s;
 -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
 transition: background 0.7s;}
 
-.team-summary, .fadeIn { display:none}
+.team-summary, .fadeIn { display:none;}
 
 .one-column .site-content, 
 .one-column .teaminfo {
     float: right;
     min-height: 10px;
+    width: 100%;
+}
+
+
+.second-navs {
+    background: none repeat scroll 0 0 red;
+    display: inline-block;
+    height: 48px;
+    margin-top: -31px;
+    text-align: center;
+    vertical-align: top;
     width: 100%;
 }
