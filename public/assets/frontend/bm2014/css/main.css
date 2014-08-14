@@ -1820,7 +1820,12 @@ header .searcharea .bigbox-search-button {
     float: left;
     text-align: left;
     width: 50%;}
-.team-summary ul  li span.label { border-right:1px solid #fff}
+
+.data {
+    border-left: 1px solid white;
+    padding-left: 13px;
+}
+
 .teaminfo .page-header {
    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     float: left;
