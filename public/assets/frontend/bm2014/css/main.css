@@ -1816,13 +1816,26 @@ header .searcharea .bigbox-search-button {
 .team-summary ul  li span { width:50%; float:left}
 
 .teaminfo .page-header {
+   background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     float: left;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 90px;
+    padding-bottom: 0 !important;
+    padding-left: 30px;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    position: static;
 }
-.club-logo { float:left}
+.club-logo {
+  float: left;
+  margin-left: 10px;
+  margin-top: 46px;
+}
+
 .teaminfo {
-  background: none repeat scroll 0 0 red;
+
   height: 235px !important;
   min-height: 10px !important;
   position: absolute;
