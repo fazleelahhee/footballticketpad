@@ -1613,40 +1613,7 @@ h2 {
     display: inline-block;
     width: 100%;
 }
-.black img { background:black;
-  -webkit-transition: opacity 0.7s; /* For Safari 3.1 to 6.0 */
-    transition: opacity 0.7s;
-	  /* IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 
-  /* IE 5-7 */
-  filter: alpha(opacity=100);
-
-  /* Netscape */
-  -moz-opacity: 1;
-
-  /* Safari 1.x */
-  -khtml-opacity: 1;
-
-  /* Good browsers */
-  opacity: 1;}
-.black:hover img { background:black;
-  /* IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-
-  /* IE 5-7 */
-  filter: alpha(opacity=50);
-
-  /* Netscape */
-  -moz-opacity: 0.5;
-
-  /* Safari 1.x */
-  -khtml-opacity: 0.5;
-
-  /* Good browsers */
-  opacity: 0.5;
-    -webkit-transition: opacity 0.7s; /* For Safari 3.1 to 6.0 */
-    transition: opacity 0.7s;}
 .home .site-content {
 
     min-height: 270px;
@@ -1754,5 +1721,11 @@ header .searcharea .bigbox-search-button {
 
 .panel:hover .plushover {  margin-top: 47px;}
 .plushover {
+    margin-top: 147px;
+}
+
+
+.panel:hover .ftplinehover { position:absolute; top:0px; left:0px;}
+.ftplinehover { position:absolute; top:-20px; left:0px;
     margin-top: 147px;
 }
