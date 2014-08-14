@@ -1851,3 +1851,6 @@ header .searcharea .bigbox-search-button {
   right: 0;
   top: 0;
 }
+
+.pinkbtn { background:#e13d7f; color:#FFFFFF}
+.bluebtn {background:#57cadd; color:#FFFFFF}
