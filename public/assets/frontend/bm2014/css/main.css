@@ -1891,7 +1891,7 @@ color: #616060;
 }
 
 .one-column .page-header,
-.one-column .account {
+.account .page-header {
     background: none;
     margin-left: 0;
     margin-top: 70px; padding-left:0px !important;
