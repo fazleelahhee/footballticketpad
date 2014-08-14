@@ -1384,7 +1384,8 @@ aside {
 .topteams .game { text-align:left; text-indent:10px; font-weight:500}
 .topteams .blockrow { background:#e7e7e7;}
 .topteams .blockrow:hover { background:#eeeeee;}
-.site-content {
+.site-content,
+.teaminfo {
     float: right;
     min-height: 540px;
     width: 920px;
@@ -1625,7 +1626,27 @@ h2 {
     vertical-align: top;
     width: 1920px;
 } 
-.club-effect { background:black;}
+.club-effect {    background: none repeat scroll 0 0 black;
+    display: inline-block;
+    vertical-align: top;}
+	
+.club-effect img.inner-banner {
+	/* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+
+  /* Netscape */
+  -moz-opacity: 0.5;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.5;
+
+  /* Good browsers */
+  opacity: 0.5;
+}	
+	
 .sidebar .hottickets {
  box-shadow: 0 0 13px #666;
   -webkit-box-shadow: 0 0 13px #666;
