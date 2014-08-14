@@ -1386,7 +1386,7 @@ aside {
 }
 .topteams .game { text-align:left; text-indent:10px; font-weight:500}
 .topteams .blockrow {
-    background: none repeat scroll 0 0 #f2f2f2;
+    background: none repeat scroll 0 0 #fff;
 }
 .topteams .blockrow:nth-child(2n) {
     background: none repeat scroll 0 0 #E5E5E5;
