@@ -41,8 +41,8 @@
       <!---------FAZLEEEEEE this area need management------------>
       <div class="teaminfo">
       		
-            <img class="club-logo" src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
-            <h1 class="page-header">{{ e($node->title) }}</h1>      
+            <img class="club-logo fadeIn" src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
+            <h1 class="page-header fadeIn">{{ e($node->title) }}</h1>      
             
             
             <div class="team-summary">
