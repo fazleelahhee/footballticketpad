@@ -1386,10 +1386,10 @@ aside {
 }
 .topteams .game { text-align:left; text-indent:10px; font-weight:500}
 html body .topteams .blockrow.even {
-    background: none repeat scroll 0 0 #2F2F2F;
+    background: none repeat scroll 0 0 #ECECEC !important;
 }
 html body .topteams .blockrow.odd {
-    background: none repeat scroll 0 0 #DE2225s !important;
+    background: none repeat scroll 0 0 #f2f2f2 !important;
 }
 html body .topteams .blockrow:hover { background:#d8edd3;}
 
