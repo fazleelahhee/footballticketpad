@@ -1678,8 +1678,8 @@ header .searcharea {
     margin-right: 10px;
     position: static;
     width: 370px;
-	box-shadow: 0 0 0px none !important;
-	  -webkit-box-shadow: 0 0 0px none !important;
+	box-shadow: 0 0 0px transparent !important;
+	-webkit-box-shadow: 0 0 0px transparent !important;
 }
 
 header .searcharea .forminput {
