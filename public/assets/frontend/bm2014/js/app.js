@@ -59,6 +59,10 @@
   //accordion for faq page
   $('#accordion').find('.accordion-toggle').click(function(){
 	  
+	  
+	  //Hide the other panels
+      $(".accordion-toggle").not($(this).next()).removeClass ('active');
+	  
 	  //Expand or collapse this panel
       $(this).addClass ('active');
 	  	
@@ -68,8 +72,7 @@
       //Hide the other panels
       $(".accordion-content").not($(this).next()).slideUp('fast');
 	  
-	   //Hide the other panels
-      $(".accordion-toggle").not($(this).next()).removeClass ('active');
+	   
 
    });
 
