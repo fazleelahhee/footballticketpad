@@ -1701,12 +1701,15 @@ header .searcharea .bigbox-search-button {
   width: 45px;
 }
 .accordion-toggle {cursor: pointer;}
-.accordion-content {display: none;}
+.accordion-content {
+    display: none;
+    padding: 0 20px 20px;
+}
 .accordion-content.default {display: block;}
 
 .accordion-toggle {   border: 1px solid #c1c1c1; font-weight:500;
 
-    color: #c1c1c1;
+    color: #878787;
     font-size: 19px;
     padding: 10px;
     position: relative;
