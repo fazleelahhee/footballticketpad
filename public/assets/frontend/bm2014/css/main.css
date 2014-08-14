@@ -1388,7 +1388,7 @@ aside {
 html body .topteams .blockrow {
     background: none repeat scroll 0 0 #f2f2f2;
 }
-html body .topteams .blockrow:nth-child(2n) {
+html body .topteams .blockrow:nth-child(even) {
     background: none repeat scroll 0 0 #E5E5E5 !important;
 }
 html body .topteams .blockrow:hover { background:#eeeeee;}
