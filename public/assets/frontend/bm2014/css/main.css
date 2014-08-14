@@ -1659,9 +1659,7 @@ p {
     font-weight: lighter;
 }
 
-.banner-home img:hover {
-    opacity: 1 !important;
-}
+
 .site-content { position: relative}
 .menu-container {  float: right;
     position: relative;}
