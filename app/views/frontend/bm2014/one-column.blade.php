@@ -5,16 +5,6 @@
 @section('content')
 
 
-<!---------sidebar------------>
-<section class="main">
-
-        <div class="row">
-            @include(Template::name('frontend.%s.sidebars.side1'))
-        </div>
-</section>
-<!---------sidebar------------>
-
-
 
 <section class="banner-home">
 
@@ -37,7 +27,7 @@
 <!---------main content------------>
 <div class="row">
 
-	 <h1 class="page-header">{{ e($node->title) }} onecolumntests</h1>   
+	 <h1 class="page-header">{{ e($node->title) }}</h1>   
 
      <div class="site-content">
                      
