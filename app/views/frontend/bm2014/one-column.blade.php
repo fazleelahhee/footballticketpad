@@ -27,12 +27,16 @@
 <!---------main content------------>
 <div class="row">
 
-	 <h1 class="page-header">{{ e($node->title) }}</h1>   
+	 <h1 class="page-header">
+         @if($node instanceof Pages)
+            {{ e($node->title) }}
+         @endif
+     </h1>
 
      <div class="site-content">
-                     
-        {{ $node->content }}          
-                            
+         @if($node instanceof Pages)
+            {{ Template::doShortCode($node->content ) }}
+         @endif
      </div>
 </div>
 <!---------main content------------>
