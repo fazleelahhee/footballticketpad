@@ -4,6 +4,13 @@
 
 <!-- ######################## Section ######################## -->
 
+@if($node instanceof Pages)
+    {{ e($node->title) }}
+@endif
+
+@if($node instanceof Pages)
+    {{ Template::doShortCode($node->content) }}
+@endif
 
 
 <!---------sidebar + search form------------>
