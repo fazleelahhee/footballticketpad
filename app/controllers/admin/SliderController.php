@@ -49,11 +49,11 @@ class SliderController extends BaseController {
      */
     public function create() {
 
-        if (Slider::get()->count() >= 1) {
-
-            Notification::error('Only one home slider can be added');
-            return Redirect::to("/admin/slider/");
-        }
+//        if (Slider::get()->count() >= 1) {
+//
+//            Notification::error('Only one home slider can be added');
+//            return Redirect::to("/admin/slider/");
+//        }
 
         $slider = new Slider();
         $slider->title = "Slider";
@@ -74,8 +74,17 @@ class SliderController extends BaseController {
 
         $slider = Slider::with('images')->findOrFail($id);
 
-        $types = ['home' => 'Home'];
-        return View::make('backend.slider.edit', compact('slider', 'types'))
+        $images = isset($slider['relations']['images'])? $slider['relations']['images'] : array();
+
+//        if(!empty($images)) {
+//            foreach($images as $image) {
+//                $i = $image;
+//                echo $i;
+//            }
+//        }
+
+        $types = ['home' => 'Home', 'other'=>'other'];
+        return View::make('backend.slider.edit', compact('slider', 'types', 'images'))
             ->with('menu', 'slider/edit');
     }
 
@@ -173,4 +182,29 @@ class SliderController extends BaseController {
         File::delete($destinationPath . $fileName);
         return Response::json('success', 200);
     }
+
+
+    public function deleteImageById() {
+        $photo =  Photo::find(Input::get('id'));
+        $filePath = $photo->path;
+        $destinationPath = public_path() . $filePath;
+        File::delete($destinationPath );
+        $photo->delete();
+        return Response::json('success', 200);
+    }
+
+    public function saveImageMeta() {
+        $photo =  Photo::find(Input::get('id'));
+        if($photo instanceof Photo) {
+            $photo->url = Input::get('url');
+            $photo->title = Input::get('title');
+            $photo->description = Input::get('description');
+            $photo->order = Input::get('order');
+            $photo->save();
+            return Response::json('success', 200);
+        }
+
+        return Response::json('not found', 404);
+    }
+
 }

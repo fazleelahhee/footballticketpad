@@ -164,6 +164,10 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
         ->where('id', '[0-9]+');
     Route::post('/slider-delete-image', array('as' => 'admin.slider.delete.image', 'uses' => 'SliderController@deleteImage'));
 
+    //slider images meta save
+    Route::post('/slider/save/image-meta', array('as'=> 'admin.slider.save.imagemeta', 'uses'=>'SliderController@saveImageMeta'));
+    Route::post('/slider/delete/image', array('as'=> 'admin.slider.delete.image.by.id', 'uses'=>'SliderController@deleteImageById'));
+
     // menu-managment
     Route::resource('menu', 'MenuController');
     Route::post('menu/save', array('as' => 'admin.menu.save', 'uses' => 'MenuController@save'));

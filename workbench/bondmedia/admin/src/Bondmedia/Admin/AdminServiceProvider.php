@@ -1,5 +1,6 @@
 <?php namespace Bondmedia\Admin;
 
+use Bondmedia\Admin\ShortCode\BMSlider;
 use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider {
@@ -36,6 +37,11 @@ class AdminServiceProvider extends ServiceProvider {
             //$loader->alias('Template', 'Bondmedia\Admin\Facades\Template');
             $loader->alias('Assets', 'Bondmedia\Admin\Facades\AssetCache');
             $loader->alias('BMAdmin', 'Bondmedia\Admin\Facades\BondAdmin');
+        });
+
+        $this->app->bind('bm-slider', function($app)
+        {
+            return new BMSlider();
         });
 	}
 

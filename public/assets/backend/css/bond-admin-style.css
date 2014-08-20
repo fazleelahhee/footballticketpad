@@ -7,3 +7,7 @@
 
 #myTabContent {min-height: 300px;}
 #publish-date {width: 200px;}
+
+.image-container {margin-top: 25px;}
+.slider-image {padding-right: 10px; padding-bottom: 10px; float: left; display: block; width: 160px; height: 160; border: 1px solid #0000ff}
+.slider-image img {margin-left: 5px; margin-top:5px; max-width: 150px; max-height: 150px;}

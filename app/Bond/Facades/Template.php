@@ -60,9 +60,14 @@ class Template extends Facade {
         if(preg_match_all('/{{(.*?)}}/',$content, $matches)) {
             $i= 0;
             foreach($matches[1] as $match) {
+                $match = strip_tags($match);
                 $code = explode(' ',$match);
                 $object = App::make($code[0]);
                 if(method_exists($object, 'render')) {
+                    if(isset($code[1]) && $code[1] != '' && method_exists($object, 'setParams')) {
+                        $option = str_replace(array($code[0],','), ['','&'], $match);
+                        $object->setParams($option);
+                    }
                     $content = str_replace($matches[0][$i], $object->render(),  $content);
                 }
 

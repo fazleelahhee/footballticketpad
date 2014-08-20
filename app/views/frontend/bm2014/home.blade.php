@@ -8,9 +8,7 @@
     {{ e($node->title) }}
 @endif
 
-@if($node instanceof Pages)
-    {{ Template::doShortCode($node->content) }}
-@endif
+
 
 
 <!---------sidebar + search form------------>
@@ -39,9 +37,9 @@
 
 <!---------bannner------------>
 <section class="banner-home">
-     <a href="/">
-        <img src="{{ Assets::Path('images/ronaldo.jpg') }}" alt="test" />
-     </a>
+    @if($node instanceof Pages)
+    {{ Template::doShortCode($node->content) }}
+    @endif
 </section>
 <!---------bannner------------>
 
