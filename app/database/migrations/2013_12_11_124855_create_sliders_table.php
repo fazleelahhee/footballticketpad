@@ -15,7 +15,7 @@ class CreateSlidersTable extends Migration {
 
             $table->increments('id');
             $table->string('title');
-            $table->enum('type', ['home']);
+            $table->enum('type', ['slider', 'block']);
             $table->timestamps();
         });
     }

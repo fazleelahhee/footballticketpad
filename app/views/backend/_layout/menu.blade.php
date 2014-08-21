@@ -1,3 +1,7 @@
+@if (!isset($type))
+    {{$type=''}}
+@endif
+
 <nav>
     <ul>
         <li class="{{ $menu == 'dashboard'?'active': '' }}" >
@@ -138,22 +142,44 @@
         </li>
         @yield('nev_menu_after_gallery')
 
-        <li class="{{ in_array($menu, array('slider', 'slider/new', 'slider/edit'))? 'active':'' }}">
+        <li class="{{ $type != 'block' && in_array($menu, array('slider', 'slider/new', 'slider/edit'))? 'active':'' }}">
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Slider</span></a>
             <ul>
-                <li class="{{ $menu == 'slider'?'active': '' }}">
+                <li class="{{ $type != 'block' && $menu == 'slider'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider">Slider</a>
                 </li>
 
 
                 @if($menu == 'gallery/edit')
-                <li class="{{ $menu == 'slider/edit'?'active': '' }}" >
+                <li class="{{ $type != 'block' &&$menu == 'slider/edit'?'active': '' }}" >
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider/edit">Edit</a>
                 </li>
 
                 @else
-                <li class="{{ $menu == 'slider/new'?'active': '' }}" >
+                <li class="{{ $type != 'block' &&$menu == 'slider/new'?'active': '' }}" >
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider/create">Add New</a>
+                </li>
+                @endif
+
+            </ul>
+        </li>
+
+        <li class="{{ $type == 'block' && in_array($menu, array('slider', 'slider/new', 'slider/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">BlockPress</span></a>
+            <ul>
+                <li class="{{ $type == 'block' && $menu == 'slider'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider?type=block">Block</a>
+                </li>
+
+
+                @if($menu == 'gallery/edit')
+                <li class="{{ $type == 'block' && $menu == 'slider/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider/edit?type=block">Edit Block</a>
+                </li>
+
+                @else
+                <li class="{{ $type == 'block' && $menu == 'slider/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider/create?type=block">New Block</a>
                 </li>
                 @endif
 

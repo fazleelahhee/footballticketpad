@@ -10,8 +10,8 @@
         <div class="panel-body">
             <div class="pull-left">
                 <div class="btn-toolbar">
-                    <a href="{{ URL::route('admin.slider.create') }}" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-plus"></span>&nbsp;New Slider
+                    <a href="{{ URL::route('admin.slider.create') }}?type={{$type}}" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp;New {{ ucfirst($type) }}
                     </a>
                 </div>
             </div>
@@ -24,6 +24,7 @@
                     <thead>
                     <tr>
                         <th>Title</th>
+                        <th>ShortCode</th>
                         <th>Type</th>
                         <th>Action</th>
                     </tr>
@@ -32,6 +33,7 @@
                     @foreach( $sliders as $slider )
                     <tr>
                         <td>{{ $slider->title }}</td>
+                        <td>{{ "&#123;&#123;bm-{$type} id={$slider->id}&#125;&#125;" }}</td>
                         <td>{{ $slider->type }}</td>
                         <td>                         
                             <div class="btn-group">
@@ -41,13 +43,13 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ URL::route('admin.slider.edit', array($slider->id)) }}">
+                                        <a href="{{ URL::route('admin.slider.edit', array($slider->id)) }}?type={{$type}}">
                                             <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Slider
                                         </a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="{{ URL::route('admin.slider.delete', array($slider->id)) }}">
+                                        <a href="{{ URL::route('admin.slider.delete', array($slider->id)) }}?type={{$type}}">
                                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete Slider
                                         </a>
                                     </li>

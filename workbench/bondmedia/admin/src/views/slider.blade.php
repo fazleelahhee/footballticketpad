@@ -1,22 +1,22 @@
+<section class="banner-home">
 @if(!empty($images))
-
-<div class="flexslider">
-    <ul class="slides">
-        @foreach($images as $image)
-        <li class="slider-image slider-image-{{$image->id}}"
-            data-id="{{$image->id}}"
-            data-title="{{addslashes($image->title)}}"
-            data-url="{{$image->url}}"
-            data-description="{{addslashes($image->description)}}"
-            data-order="{{$image->order}}"
-            data-path="{{ $image->path }}">
-            <a href="{{$image->url}}"><img src="{{ $image->path }}" /></a>
-        </li>
-        @endforeach
-    </ul>
+    <div class="flexslider">
+        <ul class="slides">
+            @foreach($images as $image)
+            <li class="slider-image slider-image-{{$image->id}}"
+                data-id="{{$image->id}}"
+                data-title="{{addslashes($image->title)}}"
+                data-url="{{$image->url}}"
+                data-description="{{addslashes($image->description)}}"
+                data-order="{{$image->order}}"
+                data-path="{{ $image->path }}">
+                <a href="{{$image->url}}"><img src="{{ $image->path }}" /></a>
+            </li>
+            @endforeach
+        </ul>
     </div>
 @endif
-
+</section>
 {{
     Assets::setStyles(
     [

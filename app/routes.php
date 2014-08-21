@@ -150,7 +150,6 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
 
     // slider
     Route::get('/slider', array('as' => 'admin.slider', function () {
-
         return View::make('backend/slider/index');
     }));
 

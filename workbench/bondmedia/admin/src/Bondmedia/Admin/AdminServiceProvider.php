@@ -1,5 +1,6 @@
 <?php namespace Bondmedia\Admin;
 
+use Bondmedia\Admin\ShortCode\Block;
 use Bondmedia\Admin\ShortCode\BMSlider;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,6 +43,11 @@ class AdminServiceProvider extends ServiceProvider {
         $this->app->bind('bm-slider', function($app)
         {
             return new BMSlider();
+        });
+
+        $this->app->bind('bm-block', function($app)
+        {
+            return new Block();
         });
 	}
 

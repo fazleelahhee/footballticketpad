@@ -7,7 +7,7 @@
 <div class="container">
     <div class="page-header">
         <h3>
-            Slider Update
+            {{ucfirst($type)}} Update
             <div class="pull-right">
                 {{ HTML::link('/admin/slider','Back', array('class'=>'btn btn-primary')) }}
             </div>
@@ -46,7 +46,7 @@
     <br>
 
     <!-- Type -->
-    <div class="control-group {{ $errors->has('type') ? 'error' : '' }}">
+    <div class="control-group {{ $errors->has('type') ? 'error' : '' }}" style="display: none">
         <label class="control-label" for="title">Type</label>
 
         <div class="controls">
