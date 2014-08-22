@@ -1316,17 +1316,30 @@ aside {
     width: 100%;
 }
 
+.home .banner-home {
+    background: black;
+    float: left;
+    height: 655px;
+    margin-bottom: 20px;
+    margin-top: -135px;
+    overflow: hidden;
+    position: relative !important;
+    width: 100%;
+}
 .banner-home {
-     float: left;
+    float: left;
     margin-bottom: 20px;
     margin-top: -131px;
     width: 100%;
 }
+
 .two-column-left .banner-home {
     margin-bottom: 0px;
 
 }
-
+.flexslider .slides {
+    background: none repeat scroll 0 0 black !important;
+}
 .overlay {width: 100%; text-align:center}	
 .blockrow {
     clear: both;
@@ -1503,7 +1516,7 @@ footer .full .support-text {
     height: 46px;
     position: absolute;
     right: 130px;
-    top: 200px;
+    top: 200px; z-index: 99;
 	 border-radius:20px;
 	-webkit-border-radius: 20px;
 	  box-shadow: 0 0 20px #000;
@@ -2199,3 +2212,26 @@ html body a {color: #e13d7f}
     padding: 10px !important;}
 
 .field { width: 100%; margin-bottom: 20px; display: block}
+
+body .flexslider .slides img {
+    display: block;
+    min-height: 655px !important;
+    width: 1920px !important;
+}
+
+.flexslider {   border: medium none !important;
+    left: 50%; background: black;
+    margin-left: -960px !important;
+    position: absolute !important;
+    top: 0;}
+
+.flex-control-nav {
+    bottom: 20px !important;
+    z-index: 9999 !important;
+
+    padding-left: 300px;
+
+}
+
+.flex-control-paging li a { background: white !important}
+.flex-control-paging li a.flex-active { border: 1px solid white; background: none !important}
