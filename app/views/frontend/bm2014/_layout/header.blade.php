@@ -33,10 +33,10 @@
         
         
 
-        <a href="/"><span class="btn loginbtn">LOGIN</span></a>
+        <a href="/login"><span class="btn loginbtn">LOGIN</span></a>
         
        
-        <a href="/"><span class="btn myaccount">MY ACCOUNT</span></a> 
+        <a href="/my-account"><span class="btn myaccount">MY ACCOUNT</span></a>
         
         
         
