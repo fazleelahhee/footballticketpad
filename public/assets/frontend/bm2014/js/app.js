@@ -75,11 +75,20 @@
 	});
 
   	//fade in animation
-    $( ".team-summary" ).delay(1000).fadeIn(4000);
-	$( ".fadeIn" ).delay(500).fadeIn(2000);
+
 	
 	//odd even
 	$ ('.blockrow:even').addClass ('even');
     $ ('.blockrow:odd').addClass ('odd');
+
+
+    $(".collapsible_header").click(function() {
+
+        $(this).parent().children(".collapsible_content").slideToggle(500);
+        $(this).parent().children(".collapsible_content").toggleClass('active');
+
+
+    });
+
 
 })(jQuery, this);

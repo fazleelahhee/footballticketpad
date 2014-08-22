@@ -9,7 +9,11 @@
         "three-column":"three-column.blade.php",
 		"faq":"faq.blade.php",
 		"team":"team.blade.php",
-		"account":"account.blade.php"
+		"account":"account.blade.php",
+        "addresses":"addresses.blade.php",
+        "purchases":"purchases.blade.php",
+        "sales":"sales.blade.php",
+        "account information":"account-information.blade.php"
     },
     "screenshort": ""
 }
