@@ -9,7 +9,7 @@ return array(
     */
     'cache' => false,
 
-    'cache_time' => 5,
+    'cache_time' => 0,
     /*
     |--------------------------------------------------------------------------
     | Modules config
