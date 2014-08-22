@@ -132,6 +132,7 @@ return array(
         'Bond\Providers\FeederServiceProvider',
         'Bond\Providers\LogViewerServiceProvider',
         'Bond\Providers\TemplateServiceProvider',
+        'Fbf\LaravelSimpleFaqs\LaravelSimpleFaqsServiceProvider',
         'Bondmedia\Admin\AdminServiceProvider',
         'Bondmedia\Footballticket\FootballticketServiceProvider'
     ),

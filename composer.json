@@ -10,7 +10,8 @@
         "intervention/image": "2.*",
         "davejamesmiller/laravel-breadcrumbs": "dev-master",
         "edvinaskrucas/notification": "1.*",
-        "intervention/image": "2.*"
+        "intervention/image": "2.*",
+        "fbf/laravel-simple-faqs": "dev-master"
 	},
     "autoload": {
         "classmap": [

@@ -182,7 +182,7 @@ class SliderController extends BaseController {
 
             $slider = Slider::findOrFail($id);
             $image = new Photo;
-            $image->file_name = "slider_" . $fileName;
+            $image->file_name = $imageFileName . $fileName;
             $image->file_size = $fileSize;
             $image->title = explode(".", $fileName)[0];
             $image->path = $this->imgDir . $imageFileName;
