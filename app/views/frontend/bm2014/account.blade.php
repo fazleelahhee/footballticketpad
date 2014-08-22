@@ -20,7 +20,21 @@
     
     
     <div class="second-navs">
-		<div class="row">x</div>
+		<div class="row">
+
+
+            <ul>
+
+                <li class="active"> <a href="#">Listing</a>  </li>
+                <li> <a href="#">Purchases</a>  </li>
+                <li> <a href="#">Sales</a>  </li>
+                <li> <a href="#">Account Information</a>  </li>
+                <li> <a href="#">Addresses</a>  </li>
+
+            </ul>
+
+
+		</div>
 	</div>
 
     
@@ -35,7 +49,94 @@
 
      <div class="site-content">
                      
-        {{ $node->content }}          
+        {{ $node->content }}
+
+
+         <!---------faz shortcode------------>
+
+
+            <h2>Tickets on sale</h2>
+
+            <!---------toolbar------------>
+            <div class="row toolbar">
+
+                <span class="filter-label">Filter by</span>
+
+                <input type="text" placeholder="Filter by event" class="quickfilter">
+
+
+                <div class="pull-right">
+
+                    <a href="#" class="disabled">Reactivate listings</a>
+                    <a href="#">Reactivate listings</a>
+
+                    <a href="#"><span class="btn blue-btn">Reactivate listings</span> </a>
+
+                </div>
+
+
+
+                <span class="ftp-line">
+                    <span class="greenline"></span>
+                    <span class="yellowline"></span>
+                    <span class="pinkline"></span>
+                    <span class="blueline"></span>
+                </span>
+
+            </div>
+            <!---------toolbar------------>
+
+
+
+
+
+
+
+
+             <!---------listings----------->
+
+                 <div class="row listing">
+
+                         <div class="collapsible_header" >
+
+                            <div class="thumb-crop pull-left">
+                             <img src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+                            </div>
+
+                             <div class="pull-left gamedetail">
+
+                                 <span class="game">
+                    	            Barcelona vs Real Madrid
+                                 </span>
+
+                                 <span class="game-info pull-left  clearboth">Saturday, 15 August 2014, 3:00pm. Nou Camp, Barcelona, Spain</span>
+
+                             </div>
+
+                             <div class="pull-right">
+
+                                 <span data-tooltip aria-haspopup="true" class="has-tip" title="Blocked listing">1</span>
+
+                             </div>
+
+
+                         </div>
+
+
+                        <div class="collapsible_content" style="display: none" >
+
+                                
+
+                        </div>
+
+                 </div>
+
+              <!---------listings----------->
+
+
+
+         <!---------faz shortcode------------>
+
                             
      </div>
 </div>
