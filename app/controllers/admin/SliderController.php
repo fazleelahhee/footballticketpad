@@ -35,9 +35,17 @@ class SliderController extends BaseController {
      * @return Response
      */
     public function index() {
-
-        $sliders = Slider::orderBy('created_at', 'DESC')
+        $type = 'slider';
+        $params = Input::all();
+        if(isset($params['type']) && $params['type'] == 'block') {
+            $type = "block";
+        } else {
+            $type = "slider";
+        }
+        $sliders = Slider::where('type', '=', $type)
+            ->orderBy('created_at', 'DESC')
             ->paginate(15);
+        View::share('type', $type);
         return View::make('backend.slider.index', compact('sliders'))
             ->with('menu', 'slider');
     }
@@ -49,19 +57,25 @@ class SliderController extends BaseController {
      */
     public function create() {
 
-        if (Slider::get()->count() >= 1) {
+//        if (Slider::get()->count() >= 1) {
+//
+//            Notification::error('Only one home slider can be added');
+//            return Redirect::to("/admin/slider/");
+//        }
+        $params = Input::all();
+        $slider = new Slider();
 
-            Notification::error('Only one home slider can be added');
-            return Redirect::to("/admin/slider/");
+        if(isset($params['type']) && $params['type'] == 'block') {
+            $slider->title = "Block";
+        } else {
+            $slider->title = "Slider";
         }
 
-        $slider = new Slider();
-        $slider->title = "Slider";
         $slider->save();
         $id = $slider->id;
-
+        $type = strtolower($slider->title);
         Notification::success('Slider was successfully added');
-        return Redirect::to("/admin/slider/" . $id . "/edit");
+        return Redirect::to("/admin/slider/" . $id . "/edit?type={$type}");
     }
 
     /**
@@ -71,11 +85,28 @@ class SliderController extends BaseController {
      * @return Response
      */
     public function edit($id) {
+        $params = Input::all();
 
         $slider = Slider::with('images')->findOrFail($id);
+        $images = isset($slider['relations']['images'])? $slider['relations']['images'] : array();
 
-        $types = ['home' => 'Home'];
-        return View::make('backend.slider.edit', compact('slider', 'types'))
+//        if(!empty($images)) {
+//            foreach($images as $image) {
+//                $i = $image;
+//                echo $i;
+//            }
+//        }
+
+        if(isset($params['type']) && $params['type'] == 'block') {
+            $types = ['block' => 'block'];
+        } else {
+            $types = ['slider' => 'slider'];
+            $params['type'] = 'slider';
+        }
+
+        View::share('type', $params['type']);
+
+        return View::make('backend.slider.edit', compact('slider', 'types', 'images'))
             ->with('menu', 'slider/edit');
     }
 
@@ -86,14 +117,12 @@ class SliderController extends BaseController {
      * @return Response
      */
     public function update($id) {
-
         $slider = Slider::findOrFail($id);
         $slider->title = Input::get('title');
         $slider->type = Input::get('type');
-
         $slider->save();
         Notification::success('Slider was successfully updated');
-        return Redirect::route('admin.slider.index');
+        return Redirect::to("/admin/slider?type={$slider->type}");
     }
 
     /**
@@ -144,19 +173,19 @@ class SliderController extends BaseController {
         $fileSize = $file->getClientSize();
 
         $upload_success = Input::file('file')->move($destinationPath, $fileName);
-
+        chmod($destinationPath.$fileName, 0755);
         if ($upload_success) {
-
+            $imageFileName = uniqid()."_" . strtolower($fileName);
             // resizing an uploaded file
-            Image::make($destinationPath . $fileName)->resize($this->width, $this->height)->save($destinationPath . "slider_" . $fileName);
-            File::delete($destinationPath . $fileName);
-
+            //Image::make($destinationPath . $fileName)->save($destinationPath . $imageFileName );
+            //File::delete($destinationPath . $fileName);
+            rename($destinationPath . $fileName,$destinationPath . $imageFileName );
             $slider = Slider::findOrFail($id);
             $image = new Photo;
-            $image->file_name = "slider_" . $fileName;
+            $image->file_name = $imageFileName . $fileName;
             $image->file_size = $fileSize;
             $image->title = explode(".", $fileName)[0];
-            $image->path = $this->imgDir . 'slider_' . $fileName;
+            $image->path = $this->imgDir . $imageFileName;
             $slider->images()->save($image);
 
             return Response::json('success', 200);
@@ -173,4 +202,30 @@ class SliderController extends BaseController {
         File::delete($destinationPath . $fileName);
         return Response::json('success', 200);
     }
+
+
+    public function deleteImageById() {
+        $photo =  Photo::find(Input::get('id'));
+        $filePath = $photo->path;
+        $destinationPath = public_path() . $filePath;
+        File::delete($destinationPath );
+        $photo->delete();
+        return Response::json('success', 200);
+    }
+
+    public function saveImageMeta() {
+        $photo =  Photo::find(Input::get('id'));
+        if($photo instanceof Photo) {
+            $photo->url = Input::get('url');
+            $photo->title = Input::get('title');
+            $photo->description = Input::get('description');
+            $photo->order = Input::get('order');
+            $photo->save();
+            return Response::json('success', 200);
+        }
+
+        return Response::json('not found', 404);
+    }
+
 }
+
