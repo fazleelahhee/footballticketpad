@@ -28,16 +28,18 @@
 <!---------main content------------>
 <div class="row">
 
-    <h1 class="page-header">
-        @if($node instanceof Pages)
-        {{ e($node->title) }}
-        @endif
-    </h1>
+     <span class="page-header buy-detail">
+
+         <span class="gamename"> <strong>Chelsea</strong> vs  <strong>Manchester United</strong> Tickets</span>
+         <span class="gamedetail">Saturday, 16th August 2014, 3:00pm. Turf moor - Burnley FC, Burnley, UK</span>
+
+
+
+     </span>
+
+
 
     <div class="site-content">
-        @if($node instanceof Pages)
-        {{ Template::doShortCode($node->content ) }}
-        @endif
 
 
 
