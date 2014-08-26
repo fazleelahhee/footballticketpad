@@ -46,7 +46,9 @@
 
          <div class="columns six nopadding">
 
-
+             @if($node instanceof Pages)
+             {{ Template::doShortCode($node->content ) }}
+             @endif
 
          </div>
 

@@ -1940,6 +1940,7 @@ table.responsive th {  background: none repeat scroll 0 0 white !important;
 .responsive tr td { 
 -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
     transition: background 0.7s;
+    vertical-align: top;
 }
 .responsive tr:hover td { background:#d8edd3;
 -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
@@ -1949,7 +1950,7 @@ transition: background 0.7s;
 -webkit-transition: background 0.7s; /* For Safari 3.1 to 6.0 */
 transition: background 0.7s;}
 
-
+.buy .site-content,
 .sell1 .site-content,
 .sell2 .site-content,
 .sell3 .site-content,
@@ -1999,7 +2000,7 @@ transition: background 0.7s;}
 .toolbar {
     background: none repeat scroll 0 0 #f2fbf0;
     border: 1px solid #efefef;
-    padding: 12px 12px 0;
+    padding: 12px;
     position: relative;
     vertical-align: top;
 }
@@ -2187,6 +2188,7 @@ html body a {color: #e13d7f}
 .addresstable { width: auto; min-width: 50%}
 
 
+.buy .page-header,
 .search-results .page-header,
 .sell1 .page-header,
 .sell2 .page-header,
@@ -2264,7 +2266,11 @@ body .flexslider .slides img {
     background: none repeat scroll 0 0 #80c36f;
     color: #ffffff;
 }
-
+.yellowbtn {
+    background: none repeat scroll 0 0 #ffc323;
+    color: #ffffff; width: auto !important;
+}
+.yellowbtn:hover {color: #ffffff !important; }
 
 /**/
 
@@ -2384,4 +2390,99 @@ textarea {
     clear: none;
     float: left;
     margin-left: 15px;
+}
+
+.othervents {
+    list-style: none outside none;
+    width: 100%; margin-top: 20px;
+}
+
+.othervents li {
+    background: url("../images/list.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    width: 100%;
+}
+
+.responsive small {
+    clear: both;
+    color: #e13d7f;
+    display: inline-block;
+    width: 100%;
+}
+
+.toolbar select {
+    border: 1px solid #ccc;
+    padding: 9px 21px;
+    width: auto;
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 12px !important;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 12px  !important;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 12px  !important;
+}
+.gamedetail {
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.buy-detail { color: #333;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 100;
+    margin: 20px 0;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin-left: 0;
+    margin-top: 70px;
+    padding-left: 0 !important;
+    color: white;
+    display: block;
+    width: 100% !important;}
+
+.gamename {  color: white;
+    display: block;
+    width: 100%;}
+
+.buy-detail .bluebtn {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 36px;
+    margin-top: 20px;
+    padding: 2px 30px;
+}
+
+.reveal-modal {  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 12px !important;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 12px  !important;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 12px  !important;}
+
+
+.collapsible_header .gamedetail {
+    margin-top: 0;
+    width: auto;
+}
+.register-icon, .login-icon {
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    margin-bottom: 20px !important;
+    padding-bottom: 10px;
+    padding-left: 37px;
+    width: 100%;
+}
+.register-icon { background: url("../images/register.png") no-repeat 0 0}
+.login-icon { background: url("../images/key.png") no-repeat 0 0}
+
+.search-results .page-header {
+    width: 100% !important;
 }
