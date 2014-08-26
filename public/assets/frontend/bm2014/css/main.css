@@ -2356,7 +2356,7 @@ textarea {
     line-height: 31px;
     padding: 0 35px;
 }
-.home .searcharea {display: none}
+.home header .searcharea {display: none}
 .search-results-list li a { font-weight: 500;}
 
 .subtext {

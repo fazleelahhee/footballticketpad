@@ -35,8 +35,8 @@
 <!---------sidebar + search form------------>
 
 
-
 {{ Template::doShortCode("bm-slider id=2", true) }}
+
 
 
 <div class="row">
