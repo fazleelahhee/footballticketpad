@@ -37,7 +37,7 @@ class FaqRepository extends Validator implements BaseRepositoryInterface {
 
     public function all() {
 
-        return $this->news->orderBy('created_at', 'DESC')
+        return $this->news->orderBy('order', 'ASC')
             ->where('is_published', 1)
             ->get();
     }
@@ -50,10 +50,10 @@ class FaqRepository extends Validator implements BaseRepositoryInterface {
     public function paginate($perPage = null, $all=false) {
 
         if($all)
-            return $this->news->orderBy('created_at', 'DESC')
+            return $this->news->orderBy('order', 'ASC')
             ->paginate(($perPage) ? $perPage : $this->perPage);
 
-        return $this->news->orderBy('created_at', 'DESC')
+        return $this->news->orderBy('order', 'ASC')
             ->where('is_published', 1)
             ->paginate(($perPage) ? $perPage : $this->perPage);
     }
