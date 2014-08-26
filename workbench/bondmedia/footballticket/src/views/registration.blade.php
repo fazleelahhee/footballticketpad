@@ -1,102 +1,105 @@
 {{ Form::open(array('url' => $url, 'method' => 'post', 'id'=>'registration-form')) }}
-    <div class="row">
-        <div class="large-8 columns group-header">
-            Personal Details
-        </div>
-    </div>
-    <div class="row">
-        <div class="large-4 columns">
-            <label>
-                {{ Form::text('first_name', '', ['class'=>'input first-name', 'placeholder' => 'First Name' ]) }}
-            </label>
-        </div>
-        <div class="large-4 columns">
-            <label>
-                {{ Form::text('last_name', '', ['class'=>'input last-name', 'placeholder' => 'Last Name' ]) }}
-            </label>
-        </div>
+
+
+
+
+    <span class="label-seperator">Personal details</span>
+
+
+    <div class="columns six">
+        <label>
+            {{ Form::text('first_name', '', ['class'=>'input first-name', 'placeholder' => 'First Name' ]) }}
+        </label>
     </div>
 
-    <div class="row">
-        <div class="large-8 columns group-header">
-            Email Address & Contact Info
-        </div>
+    <div class="columns six">
+        <label>
+            {{ Form::text('last_name', '', ['class'=>'input last-name', 'placeholder' => 'Last Name' ]) }}
+        </label>
     </div>
 
-    <div class="row">
-        <div class="large-4 columns">
-            <label>
-                {{ Form::email('email', '', ['class'=>'input email', 'placeholder' => 'email' ]) }}
-            </label>
-        </div>
-        <div class="large-4 columns">
-            <label>
-                {{ Form::email('email_confirmation', '', ['class'=>'input confirmEmail', 'placeholder' => 'Confirm Email' ]) }}
-            </label>
-        </div>
+
+
+    <span class="label-seperator">Email address  &amp; contact info</span>
+
+
+    <div class="columns six">
+        <label>
+            {{ Form::email('email', '', ['class'=>'input email', 'placeholder' => 'email' ]) }}
+        </label>
     </div>
 
-    <div class="row">
-        <div class="large-4 columns">
-            <label>
-                {{ Form::select('country_code', ['0044' => 'GB(+44)', '0088' => 'BD(+88)'], '0044', ['class'=>'input country-code', 'placeholder' => 'Country Code' ] ) }}
-            </label>
-        </div>
-        <div class="large-4 columns">
-            <label>
-                {{ Form::text('contact_no', '', ['class'=>'input contact-no', 'placeholder' => 'Mobile Number' ]) }}
-            </label>
-        </div>
+    <div class="columns six">
+        <label>
+            {{ Form::email('email_confirmation', '', ['class'=>'input confirmEmail', 'placeholder' => 'Confirm Email' ]) }}
+        </label>
     </div>
 
-    <div class="row">
-        <div class="large-4 columns">
-            <label>
-                {{ Form::checkbox('newsletters', '1') }}
-                Subscribe to newsletter offering promotions and discount codes
-            </label>
-        </div>
+
+    <div class="columns six">
+        <label>
+            {{ Form::select('country_code', ['0044' => 'GB(+44)', '0088' => 'BD(+88)'], '0044', ['class'=>'input country-code', 'placeholder' => 'Country Code' ] ) }}
+        </label>
+
     </div>
 
-    <div class="row">
-        <div class="large-8 columns group-header">
-            Security
-        </div>
+    <div class="columns six">
+        <label>
+            {{ Form::text('contact_no', '', ['class'=>'input contact-no', 'placeholder' => 'Mobile Number' ]) }}
+        </label>
     </div>
 
-    <div class="row">
-        <div class="large-4 columns">
-            <label>
-                Password
-                {{ Form::password('password', '') }}
-            </label>
-        </div>
-        <div class="large-4 columns">
-            <label>
-                Confirm Password
-                {{ Form::password('password_confirmation', '') }}
-            </label>
-        </div>
+
+
+
+    <div class="columns six">
+        <label>
+            {{ Form::checkbox('newsletters', '1') }}
+            Subscribe to newsletter offering promotions and discount codes
+        </label>
+
     </div>
 
-    <div class="row">
-        <div class="large-4 columns">
+    <div class="columns six">
 
-        </div>
-        <div class="large-4 columns">
-            <div class="row">
-                <div class="large-2 columns">
-                    <label>
-                        {{ Form::checkbox('terms_n_conditions', '1') }}
-                        I agree to terms & conditions
-                    </label>
-                </div>
-                <div class="large-2 columns">
-                    {{ Form::submit('Register', ['class' => 'button [radius round secondary alert]']) }}
-                </div>
-            </div>
-        </div>
     </div>
+
+
+
+    <span class="label-seperator">Security</span>
+
+    <div class="columns six">
+        <label>
+            <span class="mbtm"> Password</span>
+            {{ Form::password('password', '') }}
+        </label>
+
+    </div>
+
+    <div class="columns six">
+        <label>
+            <span class="mbtm">Confirm Password</span>
+            {{ Form::password('password_confirmation', '') }}
+        </label>
+    </div>
+
+
+
+    <div class="columns six">
+        <label>
+            {{ Form::checkbox('terms_n_conditions', '1') }}
+            I agree to terms & conditions
+        </label>
+
+    </div>
+
+    <div class="columns six">
+        {{ Form::submit('Register', ['class' => 'btn pinkbtn pull-right clearboth']) }}
+    </div>
+
+
+
+
 {{ Form::close() }}
 
 {{

@@ -2322,6 +2322,7 @@ textarea {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 20px;
+    margin-top: 20px;
     padding-bottom: 10px;
     width: 100%;
 }
@@ -2485,4 +2486,96 @@ textarea {
 
 .search-results .page-header {
     width: 100% !important;
+}
+
+.step-process li {
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    padding-bottom: 19px;
+    text-align: center;
+    width: 411px;
+}
+.step-process li.active .number {background: url("../images/step.jpg") no-repeat scroll left top rgba(0, 0, 0, 0);}
+.step-process li .number { background: url("../images/step.jpg") no-repeat scroll right top rgba(0, 0, 0, 0);
+    display: inline-block;
+    font-size: 20px;
+    height: 54px;
+    padding-top: 11px;
+    text-align: center;
+    vertical-align: middle;
+    width: 55px;
+    color: #c3c3c3;}
+.step-process li { background: url("../images/arrowright.png") no-repeat scroll right 10px rgba(0, 0, 0, 0);}
+.step-process {
+    display: inline-block;
+    padding-top: 10px;
+}
+.step-process li.active .selltitle, .step-process li.active .number {color: #57cadd}
+.selltitle {
+    font-size: 21px;
+    font-weight: 500;
+    margin-left: 12px; color: #c3c3c3;
+}
+.step-process li.active { border-bottom: 1px solid #57cadd}
+
+
+h3.sell-divider {
+    border-bottom: medium none;
+    border-left: 4px solid #9fe0eb;
+    font-weight: 500;
+    margin-bottom: 20px !important;
+    padding: 17px; background: #e8f6fa;
+
+}
+
+.row.selldivider {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.selldivider .label {
+    color: #2ba6cb;
+    display: inline-block;
+    float: left;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 1px 4px 2px; background: none;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    width: 230px;
+}
+
+.columns.six {
+    margin-bottom: 11px;
+}
+
+.mbtm {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.error label, label.error {
+    bottom: -3px;
+    color: #c60f13;
+    font-size: 10px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 8;
+}
+
+
+select.input {
+    background-color: #f6f6f6 !important;
+    border-radius: 22px !important;
+    font-size: 14px !important;
+    height: 42px !important;
+    margin: 0 0 12px !important;
+    padding: 8px 27px !important;
+    border: 1px solid #ccc;
 }
