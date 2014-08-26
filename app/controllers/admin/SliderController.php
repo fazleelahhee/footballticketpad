@@ -173,13 +173,13 @@ class SliderController extends BaseController {
         $fileSize = $file->getClientSize();
 
         $upload_success = Input::file('file')->move($destinationPath, $fileName);
-
+        chmod($destinationPath.$fileName, 0755);
         if ($upload_success) {
-            $imageFileName = uniqid()."_" . $fileName;
+            $imageFileName = uniqid()."_" . strtolower($fileName);
             // resizing an uploaded file
-            Image::make($destinationPath . $fileName)->save($destinationPath . $imageFileName );
-            File::delete($destinationPath . $fileName);
-
+            //Image::make($destinationPath . $fileName)->save($destinationPath . $imageFileName );
+            //File::delete($destinationPath . $fileName);
+            rename($destinationPath . $fileName,$destinationPath . $imageFileName );
             $slider = Slider::findOrFail($id);
             $image = new Photo;
             $image->file_name = $imageFileName . $fileName;
@@ -228,3 +228,4 @@ class SliderController extends BaseController {
     }
 
 }
+
