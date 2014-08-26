@@ -61,9 +61,12 @@
     </div>
 
     <div class="columns six">
-        Security
+
     </div>
 
+
+
+    <span class="label-seperator">Security</span>
 
     <div class="columns six">
         <label>
