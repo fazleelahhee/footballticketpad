@@ -2535,17 +2535,24 @@ h3.sell-divider {
     width: 100%;
 }
 
+.blueprice {
+    color: #2ba6cb;
+    font-size: 30px;
+}
+
 .selldivider .label {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #2ba6cb;
     display: inline-block;
     float: left;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1;
-    padding: 1px 4px 2px; background: none;
+    padding: 1px 4px 2px;
     position: relative;
     text-align: left;
     text-decoration: none;
+    white-space: pre-line;
     width: 230px;
 }
 
@@ -2578,4 +2585,68 @@ select.input {
     margin: 0 0 12px !important;
     padding: 8px 27px !important;
     border: 1px solid #ccc;
+
 }
+.fields small {
+    clear: both;
+    color: grey;
+    float: left;
+    font-size: 80%;
+    font-weight: 500;
+    line-height: inherit;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.fields select {    background-color: #f6f6f6 !important;
+    border-radius: 22px !important;
+    font-size: 14px !important;
+    height: 42px !important;
+    margin: 0 0 12px !important;
+    padding: 8px 27px !important;
+    border: 1px solid #ccc; width: auto}
+.nomargin { margin-left: 0px !important; margin-right: 0px !important}
+
+.fields {
+    float: left;
+    width: 990px;
+}
+.inline-input.input {
+    display: inline-block;
+    float: none !important;
+    width: auto;
+}
+.restrictions-yes {
+    display: inline-block;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.restrictions-yes ul {
+    display: inline-block;
+    width: 100%; list-style: none;
+}
+.inline-label {
+    display: inline-block;
+}
+.restrictions-yes ul li {
+    float: left;
+    margin-bottom: 12px;
+    width: 330px;}
+.restrictions-yes label, .restrictions-yes input {
+    float: left;
+}
+.notification-green { background: none repeat scroll 0 0 #e8fbe3;
+    border: 1px solid #80c36f;
+    display: inline-block;
+    line-height: 19px;
+    max-width: none;
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+    width: 100% !important;}
+.infoicon {  background: url("../images/info.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 19px;
+    margin-right: 10px;
+    vertical-align: top;
+    width: 19px; }

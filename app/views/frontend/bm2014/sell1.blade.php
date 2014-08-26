@@ -76,7 +76,7 @@
             <div class="label bluelabel">Event</div>
 
             <div class="fields">
-                <strong>Manchester united vs chelsea</strong> <br/>
+                <strong>Manchester united vs chelsea</strong> <br/><br/>
                 Saturday, 16 august 2014, 6:00pm Old Trafford
             </div>
 
@@ -142,20 +142,24 @@
             <div class="fields">
 
                 <label class="inline-label">Block</label>
-                <input class="inline-input">
+                <input class="inline-input input" type="text">
 
                 <label class="inline-label">Row</label>
-                <input class="inline-input">
+                <input class="inline-input input" type="text">
 
 
-                <label class="inline-label">Do the tickets have any restrictions</label>
+                <small>It’s important that you provide a detailed description of your tickets as it increases your chance of selling them</small>
 
-                <input type="radio" >
-                <label class="inline-label">Yes</label>
 
-                <input type="radio">
-                <label class="inline-label">No</label>
+                <div class="row nomargin">
+                    <label class="inline-label">Do the tickets have any restrictions</label>
 
+                    <input type="radio" >
+                    <label class="inline-label">Yes</label>
+
+                    <input type="radio">
+                    <label class="inline-label">No</label>
+                </div>
 
                 <div class="restrictions-yes">
 
@@ -181,19 +185,21 @@
                     <small>Indicate any kind of restriction that appears on your ticket for example it is a discounted ticket, restricted view etc</small>
 
 
-                  <span class="notification-green">
-                  	Football ticket pads does not allow additional information that includes unhelpful descriptions such as "best seats" or "good view"
-                  </span>
+
 
 
 
                 </div>
 
+             </div>
 
 
-            </div>
 
+             <span class="notification-green">
 
+                        <span class="infoicon"></span>
+                        Football ticket pads does not allow additional information that includes unhelpful descriptions such as "best seats" or "good view"
+              </span>
 
         </div>
 
@@ -202,7 +208,9 @@
 
 
 
-        <h3 class="sell-divider">Sale Definition</h3>
+
+
+        <h3 class="sell-divider row">Sale Definition</h3>
 
 
         <div class="row selldivider">
@@ -211,7 +219,8 @@
             <div class="label bluelabel">How much do you want to charge for each ticket?</div>
 
             <div class="fields">
-                <input type="text" placeholder="Enter price">
+
+                <input class="inline-input input" placeholder="Enter price" type="text">
             </div>
 
 
@@ -240,7 +249,7 @@
 
 
 
-        <h3 class="sell-divider">Price Review</h3>
+        <h3 class="sell-divider row">Price Review</h3>
 
         <div class="row selldivider">
             <label class="inline-label">Your tickets will be listed for</label>
