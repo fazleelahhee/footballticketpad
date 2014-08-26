@@ -66,7 +66,7 @@
         </div>
 
 
-        <h3 class="sell-divider">Description of tickets</h3>
+        <h3 class="sell-divider row">Description of tickets</h3>
 
 
 
