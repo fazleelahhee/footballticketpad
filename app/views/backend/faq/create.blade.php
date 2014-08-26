@@ -92,6 +92,17 @@
         </div>
     </div>
     <br>
+    <!-- Order -->
+    <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
+        <label class="order">Order</label>
+        <div class="controls">
+            {{ Form::text('order', null, array('class'=>'form-control', 'id' => 'order', 'value'=>Input::old('datetime'))) }}
+            @if ($errors->first('order'))
+            <span class="help-block">{{ $errors->first('order') }}</span>
+            @endif
+        </div>
+    </div>
+    <br />
     {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
 

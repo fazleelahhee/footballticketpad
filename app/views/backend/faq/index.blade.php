@@ -26,7 +26,7 @@
                         <th>Created Date</th>
                         <th>Updated Date</th>
                         <th>Action</th>
-                        <th>Settings</th>
+<!--                        <th>Settings</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -63,11 +63,11 @@
                                 </ul>
                             </div>
                         </td>
-                        <td>
-                        <a href="#" id="{{ $v->id }}" class="publish">
-                            <img id="publish-image-{{ $v->id }}" src="{{url('/')}}/assets/images/{{ ($v->is_published) ? 'publish.png' : 'not_publish.png'  }}"/>
-                        </a>
-                        </td>
+<!--                        <td>-->
+<!--                        <a href="#" id="{{ $v->id }}" class="publish">-->
+<!--                            <img id="publish-image-{{ $v->id }}" src="{{url('/')}}/assets/images/{{ ($v->is_published) ? 'publish.png' : 'not_publish.png'  }}"/>-->
+<!--                        </a>-->
+<!--                        </td>-->
                     </tr>
                     @endforeach
                     </tbody>
@@ -98,7 +98,7 @@
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: "{{ url('/admin/news/" + id + "/toggle-publish/') }}",
+                url: "{{ url('/admin/faq/" + id + "/toggle-publish/') }}",
                 success: function (response) {
                     if (response['result'] == 'success') {
                         var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/images/publish.png" : "{{url('/')}}/assets/images/not_publish.png";

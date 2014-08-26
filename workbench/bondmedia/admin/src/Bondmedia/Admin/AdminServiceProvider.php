@@ -2,6 +2,7 @@
 
 use Bondmedia\Admin\ShortCode\Block;
 use Bondmedia\Admin\ShortCode\BMSlider;
+use Bondmedia\Admin\ShortCode\FAQ;
 use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider {
@@ -49,6 +50,13 @@ class AdminServiceProvider extends ServiceProvider {
         {
             return new Block();
         });
+
+        $this->app->bind('bm-faq', function($app)
+        {
+            return new FAQ();
+        });
+
+
 	}
 
 	/**
