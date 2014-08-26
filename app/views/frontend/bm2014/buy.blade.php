@@ -34,14 +34,11 @@
      </h1>
 
      <div class="site-content">
+
+
          @if($node instanceof Pages)
-            {{ Template::doShortCode($node->content ) }}
+         {{ Template::doShortCode($node->content ) }}
          @endif
-
-
-
-
-
 
 
          <div class="description-team">
@@ -54,7 +51,13 @@
              </div>
 
              <div class="sharebox">
-                 xxx
+
+                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                 <div class="addthis_sharing_toolbox"></div>
+                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f426a07524dc6b4"></script>
+
+
              </div>
 
          </div>
@@ -75,27 +78,30 @@
 
                      <span class="filter-label pull-left offset-right">Filter by</span>
 
-                     <input type="text" placeholder="Filter by event" class="quickfilter  pull-left offset-right">
 
 
                      <div class="pull-right">
 
-                         <div class="activation">
-                             <a href="#" class="disabled">Reactivate listings</a>
-                             <a href="#">Pause all listings</a>
-                         </div>
-                         <a href="#"><span class="btn medium bluebtn pull-right">LIST TICKETS</span> </a>
+                         <select>
+
+                             <option>No of tickets</option>
+                             <option>No of tickets</option>
+                             <option>No of tickets</option>
+                         </select>
+
+                         <select>
+
+                             <option>All types of tickets</option>
+                             <option>All types of tickets</option>
+                             <option>All types of tickets</option>
+                         </select>
+
 
                      </div>
 
 
 
-                <span class="ftp-line">
-                    <span class="greenline"></span>
-                    <span class="yellowline"></span>
-                    <span class="pinkline"></span>
-                    <span class="blueline"></span>
-                </span>
+
 
                  </div>
                  <!---------toolbar------------>
@@ -109,8 +115,8 @@
                      <thead>
                      <th>Location</th>
                      <th>Available</th>
-                     <th>Price from:</th>
-                     <th>&nbsp;</th>
+                     <th>Price per ticket:</th>
+                     <th>  <a href="#" data-reveal-id="GroupPurchase" class="btn yellowbtn">GROUP PURCHASE </a> </th>
                      </thead>
 
                      <tbody>
@@ -119,27 +125,308 @@
 
                      <tr>
                          <td>
-                    	<span class="game">
-                    		Burnley <span class="vs">vs</span> Chelsea
-                    	</span>
+                    	    Longside Upper Pier
                          </td>
                          <td>
-                             Saturday 16th August 2014
+                            1 to 10
                          </td>
                          <td>
                              &pound;59.99
+                             <small>FINAL PRICE</small>
                          </td>
                          <td>
                              <input class="btn pinkbtn" type="button" value="BUY">
-                             <input class="btn bluebtn" type="button" value="SELL">
+
+                         </td>
+                     </tr>
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
                          </td>
                      </tr>
 
 
 
 
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+                     <tr>
+                         <td>
+                             Longside Upper Pier
+                         </td>
+                         <td>
+                             1 to 10
+                         </td>
+                         <td>
+                             &pound;59.99
+                             <small>FINAL PRICE</small>
+                         </td>
+                         <td>
+                             <input class="btn pinkbtn" type="button" value="BUY">
+
+                         </td>
+                     </tr>
+
+
+
+
+
+
+
+
+
                      </tbody>
                  </table>
+
+
+
+
+
+                 <H2>Other events for <strong>Manchester United</strong></H2>
+                 <ul class="othervents">
+
+                     <li>
+                         <span>FC Bayern vs Manchester united</span>
+                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
+
+
+                     </li>
+
+                     <li>
+                         <span>FC Bayern vs Manchester united</span>
+                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
+
+
+                     </li>
+
+
+                     <li>
+                         <span>FC Bayern vs Manchester united</span>
+                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
+
+
+                     </li>
+
+
+                     <li>
+                         <span>FC Bayern vs Manchester united</span>
+                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
+
+
+                     </li>
+
+
+
+                 </ul>
+
+
+
+
 
                  <!---------FAZLEEEEEE listing------------>
 
@@ -161,6 +448,20 @@
 
      </div>
 </div>
+
+
+<div id="GroupPurchase" class="reveal-modal" data-reveal>
+    <a class="close-reveal-modal">&#215;</a>
+
+
+    <h2>Group purchase</h2>
+
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+</div>
+
+
+
 <!---------main content------------>
 
 

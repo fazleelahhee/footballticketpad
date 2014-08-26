@@ -82,13 +82,15 @@
       	
     
      <div class="site-content">
-                 
-        
-        
-        
-        
-        
-        {{ $node->content }} 
+
+
+
+
+
+
+         @if($node instanceof Pages)
+         {{ Template::doShortCode($node->content ) }}
+         @endif
         
         
         
