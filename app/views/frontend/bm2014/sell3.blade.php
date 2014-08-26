@@ -38,9 +38,7 @@
      </span>
 
     <div class="site-content">
-        @if($node instanceof Pages)
-        {{ Template::doShortCode($node->content ) }}
-        @endif
+       
 
 
 
