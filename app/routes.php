@@ -219,7 +219,9 @@ Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_a
 | Football tickets
 |--------------------------------------------------------------------------
 */
-Route::post('/ticket/registration', array('before' => 'csrf', 'as' => 'ticket.registrations', 'uses' => 'CustomerController@registrationAction'));
+//freaking does not work properly with session
+//Route::post('/ticket/registration', array('before' => 'csrf', 'as' => 'ticket.registrations', 'uses' => 'CustomerController@registrationAction'));
+Route::post('/ticket/registration', array( 'as' => 'ticket.registrations', 'uses' => 'CustomerController@registrationAction'));
 /*
 |--------------------------------------------------------------------------
 | General Routes
