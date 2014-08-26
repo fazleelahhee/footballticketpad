@@ -46,15 +46,7 @@
 
          <div class="columns six nopadding">
 
-             <p>
 
-                 <strong>Book Football Hospitality tickets for all Football Hospitality football games online through our secure booking system.</strong> <br/><br/>
-
-                 All football tickets for Football Hospitality are guaranteed and dispatched by our reliable partners Royal Mail and FedEx International.
-                 With our order guarantee you can buy Football Hospitality tickets with confidence so you can see all your favourite Football Hospitality players in live action!<br/><br/>
-
-                 Complete the form and we will get back to you in 24 hours.
-             </p>
 
          </div>
 

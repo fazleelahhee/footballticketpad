@@ -1574,6 +1574,7 @@ footer .full .support-text {
 header #form-home {
     box-shadow: 0 0 0px #000;
     -webkit-box-shadow: 0 0 0px #000;
+    width: auto;
 }
 
 
