@@ -91,12 +91,12 @@
     </div>
 
     <div class="columns six">
-        {{ Form::submit('Register', ['class' => 'button  [radius round secondary alert btn pinkbtn pull-right clearboth]']) }}
+        {{ Form::submit('Register', ['class' => 'btn pinkbtn pull-right clearboth']) }}
     </div>
 
 
 
-  
+
 {{ Form::close() }}
 
 {{
