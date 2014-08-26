@@ -34,11 +34,88 @@
      </h1>
 
      <div class="site-content">
-         @if($node instanceof Pages)
-            {{ Template::doShortCode($node->content ) }}
-         @endif
 
-         xx
+         <h2>Categories (2)</h2>
+
+          <ul class="search-results-list">
+
+              <li>
+                  <a class="btn greenbtn pull-right" href="#">See tickets</a>
+                  <a href="#"><span class="game"> Manchester City</span></a>
+                  <span class="subtext"><a href="#">Premier League</a></span>
+              </li>
+
+
+              <li>
+                  <a class="btn greenbtn pull-right" href="#">See tickets</a>
+                  <a href="#"><span class="game"> Manchester City</span></a>
+                  <span class="subtext"><a href="#">Premier League</a></span>
+              </li>
+
+
+
+
+
+          </ul>
+
+
+
+
+         <h2>Events (2)</h2>
+
+         <ul class="search-results-list">
+
+             <li>
+                 <a class=" btn pinkbtn pull-right" href="#">Buy</a>
+                 <a href="#"><span class="game"> Manchester City</span></a>
+                 <span class="date-result">04 November 19:00</span>
+                 <span class="subtext"><a href="#">O2 Apollo Manchester</a></span>
+             </li>
+
+
+             <li>
+                 <a class=" btn pinkbtn pull-right" href="#">Buy</a>
+                 <a href="#"><span class="game"> Manchester City</span></a>
+                 <span class="date-result">04 November 19:00</span>
+                 <span class="subtext"><a href="#">O2 Apollo Manchester</a></span>
+             </li>
+
+
+             <li>
+                 <a class=" btn pinkbtn pull-right" href="#">Buy</a>
+                 <a href="#"><span class="game"> Manchester City</span></a>
+                 <span class="date-result">04 November 19:00</span>
+                 <span class="subtext"><a href="#">O2 Apollo Manchester</a></span>
+             </li>
+
+
+
+             <li>
+                 <a class=" btn pinkbtn pull-right" href="#">Buy</a>
+                 <a href="#"><span class="game"> Manchester City</span></a>
+                 <span class="date-result">04 November 19:00</span>
+                 <span class="subtext"><a href="#">O2 Apollo Manchester</a></span>
+             </li>
+
+
+
+             <li>
+                 <a class=" btn pinkbtn pull-right" href="#">Buy</a>
+                 <a href="#"><span class="game"> Manchester City</span></a>
+                 <span class="date-result">04 November 19:00</span>
+                 <span class="subtext"><a href="#">O2 Apollo Manchester</a></span>
+             </li>
+
+
+
+
+
+
+
+
+         </ul>
+
+
 
 
 
