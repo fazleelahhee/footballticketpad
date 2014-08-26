@@ -27,11 +27,16 @@
 <!---------main content------------>
 <div class="row">
 
-	 <h1 class="page-header">
-         @if($node instanceof Pages)
-            {{ e($node->title) }}
-         @endif
-     </h1>
+	 <span class="page-header buy-detail">
+
+         <span class="gamename"> <strong>Chelsea</strong> vs  <strong>Manchester United</strong> Tickets</span>
+         <span class="gamedetail">Saturday, 16th August 2014, 3:00pm. Turf moor - Burnley FC, Burnley, UK</span>
+
+         <a href="/sell-1" class="btn bluebtn">SELL TICKETS</a>
+
+     </span>
+
+
 
      <div class="site-content">
 
@@ -454,9 +459,64 @@
     <a class="close-reveal-modal">&#215;</a>
 
 
-    <h2>Group purchase</h2>
+    <span class="ftp-line">
+    	<span class="greenline"></span>
+        <span class="yellowline"></span>
+        <span class="pinkline"></span>
+        <span class="blueline"></span>
+    </span>
 
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <h2>Tickets for Chelsea vs Manchester United</h2>
+
+    <p>Tickets For This Event Are Available On Group Purchase. Please Fill In Your Full Name, Company, Phone Number, Email Address, Quantity And Ticket Type. You Are Interested In And A Salesman Will Get Back To You As Soon As Possible With Our Options.</p>
+
+
+    <form class="enquiryform">
+
+        <div class="row">
+
+
+            <input type="text" placeholder="YOUR NAME" />
+
+        </div>
+
+        <div class="row">
+
+
+            <input type="text" placeholder="YOUR EMAIL" />
+
+        </div>
+
+
+        <div class="row">
+
+
+            <input type="text" placeholder="TEL OR MOBILE" />
+
+        </div>
+
+
+        <div class="row">
+
+            <textarea placeholder="MESSAGE"></textarea>
+
+
+        </div>
+
+
+        <div class="row">
+
+
+            <input type="button" class="btn pinkbtn pull-right" value="SUBMIT">
+
+
+        </div>
+
+
+
+
+    </form>
+
 
 </div>
 
