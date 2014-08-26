@@ -63,7 +63,7 @@
         </div>
 
 
-        <h3 class="sell-divider">Registered User</h3>
+        <h3 class="sell-divider row">Registered User</h3>
 
 
         <div class="row selldivider">
@@ -71,7 +71,7 @@
 
 
 
-            <div class="label bluelabel">Username</div>
+            <div class="label bluelabel inlinefields">Username</div>
 
             <div class="fields inlinefields">
                 <input type="tel">
@@ -80,7 +80,7 @@
 
 
 
-            <div class="label bluelabel">Password</div>
+            <div class="label bluelabel inlinefields">Password</div>
 
             <div class="fields inlinefields">
                 <input type="password">
@@ -94,7 +94,7 @@
 
 
 
-        <h3 class="sell-divider">Not Registered User</h3>
+        <h3 class="sell-divider row">Not Registered User</h3>
 
 
         <div class="row selldivider">
@@ -148,14 +148,14 @@
             <div class="label bluelabel">Mobile number</div>
 
             <div class="fields">
-                <select>
+                <select class="inlinefields">
                     <option>Select your country</option>
                     <option>1</option>
                     <option>1</option>
                     <option>1</option>
                 </select>
                 &nbsp;
-                <input type="text">
+                <input type="text" class="inlinefields">
                 &nbsp;
                 <input type="button" class="btn bluebtn" value="REGISTER">
 
