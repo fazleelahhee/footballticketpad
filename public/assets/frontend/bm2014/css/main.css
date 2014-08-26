@@ -2555,7 +2555,7 @@ h3.sell-divider {
 
 .mbtm {
     display: inline-block;
-    margin-bottom: 10px !important;
+    margin-bottom: 10px;
 }
 
 .error label, label.error {
