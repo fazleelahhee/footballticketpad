@@ -70,7 +70,7 @@
 
     <div class="columns six">
         <label>
-            Password
+            <span class="mbtm"> Password</span>
             {{ Form::password('password', '') }}
         </label>
 
@@ -78,7 +78,7 @@
 
     <div class="columns six">
         <label>
-            Confirm Password
+            <span class="mbtm">Confirm Password</span>
             {{ Form::password('password_confirmation', '') }}
         </label>
     </div>

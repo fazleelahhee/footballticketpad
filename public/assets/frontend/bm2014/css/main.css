@@ -2556,4 +2556,5 @@ select.input {
     height: 42px !important;
     margin: 0 0 12px !important;
     padding: 8px 27px !important;
+    border: 1px solid #ccc;
 }
