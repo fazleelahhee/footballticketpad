@@ -83,6 +83,24 @@
                 @endif
             </ul>
         </li>
+        <li class="{{ in_array($menu, array('faq', 'faq/new', 'faq/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Faq</span></a>
+            <ul>
+                <li class="{{ $menu == 'faq'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/faq">Faq</a>
+                </li>
+                @if($menu == 'faq/edit')
+                <li class="{{ $menu == 'faq/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/faq/edit">Edit</a>
+                </li>
+
+                @else
+                <li class="{{ $menu == 'faq/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/faq/create">Add New</a>
+                </li>
+                @endif
+            </ul>
+        </li>
         @yield('nev_menu_after_news')
         <li class="{{ in_array($menu, array('media', 'media/new'))? 'active':'' }}">
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Media</span></a>
