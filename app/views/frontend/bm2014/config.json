@@ -20,7 +20,8 @@
         "sell2":"sell2.blade.php",
         "sell3":"sell3.blade.php",
         "search":"search.blade.php",
-        "corporate":"corporate.blade.php"
+        "corporate":"corporate.blade.php",
+        "buy":"buy.blade.php"
 
     },
     "screenshort": ""
