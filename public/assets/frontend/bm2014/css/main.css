@@ -2322,6 +2322,7 @@ textarea {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 20px;
+    margin-top: 20px;
     padding-bottom: 10px;
     width: 100%;
 }
@@ -2546,4 +2547,13 @@ h3.sell-divider {
     text-align: left;
     text-decoration: none;
     width: 230px;
+}
+
+select.input {
+    background-color: #f6f6f6 !important;
+    border-radius: 22px !important;
+    font-size: 14px !important;
+    height: 42px !important;
+    margin: 0 0 12px !important;
+    padding: 8px 27px !important;
 }
