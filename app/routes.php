@@ -92,7 +92,10 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     Route::resource('news', 'NewsController');
     Route::get('news/{id}/delete', array('as' => 'admin.news.delete', 'uses' => 'NewsController@confirmDestroy'))
         ->where('id', '[0-9]+');
-
+    // news
+    Route::resource('faq', 'FaqController');
+    Route::get('faq/{id}/delete', array('as' => 'admin.faq.delete', 'uses' => 'FaqController@confirmDestroy'))
+        ->where('id', '[0-9]+');
     // category
     Route::resource('category', 'CategoryController');
     Route::get('category/{id}/delete', array('as' => 'admin.category.delete', 'uses' => 'CategoryController@confirmDestroy'))
@@ -115,7 +118,9 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     // ajax - news
     Route::post('news/{id}/toggle-publish', array('as' => 'admin.news.toggle-publish', 'uses' => 'NewsController@togglePublish'))
         ->where('id', '[0-9]+');
-
+    // ajax - faq
+    Route::post('faq/{id}/toggle-publish', array('as' => 'admin.faq.toggle-publish', 'uses' => 'FaqController@togglePublish'))
+        ->where('id', '[0-9]+');
     // ajax - photo gallery
     Route::post('photo_gallery/{id}/toggle-publish', array('as' => 'admin.photo_gallery.toggle-publish', 'uses' => 'PhotoGalleryController@togglePublish'))
         ->where('id', '[0-9]+');
