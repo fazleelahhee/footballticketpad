@@ -56,12 +56,15 @@ class Template extends Facade {
         return $output;
     }
 
-    public static function doShortCode($content) {
+    public static function doShortCode($content, $direct = false) {
+        if($direct) {
+            $content = "{{ $content }}";
+        }
         if(preg_match_all('/{{(.*?)}}/',$content, $matches)) {
             $i= 0;
             foreach($matches[1] as $match) {
                 $match = strip_tags($match);
-                $code = explode(' ',$match);
+                $code = explode(' ',trim($match));
                 $object = App::make($code[0]);
                 if(method_exists($object, 'render')) {
                     if(isset($code[1]) && $code[1] != '' && method_exists($object, 'setParams')) {

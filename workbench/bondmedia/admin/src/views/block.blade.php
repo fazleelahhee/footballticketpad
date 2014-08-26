@@ -1,5 +1,4 @@
-<div class="row">
-    <div class="site-content">
+
     @if(!empty($images))
         @foreach($images as $image)
         <article class="three columns">
@@ -16,5 +15,3 @@
         </article>
         @endforeach
     @endif
-    </div>
-</div>

@@ -22,11 +22,12 @@
                 <span class="slogan">The Home Of Football Tickets</span>
                 <form id="form-home">
                     <input class="forminput" placeholder="eg. Champions League Final" >
-                    <input class="bigbox-search-button" type="button"></button>
+                    <input class="bigbox-search-button" type="button">
                 </form>
                 
              </div>
-                
+
+
                 
         </div>
      </div>
@@ -34,8 +35,22 @@
 <!---------sidebar + search form------------>
 
 
-@if($node instanceof Pages)
-    {{ Template::doShortCode($node->content) }}
-@endif
+
+{{ Template::doShortCode("bm-slider id=2", true) }}
+
+
+<div class="row">
+    <div class="site-content">
+
+
+    @if($node instanceof Pages)
+        {{ Template::doShortCode($node->content) }}
+    @endif
+
+    </div>
+</div>
+
+
+
 
 @stop
