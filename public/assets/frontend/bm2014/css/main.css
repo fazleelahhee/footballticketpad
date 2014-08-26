@@ -2472,3 +2472,17 @@ textarea {
     margin-top: 0;
     width: auto;
 }
+.register-icon, .login-icon {
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    margin-bottom: 20px !important;
+    padding-bottom: 10px;
+    padding-left: 37px;
+    width: 100%;
+}
+.register-icon { background: url("../images/register.png") no-repeat 0 0}
+.login-icon { background: url("../images/key.png") no-repeat 0 0}
+
+.search-results .page-header {
+    width: 100% !important;
+}
