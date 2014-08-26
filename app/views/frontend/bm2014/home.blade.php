@@ -19,6 +19,7 @@
             @include(Template::name('frontend.%s.sidebars.side1'))
             
             <div class="searcharea">
+                <span class="slogan">The Home Of Football Tickets</span>
                 <form id="form-home">
                     <input class="forminput" placeholder="eg. Champions League Final" >
                     <input class="bigbox-search-button" type="button"></button>

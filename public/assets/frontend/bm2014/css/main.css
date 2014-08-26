@@ -1516,13 +1516,10 @@ footer .full .support-text {
     height: 46px;
     position: absolute;
     right: 130px;
-    top: 200px; z-index: 99;
-	 border-radius:20px;
-	-webkit-border-radius: 20px;
-	  box-shadow: 0 0 20px #000;
-	  -webkit-box-shadow: 0 0 20px #000;
-	   -webkit-transition: all 0.7s; /* For Safari 3.1 to 6.0 */
-    transition: width 0.7s;
+    top: 200px;
+    width: 622px;
+    z-index: 99;
+
 }	
 .latestnews > li {
   border-bottom: 1px solid #3b3933;
@@ -1563,7 +1560,23 @@ footer .full .support-text {
     line-height: 15px;
     margin: 10px 0 0 13px;
     width: 200px;}
-#form-home { width:622px;}
+#form-home { width:622px;
+    border-radius:20px;
+    -webkit-border-radius: 20px;
+    box-shadow: 0 0 20px #000;
+    -webkit-box-shadow: 0 0 20px #000;
+    -webkit-transition: all 0.7s; /* For Safari 3.1 to 6.0 */
+    transition: width 0.7s;
+    display: inline-block;
+
+}
+
+header #form-home {
+    box-shadow: 0 0 0px #000;
+    -webkit-box-shadow: 0 0 0px #000;
+}
+
+
 .full { width:100%; text-align:center}
 footer .full .support-text { font-weight:500;}
 .newsletterplane { background:url(../images/plane.png) no-repeat center center;  height: 32px;}
@@ -1936,7 +1949,9 @@ transition: background 0.7s;
 transition: background 0.7s;}
 
 
-
+.sell1 .site-content,
+.sell2 .site-content,
+.sell3 .site-content,
 .one-column .site-content, 
 .one-column .teaminfo,
 .account .teaminfo  {
@@ -2169,6 +2184,11 @@ html body a {color: #e13d7f}
 
 .addresstable { width: auto; min-width: 50%}
 
+
+
+.sell1 .page-header,
+.sell2 .page-header,
+.sell3 .page-header,
 .sales .page-header,
 .one-column .page-header,
 .account .page-header,
@@ -2235,3 +2255,76 @@ body .flexslider .slides img {
 
 .flex-control-paging li a { background: white !important}
 .flex-control-paging li a.flex-active { border: 1px solid white; background: none !important}
+
+
+
+.greenbtn {
+    background: none repeat scroll 0 0 #80c36f;
+    color: #ffffff;
+}
+
+
+/**/
+
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+    background-color: #f6f6f6 !important;
+    font-size: 14px !important;
+    height: 42px !important;
+    margin: 0 0 12px !important;
+    padding: 8px 27px !important;
+
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 22px !important;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 22px  !important;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 22px  !important;
+}
+
+textarea {
+    min-height: 130px;
+}
+
+.contact-display {
+    list-style: none outside none;
+}
+.contact-display li a {color: black}
+.contact-display li {
+    border-bottom: 1px solid #ccc;
+    display: block;
+    font-size: 24px;
+    padding: 10px 0 10px 45px;
+    width: 100%;
+}
+
+.contact-display li.phone-icon { background:url("../images/phonegreen.png") no-repeat 5px 16px}
+.contact-display li.msg-icon  { background:url("../images/mail.png")  no-repeat 0 20px}
+
+.nopadding {
+    padding: 0;
+}
+.flex-control-nav {padding-left: 280px !important}
+.label-seperator {
+    border-bottom: 1px solid #ccc;
+    display: block;
+    float: left;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.row .btn {border:none !important}
+
+.flex-direction-nav {display:none}
+
+.slogan {
+    color: white;
+    float: left;
+    font-size: 25px;
+    margin-bottom: 10px;
+    width: 100%;
+}

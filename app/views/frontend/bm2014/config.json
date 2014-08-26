@@ -13,7 +13,16 @@
         "addresses":"addresses.blade.php",
         "purchases":"purchases.blade.php",
         "sales":"sales.blade.php",
-        "account information":"account-information.blade.php"
+        "account information":"account-information.blade.php",
+        "contact":"contact.blade.php",
+        "register":"register.blade.php",
+        "login":"login.blade.php",
+        "sell1":"sell1.blade.php",
+        "sell2":"sell2.blade.php",
+        "sell3":"sell3.blade.php",
+        "search":"search.blade.php",
+        "corporate":"corporate.blade.php"
+
     },
     "screenshort": ""
 }
