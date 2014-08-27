@@ -1,11 +1,8 @@
+<div class="columns six message" style="display:none">
+</div>
+
 {{ Form::open(array('url' => $url, 'method' => 'post', 'id'=>'registration-form')) }}
-
-
-
-
     <span class="label-seperator">Personal details</span>
-
-
     <div class="columns six">
         <label>
             {{ Form::text('first_name', '', ['class'=>'input first-name', 'placeholder' => 'First Name' ]) }}
@@ -18,11 +15,7 @@
         </label>
     </div>
 
-
-
     <span class="label-seperator">Email address  &amp; contact info</span>
-
-
     <div class="columns six">
         <label>
             {{ Form::email('email', '', ['class'=>'input email', 'placeholder' => 'email' ]) }}
@@ -116,7 +109,8 @@
         'jquery-form'            => 'js/jquery-form.min.js',
         'jquery-validator'       => 'js/jquery-validator/jquery.validate.min.js',
         'validator-add-method'   => 'js/jquery-validator/additional-methods.min.js',
-        'password-strongify'     => 'js/password-strongify.js'
+        'password-strongify'     => 'js/password-strongify.js',
+        'underscore'             => 'js/underscore.min.js'
     ], false, true);
 }}
 {{ Assets::jsStart() }}
@@ -194,7 +188,7 @@
             });
 
             /*
-            Ajas form submission
+            Ajax form submission
              */
             form.ajaxForm({
                 dataType:  'json',
@@ -210,14 +204,17 @@
                 success:   function ($response) {
                     body.removeClass("loading");
                     $('.ajax-loading-modal').remove();
-                    //TODO: when user registered ... redirect to user control panel
+                    //redirect to account page
+                    window.location.href = '/account-information';
                 },
                 error: function ($response) {
                     body.removeClass("loading");
                     $('.ajax-loading-modal').remove();
-                    //TODO: display exceptions
+                    $('.message').css({display: "block"});
+                    var template = _.template($('#error-message-template').html());
+                    var message = jQuery.parseJSON($response.responseText);
+                    $('.message').html(template({message: message.error }));
                 }
-
             });
 
             $('input[name="password"]').passStrengthify({
@@ -229,5 +226,12 @@
             });
         });
     })(jQuery)
+</script>
+
+<script type="text/x-template" id="error-message-template">
+    <div data-alert class="alert-box info radius">
+        <%= message %>
+        <a href="#" class="close">&times;</a>
+    </div>
 </script>
 {{ Assets::jsEnd() }}
