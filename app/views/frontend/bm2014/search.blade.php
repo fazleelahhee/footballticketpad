@@ -86,8 +86,8 @@
 //                                event_date: '04 November 19:00',
 //                                short_text: ''
 //                            });
-                            var html = '<li><a class=" btn pinkbtn pull-right" href="#">Buy</a>';
-                            html += '<a href="#"><span class="game">'+item.name+'</span></a>';
+                            var html = '<li><a class=" btn pinkbtn pull-right" href="/buy">Buy</a>';
+                            html += '<a href="/buy"><span class="game">'+item.name+'</span></a>';
                             html += '<span class="date-result">04 November 19:00</span>';
                             html += '<span class="subtext"><a href="#">'+item.description+'</a></span></li>';
 
