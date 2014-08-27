@@ -1649,8 +1649,8 @@ h2 {
     margin-top: 180px;
     padding: 12px 12px 12px 27px;
     position: absolute;
-    width: 260px !important;
-
+    min-width: 260px !important;
+    width: auto;
 }
 .black {  background: none repeat scroll 0 0 black;
     display: inline-block;
@@ -1903,7 +1903,8 @@ strong, b {
 .responsive { width:100%;
   border-collapse: collapse;
 }
-.responsive .btn {
+.responsive .btn,
+.responsive .btn.smallbtn {
    border: medium none;
     float: right;
     font-size: 14px;
@@ -1913,6 +1914,13 @@ strong, b {
     padding: 0 20px;
     width: 84px; cursor:pointer;
 }
+
+.smallbtn {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 30px;
+}
+
 .responsive td {
 color: #616060;
     font-weight: 400;
@@ -1921,7 +1929,11 @@ color: #616060;
 }
 
 
-
+.blogtitle {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
 
 
 table tbody tr:nth-child(2n) {
@@ -2716,4 +2728,8 @@ select.input {
     padding: 10px;
     position: absolute;
     top: 0;
+}
+
+body.news .site-content {
+    line-height: 22px;
 }

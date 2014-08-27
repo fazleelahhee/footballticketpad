@@ -38,15 +38,15 @@
 
 <div class="container site-content">
 
-    <div class="columns twelve">
+
         <div class="row">
             @foreach( $news as $v )
 
 
-
+            <div class="columns twelve">
                 <div class="columns four nopadding featuredimg-news">
                     <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
-                    <img class="img-square center-block" src="{{ Assets::Path('images/dimaria.jpg') }}" alt="test" />
+                    <img class="img-square center-block radius" src="{{ Assets::Path('images/dimaria.jpg') }}" alt="test" />
                 </div>
                 <div class="columns eight">
 
@@ -60,10 +60,10 @@
                 </div>
                 <div style="clear: both"></div>
                     <p>
-                        <a style="float: right" href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}" class="btn btn-xs btn-primary">Read More</a>
+                        <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}" class="btn pinkbtn pull-right smallbtn">Read More</a>
                     </p>
 
-
+                <br/><br/><br/>
 
               <span class="ftp-line">
                     <span class="greenline"></span>
@@ -72,11 +72,11 @@
                     <span class="blueline"></span>
                 </span>
 
-
+            </div>
 
              @endforeach
         </div>
-    </div>
+
 
 
     <div class="pull-left">
