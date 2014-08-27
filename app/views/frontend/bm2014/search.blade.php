@@ -1,6 +1,14 @@
 @extends(Template::name('frontend.%s._layout.layout'))
 @section('content')
 <section class="banner-home">
+
+    <h1 class="page-header">
+        @if($node instanceof Pages)
+        {{ e($node->title) }}
+        @endif
+    </h1>
+
+
     <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
     <span class="ftp-line">
     	<span class="greenline"></span>
@@ -12,11 +20,7 @@
 
 <!---------main content------------>
 <div class="row">
-	 <h1 class="page-header">
-         @if($node instanceof Pages)
-            {{ e($node->title) }}
-         @endif
-     </h1>
+
 
      <div class="site-content">
          <h2 class="event-cat-header">Categories <span>(2)</span></h2>

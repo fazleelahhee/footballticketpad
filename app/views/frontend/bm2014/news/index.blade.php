@@ -15,6 +15,9 @@
 <section class="banner-home">
 
 
+    <h1 class="page-header">News
+    </h1>
+
     <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
 
     <span class="ftp-line">
@@ -33,8 +36,7 @@
 <div class="row">
 
 
-    <h1 class="page-header">News
-    </h1>
+
 
 <div class="container site-content">
 
@@ -46,13 +48,12 @@
             <div class="columns twelve">
                 <div class="columns twelve nopadding featuredimg-news">
                     <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
-                    <img class="img-square center-block radius" src="{{ Assets::Path('images/vangaal.jpg') }}" alt="test" />
+                    <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}"><img class="img-square center-block radius" src="{{ Assets::Path('images/vangaal.jpg') }}" alt="{{ $v->title }}" /></a>
                 </div>
                 <div class="columns twelve nopadding">
 
                     <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
-                        <h4 class="blogtitle">{{ $v->title }}
-                        </h4>
+                        <h4 class="blogtitle">{{ $v->title }}</h4>
 
                     </a>
 
