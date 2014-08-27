@@ -1,5 +1,7 @@
 @extends(Template::name('frontend.%s._layout.layout'))
 @section('content')
+
+
 <div style="margin-bottom: 50px;" class="container">
     <div class="row">
         <div class="col-lg-12">
