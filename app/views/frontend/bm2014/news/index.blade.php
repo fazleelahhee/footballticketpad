@@ -44,11 +44,11 @@
 
 
             <div class="columns twelve">
-                <div class="columns four nopadding featuredimg-news">
+                <div class="columns twelve nopadding featuredimg-news">
                     <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
-                    <img class="img-square center-block radius" src="{{ Assets::Path('images/dimaria.jpg') }}" alt="test" />
+                    <img class="img-square center-block radius" src="{{ Assets::Path('images/vangaal.jpg') }}" alt="test" />
                 </div>
-                <div class="columns eight">
+                <div class="columns twelve nopadding">
 
                     <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
                         <h4 class="blogtitle">{{ $v->title }}

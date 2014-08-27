@@ -20,7 +20,7 @@
 <section class="banner-home">
 
 
-    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+    <img class="inner-banner" src="{{ Assets::Path('images/vangaal.jpg') }}" alt="test" />
 
     <span class="ftp-line">
     	<span class="greenline"></span>
