@@ -2459,8 +2459,8 @@ textarea {
     width: 100%;
 }
 
-.buy-detail {  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-    color: white; z-index: 99;
+.buy-detail {  background: none repeat scroll 0 0 ;
+    color: white; z-index: 9;
     display: block;
     font-family: 'Roboto',sans-serif;
     font-weight: 100;
@@ -2519,7 +2519,7 @@ textarea {
     width: 411px;
 }
 .step-process li.active .number {background: url("../images/step.jpg") no-repeat scroll left top rgba(0, 0, 0, 0);}
-.step-process li .number { background: url("../images/step.jpg") no-repeat scroll right top rgba(0, 0, 0, 0);
+.step-process li .number { background: url("../images/step.jpg") no-repeat scroll right top ;
     display: inline-block;
     font-size: 20px;
     height: 54px;
@@ -2528,7 +2528,7 @@ textarea {
     vertical-align: middle;
     width: 55px;
     color: #c3c3c3;}
-.step-process li { background: url("../images/arrowright.png") no-repeat scroll right 10px rgba(0, 0, 0, 0);}
+.step-process li { background: url("../images/arrowright.png") no-repeat scroll right 10px ;}
 .step-process {
     display: inline-block;
     padding-top: 10px;
@@ -2676,7 +2676,7 @@ select.input {
     text-align: center;
     vertical-align: top;
     width: 100% !important;}
-.infoicon {  background: url("../images/info.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+.infoicon {  background: url("../images/info.png") no-repeat scroll 0 0 ;
     display: inline-block;
     height: 19px;
     margin-right: 10px;
@@ -2698,7 +2698,7 @@ select.input {
 }
 
 .guarenteeicon {
-    background: url("../images/trusticon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../images/trusticon.png") no-repeat scroll 0 0 ;
     display: inline-block;
     height: 26px;
     margin-right: 10px;
@@ -2713,8 +2713,7 @@ select.input {
     text-align: center;
     width: 20px; color: white;
 }
-.blackhighlight { color: #296f7a;
- }
+.blackhighlight { color: #296f7a;}
 
 .round {   /* Safari 3-4, iOS 1-3.2, Android 1.6- */
     -webkit-border-radius: 50% !important;
