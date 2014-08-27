@@ -1348,6 +1348,10 @@ aside {
 	border-bottom:1px solid #eeeeee;
 }
 .block-content { background:white}
+.bigbox-search-button {
+    text-indent: -9999px;
+}
+
 
 .date {
     float: left;
@@ -1364,7 +1368,7 @@ aside {
 }
 .vs {color: #9d9d9d;
     font-weight: 500;
-    padding: 0 5px;}
+   }
 .date span {
     float: left; clear:both; width:100%; text-align:center
 }
@@ -2733,4 +2737,24 @@ select.input {
 
 body.news .site-content {
     line-height: 22px;
+}
+.homegame, .awaygame { display: inline-block;
+    float: none !important;
+    height: auto;
+    line-height: 16px;
+    vertical-align: middle;
+    width: 96px;}
+
+
+
+.sidebar .game {
+    display: inline-block;
+    float: none;
+    font-size: 15px;
+    height: 50px;
+    line-height: inherit;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    vertical-align: middle;
+    width: 227px;
 }
