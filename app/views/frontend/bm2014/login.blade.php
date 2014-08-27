@@ -56,7 +56,7 @@
                  the world. </p>
 
 
-             <a href="register" class="btn greenbtn pull-right">REGISTER</a>
+             <a href="/registration" class="btn greenbtn pull-right">REGISTER</a>
 
          </div>
 
