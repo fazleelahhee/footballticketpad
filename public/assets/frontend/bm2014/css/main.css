@@ -1348,6 +1348,10 @@ aside {
 	border-bottom:1px solid #eeeeee;
 }
 .block-content { background:white}
+.bigbox-search-button {
+    text-indent: -9999px;
+}
+
 
 .date {
     float: left;
