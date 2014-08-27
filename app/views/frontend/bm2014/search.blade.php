@@ -23,18 +23,8 @@
 
 
      <div class="site-content">
-         <h2 class="event-cat-header">Categories <span>(2)</span></h2>
-          <ul class="search-results-list">
-              <li>
-                  <a class="btn greenbtn pull-right" href="#">See tickets</a>
-                  <a href="#"><span class="game"> Manchester City</span></a>
-                  <span class="subtext"><a href="#">Premier League</a></span>
-              </li>
-              <li>
-                  <a class="btn greenbtn pull-right" href="#">See tickets</a>
-                  <a href="#"><span class="game"> Manchester City</span></a>
-                  <span class="subtext"><a href="#">Premier League</a></span>
-              </li>
+         <h2 class="event-cat-header">Categories <span></span></h2>
+          <ul class="search-results-list event-category">
           </ul>
 
          <h2 class="event-list-header" >Events <span></span></h2>
@@ -65,9 +55,35 @@
 
     (function ($) {
         var ticketContainer =  $('body');
-        //var template = _.template($("#ticket-element-template").html());
 
         $(document).ready(function () {
+            //category
+            $.ajax({
+                url: '{{$ticketApi}}api/rest/categories?sortby=name&&q={{$q}}',
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    var i = 0;
+                    _.each(response, function (item) {
+                        if(item.entity_id) {
+                            var html = '<li> <a class="btn greenbtn pull-right" href="/buy">See tickets</a>';
+                            html += '<a href="#"><span class="game">'+item.name+'</span></a>';
+                            html += '<span class="subtext"><a href="#">Premier League</a></span>';
+                            html += '</li>';
+                            $('.event-category').append(html);
+                            i++;
+                        }
+                    });
+
+                    if(i === 0) {
+                        $('.event-category').append('<li><span class="subtext">No category found</span></li>');
+                    } else {
+                        $('.event-cat-header span').html('('+i+')');
+                    }
+                }
+            });
+
+            //ticket
             $.ajax({
                 url: '{{$ticketApi}}api/rest/products?order=name{{$query_param}}',
                 type: 'GET',
@@ -109,13 +125,21 @@
     })(jQuery)
 </script>
 
-<script type="text/x-template" charset="utf-8" id="ticket-element-template">
+<script type="text/x-template" id="ticket-element-template">
     <li>
         <a class=" btn pinkbtn pull-right" href="#">Buy</a>
         <a href="#"><span class="game"><%= title %></span></a>
         <span class="date-result"><%= event_date %></span>
         <span class="subtext"><a href="#"><%= short_text %></a></span>
     </li>
+</script>
+
+<script type="text/x-template" id="category-element-template">
+         <li>
+              <a class="btn greenbtn pull-right" href="#">See tickets</a>
+              <a href="#"><span class="game"> Manchester City</span></a>
+              <span class="subtext"><a href="#">Premier League</a></span>
+          </li>
 </script>
 
 {{ Assets::jsEnd() }}
