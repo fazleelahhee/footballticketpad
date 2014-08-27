@@ -2759,3 +2759,129 @@ body.news .site-content {
     vertical-align: middle;
     width: 227px;
 }
+
+.ajax-loading-modal {background: url("../images/loader/football.gif") no-repeat scroll 50% 50% rgba(255, 255, 255, 0.8) !important;}
+
+
+/*RESPONSIVE CODE*/
+
+
+/* #Tablet (1024)
+
+================================================== */
+@media only screen and (min-width: 1001px) and (max-width: 1239px) {
+
+    header { background: red !important}
+
+    .contain {
+        width: 960px;
+    }
+
+    .row {
+        width: 960px;
+    }
+
+    .searcharea {
+        right: 30px;
+        width: 622px;
+
+    }
+
+    .site-content, .teaminfo {
+        width: 662px;
+    }
+
+    .latestnews h4 {
+        width: 150px;
+    }
+
+    header .searcharea {
+        width: 270px;
+    }
+
+    header .searcharea .forminput { width: 224px}
+
+    .club-logo {
+
+        margin-left: 0;
+        margin-top: 10px;
+        width: 80px;
+    }
+
+    .teaminfo .page-header {
+        font-size: 21px;
+        margin-top: 33px;
+    }
+
+    .team-summary {
+        clear: both;
+        color: white;
+        display: inline-block;
+        float: none;
+        margin-top: 0;
+        width: 300px;
+    }
+
+    .page-header {margin-left: -201px;}
+
+    .buy-detail {
+        margin: 160px 0 40px -481px !important;
+        width: 960px !important;
+    }
+
+    .step-process li { width: 327px;}
+
+    .fields {
+        width: 723px;
+    }
+
+    .bluehighlight { width: 990px !important;}
+
+}
+
+
+
+
+
+/* #Tablet (Portrait)
+
+================================================== */
+/* Note: Design for a width of 768px */
+
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+
+    header { background: orange !important}
+
+}
+
+
+
+
+
+/*  #Mobile (Portrait)
+
+================================================== */
+/* Note: Design for a width of 320px */
+
+
+@media only screen and (max-width: 767px) {
+
+    header { background: yellow !important}
+
+}
+
+
+
+
+/* #Mobile (Landscape)
+================================================== */
+/* Note: Design for a width of 480px */
+
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+
+    header { background: green !important}
+
+}
