@@ -2,45 +2,101 @@
 @section('content')
 
 
-<div style="margin-bottom: 50px;" class="container">
+<!---------sidebar------------>
+<section class="main">
+
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">News</h1>
-            @yield('partial/breadcrumbs', Breadcrumbs::render('news', $news))
-            <a style="float:right;" href="{{ route('rss') }}">RSS</a>
-        </div>
+        @include(Template::name('frontend.%s.sidebars.side1'))
     </div>
-    <div class="col-md-12">
+</section>
+<!---------sidebar------------>
+
+
+<section class="banner-home">
+
+
+    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+
+    <span class="ftp-line">
+    	<span class="greenline"></span>
+        <span class="yellowline"></span>
+        <span class="pinkline"></span>
+        <span class="blueline"></span>
+    </span>
+
+
+</section>
+
+
+
+
+<div class="row">
+
+
+    <h1 class="page-header">News
+    </h1>
+
+<div class="container site-content">
+
+    <div class="columns twelve">
         <div class="row">
             @foreach( $news as $v )
-            <div class="row">
-                <div class="col-sm-12">
-                <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
-                    <h4>{{ $v->title }}<span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
-                    </h4></a>
-                    <hr>
+
+
+
+                <div class="columns four nopadding featuredimg-news">
+                    <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
+                    <img class="img-square center-block" src="{{ Assets::Path('images/dimaria.jpg') }}" alt="test" />
                 </div>
-                <div class="col-sm-4">
-                    <img src="//placehold.it/350x350" class="img-square center-block">
-                </div>
-                <div class="col-sm-8">
+                <div class="columns eight">
+
+                    <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
+                        <h4 class="blogtitle">{{ $v->title }}
+                        </h4>
+
+                    </a>
+
                     <p>{{{ mb_substr(strip_tags($v->content),0,2000) }}}</p>
                 </div>
                 <div style="clear: both"></div>
                     <p>
                         <a style="float: right" href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}" class="btn btn-xs btn-primary">Read More</a>
                     </p>
-            </div>
-            <hr>
+
+
+
+              <span class="ftp-line">
+                    <span class="greenline"></span>
+                    <span class="yellowline"></span>
+                    <span class="pinkline"></span>
+                    <span class="blueline"></span>
+                </span>
+
+
+
              @endforeach
         </div>
     </div>
+
+
     <div class="pull-left">
         <ul class="pagination">
             {{ $news->links() }}
         </ul>
     </div>
+
+
 </div>
+
+
+
+
+</div>
+
+
+
+
+
 @stop
 
 @section('script')
@@ -59,3 +115,6 @@
     });
 </script>
 @stop
+
+
+

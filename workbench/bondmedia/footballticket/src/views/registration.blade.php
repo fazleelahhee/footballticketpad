@@ -1,4 +1,4 @@
-<div class="columns six message" style="display:none">
+<div class="columns twelve message" style="display:none">
 </div>
 
 {{ Form::open(array('url' => $url, 'method' => 'post', 'id'=>'registration-form')) }}
