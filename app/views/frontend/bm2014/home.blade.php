@@ -20,9 +20,9 @@
             
             <div class="searcharea">
                 <span class="slogan">The Home Of Football Tickets</span>
-                <form id="form-home">
-                    <input class="forminput" placeholder="eg. Champions League Final" >
-                    <input class="bigbox-search-button" type="button">
+                <form id="form-home" action="/ticket-search" method="get">
+                    <input class="forminput" placeholder="eg. Champions League Final" name="search">
+                    <input class="bigbox-search-button" type="submit" />
                 </form>
                 
              </div>

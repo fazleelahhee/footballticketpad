@@ -40,6 +40,9 @@ Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch'
 
     // search
     Route::get('/search', ['as' => 'admin.search', 'uses' => 'SearchController@index']);
+
+    // ticket-search
+    Route::get('/ticket-search', ['as' => 'ticket.search', 'uses' => 'SearchController@ticketSearch']);
 });
 
 Route::post('/contact', array('as' => 'dashboard.contact.post', 'uses' => 'FormPostController@postContact'), array('before' => 'csrf'));

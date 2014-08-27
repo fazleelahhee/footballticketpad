@@ -41,9 +41,10 @@
         
         
         <div class="searcharea">
-                <form id="form-home">
-                    <input class="forminput" >
-                    <input class="bigbox-search-button" type="button"></button>
+                <form id="form-home" action="/ticket-search" method="get">
+                    <input class="forminput" name="search" >
+
+                    <input class="bigbox-search-button" type="submit" />
                 </form>
          </div>
         
