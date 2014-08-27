@@ -12,3 +12,5 @@ Thumbs.db
 /app/storage/sessions
 /app/storage/views
 /public/cache/backend
+/public/ecomm/
+/public/ecomm
