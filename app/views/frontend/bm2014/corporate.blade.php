@@ -17,7 +17,9 @@
 
 <section class="banner-home">
 
- 	
+    <h1 class="page-header">{{ e($node->title) }}</h1>
+
+
     <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
     
     <span class="ftp-line">
@@ -36,7 +38,7 @@
 <!---------main content------------>
 <div class="row">
 
-	 <h1 class="page-header">{{ e($node->title) }}</h1>   
+
 
      <div class="site-content">
 

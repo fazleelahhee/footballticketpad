@@ -8,6 +8,12 @@
 
 <section class="banner-home">
 
+
+    <h1 class="page-header">
+        @if($node instanceof Pages)
+        {{ e($node->title) }}
+        @endif
+    </h1>
  	
     <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
     
@@ -27,11 +33,7 @@
 <!---------main content------------>
 <div class="row">
 
-	 <h1 class="page-header">
-         @if($node instanceof Pages)
-            {{ e($node->title) }}
-         @endif
-     </h1>
+
 
      <div class="site-content">
          @if($node instanceof Pages)

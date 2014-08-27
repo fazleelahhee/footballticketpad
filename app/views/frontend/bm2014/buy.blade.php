@@ -8,6 +8,17 @@
 
 <section class="banner-home">
 
+
+
+    <span class="page-header buy-detail">
+
+         <span class="gamename"> <strong>Chelsea</strong> vs  <strong>Manchester United</strong> Tickets</span>
+         <span class="gamedetail">Saturday, 16th August 2014, 3:00pm. Turf moor - Burnley FC, Burnley, UK</span>
+
+         <a href="/sell-1" class="btn bluebtn">SELL TICKETS</a>
+
+     </span>
+
  	
     <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
     
@@ -27,14 +38,7 @@
 <!---------main content------------>
 <div class="row">
 
-	 <span class="page-header buy-detail">
 
-         <span class="gamename"> <strong>Chelsea</strong> vs  <strong>Manchester United</strong> Tickets</span>
-         <span class="gamedetail">Saturday, 16th August 2014, 3:00pm. Turf moor - Burnley FC, Burnley, UK</span>
-
-         <a href="/sell-1" class="btn bluebtn">SELL TICKETS</a>
-
-     </span>
 
 
 
