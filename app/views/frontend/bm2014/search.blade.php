@@ -12,7 +12,6 @@
 
 <!---------main content------------>
 <div class="row">
-
 	 <h1 class="page-header">
          @if($node instanceof Pages)
             {{ e($node->title) }}

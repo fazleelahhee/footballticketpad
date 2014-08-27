@@ -229,7 +229,7 @@
 </script>
 
 <script type="text/x-template" id="error-message-template">
-    <div data-alert class="alert-box info radius">
+    <div data-alert class="alert-box alert radius">
         <%= message %>
         <a href="#" class="close">&times;</a>
     </div>
