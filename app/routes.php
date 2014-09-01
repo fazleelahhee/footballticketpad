@@ -226,6 +226,14 @@ Route::post('/ticket/registration', array('before' => 'csrf', 'as' => 'ticket.re
 
 /*
 |--------------------------------------------------------------------------
+| Football tickets customer account
+|--------------------------------------------------------------------------
+*/
+Route::group(array('before'=> 'customer.account'), function () {
+    Route::any('/account/listing', 'AccountController@ticketListing');
+});
+/*
+|--------------------------------------------------------------------------
 | General Routes
 |--------------------------------------------------------------------------
 */
