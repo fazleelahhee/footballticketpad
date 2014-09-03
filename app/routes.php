@@ -229,8 +229,82 @@ Route::post('/ticket/registration', array('before' => 'csrf', 'as' => 'ticket.re
 | Football tickets customer account
 |--------------------------------------------------------------------------
 */
+Route::any('/customer/account/logout', function () {
+    $api_path = Config::get('api.mage_soap_api_path');
+    require_once("{$api_path}app/Mage.php");
+    umask(0);
+    Mage::app('default');
+    Mage::getSingleton('core/session', array('name'=>'frontend'));
+    $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
+    $session->logout();
+    Session::put('customer', null);
+    return Redirect::to('/login') ;
+});
+Route::post('/customer/account/login', function () {
+    header('Content-type: application/json');
+    $api_path = Config::get('api.mage_soap_api_path');
+    $data = Input::all();
+    $email = @$data['login']['username'];
+    $password = @$data['login']['password'];
+    require_once("{$api_path}app/Mage.php");
+    umask(0);
+    Mage::app('default');
+
+    Mage::getSingleton('core/session', array('name'=>'frontend'));
+    $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
+
+    if ($session->isLoggedIn()) {
+        echo  json_encode(array(
+            'data'      => array(
+                'message' => 'success',
+                'reason' => 'already logged in'
+            )
+        ));
+        return;
+    }
+
+    try {
+        if(empty($email) || empty($password)) {
+            throw new Exception ('Login and password are required.', 400);
+        }
+
+        try {
+            $session->login($email, $password);
+            echo json_encode(array(
+                'data'      => array(
+                    'message' => 'success'
+                )
+            ));
+
+            $customer = Mage::getSingleton('customer/session')->getCustomer()->getData();
+            Session::put('customer', $customer);
+
+        } catch (Mage_Core_Exception $e) {
+            switch ($e->getCode()) {
+                case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
+                    throw new Exception ( 'Email is not confirmed. <a href="#">Resend confirmation email.</a>', 400);
+                    break;
+                default:
+                    throw new Exception ($e->getMessage(), 400);
+            }
+        }
+    } catch (Exception $e) {
+        header($_SERVER["SERVER_PROTOCOL"]." {$e->getCode()}");
+        echo json_encode(array('error'=>$e->getMessage()));
+    }
+});
+
 Route::group(array('before'=> 'customer.account'), function () {
-    Route::any('/account/listing', 'AccountController@ticketListing');
+
+    Route::get('/account/listing', 'AccountController@ticketListing');
+    Route::get('/account/purchases', 'AccountController@ticketPurchase');
+    Route::get('/account/sales', 'AccountController@ticketSales');
+    Route::get('/account/account-information', 'AccountController@accountInformation');
+    Route::get('/account/addresses', 'AccountController@address');
+
+    Route::get('/account/account-information/bank', 'AccountController@getCustomerBankInfo'); //get customer bank information
+    Route::post('/account/account-information/bank', 'AccountController@setCustomerBankInfo'); //set customer bank information
+
 });
 /*
 |--------------------------------------------------------------------------

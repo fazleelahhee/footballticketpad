@@ -99,7 +99,8 @@
                     }
             }
             $.ajax({
-                url: '{{$ticketApi}}customer/index/login',
+                /*url: '{{$ticketApi}}customer/index/login', */
+                url: '/customer/account/login',
                 type: 'post',
                 dataType: 'json',
                 data: data,
@@ -109,8 +110,7 @@
                 success: function (reponse) {
                     var data = reponse.data;
                     if(data.message && data.message == 'success') {
-                        //TODO: Redirect
-                        console.log(reponse);
+                        window.location.href = '/';
                     } else {
                         var html = template({message: 'Unknown error'});
                         $('.login-message').remove();

@@ -25,23 +25,16 @@
                   {{ $menus }}
             </nav>
         </span>
-    
-        
-         
-        
-        
-        
-        
 
-        <a href="/login"><span class="btn loginbtn">LOGIN</span></a>
-        
-       
-        <a href="/my-account"><span class="btn myaccount">MY ACCOUNT</span></a>
-        
-        
-        
+        @if(isset($customer['firstname']))
+        <a href="{{url('customer/account/logout')}}"><span class="btn loginbtn">LOGOUT</span></a>
+        <a href="{{url('account/listing')}}"><span class="btn myaccount">MY ACCOUNT</span></a>
+        @else
+        <a href="{{url('login')}}"><span class="btn loginbtn">LOGIN</span></a>
+        @endif;
+
         <div class="searcharea">
-                <form id="form-home" action="/ticket-search" method="get">
+                <form id="form-home" action="{{url('ticket-search')}}" method="get">
                     <input class="forminput" name="search" >
 
                     <input class="bigbox-search-button" type="submit" />

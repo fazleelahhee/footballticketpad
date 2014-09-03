@@ -139,10 +139,8 @@ Route::filter('customer.account', function () {
     Mage::getSingleton('core/session', array('name'=>'frontend'));
     $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
 
-    if ($session->isLoggedIn()) {
-        echo "Logged";
-    } else {
-        echo "Not Logged";
+    if (!$session->isLoggedIn()) {
+        Session::put('customer', null);
+        return Redirect::to('/login') ;
     }
-    die();
 });

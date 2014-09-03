@@ -4,6 +4,7 @@ use Menu;
 use Page;
 use PhotoGallery;
 use FormPost;
+use Session;
 
 class MenuComposer {
 
@@ -15,6 +16,7 @@ class MenuComposer {
 
         $view->with('menus', $menus);
         $view->with('formPostCount', FormPost::where('is_answered', 0)->count());
+        $view->with('customer', Session::get('customer'));
     }
 }
 

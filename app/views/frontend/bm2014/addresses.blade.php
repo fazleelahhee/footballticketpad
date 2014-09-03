@@ -6,45 +6,7 @@
 
 
 
-<section class="banner-home">
-
-    <div class="row">
-
-        <h1 class="page-header">{{ e($node->title) }}</h1>
-
-    </div>
-
-    <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
-    
-    <span class="ftp-line">
-    	<span class="greenline"></span>
-        <span class="yellowline"></span>
-        <span class="pinkline"></span>
-        <span class="blueline"></span>
-    </span>	
-    
-    
-    <div class="second-navs">
-		<div class="row">
-
-
-            <ul>
-
-                <li> <a href="/my-account">Listing</a>  </li>
-                <li> <a href="/purchases">Purchases</a> </li>
-                <li> <a href="/sales">Sales</a>  </li>
-                <li> <a href="/account-information">Account Information</a>  </li>
-                <li class="active"> <a href="/addresses">Addresses</a>  </li>
-
-            </ul>
-
-
-		</div>
-	</div>
-
-    
-</section>
-
+@include(Template::name('frontend.%s._layout.account-tabs'))
 
 
 <!---------main content------------>
