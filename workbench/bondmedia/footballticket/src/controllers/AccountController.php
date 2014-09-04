@@ -70,4 +70,48 @@ class AccountController extends BaseController {
         echo $this->getApiResponse();
     }
 
+
+    public function getCustomerCardInfo() {
+        $customer = Session::get('customer');
+        $this->setDataToPost(array(
+            'customer_id'   => $customer['entity_id'],
+            'type'          => 'get'
+        ));
+        $this->submitPostToApi('customer/index/card');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
+
+    public function setCustomerCardInfo() {
+        $customer = Session::get('customer');
+        $params = Input::all();
+        $params['customer_id']  = $customer['entity_id'];
+        $params['type']         = 'set';
+        $this->setDataToPost($params);
+        $this->submitPostToApi('customer/index/card');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
+
+    public function getCustomerInfo() {
+        $customer = Session::get('customer');
+        $this->setDataToPost(array(
+            'customer_id'   => $customer['entity_id'],
+            'type'          => 'get'
+        ));
+        $this->submitPostToApi('customer/index/personal');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
+
+    public function setCustomerInfo() {
+        $customer = Session::get('customer');
+        $params = Input::all();
+        $params['customer_id']  = $customer['entity_id'];
+        $params['type']         = 'set';
+        $this->setDataToPost($params);
+        $this->submitPostToApi('customer/index/personal');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
 }

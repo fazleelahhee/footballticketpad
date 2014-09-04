@@ -142,5 +142,13 @@ Route::filter('customer.account', function () {
     if (!$session->isLoggedIn()) {
         Session::put('customer', null);
         return Redirect::to('/login') ;
+    } else {
+        $customer = Mage::getSingleton('customer/session')->getCustomer()->getData();
+        $SesCustomer  = Session::get('customer');
+
+        if($customer['entity_id'] != $SesCustomer['entity_id']) {
+            Session::put('customer', null);
+            return Redirect::to('/') ;
+        }
     }
 });

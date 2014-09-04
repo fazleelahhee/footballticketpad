@@ -305,6 +305,38 @@ Route::group(array('before'=> 'customer.account'), function () {
     Route::get('/account/account-information/bank', 'AccountController@getCustomerBankInfo'); //get customer bank information
     Route::post('/account/account-information/bank', 'AccountController@setCustomerBankInfo'); //set customer bank information
 
+    Route::get('/account/account-information/card', 'AccountController@getCustomerCardInfo'); //get customer bank card information
+    Route::post('/account/account-information/card', 'AccountController@setCustomerCardInfo'); //set customer bank card information
+
+    Route::get('/account/account-information/personal', 'AccountController@getCustomerInfo'); //get customer bank card information
+    Route::post('/account/account-information/personal', 'AccountController@setCustomerInfo'); //set customer bank card information
+
+    Route::post('account/account-information/password', function () {
+        $api_path = Config::get('api.mage_soap_api_path');
+        require_once("{$api_path}app/Mage.php");
+        umask(0);
+        Mage::app('default');
+
+        $password = Input::get('_password');
+        $confirm_password = Input::get('_confirm_password');
+        if($password != $confirm_password) {
+            header('content-type: application/json');
+            header($_SERVER["SERVER_PROTOCOL"]." 400");
+            echo json_encode(array('error'=>'password does not match'));
+        }
+
+        $SesCustomer  = Session::get('customer');
+        $customer = Mage::getModel("customer/customer");
+        $customer = $customer->load($SesCustomer['entity_id']);
+
+        $customer->setPassword($password);
+        $customer->save();
+
+        header('content-type: application/json');
+        header($_SERVER["SERVER_PROTOCOL"]." 200");
+        echo json_encode(array('data'=>array('message'=>'success')));
+    });
+
 });
 /*
 |--------------------------------------------------------------------------
