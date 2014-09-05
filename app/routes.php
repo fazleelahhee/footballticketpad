@@ -215,6 +215,8 @@ Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_a
     Route::get('/' . Config::get('bondcms.admin_prefix') . '/{id}/reset/{code}', array('as' => 'admin.reset.password', 'uses' => 'AuthController@getResetPassword'))
         ->where('id', '[0-9]+');
     Route::post('/' . Config::get('bondcms.admin_prefix') . '/reset-password', array('as' => 'admin.reset.password.post', 'uses' => 'AuthController@postResetPassword'));
+
+
 });
 
 /*
@@ -337,6 +339,11 @@ Route::group(array('before'=> 'customer.account'), function () {
         echo json_encode(array('data'=>array('message'=>'success')));
     });
 
+    Route::get('/account/account-information/billing', 'AccountController@getCustomerBillingAddress'); //get customer billing address information
+    Route::post('/account/account-information/billing', 'AccountController@setCustomerBillingAddress'); //set customer billing address  information
+
+    Route::get('/account/account-information/shipping', 'AccountController@getCustomerShippingAddress'); //get customer address information
+    Route::post('/account/account-information/shipping', 'AccountController@setCustomerShippingAddress'); //set customer address information
 });
 /*
 |--------------------------------------------------------------------------

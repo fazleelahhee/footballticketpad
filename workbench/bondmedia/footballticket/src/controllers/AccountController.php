@@ -114,4 +114,54 @@ class AccountController extends BaseController {
         $this->setApiResponseHeader();
         echo $this->getApiResponse();
     }
+
+    public function getCustomerBillingAddress() {
+        $customer = Session::get('customer');
+        $this->setDataToPost(array(
+            'customer_id'   => $customer['entity_id'],
+            'type'          => 'get',
+            'address_type'  => 'billing'
+        ));
+        $this->submitPostToApi('customer/index/address');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
+
+    public function setCustomerBillingAddress() {
+        $customer = Session::get('customer');
+        $params = Input::all();
+        $params['customer_id']  = $customer['entity_id'];
+        $params['type']         = 'set';
+        $params['address_type'] = 'billing';
+
+        $this->setDataToPost($params);
+        $this->submitPostToApi('customer/index/address');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
+
+    public function getCustomerShippingAddress() {
+        $customer = Session::get('customer');
+        $this->setDataToPost(array(
+            'customer_id'   => $customer['entity_id'],
+            'type'          => 'get',
+            'address_type'  => 'shipping'
+        ));
+        $this->submitPostToApi('customer/index/address');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
+
+    public function setCustomerShippingAddress() {
+        $customer = Session::get('customer');
+        $params = Input::all();
+        $params['customer_id']  = $customer['entity_id'];
+        $params['type']         = 'set';
+        $params['address_type'] = 'shipping';
+
+        $this->setDataToPost($params);
+        $this->submitPostToApi('customer/index/address');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
 }
