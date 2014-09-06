@@ -54,39 +54,39 @@
 
                  <tr>
                      <td><strong>Name</strong></td>
-                     <td>Stephen</td>
+                     <td class="firstname" data-firstname="">Stephen</td>
                  </tr>
                  <tr>
                      <td><strong>Surname</strong></td>
-                     <td>King</td>
+                     <td class="lastname" data-lastname="">King</td>
                  </tr>
                  <tr>
                      <td><strong>Address</strong></td>
-                     <td>8 lovely drive</td>
+                     <td class="street" data-street="">8 lovely drive</td>
                  </tr>
                  <tr>
                      <td><strong>Postcode</strong></td>
-                     <td>e6 1eb</td>
+                     <td class="postcode" data-postcode="">e6 1eb</td>
                  </tr>
                  <tr>
                      <td><strong>City</strong></td>
-                     <td>Virral</td>
+                     <td class="city" data-city="">Virral</td>
                  </tr>
-                 <tr>
-                     <td><strong>County</strong></td>
-                     <td>Mersydie</td>
-                 </tr>
+<!--                 <tr>-->
+<!--                     <td><strong>County</strong></td>-->
+<!--                     <td class="" >Mersydie</td>-->
+<!--                 </tr>-->
                  <tr>
                      <td><strong>Country</strong></td>
-                     <td>United kingdom</td>
+                     <td class="country-id" data-country-id="">United kingdom</td>
                  </tr>
                  <tr>
                      <td><strong>Mobile</strong></td>
-                     <td>07706155515</td>
+                     <td class="mobile" data-mobile="">07706155515</td>
                  </tr>
              </table>
 
-             <a href="#" class="pull-left clearboth">change address</a>
+             <a href="#" class="pull-left clearboth change-address">change address</a>
 
              <a href="#" class="pull-left clearboth">Add another address</a>
 
@@ -152,10 +152,11 @@
             'BD': 'Bangladesh',
             'GB': 'United Kingdom'
         };
+
         $('document').ready(function () {
             /*Loading Card info */
             $.ajax({
-                url: '/account/account-information/billing',
+                url: '/account/account-information/shipping',
                 dataType: 'json',
                 type: 'get',
                 beforeSend: function () {
@@ -164,13 +165,13 @@
                 success: function (response) {
                     if(response.data) {
                         var data = response.data;
-                        if(data.vat_id) {
+                        if(data.firstname) {
 
-                            $('.vat-id').data('vat-id', data.vat_id);
-                            $('.vat-id').html(data.vat_id);
+                            $('.firstname').data('firstname', data.firstname);
+                            $('.firstname').html(data.firstname);
 
-                            $('.company').data('company',data.company);
-                            $('.company').html(data.company?data.company : 'Not set');
+                            $('.lastname').data('lastname',data.lastname);
+                            $('.lastname').html(data.lastname?data.lastname : 'Not set');
 
                             $('.street').data('street', data.street);
                             $('.street').html(data.street);
@@ -184,6 +185,8 @@
                             $('.country').data('country', data.country_id);
                             $('.country').html(countries[data.country_id]);
 
+                            $('.mobile').data('mobile', data.phone);
+                            $('.mobile').html(data.phone);
                         }
                     }
                 }
@@ -193,20 +196,21 @@
         });
 
         /* Billing Address modal open event*/
-        $('.modify-billing').click(function (e) {
+        $('.change-address').click(function (e) {
             e.preventDefault();
-            var template = _.template($('#billing-form-template').html());
-            $('#billing-form-modal').remove();
+            var template = _.template($('#address-form-template').html());
+            $('#address-form-modal').remove();
             body.append(template({
-                vat_id: $('.vat-id').data('vat-id'),
-                company: $('.company').data('company'),
+                firstname: $('.firstname').data('firstname'),
+                lastname: $('.lastname').data('lastname'),
                 street: $('.street').data('street'),
                 country_id: $('.country').data('country'),
                 postcode: $('.postcode').data('postcode'),
                 city: $('.city').data('city'),
+                mobile: $('.mobile').data('mobile'),
                 countries: countries
             }));
-            $('#billing-form-modal').foundation('reveal', 'open');
+            $('#address-form-modal').foundation('reveal', 'open');
         });
 
         /* Bank card save event */
@@ -214,27 +218,28 @@
             e.preventDefault();
             var parent = $(this).closest('div.reveal-modal');
             $.ajax({
-                url: '/account/account-information/billing',
+                url: '/account/account-information/shipping',
                 data: {
-                    vat_id: $('#vat-id').val(),
-                    company: $('#company').val(),
+                    firstname: $('#firstname').val(),
+                    lastname: $('#lastname').val(),
                     street: $('#street').val(),
                     country_id: $('#country').val(),
                     postcode: $('#postcode').val(),
-                    city: $('#city').val()
+                    city: $('#city').val(),
+                    phone: $('#mobile').val()
                 },
                 dataType: 'json',
                 type: 'post',
                 success: function (response) {
                     if(response.data) {
                         var data = response.data;
-                        if(data.vat_id) {
+                        if(data.firstname) {
 
-                            $('.vat-id').data('vat-id', data.vat_id);
-                            $('.vat-id').html(data.vat_id);
+                            $('.firstname').data('firstname', data.firstname);
+                            $('.firstname').html(data.firstname);
 
-                            $('.company').data('company',data.company);
-                            $('.company').html(data.company?data.company : 'Not set');
+                            $('.lastname').data('lastname',data.lastname);
+                            $('.lastname').html(data.lastname?data.lastname : 'Not set');
 
                             $('.street').data('street', data.street);
                             $('.street').html(data.street);
@@ -248,6 +253,8 @@
                             $('.country').data('country', data.country_id);
                             $('.country').html(countries[data.country_id]);
 
+                            $('.mobile').data('mobile', data.phone);
+                            $('.mobile').html(data.phone);
                         }
                     }
                 }
@@ -261,16 +268,16 @@
     })(jQuery);
 </script>
 
-<script type="text/x-template" id="billing-form-template" charset="utf-8">
-    <div id="billing-form-modal" class="reveal-modal" data-reveal style="display:none">
-        <h2>Billingh Address</h2>
+<script type="text/x-template" id="address-form-template" charset="utf-8">
+    <div id="address-form-modal" class="reveal-modal" data-reveal style="display:none">
+        <h2>Shipping Address</h2>
         <p>
-            <label for="vat-id">VAT reg no.</label>
-            <input name="vat-id" id="vat-id" value="<%=vat_id%>" type="text" />
+            <label for="firstname">First Name</label>
+            <input name="firstname" id="firstname" value="<%=firstname%>" type="text" />
         </p>
         <p>
-            <label for="company">Company Name</label>
-            <input name="company" id="company" value="<%=company%>" type="text" />
+            <label for="lastname">Last Name</label>
+            <input name="lastname" id="lastname" value="<%=lastname%>" type="text" />
         </p>
 
         <p>
@@ -295,7 +302,10 @@
                 <% }) %>
             </select>
         </p>
-
+        <p>
+            <label for="mobile">Mobile</label>
+            <input name="mobile" id="mobile" value="<%=mobile%>" type="text" />
+        </p>
         <p>
             <a href="#" class="button expand billing-save">Save</a>
         </p>
