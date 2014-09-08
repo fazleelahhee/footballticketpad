@@ -136,23 +136,25 @@
             <!--blcok1--->
             <article class="three columns">
                 <div class="panel">
-                    
-                   <div id="fb-root"></div>
-					<script>(function(d, s, id) {
-                      var js, fjs = d.getElementsByTagName(s)[0];
-                      if (d.getElementById(id)) return;
-                      js = d.createElement(s); js.id = id;
-                      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=154572168240&version=v2.0";
-                      fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));</script>
-                    
+
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=154572168240&version=v2.0";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+
                     <span class="smallfooter-text">
                         Like us on Facebook
                     </span>
-                    
-                    
-                    <div class="fb-facepile" data-href="https://www.facebook.com/fifa?fref=ts" data-width="280" data-height="290" data-max-rows="4" data-colorscheme="dark" data-size="medium" data-show-count="true"></div>
-                    
+
+                    <div class="fb-like-box" data-href="https://www.facebook.com/BondMediaUK?fref=ts" data-width="280" data-height="290" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+
+
+
+
                 </div>
             </article>
     		<!--blcok1--->
