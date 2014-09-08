@@ -115,7 +115,7 @@
         <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
             <li class="">
                 <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-                    <img src="img/avatars/sunny.png" alt="John Doe" class="online"/>
+                    <img src="/assets/backend/img/avatars/sunny.png" alt="John Doe" class="online"/>
                 </a>
                 <ul class="dropdown-menu pull-right">
                     <li>
@@ -403,7 +403,7 @@ you can add as many as you like
 </script>
 
 @yield('script')
-
+{{Assets::dumpOnPageScripts()}}
 <!-- Your GOOGLE ANALYTICS CODE Below -->
 <script type="text/javascript">
     var _gaq = _gaq || [];

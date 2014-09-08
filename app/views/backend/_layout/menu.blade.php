@@ -244,5 +244,26 @@
             </ul>
         </li>
         @yield('nev_menu_end')
+
+
+        <li class="{{ in_array($menu, array('events', 'events/new', 'events/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Events</span></a>
+            <ul>
+                <li class="{{ $menu == 'events'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/events">events</a>
+                </li>
+                @if($menu == 'events/edit')
+                <li class="{{ $menu == 'events/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/events/edit">Edit</a>
+                </li>
+
+                @else
+                <li class="{{ $menu == 'events/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/events/create">Add New</a>
+                </li>
+                @endif
+            </ul>
+        </li>
+
     </ul>
 </nav>

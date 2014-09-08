@@ -95,7 +95,12 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     Route::resource('news', 'NewsController');
     Route::get('news/{id}/delete', array('as' => 'admin.news.delete', 'uses' => 'NewsController@confirmDestroy'))
         ->where('id', '[0-9]+');
-    // news
+
+    Route::resource('events', 'EventsController');
+    Route::get('events/{id}/delete', array('as' => 'admin.events.delete', 'uses' => 'EventsController@confirmDestroy'))
+        ->where('id', '[0-9]+');
+
+    // faq
     Route::resource('faq', 'FaqController');
     Route::get('faq/{id}/delete', array('as' => 'admin.faq.delete', 'uses' => 'FaqController@confirmDestroy'))
         ->where('id', '[0-9]+');
@@ -121,6 +126,11 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     // ajax - news
     Route::post('news/{id}/toggle-publish', array('as' => 'admin.news.toggle-publish', 'uses' => 'NewsController@togglePublish'))
         ->where('id', '[0-9]+');
+
+    // ajax - events
+    Route::post('events/{id}/toggle-publish', array('as' => 'admin.events.toggle-publish', 'uses' => 'EventsController@togglePublish'))
+        ->where('id', '[0-9]+');
+
     // ajax - faq
     Route::post('faq/{id}/toggle-publish', array('as' => 'admin.faq.toggle-publish', 'uses' => 'FaqController@togglePublish'))
         ->where('id', '[0-9]+');

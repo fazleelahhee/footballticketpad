@@ -11,6 +11,7 @@ class StorageServiceProvider extends ServiceProvider {
             'Bond\Repositories\Article\ArticleRepository',
             'Bond\Repositories\Category\CategoryRepository',
             'Bond\Repositories\News\NewsRepository',
+            'Bond\Repositories\Events\EventsRepository',
             'Bond\Repositories\Page\PageRepository',
             'Bond\Repositories\PhotoGallery\PhotoGalleryRepository',
             'Bond\Repositories\Tag\TagRepository'
