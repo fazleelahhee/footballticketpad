@@ -2760,6 +2760,13 @@ body.news .site-content {
     width: 227px;
 }
 
+.one-column .page-header {
+    left: 0 !important;
+    margin-top: 200px;
+    padding-left: 20px !important;
+}
+.btn:hover {color: white !important}
+
 .ajax-loading-modal {background: url("../images/loader/football.gif") no-repeat scroll 50% 50% rgba(255, 255, 255, 0.8) !important;}
 
 
@@ -2852,6 +2859,9 @@ body.news .site-content {
 
     header { background: orange !important}
 
+    
+
+
 }
 
 
@@ -2882,6 +2892,5 @@ body.news .site-content {
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
 
-    header { background: green !important}
 
 }
