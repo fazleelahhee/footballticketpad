@@ -122,3 +122,33 @@ Route::filter('csrf', function () {
 */
 Route::filter('cache.fetch', 'Bond\Filters\CacheFilter@fetch');
 Route::filter('cache.put', 'Bond\Filters\CacheFilter@put');
+
+
+/*
+|--------------------------------------------------------------------------
+| Football ticket customer account filter
+|--------------------------------------------------------------------------
+ */
+
+Route::filter('customer.account', function () {
+    $api_path = Config::get('api.mage_soap_api_path');
+    require_once("{$api_path}app/Mage.php");
+    umask(0);
+    Mage::app('default');
+
+    Mage::getSingleton('core/session', array('name'=>'frontend'));
+    $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
+
+    if (!$session->isLoggedIn()) {
+        Session::put('customer', null);
+        return Redirect::to('/login') ;
+    } else {
+        $customer = Mage::getSingleton('customer/session')->getCustomer()->getData();
+        $SesCustomer  = Session::get('customer');
+
+        if($customer['entity_id'] != $SesCustomer['entity_id']) {
+            Session::put('customer', null);
+            return Redirect::to('/') ;
+        }
+    }
+});

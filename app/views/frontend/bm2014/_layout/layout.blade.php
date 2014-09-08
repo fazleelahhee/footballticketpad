@@ -16,6 +16,7 @@
         Assets::setStyles(
         [
             'foundation'         => 'css/foundation.min.css',
+            /*'foundation'         => 'css/foundation-5.4/foundation.min.css',*/
             'main'               => 'css/main.css',
             'app'                => 'css/app.css'
         ], false, true);
@@ -45,6 +46,7 @@
     [
         'jquery'          => 'js/jquery.2.0.3.js',
         'foundation'      => 'js/foundation.min.js',
+        'foundation54'    => 'js/foundation-5.4/foundation.min.js',
         'app'             => 'js/app.js'
     ], false, true);
 }}

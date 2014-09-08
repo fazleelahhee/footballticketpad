@@ -33,6 +33,8 @@ class FootballticketServiceProvider extends ServiceProvider {
         {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias('TicketSoap', 'Bondmedia\Footballticket\Facades\TicketSoap');
+            $loader->alias('CustomerAuth', 'Bondmedia\Footballticket\Facades\CustomerAuth');
+
         });
 
         $this->app->bind('registration-form', function($app)
