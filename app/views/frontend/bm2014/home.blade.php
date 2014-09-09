@@ -4,11 +4,6 @@
 
 <!-- ######################## Section ######################## -->
 
-@if($node instanceof Pages)
-    {{ e($node->title) }}
-@endif
-
-
 
 
 <!---------sidebar + search form------------>

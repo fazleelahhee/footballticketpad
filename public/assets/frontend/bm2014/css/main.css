@@ -2876,15 +2876,7 @@ body.news .site-content {
 
     header { background: orange !important}
 
-    .contain {
-        width: 740px;
-    }
-    .fields {
-        width: 740px;
-    }
-    .row {
-        width: 740px; min-width:10px;
-    }
+
     .searcharea {
 
         right: 80px;
@@ -2911,6 +2903,15 @@ body.news .site-content {
     }
     .site-content, .teaminfo {
         width: 740px;
+    }
+    .contain {
+        width: 740px;
+    }
+    .fields {
+        width: 740px;
+    }
+    .row {
+        width: 740px; min-width:10px;
     }
     footer .three, footer .row .three {
         height: 350px;
@@ -3012,7 +3013,7 @@ body.news .site-content {
 
 @media only screen and (max-width: 767px) {
 
-    header { background: yellow !important}
+
 
     .hottickets .block-content, .topteams .block-content { display: none}
     .hottickets .block-heading, .topteams .block-heading { cursor: pointer}
@@ -3054,6 +3055,133 @@ body.news .site-content {
         width: auto;
     }
     .sidebar .game {width:auto}
+
+    .site-content, .teaminfo {
+        width: 280px;
+    }
+    .contain {
+        width: 280px;
+    }
+    .fields {
+        width: 280px;
+    }
+    .row {
+        width: 280px; min-width:10px;
+    }
+    header { height: auto}
+    .logo {
+        display: inline-block;
+        float: none;
+        width: 170px;
+    }
+    .searcharea {
+        height: auto;
+        margin: 0 !important;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        width: 100%;
+        z-index: 99;
+    }
+    #form-home {
+        width: 280px;
+    }
+    .forminput {
+        font-size: 13px;
+        width: 207px;
+    }
+    .slogan {
+        font-size: 19px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .home .banner-home {
+        height: 500px;
+
+    }
+    body .flexslider .slides img {
+        display: block;
+        min-height: 10px !important;
+        width: 100% !important;
+    }
+    .home .site-content h4 {
+        text-align: left;
+
+    }
+
+    .flexslider {
+        background: none repeat scroll 0 0 black;
+        border: medium none !important;
+        left: 0;
+        margin-left: -440px !important;
+        position: absolute !important;
+        top: 0;
+        width: 1172px;
+    }
+    .row {
+        margin: 0 auto;
+    }
+    .home .banner-home {
+        height: 400px;
+    }
+    .home .site-content { text-align: center}
+    .home .site-content .three.columns {
+        display: inline-block;
+        float: none !important;
+        margin: 0 auto !important;
+        width: 230px !important;
+    }
+    aside {
+        position: static;
+
+    }
+    footer .full.lightgrey {
+        height: auto;
+
+    }
+    .formfooter {
+        width: 170px;
+    }
+    .footerblock > form {
+        margin-bottom: 8px;
+    }
+    .latestnews h4 {
+        width: 190px;
+    }
+    .social a span {
+
+        display: inline-block;
+        float: none;
+        margin: 22px !important;
+
+    }
+    .twelve.columns.footer {
+        padding-top: 20px;
+    }
+    .logoa {
+        clear: both;
+        float: left;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .menu-container {
+        display: inline-block;
+        float: none;vertical-align: top;
+        position: relative;
+    }
+    header .btn {
+        display: inline-block;
+        float: none;vertical-align: top;
+        margin: 0 !important;
+    }
+    header .btn, header .menubtn {
+        margin-left: 0;
+        margin-top: 0;
+    }
+    header {
+        padding-bottom: 20px;
+        vertical-align: top;
+    }
 
 }
 

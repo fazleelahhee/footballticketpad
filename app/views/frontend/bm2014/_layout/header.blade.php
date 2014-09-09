@@ -5,7 +5,7 @@
 
 	<div class="contain">
     
-        <a href="/"><img class="logo" src="{{ Assets::Path('images/main_logo.png') }}" alt="Football Ticket Pad" /></a>
+        <a class="logoa" href="/"><img class="logo" src="{{ Assets::Path('images/main_logo.png') }}" alt="Football Ticket Pad" /></a>
         
         
         
