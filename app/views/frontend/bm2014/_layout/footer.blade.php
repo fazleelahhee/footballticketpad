@@ -3,6 +3,16 @@
 
 
 <!-- ######################## Footer ######################## -->
+
+
+<div class="full">
+
+    <div class="row sidebar-mobile"></div>
+
+</div>
+
+
+
 <footer>
 
 	

@@ -2883,7 +2883,16 @@ body.news .site-content {
     .row {
         width: 740px;
     }
+    .searcharea {
 
+        right: 80px;
+
+    }
+
+    .sidebar {background:red; position:static}
+    .flex-control-nav {
+        padding-left: 0 !important;
+    }
 
 
 }
