@@ -112,6 +112,15 @@
     });
 
 
+    $(".hottickets .block-heading").click(function() {
+        $(".hottickets .block-content").toggleClass('open');
+    });
+
+    $(".topteams .block-heading").click(function() {
+        $(".topteams .block-content").toggleClass ('open');
+    });
+
+
     $(window).resize(function(){
 
         if ($(window).width() <= 1000) {
@@ -119,9 +128,23 @@
             // is mobile device
             $('.sidebar').prependTo(".sidebar-mobile");
 
+
         }
 
     });
+
+
+     if (parseInt($(window).width()) < 1000) {
+
+
+            // is mobile device
+            $('.sidebar').prependTo(".sidebar-mobile");
+
+
+       }
+
+
+
 
 
 

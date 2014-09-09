@@ -2879,21 +2879,124 @@ body.news .site-content {
     .contain {
         width: 740px;
     }
-
-    .row {
+    .fields {
         width: 740px;
+    }
+    .row {
+        width: 740px; min-width:10px;
     }
     .searcharea {
 
         right: 80px;
 
     }
+    .hovereffect {
+        height: 115px;
 
-    .sidebar {background:red; position:static}
+    }
+
+    .selldivider .label {
+
+        margin-bottom: 20px;
+       margin-top:10px
+    }
+
+    footer .full .support-text {
+        font-size: 16px;
+
+    }
+    .sidebar { position:static}
     .flex-control-nav {
         padding-left: 0 !important;
     }
+    .site-content, .teaminfo {
+        width: 740px;
+    }
+    footer .three, footer .row .three {
+        height: 350px;
+        width: 50%;
+    }
+    .twitter-timeline.twitter-timeline-rendered {
+        width: 100% !important;
+    }
+    header .searcharea {
 
+        width: 250px;
+    }
+    header .searcharea .forminput {width: 184px}
+
+
+
+    .hottickets .block-content, .topteams .block-content { display: none}
+    .hottickets .block-heading, .topteams .block-heading { cursor: pointer}
+    .sidebar .hottickets {
+        box-shadow: 0 0 0px none;
+        -webkit-box-shadow: 0 0 0px none;
+    }
+    aside {
+        position: absolute;
+        vertical-align: top;
+        width: 100%;
+        z-index: 99;
+    }
+    .block-heading { position: relative}
+
+    .block-heading .blockicon {
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+
+    .hottickets .block-content.open, .topteams .block-content.open {
+        display: block;
+    }
+
+    .hottickets .block-content, .topteams .block-content,
+    .hottickets .block-heading, .topteams .block-heading {width:100%}
+
+    .hottickets, .topteams {
+        clear: both;
+        width: 100%;
+    }
+    .block-heading h3 {
+        padding-left: 50px;
+        width: 100%;
+    }
+    .homegame, .awaygame {
+
+        width: auto;
+    }
+    .sidebar .game {width:auto}
+
+    .buy-detail {
+        margin: 160px 0 40px -376px !important;
+        width: 760px !important;
+    }
+    .yellowbtn {
+        background: none repeat scroll 0 0 #ffc323;
+        color: #ffffff;
+        font-size: 11px !important;
+        width: 141px !important;
+    }
+    .step-process li {
+
+        width: 254px;
+    }
+    .bluehighlight {
+        width: 770px !important;
+    }
+    .teaminfo .page-header {
+        margin-top: 70px;
+    }
+    .team-summary {
+        width: 300px;
+    }
+    .club-logo {
+        width: 80px;
+    }
+    .teaminfo .page-header {
+        padding-left: 15px;
+    }
 
 }
 
@@ -2910,6 +3013,47 @@ body.news .site-content {
 @media only screen and (max-width: 767px) {
 
     header { background: yellow !important}
+
+    .hottickets .block-content, .topteams .block-content { display: none}
+    .hottickets .block-heading, .topteams .block-heading { cursor: pointer}
+    .sidebar .hottickets {
+        box-shadow: 0 0 0px none;
+        -webkit-box-shadow: 0 0 0px none;
+    }
+    aside {
+        position: absolute;
+        vertical-align: top;
+        width: 100%;
+        z-index: 99;
+    }
+    .block-heading { position: relative}
+
+    .block-heading .blockicon {
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+
+    .hottickets .block-content.open, .topteams .block-content.open {
+        display: block;
+    }
+
+    .hottickets .block-content, .topteams .block-content,
+    .hottickets .block-heading, .topteams .block-heading {width:100%}
+
+    .hottickets, .topteams {
+        clear: both;
+        width: 100%;
+    }
+    .block-heading h3 {
+        padding-left: 50px;
+        width: 100%;
+    }
+    .homegame, .awaygame {
+
+        width: auto;
+    }
+    .sidebar .game {width:auto}
 
 }
 
