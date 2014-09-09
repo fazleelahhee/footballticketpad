@@ -116,7 +116,7 @@
                     	</span>
                     </td>
                     <td>
-                    	Saturday 16th August 2014
+                    	Saturday 16th August 2014  <br/> 3:00pm
                     </td>
                     <td>
                     	&pound;59.99
@@ -135,7 +135,7 @@
                     	</span>
                     </td>
                     <td>
-                    	Saturday 16th August 2014
+                    	Saturday 16th August 2014  <br/> 3:00pm
                     </td>
                     <td>
                     	&pound;59.99
@@ -155,7 +155,7 @@
                     	</span>
                     </td>
                     <td>
-                    	Saturday 16th August 2014
+                    	Saturday 16th August 2014  <br/> 3:00pm
                     </td>
                     <td>
                     	&pound;59.99
@@ -175,7 +175,7 @@
                     	</span>
                     </td>
                     <td>
-                    	Saturday 16th August 2014
+                    	Saturday 16th August 2014  <br/> 3:00pm
                     </td>
                     <td>
                     	&pound;59.99

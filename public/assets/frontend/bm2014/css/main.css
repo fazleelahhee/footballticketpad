@@ -1366,8 +1366,9 @@ aside {
     line-height: 50px;
     width: 227px;
 }
-.vs {color: #9d9d9d;
+.vs {  color: #9d9d9d;
     font-weight: 500;
+    padding: 0 4px;
    }
 .date span {
     float: left; clear:both; width:100%; text-align:center
@@ -2476,7 +2477,13 @@ textarea {
 .gamename {  color: white;
     display: block;
     width: 100%;}
+.homegame {
+    text-align: right;
+}
 
+.awaygame {
+    text-align: left;
+}
 .buy-detail .bluebtn {
     display: inline-block;
     font-size: 16px;
