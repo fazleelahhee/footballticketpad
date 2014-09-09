@@ -31,7 +31,7 @@
         <a href="{{url('account/listing')}}"><span class="btn myaccount">MY ACCOUNT</span></a>
         @else
         <a href="{{url('login')}}"><span class="btn loginbtn">LOGIN</span></a>
-        @endif;
+        @endif
 
         <div class="searcharea">
                 <form id="form-home" action="{{url('ticket-search')}}" method="get">
