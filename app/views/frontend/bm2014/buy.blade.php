@@ -71,7 +71,7 @@
          <div class="row">
 
 
-             <div class="columns five">
+             <div class="columns five stadiumpicture">
                  <img src="{{ Assets::Path('images/stadium.jpg') }}" />
              </div>
 
@@ -479,6 +479,14 @@
             <input type="text" placeholder="YOUR NAME" />
 
         </div>
+
+        <div class="row">
+
+
+            <input type="text" placeholder="COMPANY NAME" />
+
+        </div>
+
 
         <div class="row">
 

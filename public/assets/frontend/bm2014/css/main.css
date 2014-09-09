@@ -2458,6 +2458,10 @@ textarea {
     margin-top: 10px;
     width: 100%;
 }
+.sticky {
+    position: fixed;
+    top: 0;
+}
 
 .buy-detail {  background: none repeat scroll 0 0 ;
     color: white; z-index: 9;
@@ -2468,7 +2472,7 @@ textarea {
     margin: 160px 0 40px -611px !important;
     padding-left: 0 !important;
     width: 990px !important;}
-
+.stadiumpicture { position: static}
 .gamename {  color: white;
     display: block;
     width: 100%;}

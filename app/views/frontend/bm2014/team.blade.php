@@ -65,7 +65,7 @@
                   </li>
                   <li>
                   	 <span class="labeltitle"><strong>Record goal scorer:</strong></span>
-                     <span class="data">Frank Lampard</span>
+                     <span class="data">Frank Lampard (999)</span>
                   </li>
                   <li>
                   	 <span class="labeltitle"><strong>Record signing:</strong></span>

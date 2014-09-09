@@ -91,4 +91,27 @@
     });
 
 
+    $(window).on("scroll",function(e){
+
+        var sidepos = parseFloat($('footer').offset().top - $('.stadiumpicture').outerHeight());
+
+        if($(window).scrollTop() > 500 && $(window).scrollTop() < sidepos) {
+            $('.stadiumpicture').css('position','fixed');
+            $('.stadiumpicture').css('top','0');
+        }
+
+        else if($(window).scrollTop() > 500 && $(window).scrollTop() >= sidepos) {
+            $('.stadiumpicture').css('position','');
+            $('.stadiumpicture').css('top','' + sidepos + 'px');
+        }
+
+        else if($(window).scrollTop() < 500) {
+            $('.stadiumpicture').css('position','static');
+            $('.stadiumpicture').css('top','');
+        }
+    });
+
+
+
+
 })(jQuery, this);
