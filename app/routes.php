@@ -231,10 +231,40 @@ Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_a
 
 /*
 |--------------------------------------------------------------------------
+| Football tickets Admin Controller
+|--------------------------------------------------------------------------
+*/
+
+Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'before' => array('auth.admin', 'assets_admin')), function () {
+    Route::post('/ticket/events/ticket-types/add', array('as'=>'ticket.events.ticket-types.add','uses'=>'TicketTypeController@create'));
+
+    Route::post('/ticket/events/form-of-ticket/add', array('as'=>'ticket.events.formOfTicket.add','uses'=>'FormOfTicketController@create'));
+    Route::post('/ticket/events/ticket-restriction/add', array('as'=>'ticket.events.restriction.add','uses'=>'TicketRestrictionController@create'));
+});
+
+/*
+|--------------------------------------------------------------------------
 | Football tickets
 |--------------------------------------------------------------------------
 */
 Route::post('/ticket/registration', array('before' => 'csrf', 'as' => 'ticket.registrations', 'uses' => 'CustomerController@registrationAction'));
+
+Route::get('/ticket/events/ticket-types', array('as'=>'ticket.events.ticket-types','uses'=>'TicketTypeController@index'));
+Route::get('/ticket/events/form-of-ticket-types', array('as'=>'ticket.events.formOfTicketTypes','uses'=>'FormOfTicketController@index'));
+//TicketRestrictionController
+Route::get('/ticket/events/ticket-restriction', array('as'=>'ticket.events.ticketRestriction','uses'=>'TicketRestrictionController@index'));
+
+
+//Ticket Sell
+Route::get('/ticket/sell/{id}', array('as'=>'ticket.sell.1','uses'=>'SellController@ticketInformation'))
+    ->where('id', '[0-9]+');
+
+//Ticket Sell
+//todo: later this need to convert only post
+Route::post('/ticket/sell/{id}', array('as'=>'ticket.sell.1','uses'=>'SellController@ticketSellerInfo'))
+    ->where('id', '[0-9]+');
+Route::any('/ticket/dev/sell/{id}', array('as'=>'ticket.sell.1','uses'=>'SellController@ticketSellerInfo'))
+    ->where('id', '[0-9]+');
 
 /*
 |--------------------------------------------------------------------------

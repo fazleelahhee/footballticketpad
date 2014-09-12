@@ -59,8 +59,11 @@ class EventsRepository extends Validator implements BaseRepositoryInterface {
 
     public function create($attributes) {
 
-        $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
-
+        $attributes['is_published']     = isset($attributes['is_published']) ? true : false;
+        $attributes['event_in_home']    = isset($attributes['event_in_home']) ? true : false;
+//        if (isset($attributes['datetime']) && !empty($attributes['datetime'])) {
+//            $attributes['datetime'] = '2014-09-21 21:30:31';
+//        }
         if ($this->isValid($attributes)) {
 
             $this->events->fill($attributes)->save();
@@ -72,7 +75,12 @@ class EventsRepository extends Validator implements BaseRepositoryInterface {
 
     public function update($id, $attributes) {
 
-        $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
+        $attributes['is_published']     = isset($attributes['is_published']) ? true : false;
+        $attributes['event_in_home']    = isset($attributes['event_in_home']) ? true : false;
+
+//        if (isset($attributes['datetime']) && !empty($attributes['datetime'])) {
+//            $attributes['datetime'] = '2014-09-21 21:30:31';
+//        }
 
         $this->events = $this->find($id);
 

@@ -205,7 +205,31 @@
                     body.removeClass("loading");
                     $('.ajax-loading-modal').remove();
                     //redirect to account page
-                    window.location.href = '/account-information';
+                    $.ajax({
+                        url: '/customer/account/login',
+                        data:{
+                            login : {
+                            username: $('input[name=email]').val(),
+                            password: $('input[name=password]').val()
+                        }},
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (response) {
+                            body.removeClass("loading");
+                            @if(isset($reload) && trim($reload) == 'self')
+                                window.location.reload();
+                            @else
+                                    window.location.href = '/account-information';
+                            @endif
+
+                        },
+                        error: function (response) {
+                            body.removeClass("loading");
+                            console.log(response);
+                        }
+                    });
+
+
                 },
                 error: function ($response) {
                     body.removeClass("loading");

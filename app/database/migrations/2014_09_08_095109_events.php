@@ -17,7 +17,8 @@ class Events extends Migration {
             $table->string('title', 255);
             $table->text('content');
             $table->string('slug')->nullable();
-            $table->date('datetime');
+            $table->datetime('datetime');
+            $table->string('event_location', 255);
             $table->enum('team_type', array('club', 'country'));
             $table->integer('home_team_id');
             $table->integer('away_team_id');
@@ -26,6 +27,9 @@ class Events extends Migration {
             $table->boolean('event_in_home')->default(true);
             $table->integer('venue_id')->nullable();
             $table->integer('feature_image')->nullable();
+            $table->text('ticket_type_ids')->nullable();
+            $table->text('form_of_ticket_ids')->nullable();
+            $table->text('ticket_restriction_ids')->nullable();
             $table->timestamps();
             $table->boolean('is_published')->default(true);
         });

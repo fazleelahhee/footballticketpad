@@ -1,13 +1,15 @@
 <?php
 namespace Bondmedia\Footballticket\ShortCode;
 
+use Bond\Abstracts\BaseShortCodeAbstract;
+use Bond\Interfaces\BaseShortCodeInterface;
 use View;
 
-class RegistrationForm {
+class RegistrationForm extends BaseShortCodeAbstract implements BaseShortCodeInterface{
     private $url = '/ticket/registration';
-    private $template = "footballticket::registration";
-
+    protected $params = array('reload'  => 'none');
     public function __construct() {
+        $this->setTemplate("footballticket::registration");
         return $this;
     }
 
@@ -15,7 +17,7 @@ class RegistrationForm {
      * @return mixed
      */
     public function render() {
-        return View::make($this->template)
+        return View::make($this->getTemplate(), $this->params)
             ->with('url', $this->url)
             ->render();
     }

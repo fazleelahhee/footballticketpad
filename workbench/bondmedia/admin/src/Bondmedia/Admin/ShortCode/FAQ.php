@@ -1,20 +1,17 @@
 <?php
 namespace Bondmedia\Admin\ShortCode;
 
+use Bond\Abstracts\BaseShortCodeAbstract;
+use Bond\Interfaces\BaseShortCodeInterface;
 use Faqs;
 use Bond\Repositories\Faq\FaqRepository;
 use View;
 
-class FAQ {
-    private $template = "admin::faq";
-    private $params = array();
+class FAQ extends BaseShortCodeAbstract implements BaseShortCodeInterface{
 
     public function __construct() {
+        $this->setTemplate("admin::faq");
         return $this;
-    }
-
-    public function setParams($options) {
-        parse_str(urldecode($options), $this->params);
     }
 
     /**

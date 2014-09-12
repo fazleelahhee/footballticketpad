@@ -59,7 +59,8 @@ class EventsController extends BaseController {
     public function show($id) {
 
         $events = $this->events->find($id);
-        return View::make('backend.events.show', compact('events'));
+        return View::make('backend.events.show', compact('events'))
+            ->with('menu', 'events/show');
     }
 
     /**

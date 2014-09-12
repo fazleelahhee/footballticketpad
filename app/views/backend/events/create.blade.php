@@ -2,7 +2,7 @@
 @section('content')
 
 {{  Assets::setStyles([
-    'bootstrap-tagsinput' => 'js/plugin/bootstrap-tags/bootstrap-tagsinput.css',
+    'bootstrap-tagsinput'       => 'js/plugin/bootstrap-tags/bootstrap-tagsinput.css',
     'jquery-datetime'           => 'js/plugin/jquery-datetime/jquery.datetimepicker.css',
 ], true) }}
 
@@ -11,6 +11,7 @@
         'bootstrap-tagsinput'       => 'js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js',
         'slug'                      => 'js/plugin/jquery-slug/jquery.slug.js',
         'jquery-datetime'           => 'js/plugin/jquery-datetime/jquery.datetimepicker.js',
+        'underscore'                => 'js/libs/underscore.min.js'
     ], true);
 }}
 
@@ -62,6 +63,19 @@
             {{ Form::text('datetime', null, array('class'=>'form-control', 'id' => 'datetime', 'value'=>Input::old('datetime'))) }}
             @if ($errors->first('datetime'))
             <span class="help-block">{{ $errors->first('datetime') }}</span>
+            @endif
+        </div>
+    </div>
+    <br>
+
+    <!-- Datetime -->
+    <div class="control-group {{ $errors->has('event_location') ? 'has-error' : '' }}">
+        <label class="control-label" for="event-location">Where</label>
+
+        <div class="controls">
+            {{ Form::text('event_location', null, array('class'=>'form-control', 'id' => 'event-location', 'value'=>Input::old('event_location'))) }}
+            @if ($errors->first('event_location'))
+            <span class="help-block">{{ $errors->first('event_location') }}</span>
             @endif
         </div>
     </div>
@@ -136,16 +150,60 @@
     </div>
     <br>
 
-    <div class="control-group {{ $errors->has('away-team-id') ? 'has-error' : '' }}">
-        <label class="control-label" for="away-team-id">Away Team</label>
+    <div class="control-group {{ $errors->has('season_id') ? 'has-error' : '' }}">
+        <label class="control-label" for="season-id">Season</label>
         <div class="controls">
-            {{ Form::select('away_team_id', array(''=>'-', '2'=>'Chelsea'), '', array('class'=>'form-control', 'id'=>'away-team-id')) }}
-            @if ($errors->first('home-team-id'))
-            <span class="help-block">{{ $errors->first('away_team_id') }}</span>
+            {{ Form::select('season_id', array(''=>'-', '2'=>'2014'), '', array('class'=>'form-control', 'id'=>'season-id')) }}
+            @if ($errors->first('season_id'))
+            <span class="help-block">{{ $errors->first('season_id') }}</span>
             @endif
         </div>
     </div>
     <br>
+
+    <div class="control-group {{ $errors->has('tournament_id') ? 'has-error' : '' }}">
+        <label class="control-label" for="tournament-id">Tournament</label>
+        <div class="controls">
+            {{ Form::select('tournament_id', array(''=>'-', '2'=>'premier league '), '', array('class'=>'form-control', 'id'=>'tournament-id')) }}
+            @if ($errors->first('tournament_id'))
+            <span class="help-block">{{ $errors->first('tournament_id') }}</span>
+            @endif
+        </div>
+    </div>
+    <br>
+    <div class="control-group {{ $errors->has('ticket_type_ids') ? 'has-error' : '' }}">
+        <label class="control-label" for="available-ticket-type">
+            <a href="#" class="available-ticket-type">Select Available Ticket Type</a>
+            <input name="ticket_type_ids" value="" id="ticket-type-ids" type="hidden">
+        </label>
+        <div class="selected-types-container">
+        </div>
+    </div>
+    <br>
+
+    <div class="control-group {{ $errors->has('form_of_ticket_ids') ? 'has-error' : '' }}">
+        <label class="control-label" for="form-of-ticket-ids">
+            <a href="#" class="available-form-of-ticket-ids">Select available form of ticket</a>
+            <input name="form_of_ticket_ids" value="" id="form-of-ticket-ids" type="hidden">
+        </label>
+
+        <div class="selected-form-of-ticket-container">
+        </div>
+    </div>
+    <br>
+
+    <div class="control-group {{ $errors->has('ticket_restrictions_ids') ? 'has-error' : '' }}">
+        <label class="control-label" for="ticket-restrictions-ids">
+            <a href="#" class="available-ticket-restrictions-ids">Select available restrictions for this event</a>
+            <input name="ticket_restriction_ids" value="" id="ticket-restrictions-ids" type="hidden">
+        </label>
+
+        <div class="selected-restriction-ticket-container">
+        </div>
+    </div>
+    <br>
+
+
 
     {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
@@ -162,18 +220,296 @@
 {{ Assets::jsStart() }}
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#title").slug();
 
-        $('#datetime').datetimepicker({
-            format:'d/m/Y H:i'
+    (function ($) {
+        window.PopUpSelector = function (options) {
+            var body        = $('body'),
+                url         = options.url,
+                inputIds    = options.inputIds,
+                container   = options.container,
+                linkToClick = options.linkToClick,
+                template    = options.template,
+                templateCon = options.templateCon,
+                addEvent    = options.addEvent,
+                addInElem   = options.addInElem,
+                saveBtnElem = options.saveBtnElem,
+                selectElem  = options.selectElem,
+                addUrl      = options.addUrl,
+                loaded      = false,
+                types       = [],
+                self        = this;
+
+            this.init = function  () {
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    type: 'GET'
+                }).done(function (response) {
+                    if( response.length > 0) {
+                        _.each(response, function (val) {
+                            if(val.title) {
+                                types[val.id] = val;
+                            }
+                        });
+                        loaded = true;
+                        self.displayOnForm();
+                    }
+                });
+
+                return this;
+            }
+
+            this.displayOnForm = function() {
+                var ArrIds = $(inputIds).val().split(',');
+                var ids = [];
+                _.each(ArrIds, function (val, key) {
+                    ids[key] = parseInt(val);
+                });
+                $(container).html('');
+                _.each(types, function (val, key) {
+                    if (_.contains(ids, key)) {
+                        $(container).append(
+                            '<p>'+val.title+'</p>'
+                        );
+                    }
+                });
+
+                return this;
+            }
+
+            this.events = function () {
+                $(linkToClick).click(function (e) {
+                    e.preventDefault();
+                    var _template = _.template($(template).html());
+                    $(templateCon).remove();
+                    var ids = [];
+                    if($(inputIds).val() != undefined || $(inputIds).val().length > 0 ) {
+                        var ArrIds = $(inputIds).val().split(',');
+                        _.each(ArrIds, function (val, key) {
+                            ids[key] = parseInt(val);
+                        });
+                    }
+
+                    body.append(_template({
+                        types: types,
+                        ids: ids
+                    }));
+
+                    $(templateCon).modal({show: true});
+
+                });
+
+
+                body.on('click', addEvent,function (e) {
+                    e.preventDefault();
+                    var data = {
+                        name: $(addInElem).val()
+                    }
+
+                    $.ajax({
+                        url: addUrl,
+                        data: data,
+                        type: 'post',
+                        dataType: 'json',
+                    }).done(function(response) {
+                        if (response.id) {
+                            $(selectElem).append(
+                                '<option value='+response.id+'>'+response.ticketType+'</option>'
+                            );
+                            self.init();
+                        }
+                    });
+                });
+
+                body.on('click', saveBtnElem, function (e) {
+                    e.preventDefault();
+                    var selected = $(selectElem+' :selected');
+                    var values = [];
+
+                    _.each(selected, function (val, key) {
+                        values[key] = parseInt($(val).val());
+                    });
+
+                    if(values.length > 0) {
+                        $(inputIds).val(values.join(','));
+                    }
+
+                    $(templateCon)
+                        .find('.close')
+                        .trigger('click');
+                    self.displayOnForm();
+                });
+                return this;
+            }
+
+            return this;
+        }
+    })(jQuery);
+
+    (function ($) {
+        $(document).ready(function () {
+
+            $("#title").slug();
+
+            $('#datetime').datetimepicker({
+                format:'Y-m-d H:i:s'
+            });
+
+            if ($('#tag').length != 0) {
+                var elt = $('#tag');
+                elt.tagsinput();
+            }
+
+            new PopUpSelector({
+                url         : '{{route("ticket.events.ticket-types")}}',
+                inputIds    : '#ticket-type-ids',
+                container   : '.selected-types-container',
+                linkToClick : '.available-ticket-type',
+                template    : '#available-ticket-type-template',
+                templateCon : '.available-ticket-type-template',
+                addEvent    : '.add-ticket-type',
+                addInElem   : '.add-ticket-type-input',
+                addUrl      : '{{ route("ticket.events.ticket-types.add")}}',
+                saveBtnElem : '.selected-ticket-type',
+                selectElem  : '.ticket-types'
+            }).init().events();
+
+            new PopUpSelector({
+                url         : '{{route("ticket.events.formOfTicketTypes")}}',
+                inputIds    : '#form-of-ticket-ids',
+                container   : '.selected-form-of-ticket-container',
+                linkToClick : '.available-form-of-ticket-ids',
+                template    : '#available-form-of-ticket-template',
+                templateCon : '.available-form-of-ticket-template',
+                addEvent    : '.add-form-ticket',
+                addInElem   : '.add-ticket-type-input',
+                addUrl      : '{{ route("ticket.events.formOfTicket.add")}}',
+                saveBtnElem : '.set-form-of-ticket',
+                selectElem  : '.form-of-tickets'
+            }).init().events();
+
+            new PopUpSelector({
+                url         : '{{route("ticket.events.ticketRestriction")}}',
+                inputIds    : '#ticket-restrictions-ids',
+                container   : '.selected-restriction-ticket-container',
+                linkToClick : '.available-ticket-restrictions-ids',
+                template    : '#available-restriction-ticket-template',
+                templateCon : '.available-restriction-ticket-template',
+                addEvent    : '.add-restriction-ticket',
+                addInElem   : '.add-restriction-input',
+                addUrl      : '{{ route("ticket.events.restriction.add")}}',
+                saveBtnElem : '.set-restriction-ticket',
+                selectElem  : '.restrictions-ticket'
+            }).init().events();
+
+            //
         });
 
-        if ($('#tag').length != 0) {
-            var elt = $('#tag');
-            elt.tagsinput();
-        }
-    });
+    })(jQuery);
+</script>
+
+<script type="application/x-template" id="available-ticket-type-template" charset="utf-8">
+    <div class="modal fade available-ticket-type-template">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">Available Ticket Type</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                    <div class="form-group">
+                        <input name="ticket_type_ids" value="" type="text" class="form-control add-ticket-type-input">
+                        <input type="button" value="Add" class="btn add-ticket-type">
+                    </div>
+                    <div class="form-group">
+                        <select multiple class="form-control ticket-types" >
+                            <% _.each(types, function (val, key) {  %>
+                                <option value="<%=key %>" <%= _.contains(ids, key)?'selected': '' %> ><%=val.title %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary selected-ticket-type">Set</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</script>
+
+<script type="application/x-template" id="available-form-of-ticket-template" charset="utf-8">
+    <div class="modal fade available-form-of-ticket-template">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">Available Form of Ticket</h4>
+                </div>
+                <div class="modal-body ">
+                    <p>
+                    <div class="form-group">
+                        <input name="ticket_type_ids" value="" type="text" class="form-control add-ticket-type-input">
+                        <input type="button" value="Add" class="btn add-form-ticket">
+                    </div>
+
+                    <div class="form-group">
+                        <select multiple class="form-control form-of-tickets">
+                            <% _.each(types, function (val, key) {  %>
+                                <option value="<%=key %>" <%= _.contains(ids, key)?'selected': '' %> ><%=val.title %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary set-form-of-ticket">Set</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</script>
+
+<script type="application/x-template" id="available-restriction-ticket-template" charset="utf-8">
+    <div class="modal fade available-restriction-ticket-template">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">Available Restriction</h4>
+                </div>
+                <div class="modal-body ">
+                    <p>
+                    <div class="form-group">
+                        <input name="ticket_type_ids" value="" type="text" class="form-control add-restriction-input">
+                        <input type="button" value="Add" class="btn add-restriction-ticket">
+                    </div>
+
+                    <div class="form-group">
+                        <select multiple class="form-control restrictions-ticket">
+                            <% _.each(types, function (val, key) {  %>
+                                <option value="<%=key %>" <%= _.contains(ids, key)?'selected': '' %> ><%=val.title %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary set-restriction-ticket">Set</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </script>
 
 {{ Assets::jsEnd() }}
