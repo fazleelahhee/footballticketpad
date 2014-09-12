@@ -12,7 +12,7 @@ class SellController extends BaseController
             return '';
         }
 
-        View::share('body_class', 'sell-1');
+        View::share('body_class', 'pages sell-1 sell1');
         $node = FootBallEvent::find($ticketId);
         return View::make(Template::name('frontend.%s.sell.1'), compact('node'));
     }
@@ -20,7 +20,7 @@ class SellController extends BaseController
     public function ticketSellerInfo($ticketId = '') {
         $ticket = Input::all();
         $customer = Session::get('customer');
-        View::share('body_class', 'sell-2');
+        View::share('body_class', 'pages sell-2 sell2');
         $node = FootBallEvent::find($ticketId);
 //        var_dump($ticket);
 //        var_dump($customer);
