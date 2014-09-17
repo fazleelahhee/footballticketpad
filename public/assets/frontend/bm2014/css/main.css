@@ -1382,8 +1382,10 @@ aside {
 .flexslider .slides {
     background: none repeat scroll 0 0 black !important;
 }
-
-
+a { cursor: pointer}
+html body a:hover {
+    color: #951647;
+}
 .reveal-modal select {  background-color: #f6f6f6 !important;
     border: 1px solid #ccc;
         border-radius: 22px !important;
