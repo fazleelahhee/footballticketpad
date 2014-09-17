@@ -65,7 +65,7 @@
 }
 
 .slogan {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; }
-
+.bold {font-family: 'HelveticaNeueLTStd-Bd', sans-serif; }
 body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; padding-top: 107px; overflow-x:hidden}
 
 .row {
@@ -1942,8 +1942,8 @@ header .searcharea .bigbox-search-button {
 .bluebtn:hover {background:#3499aa; color:#FFFFFF}
 
 strong, b {
-    font-weight: 500 !important;
-
+  
+    font-family: 'HelveticaNeueLTStd-Bd', sans-serif;
 }
 .responsive { width:100%;
   border-collapse: collapse;
