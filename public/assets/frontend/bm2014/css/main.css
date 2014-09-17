@@ -3391,6 +3391,9 @@ body.news .site-content {
     .banner-home .row {
         width: 100%;
     }
+    .accordion-toggle {
+        padding-right: 42px;
+    }
 
 }
 
