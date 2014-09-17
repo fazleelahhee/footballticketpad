@@ -48,36 +48,39 @@
         </div>
         @else
         <h3 class="sell-divider row">Method Of Collection</h3>
-        <p>Indicate the desired method you want to receive your payment, once you have sold your tickets.</p>
-        <div class="row selldivider">
-            <div class="label bluelabel inlinefields"> <input type="radio" name="payment_option" value="paypal"/>Paypal</div>
-            <div class="fields inlinefields">
-                <label>Email</label>
-                <input type="text" name="paypal_email" id="paypal_email" value=""/>
-            </div>
-        </div>
-
-        <div class="row selldivider">
-
-            <div class="label bluelabel inlinefields">
-                <input type="radio" name="payment_option" class="bank-option" value="bank"/>Bank</div>
-            <div class="fields inlinefields bank-account" data-id="">
-                <label>Account Holder</label>
-                <input type="text" name="account_holder" id="account_holder" value=""/>
+        <form name="ticket_personal" action="" method="post">
+            <p>Indicate the desired method you want to receive your payment, once you have sold your tickets.</p>
+            <div class="row selldivider">
+                <div class="label bluelabel inlinefields"> <input type="radio" name="payment_option" value="paypal"/>Paypal</div>
+                <div class="fields inlinefields">
+                    <label>Email</label>
+                    <input type="text" name="paypal_email" id="paypal_email" value=""/>
+                </div>
             </div>
 
-            <div class="fields inlinefields">
-                <label>IBAN (Contact your bank)</label>
-                <input type="text" name="iban" id="iban" value=""/>
+            <div class="row selldivider">
+
+                <div class="label bluelabel inlinefields">
+                    <input type="radio" name="payment_option" class="bank-option" value="bank"/>Bank</div>
+                <div class="fields inlinefields bank-account" data-id="">
+                    <label>Account Holder</label>
+                    <input type="text" name="account_holder" id="account_holder" value=""/>
+                </div>
+
+                <div class="fields inlinefields">
+                    <label>IBAN (Contact your bank)</label>
+                    <input type="text" name="iban" id="iban" value=""/>
+                </div>
+
+                <div class="fields inlinefields">
+                    <label>BIC or Swift (Contact your bank)</label>
+                    <input type="text" name="bic_swift" id="bic-swift" value=""/>
+                </div>
             </div>
 
-            <div class="fields inlinefields">
-                <label>BIC or Swift (Contact your bank)</label>
-                <input type="text" name="bic_swift" id="bic-swift" value=""/>
-            </div>
-        </div>
+            <input name="submit" type="submit" class="btn blubtn pull-right" value="CONTINUE">
+        </form>
 
-        <input name="submit" type="submit" class="btn blubtn pull-right" value="CONTINUE">
         @endif
     </div>
 </div>
@@ -158,6 +161,12 @@
                 }
             }).done(function (response) {
 
+            }).complete(function (response, status) {
+                $('.ajax-message').remove();
+                var loginCheck = new RegExp("login-container");
+                if (loginCheck.test(response.responseText)) {
+                    window.location.reload();
+                }
             });
 
             $('input[type=submit]').click(function (e) {
@@ -189,7 +198,13 @@
                             }
                         }
                     }).done(function ()
-                    {});
+                    {}).complete(function (response, status) {
+                        $('.ajax-message').remove();
+                        var loginCheck = new RegExp("login-container");
+                        if (loginCheck.test(response.responseText)) {
+                            window.location.reload();
+                        }
+                    });
                 }
             });
         });
