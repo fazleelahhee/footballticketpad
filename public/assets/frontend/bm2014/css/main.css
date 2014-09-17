@@ -3347,8 +3347,13 @@ body.news .site-content {
     .header_nav:before {
 
         left: 12px;
-        
+
     }
+    .btn.loginbtn {
+
+        padding: 12px 21px !important;
+    }
+    .myaccount.btn { background: url("../images/profiles.png") no-repeat 0 0; text-indent: -9999px}
 
 }
 
