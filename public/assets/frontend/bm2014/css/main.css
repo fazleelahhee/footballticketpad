@@ -1064,6 +1064,9 @@ ul.flyout li a:hover, .nav-bar li ul li a:hover { background: #151515; color: #f
 
 
 
+
+
+
 .mi-slider ul.mi-moveToLeft li:nth-child(3),
 
 .mi-slider ul.mi-moveFromRight li:nth-child(3),
@@ -1390,7 +1393,21 @@ aside {
 .bigbox-search-button {
     text-indent: -9999px;
 }
-
+html body .button { border: medium none;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 13px;
+    padding: 0 20px;
+    width: 84px;
+    background: none repeat scroll 0 0 #e13d7f;
+    color: #ffffff;
+    border: 1px solid #5d5c5c;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+  }
 
 .date {
     float: left;
@@ -1942,7 +1959,7 @@ header .searcharea .bigbox-search-button {
 .bluebtn:hover {background:#3499aa; color:#FFFFFF}
 
 strong, b {
-  
+
     font-family: 'HelveticaNeueLTStd-Bd', sans-serif;
 }
 .responsive { width:100%;
