@@ -3355,10 +3355,12 @@ body.news .site-content {
     }
     .myaccount.btn {
         background: url("../images/profiles.png") no-repeat scroll center center rgba(0, 0, 0, 0);
-        padding: 0 21px;
+        float: left;
+        padding: 0;
         text-indent: -9999px;
+        width: 40px !important;
     }
-    .gobtn {-webkit-appearance: none; -webkit-appearance: none; -moz-appearance: none;}
+    .gobtn, .btn {-webkit-appearance: none; -webkit-appearance: none; -moz-appearance: none;}
 }
 
 
