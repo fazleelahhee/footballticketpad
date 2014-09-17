@@ -62,6 +62,15 @@
     });
 
 
+    //menu toggle
+    $(".searchbtn-mobile").click(function () {
+        $("header .searcharea").slideToggle("slow", function () {
+            // Animation complete.
+        });
+        $(this).toggleClass('active')
+    });
+
+
     //accordion for faq page
     $('#accordion').find('.accordion-toggle').click(function () {
 

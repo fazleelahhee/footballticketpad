@@ -1293,6 +1293,19 @@ ul.flyout li a:hover, .nav-bar li ul li a:hover { background: #151515; color: #f
 
 }
 
+
+.searchbtn-mobile { background: url("../images/searchsmall.png") no-repeat scroll center center #767575;
+    border: 1px solid #5d5c5c;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    cursor: pointer;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    transition: all 0.7s ease 0s;
+    width: 40px;
+}
+
 .main {
   display: inline-block;
 
@@ -1308,7 +1321,7 @@ header {
   text-align: center;
   top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 140;
 }
 .logo { float:left}
 header .btn { float:right}
@@ -2683,7 +2696,7 @@ h3.sell-divider {
     display: inline-block;
     margin-bottom: 10px;
 }
-
+.searchbtn-mobile { display: none}
 .error label, label.error {
     bottom: -3px;
     color: #c60f13;
@@ -2758,6 +2771,7 @@ select.input {
     border: 1px solid #80c36f;
     display: inline-block;
     line-height: 19px;
+    margin-top: 30px;
     max-width: none;
     padding: 10px;
     text-align: center;
@@ -3155,7 +3169,7 @@ body.news .site-content {
         margin: 0 !important;
         position: absolute;
         right: 0;
-        top: 60px;
+        top: 100px;
         width: 100%;
         z-index: 99;
     }
@@ -3175,7 +3189,7 @@ body.news .site-content {
         height: 500px;
 
     }
-    body .flexslider .slides img {
+    html body .flexslider .slides img {
         display: block;
         min-height: 10px !important;
         width: 100% !important;
@@ -3198,7 +3212,8 @@ body.news .site-content {
         margin: 0 auto;
     }
     .home .banner-home {
-        height: 400px;
+        height: 290px;
+        margin-top: 0;
     }
     .home .site-content { text-align: center}
     .home .site-content .three.columns {
@@ -3263,7 +3278,62 @@ body.news .site-content {
         overflow: hidden;
 
     }
+    header .searcharea {display:none}
+    .searcharea.active {display:block}
+    header .searcharea {
+        margin-right: 0px;
 
+        width: 280px;
+    }
+    header .searcharea .forminput { width: 234px;}
+    .searchbtn-mobile.active { background-color: #e13d7f}
+
+    .buy-detail {
+
+        margin: 160px 0 40px -131px !important;
+
+        width: 280px !important;
+
+    }
+    .page-header {
+        color: white;
+        font-size: 17px;
+        line-height: 22px;
+    }
+    .inner-banner {
+        max-width: none;
+        min-height:0px !important;
+        vertical-align: top;
+        width: 100%;
+    }
+    .stadiumpicture { position: static !important}
+
+    .home .searchbtn-mobile  { display:none}
+
+    html body .page-header {
+        background: none repeat scroll 0 0 #e13d7f;
+        border-radius: 0 0px 0 0;
+        -webkit-border-radius: 0 0px 0 0;
+        color: white;
+        font-size: 25px !important;
+        left: 50%;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-top: 0;
+        min-width: 260px !important;
+        padding: 12px 12px 12px 27px;
+        position: static;
+        text-align: center;
+        width: 100%;
+    }
+    header { background: #000 !important}
+    .searchbtn-mobile { display: block !important}
+    .banner-home {
+        float: left;
+        margin-bottom: 20px;
+        margin-top: 26px;
+        width: 100%;
+    }
 }
 
 
