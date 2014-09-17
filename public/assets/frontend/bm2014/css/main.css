@@ -3334,6 +3334,22 @@ body.news .site-content {
         margin-top: 26px;
         width: 100%;
     }
+
+    .header_nav {
+
+        left: 0;
+
+        right: auto;
+        top: 60px;
+        width: 250px;
+
+    }
+    .header_nav:before {
+
+        left: 12px;
+        
+    }
+
 }
 
 
