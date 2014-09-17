@@ -3358,7 +3358,7 @@ body.news .site-content {
         padding: 0 21px;
         text-indent: -9999px;
     }
-
+    .gobtn {-webkit-appearance: none; -webkit-appearance: none; -moz-appearance: none;}
 }
 
 
