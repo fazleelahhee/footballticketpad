@@ -3311,7 +3311,7 @@ body.news .site-content {
     .home .searchbtn-mobile  { display:none}
 
     html body .page-header {
-        background: none repeat scroll 0 0 #e13d7f;
+        background: none repeat scroll 0 0 #80c36f;
         border-radius: 0 0px 0 0;
         -webkit-border-radius: 0 0px 0 0;
         color: white;
@@ -3363,6 +3363,26 @@ body.news .site-content {
         width: 40px !important;
     }
     .gobtn, .btn {-webkit-appearance: none; -webkit-appearance: none; -moz-appearance: none;}
+    .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
+     
+        position: static !important;
+
+
+        background: none repeat scroll 0 0 #80c36f;
+        border-radius: 0 0px 0 0;
+        -webkit-border-radius: 0 0px 0 0;
+        color: white;
+        font-size: 25px !important;
+        left: 50%;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-top: 0;
+        min-width: 260px !important;
+        padding: 12px 12px 12px 27px;
+
+        text-align: center;
+        width: 100%;
+    }
 
 }
 
