@@ -9,7 +9,8 @@ class AccountController extends BaseController {
     }
 
     public function ticketListing() {
-        $node = null;
+        $node = new stdClass();
+        $node->title = 'My Account';
         View::share('body_class', 'ticket-listing static');
         View::share('tabs', 'listing');
         View::share('node', $node);
@@ -17,7 +18,8 @@ class AccountController extends BaseController {
     }
 
     public function ticketPurchase() {
-        $node = null;
+        $node = new stdClass();
+        $node->title = 'My Account';
         View::share('body_class', 'ticket-purchase static');
         View::share('tabs', 'purchases');
         View::share('node', $node);
@@ -25,7 +27,8 @@ class AccountController extends BaseController {
     }
 
     public function ticketSales() {
-        $node = null;
+        $node = new stdClass();
+        $node->title = 'My Account';
         View::share('body_class', 'ticket-sales static');
         View::share('tabs', 'sales');
         View::share('node', $node);
@@ -33,7 +36,8 @@ class AccountController extends BaseController {
     }
 
     public function accountInformation() {
-        $node = null;
+        $node = new stdClass();
+        $node->title = 'My Account';
         View::share('body_class', 'ticket-account-information static');
         View::share('tabs', 'account-information');
         View::share('node', $node);
@@ -41,7 +45,8 @@ class AccountController extends BaseController {
     }
 
     public function address() {
-        $node = null;
+        $node = new stdClass();
+        $node->title = 'My Account';
         View::share('body_class', 'ticket-account-address static');
         View::share('tabs', 'addresses');
         View::share('node', $node);
