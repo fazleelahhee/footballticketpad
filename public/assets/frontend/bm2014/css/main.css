@@ -13,7 +13,7 @@
 /* CSS */
 
 
-body {font-family: 'Roboto', sans-serif; font-weight:lighter; background: white; padding-top: 107px; overflow-x:hidden}
+
 
 @font-face {
 
@@ -37,7 +37,36 @@ body {font-family: 'Roboto', sans-serif; font-weight:lighter; background: white;
 
 }
 
+@font-face {
+    font-family:'HelveticaNeueLTStd-Lt';
+    src: url('../fonts/helvetica/HelveticaNeueLTStd-Lt_latin+latin-ext_gdi.eot');
+    src: url('../fonts/helvetica/HelveticaNeueLTStd-Lt_latin+latin-ext_gdi.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/helvetica/HelveticaNeueLTStd-Lt_latin+latin-ext_gdi.woff') format('woff'),
+    url('../fonts/helvetica/HelveticaNeueLTStd-Lt_latin+latin-ext_gdi.ttf') format('truetype'),
+    url('../fonts/helvetica/HelveticaNeueLTStd-Lt_latin+latin-ext_gdi.svg#HelveticaNeueLTStd-Lt') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-2215;
+}
 
+
+@font-face {
+    font-family:'HelveticaNeueLTStd-Bd';
+    src: url('../fonts/helveticabold/HelveticaNeueLTStd-Bd_latin+latin-ext_gdi.eot');
+    src: url('../fonts/helveticabold/HelveticaNeueLTStd-Bd_latin+latin-ext_gdi.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/helveticabold/HelveticaNeueLTStd-Bd_latin+latin-ext_gdi.woff') format('woff'),
+    url('../fonts/helveticabold/HelveticaNeueLTStd-Bd_latin+latin-ext_gdi.ttf') format('truetype'),
+    url('../fonts/helveticabold/HelveticaNeueLTStd-Bd_latin+latin-ext_gdi.svg#HelveticaNeueLTStd-Bd') format('svg');
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-2215;
+}
+
+.slogan {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; }
+
+body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; padding-top: 107px; overflow-x:hidden}
 
 .row {
     position: relative;
@@ -217,7 +246,7 @@ p {color: #333}
 
 
 
-h1,h2,h3,h4 {font-family: 'Roboto', sans-serif; font-weight:100; color: #333; margin: 20px 0}
+h1,h2,h3,h4 {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; font-weight:100; color: #333; margin: 20px 0}
 
 
 
@@ -2467,7 +2496,7 @@ textarea {
 .buy-detail {  background: none repeat scroll 0 0 ;
     color: white; z-index: 9;
     display: block;
-    font-family: 'Roboto',sans-serif;
+    font-family: 'HelveticaNeueLTStd-Lt',sans-serif;
     font-weight: 100;
     left: 50%;
     margin: 160px 0 40px -611px !important;
