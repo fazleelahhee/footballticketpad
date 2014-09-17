@@ -1382,6 +1382,18 @@ aside {
 .flexslider .slides {
     background: none repeat scroll 0 0 black !important;
 }
+
+
+.reveal-modal select {  background-color: #f6f6f6 !important;
+    border: 1px solid #ccc;
+        border-radius: 22px !important;
+    -webkit-border-radius: 22px !important;
+    font-size: 14px !important;
+    height: 42px !important;
+    margin: 0 0 12px !important;
+    padding: 8px 27px !important;
+    width: auto;}
+
 .overlay {width: 100%; text-align:center}	
 .blockrow {
     clear: both;
