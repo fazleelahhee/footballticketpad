@@ -3353,7 +3353,11 @@ body.news .site-content {
 
         padding: 12px 21px !important;
     }
-    .myaccount.btn { background: url("../images/profiles.png") no-repeat 0 0; text-indent: -9999px}
+    .myaccount.btn {
+        background: url("../images/profiles.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+        padding: 0 21px;
+        text-indent: -9999px;
+    }
 
 }
 
