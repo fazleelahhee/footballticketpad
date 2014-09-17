@@ -1501,7 +1501,7 @@ html body .topteams .blockrow.odd {
 }
 html body .topteams .blockrow:hover { background:#d8edd3 !important;}
 
-
+.site-content ul { margin-left: 30px}
 
 .site-content,
 .teaminfo {
@@ -3394,6 +3394,7 @@ body.news .site-content {
     .accordion-toggle {
         padding-right: 42px;
     }
+    .contact-display li { font-size: 18px;}
 
 }
 
