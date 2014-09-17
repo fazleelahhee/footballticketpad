@@ -3368,7 +3368,7 @@ body.news .site-content {
         width: 40px !important;
     }
     .gobtn, .btn {-webkit-appearance: none; -webkit-appearance: none; -moz-appearance: none;}
-    .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
+    .search-results .page-header, .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
 
         position: static !important;
 
