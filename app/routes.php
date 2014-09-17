@@ -258,12 +258,9 @@ Route::get('/ticket/events/ticket-restriction', array('as'=>'ticket.events.ticke
 //Ticket Sell
 Route::get('/ticket/sell/{id}', array('as'=>'ticket.sell.1','uses'=>'SellController@ticketInformation'))
     ->where('id', '[0-9]+');
-
-//Ticket Sell
-//todo: later this need to convert only post
-Route::post('/ticket/sell/{id}', array('as'=>'ticket.sell.1','uses'=>'SellController@ticketSellerInfo'))
+Route::any('/ticket/sell/paymentmethod/{id}', array('as'=>'ticket.sell.2','uses'=>'SellController@ticketSellerInfo'))
     ->where('id', '[0-9]+');
-Route::any('/ticket/dev/sell/{id}', array('as'=>'ticket.sell.1','uses'=>'SellController@ticketSellerInfo'))
+Route::any('/ticket/sell/agreement/{id}', array('as'=>'ticket.sell.3','uses'=>'SellController@ticketSellerAgreement'))
     ->where('id', '[0-9]+');
 
 /*
@@ -336,6 +333,8 @@ Route::post('/customer/account/login', function () {
     }
 });
 
+Route::get('/account/account-information/card/all', 'AccountController@getCustomerAllCardInfo');
+
 Route::group(array('before'=> 'customer.account'), function () {
 
     Route::get('/account/listing', 'AccountController@ticketListing');
@@ -349,6 +348,7 @@ Route::group(array('before'=> 'customer.account'), function () {
 
     Route::get('/account/account-information/card', 'AccountController@getCustomerCardInfo'); //get customer bank card information
     Route::post('/account/account-information/card', 'AccountController@setCustomerCardInfo'); //set customer bank card information
+    Route::get('/account/account-information/card/all', 'AccountController@getCustomerAllCardInfo'); //get customer bank card information
 
     Route::get('/account/account-information/personal', 'AccountController@getCustomerInfo'); //get customer bank card information
     Route::post('/account/account-information/personal', 'AccountController@setCustomerInfo'); //set customer bank card information

@@ -59,6 +59,18 @@ class AccountController extends BaseController {
         echo $this->getApiResponse();
     }
 
+    public function getCustomerAllCardInfo() {
+        $customer = Session::get('customer');
+        $this->setDataToPost(array(
+            'customer_id'   => $customer['entity_id'],
+            'type'          => 'get',
+            'return'        => 'all'
+        ));
+        $this->submitPostToApi('customer/index/card');
+        $this->setApiResponseHeader();
+        echo $this->getApiResponse();
+    }
+
     public function setCustomerBankInfo() {
         $customer = Session::get('customer');
         $params = Input::all();

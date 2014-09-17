@@ -4,19 +4,7 @@
 @stop
 @section('content')
 
-<section class="banner-home">
-    <span class="page-header buy-detail">
-         <span class="gamename"> <strong>{{$node->title}}</strong> Tickets</span>
-         <span class="gamedetail">{{ date('l, d F Y, h:ia ',strtotime($node->datetime)) }} {{$node->event_location}}</span>
-     </span>
-    <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
-    <span class="ftp-line">
-    	<span class="greenline"></span>
-        <span class="yellowline"></span>
-        <span class="pinkline"></span>
-        <span class="blueline"></span>
-    </span>
-</section>
+@include(Template::name('frontend.%s.sell.partials.banner'))
 
 
 
@@ -108,7 +96,7 @@
                     <input type="radio" name="restriction_option" value="1" class="restriction-option">
                     <label class="inline-label">Yes</label>
 
-                    <input type="radio" name="restriction_option" value="0" class="restriction-option" ckecked="checked">
+                    <input type="radio" name="restriction_option" value="0" class="restriction-option restriction-option-no" ckecked>
                     <label class="inline-label">No</label>
                 </div>
 
@@ -237,6 +225,8 @@
                     $(".restrictions-yes").css({display: "none"});
                 }
             });
+
+            $('.restriction-option-no').prop('checked', true);
         });
     })(jQuery)
 </script>
