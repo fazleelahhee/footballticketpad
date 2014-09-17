@@ -3331,7 +3331,7 @@ body.news .site-content {
     .banner-home {
         float: left;
         margin-bottom: 20px;
-        margin-top: 26px;
+        margin-top: 39px;
         width: 100%;
     }
 
@@ -3364,7 +3364,7 @@ body.news .site-content {
     }
     .gobtn, .btn {-webkit-appearance: none; -webkit-appearance: none; -moz-appearance: none;}
     .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
-     
+
         position: static !important;
 
 
@@ -3381,6 +3381,9 @@ body.news .site-content {
         padding: 12px 12px 12px 27px;
 
         text-align: center;
+        width: 100%;
+    }
+    .banner-home .row {
         width: 100%;
     }
 
