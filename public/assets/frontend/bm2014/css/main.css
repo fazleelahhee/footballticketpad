@@ -3258,7 +3258,7 @@ body.news .site-content {
     .menu-container {
         display: inline-block;
         float: none;vertical-align: top;
-        position: relative;
+        position: static;
     }
     header .btn {
         display: inline-block;
@@ -3336,22 +3336,24 @@ body.news .site-content {
     }
 
     .header_nav {
-
         left: 0;
-
         right: auto;
-        top: 60px;
-        width: 250px;
-
+        top: 150px;
+        width: 100%;
     }
+
     .header_nav:before {
 
-        left: 12px;
+        display: none;
 
     }
     .btn.loginbtn {
 
         padding: 12px 21px !important;
+    }
+    .nav-bar > li > a {
+
+        width: 100% !important;
     }
     .myaccount.btn {
         background: url("../images/profiles.png") no-repeat scroll center center rgba(0, 0, 0, 0);
@@ -3361,6 +3363,7 @@ body.news .site-content {
         width: 40px !important;
     }
     .gobtn, .btn {-webkit-appearance: none; -webkit-appearance: none; -moz-appearance: none;}
+
 }
 
 
