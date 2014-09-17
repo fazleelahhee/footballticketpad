@@ -3295,6 +3295,11 @@ body.news .site-content {
         width: 280px !important;
 
     }
+
+    .ticket-sales .banner-home, .ticket-listing .banner-home, .ticket-purchase .banner-home, .ticket-account-information .banner-home, .ticket-account-address .banner-home
+    { margin-top: 39px !important}
+
+
     .page-header {
         color: white;
         font-size: 17px;
@@ -3331,7 +3336,7 @@ body.news .site-content {
     .banner-home {
         float: left;
         margin-bottom: 20px;
-        margin-top: 39px;
+        margin-top: 26px;
         width: 100%;
     }
 
