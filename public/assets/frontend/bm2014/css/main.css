@@ -3211,6 +3211,11 @@ body.news .site-content {
         padding-bottom: 20px;
         vertical-align: top;
     }
+    .banner-home {
+     
+        overflow: hidden;
+
+    }
 
 }
 
