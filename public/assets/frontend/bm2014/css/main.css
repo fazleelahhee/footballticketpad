@@ -1395,7 +1395,7 @@ aside {
 }
 html body .button {
     background: none repeat scroll 0 0 #e13d7f;
-    border: medium none;
+    border: medium none !important;
     color: #ffffff;
     cursor: pointer;
     float: right;
