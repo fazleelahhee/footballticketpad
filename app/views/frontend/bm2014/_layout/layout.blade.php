@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <!-- Set the viewport width to device width for mobile -->
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ isset($meta_title) ? $meta_title : 'BondCMS' }}</title>
     <meta name="description" content="{{ isset($meta_description) ? $meta_description : ($settings['meta_description']) }}">
     <meta name="keywords" content="{{ isset($meta_keywords) ? $meta_keywords : ($settings['meta_keywords']) }}">
