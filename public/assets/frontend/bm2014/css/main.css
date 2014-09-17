@@ -1393,21 +1393,27 @@ aside {
 .bigbox-search-button {
     text-indent: -9999px;
 }
-html body .button { border: medium none;
+html body .button {
+    background: none repeat scroll 0 0 #e13d7f;
+    border: medium none;
+    color: #ffffff;
     cursor: pointer;
     float: right;
     font-size: 14px;
-    height: 30px;
-    line-height: 30px;
+    height: 35px;
+    line-height: 35px;
     margin-left: 13px;
-    padding: 0 20px;
-    width: 84px;
-    background: none repeat scroll 0 0 #e13d7f;
-    color: #ffffff;
-    border: 1px solid #5d5c5c;
+    padding: 0 49px;
+    width: auto !important;
     border-radius: 20px;
     -webkit-border-radius: 20px;
   }
+
+html body .button:hover {
+    background-color: #951647;
+    color: #fff;
+}
+
 
 .date {
     float: left;
