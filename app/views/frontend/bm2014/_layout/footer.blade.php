@@ -58,7 +58,7 @@
 
 
 
-	<section class="section_main" style=" background:url({{ Assets::Path('images/footergreyscale.jpg') }})">
+	<section class="section_main" style=" background:url({{ Assets::Path('images/footergreyscale.jpg') }}) no-repeat left bottom #171616">
 
     
         <div class="row">

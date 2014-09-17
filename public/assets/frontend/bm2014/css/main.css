@@ -170,6 +170,14 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
 
 
 
+.ticket-sales .page-header,
+.ticket-listing .page-header,
+.ticket-purchase .page-header,
+.ticket-account-information .page-header,
+.ticket-account-address .page-header { background: none; margin-left: -621px;
+    margin-top: 201px; }
+
+
 hr {
 
     -moz-border-bottom-colors: none;
@@ -261,6 +269,8 @@ h1,h2,h3,h4 {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; font-weight:100; 
 .section_dark {background: #262626; border-top: 0; border-bottom: 1px dotted #999; padding: 20px 0 40px}
 
 .section_dark h2 {color: #999999; margin: 0 0 20px 0; font-size: 22px; text-align: center}
+
+
 
 
 
