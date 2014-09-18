@@ -131,13 +131,14 @@
             <article class="three columns">
                 <div class="panel">
                     
-                    <a class="twitter-timeline" data-chrome=" transparent" data-tweet-limit="1" style="height:290px" data-theme="dark" data-dnt="true" href="https://twitter.com/bondmedia"  data-widget-id="380673328375025664">Tweets by @bondmedia</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 
-       					
+                    <a class="twitter-timeline" data-chrome=" transparent" data-tweet-limit="1" style="height:290px" data-theme="dark"  data-dnt="true" href="https://twitter.com/Ticket_Pad" data-widget-id="512613651862142976">Tweets by @Ticket_Pad</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-                    
+
+
+
                 </div>
             </article>
     		<!--blcok1--->
@@ -156,13 +157,12 @@
                             fjs.parentNode.insertBefore(js, fjs);
                         }(document, 'script', 'facebook-jssdk'));</script>
 
+
                     <span class="smallfooter-text">
                         Like us on Facebook
                     </span>
 
-                    <div class="fb-like-box" data-href="https://www.facebook.com/BondMediaUK?fref=ts" data-width="280" data-height="290" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-
-
+                    <div class="fb-like-box" data-href="https://www.facebook.com/footballticketpad?ref=bookmarks" data-width="280" data-height="290" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
 
 
                 </div>
@@ -190,10 +190,10 @@
             
             <div class="social columns four">
             	
-                <a href="#" class="twitter">
+                <a href="https://twitter.com/Ticket_Pad" target="_blank" class="twitter">
                 	<span class="icon"></span>
                 </a>
-                <a href="#" class="facebook">
+                <a href="https://www.facebook.com/footballticketpad?ref=bookmarks" target="_blank" class="facebook">
                 	<span class="icon"></span>
                 </a>
                 <a href="#" class="youtube">

@@ -2152,7 +2152,8 @@ transition: background 0.7s;}
 .search-results .site-content,
 .one-column .site-content, 
 .one-column .teaminfo,
-.account .teaminfo  {
+.account .teaminfo,
+.checkout .site-content {
     float: right;
     min-height: 10px;
     width: 100%;
@@ -2382,6 +2383,18 @@ html body a {color: #e13d7f}
 
 .addresstable { width: auto; min-width: 50%}
 
+.checkout .page-header {
+
+    color: white;
+    font-size: 28px;
+    left: 50%;
+    margin-left: -611px !important;
+    margin-top: 191px !important;
+    min-width: 260px !important;
+    padding: 12px 12px 12px 27px;
+    position: absolute;
+    width: auto;
+}
 
 .buy .page-header,
 .search-results .page-header,
@@ -2390,6 +2403,7 @@ html body a {color: #e13d7f}
 .sell3 .page-header,
 .sales .page-header,
 .one-column .page-header,
+.checkout .page-header,
 .account .page-header,
 .addresses .page-header,
 .purchases  .page-header,

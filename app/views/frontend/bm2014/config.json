@@ -22,7 +22,8 @@
         "search":"search.blade.php",
         "corporate":"corporate.blade.php",
         "buy":"buy.blade.php",
-        "league":"league.blade.php"
+        "league":"league.blade.php",
+        "checkout":"checkout.blade.php"
 
     },
     "screenshort": ""
