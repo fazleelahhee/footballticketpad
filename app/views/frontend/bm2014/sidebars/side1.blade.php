@@ -22,16 +22,17 @@
                     </span>
                     
                     <span class="game">
-                    	<span class="homegame">Barcelona</span> <span class="vs">vs</span>  <span class="awaygame">Real Madrid</span>
+                    	Barcelona vs Real Madrid
                     </span>
                     
                     
                 </span>
                 </a>
                 <!-- repeater -->
-                
 
-                 <!-- repeater -->
+
+
+               <!-- repeater -->
                 <a href="#">
                 <span class="blockrow">
 
@@ -41,7 +42,147 @@
                     </span>
 
                     <span class="game">
-                    	<span class="homegame">Liverpool</span> <span class="vs">vs</span>  <span class="awaygame">Tottenham</span>
+                    	Barcelona vs Real Madrid
+                    </span>
+
+
+                </span>
+                </a>
+                <!-- repeater -->
+
+
+
+               <!-- repeater -->
+                <a href="#">
+                <span class="blockrow">
+
+                    <span class="date">
+                    	<span class="day">16</span>
+                        <span class="month">SEP</span>
+                    </span>
+
+                    <span class="game">
+                    	Barcelona vs Real Madrid
+                    </span>
+
+
+                </span>
+                </a>
+                <!-- repeater -->
+
+
+
+               <!-- repeater -->
+                <a href="#">
+                <span class="blockrow">
+
+                    <span class="date">
+                    	<span class="day">16</span>
+                        <span class="month">SEP</span>
+                    </span>
+
+                    <span class="game">
+                    	Barcelona vs Real Madrid
+                    </span>
+
+
+                </span>
+                </a>
+                <!-- repeater -->
+
+
+
+               <!-- repeater -->
+                <a href="#">
+                <span class="blockrow">
+
+                    <span class="date">
+                    	<span class="day">16</span>
+                        <span class="month">SEP</span>
+                    </span>
+
+                    <span class="game">
+                    	Barcelona vs Real Madrid
+                    </span>
+
+
+                </span>
+                </a>
+                <!-- repeater -->
+
+
+
+               <!-- repeater -->
+                <a href="#">
+                <span class="blockrow">
+
+                    <span class="date">
+                    	<span class="day">16</span>
+                        <span class="month">SEP</span>
+                    </span>
+
+                    <span class="game">
+                    	Barcelona vs Real Madrid
+                    </span>
+
+
+                </span>
+                </a>
+                <!-- repeater -->
+
+
+
+               <!-- repeater -->
+                <a href="#">
+                <span class="blockrow">
+
+                    <span class="date">
+                    	<span class="day">16</span>
+                        <span class="month">SEP</span>
+                    </span>
+
+                    <span class="game">
+                    	Barcelona vs Real Madrid
+                    </span>
+
+
+                </span>
+                </a>
+                <!-- repeater -->
+
+
+
+               <!-- repeater -->
+                <a href="#">
+                <span class="blockrow">
+
+                    <span class="date">
+                    	<span class="day">16</span>
+                        <span class="month">SEP</span>
+                    </span>
+
+                    <span class="game">
+                    	Barcelona vs Real Madrid
+                    </span>
+
+
+                </span>
+                </a>
+                <!-- repeater -->
+
+
+
+               <!-- repeater -->
+                <a href="#">
+                <span class="blockrow">
+
+                    <span class="date">
+                    	<span class="day">16</span>
+                        <span class="month">SEP</span>
+                    </span>
+
+                    <span class="game">
+                    	Barcelona vs Real Madrid
                     </span>
 
 
@@ -52,141 +193,9 @@
 
 
 
-              <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	<span class="homegame">Barcelona</span> <span class="vs">vs</span>  <span class="awaygame">Real Madrid</span>
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-                 <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	<span class="homegame">Liverpool</span> <span class="vs">vs</span>  <span class="awaygame">Tottenham</span>
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
 
 
 
-
-
-              <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	<span class="homegame">Barcelona</span> <span class="vs">vs</span>  <span class="awaygame">Real Madrid</span>
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-                 <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	<span class="homegame">Liverpool</span> <span class="vs">vs</span>  <span class="awaygame">Tottenham</span>
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-
-              <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	<span class="homegame">Barcelona</span> <span class="vs">vs</span>  <span class="awaygame">Real Madrid</span>
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-                 <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	<span class="homegame">Liverpool</span> <span class="vs">vs</span>  <span class="awaygame">Tottenham</span>
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-                <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	<span class="homegame">Liverpool</span> <span class="vs">vs</span>  <span class="awaygame">Tottenham</span>
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
 
                
                 

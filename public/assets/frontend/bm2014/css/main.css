@@ -1948,7 +1948,8 @@ header .searcharea .bigbox-search-button {
     margin-bottom: 14px;
 }
 .team-summary ul { margin:0px; padding:0px; list-style:none}
-.team-summary ul  li { width:100%}
+.team-summary ul li {  float: left;
+    width: 100%;}
 .team-summary ul  li span {  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     float: left;
     text-align: left;
@@ -1957,6 +1958,91 @@ header .searcharea .bigbox-search-button {
 .data {
     border-left: 1px solid white;
     padding-left: 13px;
+}
+.topmatch { margin-bottom: 20px}
+
+.topmatch .ftp-line {
+    display: inline-block;
+    float: left;
+    vertical-align: top;
+    width: 100%;
+}
+.topmatch .btn {
+
+    float: right;
+    height: 27px;
+    margin-left: 5px;
+    padding: 2px 25px;
+}
+.ft-image-match {
+    float: left;
+    min-height: 90px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.stadium img, .date-time img {
+    float: left;
+    margin-right: 10px;
+    width: 22px !important; margin-left: 10px;
+}
+.ft-image-match img {
+    left: 50%;
+    margin-left: -290px;
+    max-width: none;
+    position: absolute;
+    width: 200% !important;
+}
+.stadium {
+    border-bottom: 1px solid white;
+    color: black;
+    float: left;
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: 10px;
+    padding-left: 0 !important;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 100%;
+    background: #f2f2f2;
+}
+.date-time {
+    color: black;
+    float: left;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid white;
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: 10px;
+    padding-left: 0 !important;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 100%;
+    background: #f2f2f2;
+}
+.btnsgroup {background: #f2f2f2;color: black;
+    float: left;
+    border-top: 1px solid #efefef;
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: 10px;
+    padding-left: 0 !important;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 100%;
+    }
+.gamematch {
+    background: none repeat scroll 0 0 #171616;
+    color: white;
+    float: left;
+    font-size: 17px;
+    font-weight: lighter;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
 }
 
 .teaminfo .page-header {
@@ -2857,7 +2943,9 @@ body.news .site-content {
     height: 50px;
     line-height: inherit;
     padding-bottom: 12px;
-    padding-top: 12px;
+    padding-top: 18px;
+    text-align: left;
+    text-indent: 10px;
     vertical-align: middle;
     width: 227px;
 }

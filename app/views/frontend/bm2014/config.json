@@ -21,7 +21,8 @@
         "sell3":"sell3.blade.php",
         "search":"search.blade.php",
         "corporate":"corporate.blade.php",
-        "buy":"buy.blade.php"
+        "buy":"buy.blade.php",
+        "league":"league.blade.php"
 
     },
     "screenshort": ""
