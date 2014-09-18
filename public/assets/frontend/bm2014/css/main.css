@@ -2022,9 +2022,10 @@ header .searcharea .bigbox-search-button {
     width: 100%;
     background: #f2f2f2;
 }
-.btnsgroup {background: #f2f2f2;color: black;
-    float: left;
+.btnsgroup { background: none repeat scroll 0 0 #e8e4e4;
     border-top: 1px solid #efefef;
+    color: black;
+    float: left;
     font-size: 14px;
     font-weight: lighter;
     margin: 0;
