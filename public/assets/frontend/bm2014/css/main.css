@@ -1329,7 +1329,11 @@ header .btn, header .menubtn { margin-left:15px; margin-top:15px;}
 .btn { border:1px solid #5D5C5C;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px; 
-  border-radius: 20px; height:40px;  padding:12px 45px; color:#FFFFFF }
+  border-radius: 20px; height:40px;     padding: 12px 29px; color:#FFFFFF;
+    font-size: 15px;
+
+
+}
 .menubtn {border:1px solid #5D5C5C; cursor:pointer;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px; 
