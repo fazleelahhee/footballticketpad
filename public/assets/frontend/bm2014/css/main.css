@@ -2758,6 +2758,7 @@ textarea {
 .step-process li { background: url("../images/arrowright.png") no-repeat scroll right 10px ;}
 .step-process {
     display: inline-block;
+    margin-left: 0 !important;
     padding-top: 10px;
 }
 .step-process li.active .selltitle, .step-process li.active .number {color: #57cadd}
@@ -3066,16 +3067,37 @@ body.news .site-content {
         width: 960px;
     }
 
+    .buydivider .label,
+    .selldivider .label { margin-bottom: 10px}
+
+    .fields {
+        padding-left: 5px;
+    }
+
+    .checkout .page-header {
+
+        margin-left: -480px !important;
+
+    }
+
     .row {
         width: 960px;
     }
+    .ft-image-match img {
 
+        margin-left: -180px;
+
+    }
     .searcharea {
         right: 30px;
         width: 622px;
 
     }
+    .ft-image-match {
 
+        min-height: 70px;
+
+    }
     .site-content, .teaminfo {
         width: 662px;
     }
@@ -3147,7 +3169,16 @@ body.news .site-content {
 
     header { background: orange !important}
 
+    .ft-image-match {
 
+        min-height: 80px;
+
+    }
+    .checkout .page-header {
+
+        margin-left: -361px !important;
+
+    }
     .searcharea {
 
         right: 80px;
@@ -3284,7 +3315,64 @@ body.news .site-content {
 
 @media only screen and (max-width: 767px) {
 
+    html body.checkout .page-header {
 
+        background: none repeat scroll 0 0 #e13d7f;
+        border-radius: 0;
+        color: white;
+        font-size: 25px !important;
+
+        margin-bottom: 0!important;
+        margin-left: 0 !important;
+        margin-top: 11px !important;
+        min-width: 260px !important;
+        padding: 12px 12px 12px 27px !important;
+        position: static !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    .selldivider  .btn {
+
+
+        float: right;
+
+    }
+
+    .sell-1 .page-header .gamedetail,
+    .sell-2 .page-header .gamedetail,
+    .sell-3 .page-header .gamedetail {
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        padding: 20px;
+        width: 100%;
+    }
+    .sell-1 .page-header,
+    .sell-2 .page-header,
+    .sell-3 .page-header {
+        background: none repeat scroll 0 0 #57cadd;
+        margin: 15px 0 0 !important;
+        padding: 10px 0 !important;
+        position: static !important;
+        width: 100% !important;
+    }
+
+    .inline-label {
+        float: right;
+        width: 90%;
+    }
+    .inline-radio { float: left}
+
+    .bluehighlight {
+
+        width: 310px !important;
+    }
+
+    .step-process { margin-left: 0px !important}
+    .step-process li {
+        width: 100px !important;
+    }
 
     .hottickets .block-content, .topteams .block-content { display: none}
     .hottickets .block-heading, .topteams .block-heading { cursor: pointer}
