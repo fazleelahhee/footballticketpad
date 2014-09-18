@@ -137,6 +137,7 @@
 
 
 
+
              <div class="checkoutarea">
 
                  <label>
@@ -144,25 +145,10 @@
                      I agree to <a href="/terms-conditions" target="_blank">terms &amp; conditions </a>
                  </label>
 
-             </div>
+                 <br/><br/>
+                 <input type="button" value="SUBMIT ORDER" class="btn pinkbtn pull-right">
 
 
-
-
-
-
-
-
-
-
-             <div class="checkoutarea">
-                 <!---------opt in places------------>
-
-
-
-
-
-                 <!---------opt in places------------>
              </div>
 
 
