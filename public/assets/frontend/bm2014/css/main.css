@@ -3172,6 +3172,15 @@ body.news .site-content {
 
     header { background: orange !important}
 
+
+    .myaccount.btn {
+        background: url("../images/profiles.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+        float: left;
+        padding: 0;
+        text-indent: -9999px;
+        width: 40px !important;
+    }
+
     .ft-image-match {
 
         min-height: 80px;
