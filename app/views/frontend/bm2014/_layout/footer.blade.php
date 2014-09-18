@@ -183,7 +183,7 @@
 
         <div class="twelve columns footer">
         
-        	<span class="copyright columns four">&copy; Football ticket pad |  <a href="/terms-conditions"> Terms &amp; conditions </a> |   <a href="/privacy-policy"> Privacy policy </a> </span>
+        	<span class="copyright columns four">&copy; Football Ticket Pad |  <a href="/terms-conditions"> Terms &amp; conditions </a> |   <a href="/privacy-policy"> Privacy policy </a> </span>
             
             <img class="columns four accepted-cards" src="{{ Assets::Path('images/cards.png') }}" alt="Credit Cards" />
             

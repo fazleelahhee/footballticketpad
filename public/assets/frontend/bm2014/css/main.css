@@ -2380,7 +2380,7 @@ h3 {
     padding-bottom: 6px;
 }
 html body a {color: #e13d7f}
-
+.cart-summary table { width: 100%}
 .addresstable { width: auto; min-width: 50%}
 
 .checkout .page-header {
@@ -2394,6 +2394,24 @@ html body a {color: #e13d7f}
     padding: 12px 12px 12px 27px;
     position: absolute;
     width: auto;
+}
+.rightAlign { text-align: right; font-weight: bold}
+
+.guarenteetxt {
+    background: url("../images/ticks.png") no-repeat scroll 10px 10px #cfe8c8;
+    padding: 10px;
+    text-indent: 33px;
+}
+
+.priceHelp {
+    color: #aaa;
+    display: block;
+    font-size: 11px;
+}
+.cart-right { border: 1px solid #efefef; margin-right: 20px; padding-bottom: 10px}
+.bigprice {
+    color: black;
+    font-size: 140%;
 }
 
 .buy .page-header,
@@ -2664,7 +2682,10 @@ textarea {
     margin: 160px 0 40px -611px !important;
     padding-left: 0 !important;
     width: 990px !important;}
-.stadiumpicture { position: static}
+.stadiumpicture {
+    position: static;
+    width: 453px !important;
+}
 .gamename {  color: white;
     display: block;
     width: 100%;}
@@ -2759,12 +2780,45 @@ h3.sell-divider {
     padding-bottom: 10px;
     width: 100%;
 }
+.checkoutarea {margin-bottom: 50px;
+}
+
+
+.countrieslist {  background-color: #f6f6f6 !important;
+    border: 1px solid #ccc;
+    border-radius: 22px !important;
+    -webkit-border-radius: 22px !important;
+    font-size: 14px !important;
+    height: 42px !important;
+    margin: 0 0 12px !important;
+    padding: 8px 27px !important;
+    width: auto;}
+h3.buy-divider {
+    border-bottom: medium none;
+    border-left: 4px solid #e13d7f;
+    font-weight: 500;
+    margin-bottom: 20px !important;
+    padding: 17px; background: #f5e6ed;
+
+}
+.pinklabel { color: #e13d7f !important; font-weight: bold}
+
+.row.buydivider {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
 
 .blueprice {
     color: #2ba6cb;
     font-size: 30px;
 }
 
+.pinkprice {
+    color: #2ba6cb;
+    font-size: 30px;
+}
 
 .inlinefields {
     float: left;
@@ -2787,6 +2841,25 @@ h3.sell-divider {
     white-space: pre-line;
     width: 230px;
 }
+
+
+.buydivider .label {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #2ba6cb;
+    display: inline-block;
+    float: left;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 1px 4px 2px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    white-space: pre-line;
+    width: 230px;
+}
+
+
 .fields > input {
     max-width: 440px;
 }
