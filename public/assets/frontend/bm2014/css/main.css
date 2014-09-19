@@ -3787,7 +3787,7 @@ body.news .site-content {
         width: 255px;
     }
     .buy .buy-detail {
-        background: none repeat scroll 0 0 #80c36f;
+        background: none repeat scroll 0 0 #111010;
         margin: 10px 0 0 !important;
         width: 100% !important;
     }
@@ -3796,6 +3796,51 @@ body.news .site-content {
         padding-left: 5px;
         width: 100%;
     }
+
+    html body.buy .site-content table.responsive td,
+    html body.buy .site-content table.responsive th {  font-size: 12px;
+        padding: 5px 4px !important;}
+    html body.buy .site-content table.responsive {
+        margin-top: 50px;
+        position: relative;
+    }
+    html body.buy table.responsive th .yellowbtn {   position: absolute;
+        right: 0;
+        top: -37px;}
+    html body.buy table.responsive th:nth-child(4n) { float: left; width: 0px !important; padding: 0px !important}
+    html body.buy table.responsive th:nth-child(3n) {
+        padding-left: 11px !important;
+        width: 161px;
+    }
+    body.buy .site-content .seven {
+        padding: 0;
+
+    }
+    body.buy .site-content { text-align: left}
+    body.buy .site-content .filter-label {
+        margin-bottom: 10px;
+
+        text-align: center;
+        width: 100%;
+    }
+    body.buy { text-align: center}
+    body.buy .row {
+        display: inline-block;
+        margin: 0 auto !important;
+        min-width: 10px;
+        width: 280px;
+    }
+    .buy-detail .gamename,
+    .buy-detail .gamedetail {   display: inline-block;
+        float: none;
+        font-size: 17px;
+        width: 280px;}
+
+    .toolbar select {
+
+        width: 100%; margin-bottom: 10px;
+    }
+
 
 }
 
