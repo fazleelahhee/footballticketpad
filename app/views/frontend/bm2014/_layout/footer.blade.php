@@ -189,16 +189,28 @@
             
             
             <div class="social columns four">
-            	
+
+
+                <a href="https://plus.google.com/u/0/b/115746344173960062774/115746344173960062774/about/p/pub" target="_blank" class="googleplus">
+                    <span class="icon"></span>
+                </a>
+
+                <a href="#" target="_blank"  class="youtube">
+                    <span class="icon"></span>
+                </a>
+
+
+                <a href="https://www.facebook.com/footballticketpad?ref=bookmarks" target="_blank" class="facebook">
+                    <span class="icon"></span>
+                </a>
+
+                
                 <a href="https://twitter.com/Ticket_Pad" target="_blank" class="twitter">
                 	<span class="icon"></span>
                 </a>
-                <a href="https://www.facebook.com/footballticketpad?ref=bookmarks" target="_blank" class="facebook">
-                	<span class="icon"></span>
-                </a>
-                <a href="#" class="youtube">
-                	<span class="icon"></span>
-                </a>
+
+
+
                 
             </div>
             

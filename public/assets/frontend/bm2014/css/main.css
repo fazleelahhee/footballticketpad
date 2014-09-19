@@ -1331,9 +1331,10 @@ header .btn, header .menubtn { margin-left:15px; margin-top:15px;}
   -moz-border-radius: 20px; 
   border-radius: 20px; height:40px;     padding: 12px 29px; color:#FFFFFF;
     font-size: 15px;
-
-
 }
+
+
+
 .menubtn {border:1px solid #5D5C5C; cursor:pointer;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px; 
@@ -1696,6 +1697,11 @@ footer .full .support-text { font-weight:500;}
 .social a.youtube span {
     background-position: -87px 0;
 }
+
+.googleplus .icon {
+    background-position: -133px 0;
+}
+
 .social .icon {
     margin-bottom: 17px;
     margin-left: 40px;
