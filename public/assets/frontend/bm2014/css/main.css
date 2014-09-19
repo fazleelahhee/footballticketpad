@@ -3816,6 +3816,29 @@ body.news .site-content {
         padding: 0;
 
     }
+
+    html body.team .site-content table.responsive td,
+    html body.team .site-content table.responsive th {  font-size: 12px;
+        padding: 5px 4px !important;}
+    html body.team .site-content table.responsive {
+        margin-top: 50px;
+        position: relative;
+    }
+    html body.team table.responsive th .yellowbtn {   position: absolute;
+        right: 0;
+        top: -37px;}
+    html body.team table.responsive th:nth-child(4n) { float: left; width: 0px !important; padding: 0px !important}
+    html body.team table.responsive th:nth-child(3n) {
+        padding-left: 11px !important;
+        width: 161px;
+    }
+    body.buy .site-content .seven {
+        padding: 0;
+
+    }
+
+
+
     body.buy .site-content { text-align: left}
     body.buy .site-content .filter-label {
         margin-bottom: 10px;
@@ -3839,6 +3862,37 @@ body.news .site-content {
     .toolbar select {
 
         width: 100%; margin-bottom: 10px;
+    }
+    .buy-detail .bluebtn {
+        width: 280px;
+    }
+    .teaminfo {
+        height: auto !important;
+        min-height: 10px !important;
+        position: static !important;
+        text-align: center;
+    }
+    .club-logo {
+        display: inline-block;
+        float: none;
+        margin: -80px auto 0 !important;
+        width: 70px;
+    }
+    .teaminfo .page-header {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        color: black;
+        float: left;
+        font-size: 18px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: static;
+    }
+    .team-summary {
+        color: black;
+        float: right;
+        margin-top: 23px;
+        text-align: left;
+        width: 280px;
     }
 
 
