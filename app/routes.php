@@ -255,17 +255,21 @@ Route::get('/ticket/events/form-of-ticket-types', array('as'=>'ticket.events.for
 Route::get('/ticket/events/ticket-restriction', array('as'=>'ticket.events.ticketRestriction','uses'=>'TicketRestrictionController@index'));
 
 
-//Ticket Sell
+//Ticket Sell part 1
 Route::get('/ticket/sell/{id}', array('as'=>'ticket.sell.1','uses'=>'SellController@ticketInformation'))
     ->where('id', '[0-9]+');
 Route::post('/ticket/sell/{id}', array('as'=>'ticket.sell.1','uses'=>'SellController@ticketInformation'))
     ->where('id', '[0-9]+');
 
+//Ticket Sell part 2
 Route::any('/ticket/sell/paymentmethod/{id}', array('as'=>'ticket.sell.2','uses'=>'SellController@ticketSellerInfo'))
     ->where('id', '[0-9]+');
+
 Route::any('/ticket/sell/agreement/{id}', array('as'=>'ticket.sell.3','uses'=>'SellController@ticketSellerAgreement'))
     ->where('id', '[0-9]+');
 
+Route::any('/ticket/sell/published/{id}', array('as'=>'ticket.sell.4','uses'=>'SellController@publishTicket'))
+    ->where('id', '[0-9]+');
 /*
 |--------------------------------------------------------------------------
 | Football tickets customer account

@@ -128,6 +128,14 @@
             });
             return false;
         });
+
+        $('input').on('keyup', function(e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                $('.login-btn').click();
+            }
+        });
+
     })(jQuery);
 </script>
 

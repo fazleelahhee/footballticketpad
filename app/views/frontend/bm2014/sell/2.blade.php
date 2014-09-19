@@ -78,7 +78,7 @@
                 </div>
             </div>
 
-            <input name="submit" type="submit" class="btn blubtn pull-right" value="CONTINUE">
+            <input name="button" type="button" class="btn blubtn pull-right" value="CONTINUE">
         </form>
 
         @endif
@@ -169,7 +169,7 @@
                 }
             });
 
-            $('input[type=submit]').click(function (e) {
+            $('input[type=button]').click(function (e) {
                 e.preventDefault();
                 var is_edited = false;
                 if ($('#account_holder').val() !== $('#account_holder').data('account-holder') ||
@@ -194,7 +194,7 @@
                         success: function (response) {
                             var bank = response.data;
                             if(bank.account_holder) {
-
+                                $('form[name=ticket_personal]').submit();
                             }
                         }
                     }).done(function ()
@@ -205,6 +205,8 @@
                             window.location.reload();
                         }
                     });
+                } else {
+                    $('form[name=ticket_personal]').submit();
                 }
             });
         });
