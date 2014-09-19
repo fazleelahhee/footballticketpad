@@ -66,10 +66,15 @@
                     var i = 0;
                     _.each(response, function (item) {
                         if(item.entity_id) {
-                            var html = '<li> <a class="btn greenbtn pull-right" href="/buy">See tickets</a>';
+                            var html = '<li> ';
                             html += '<a href="#"><span class="game">'+item.name+'</span></a>';
                             html += '<span class="subtext"><a href="#">Premier League</a></span>';
+                            html += ' <a class="btn greenbtn pull-right" href="/buy">See tickets</a>';
                             html += '</li>';
+
+
+
+
                             $('.event-category').append(html);
                             i++;
                         }
@@ -102,10 +107,14 @@
 //                                event_date: '04 November 19:00',
 //                                short_text: ''
 //                            });
-                            var html = '<li><a class=" btn pinkbtn pull-right" href="/buy">Buy</a>';
+                            var html = '<li>';
                             html += '<a href="/buy"><span class="game">'+item.name+'</span></a>';
                             html += '<span class="date-result">04 November 19:00</span>';
-                            html += '<span class="subtext"><a href="#">'+item.description+'</a></span></li>';
+                            html += '<span class="subtext"><a href="#">'+item.description+'</a></span>';
+                            html += '<a class=" btn pinkbtn pull-right" href="/buy">Buy</a></li>';
+
+
+
 
                             $('.event-ticket').append(html);
                             i++;
