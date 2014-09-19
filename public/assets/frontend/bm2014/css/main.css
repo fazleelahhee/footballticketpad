@@ -3184,6 +3184,12 @@ body.news .site-content {
         width: 41.6667%  !important;
     }
 
+    .social .icon {
+     
+        margin-left: 30px;
+
+    }
+
     .myaccount.btn {
         background: url("../images/profiles.png") no-repeat scroll center center rgba(0, 0, 0, 0);
         float: left;
