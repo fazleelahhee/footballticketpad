@@ -3,7 +3,7 @@
 <section class="banner-home">
 
     <h1 class="page-header">
-        Search Results 
+        Search Results
     </h1>
 
 

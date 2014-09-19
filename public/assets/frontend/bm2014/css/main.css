@@ -3705,6 +3705,11 @@ body.news .site-content {
         text-indent: -9999px;
         width: 40px !important;
     }
+    .search-results .page-header {
+      
+        margin-top: 10px !important;
+
+    }
     .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
     .search-results .page-header, .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
 
