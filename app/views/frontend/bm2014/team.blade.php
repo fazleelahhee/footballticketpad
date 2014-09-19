@@ -112,7 +112,7 @@
                 <tr>
                 	<td>
                     	<span class="game">
-                    		Burnley <span class="vs">vs</span> Chelsea
+                    		Burnley vs Chelsea
                     	</span>
                     </td>
                     <td>
@@ -131,7 +131,7 @@
                 <tr>
                 	<td>
                     	<span class="game">
-                    		Burnley <span class="vs">vs</span> Chelsea
+                    		Burnley vs Chelsea
                     	</span>
                     </td>
                     <td>
@@ -151,7 +151,7 @@
                 <tr>
                 	<td>
                     	<span class="game">
-                    		Burnley <span class="vs">vs</span> Chelsea
+                    		Burnley vs Chelsea
                     	</span>
                     </td>
                     <td>
@@ -171,7 +171,7 @@
                 <tr>
                 	<td>
                     	<span class="game">
-                    		Burnley <span class="vs">vs</span> Chelsea
+                    		Burnley vs Chelsea
                     	</span>
                     </td>
                     <td>

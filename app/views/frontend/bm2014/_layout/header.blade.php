@@ -6,12 +6,12 @@
 	<div class="contain">
     
         <a class="logoa" href="/"><img class="logo" src="{{ Assets::Path('images/main_logo.png') }}" alt="Football Ticket Pad" /></a>
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         
         
         
@@ -32,6 +32,11 @@
         @else
         <a href="{{url('login')}}"><span class="btn loginbtn">LOGIN</span></a>
         @endif
+
+
+        <span class="searchbtn-mobile">
+
+        </span>
 
         <div class="searcharea">
                 <form id="form-home" action="{{url('ticket-search')}}" method="get">

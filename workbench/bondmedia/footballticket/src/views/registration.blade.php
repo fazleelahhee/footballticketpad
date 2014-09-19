@@ -81,7 +81,7 @@
     <div class="columns six">
         <label>
             {{ Form::checkbox('terms_n_conditions', '1') }}
-            I agree to terms & conditions
+            I agree to <a href="/terms-conditions" target="_blank"> terms & conditions</a>
         </label>
 
     </div>

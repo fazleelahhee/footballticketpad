@@ -72,7 +72,10 @@
 
 
              <div class="columns five stadiumpicture">
-                 <img src="{{ Assets::Path('images/stadium.jpg') }}" />
+                 <img src="{{ Assets::Path('images/stadiumpic.png') }}" />
+
+                 <p class="guarenteetxt">Guarentee text to be placed here. FTP to provide</p>
+
              </div>
 
 

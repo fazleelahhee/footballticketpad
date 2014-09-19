@@ -49,6 +49,8 @@
 
             {{ $news->content }}
 
+           
+
 
 
     </div>

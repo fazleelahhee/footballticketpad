@@ -65,7 +65,7 @@
 }
 
 .slogan {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; }
-
+.bold {font-family: 'HelveticaNeueLTStd-Bd', sans-serif; }
 body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; padding-top: 107px; overflow-x:hidden}
 
 .row {
@@ -170,6 +170,14 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
 
 
 
+.ticket-sales .page-header,
+.ticket-listing .page-header,
+.ticket-purchase .page-header,
+.ticket-account-information .page-header,
+.ticket-account-address .page-header { background: none; margin-left: -621px;
+    margin-top: 201px; }
+
+
 hr {
 
     -moz-border-bottom-colors: none;
@@ -261,6 +269,8 @@ h1,h2,h3,h4 {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; font-weight:100; 
 .section_dark {background: #262626; border-top: 0; border-bottom: 1px dotted #999; padding: 20px 0 40px}
 
 .section_dark h2 {color: #999999; margin: 0 0 20px 0; font-size: 22px; text-align: center}
+
+
 
 
 
@@ -1054,6 +1064,9 @@ ul.flyout li a:hover, .nav-bar li ul li a:hover { background: #151515; color: #f
 
 
 
+
+
+
 .mi-slider ul.mi-moveToLeft li:nth-child(3),
 
 .mi-slider ul.mi-moveFromRight li:nth-child(3),
@@ -1280,6 +1293,19 @@ ul.flyout li a:hover, .nav-bar li ul li a:hover { background: #151515; color: #f
 
 }
 
+
+.searchbtn-mobile { background: url("../images/searchsmall.png") no-repeat scroll center center #767575;
+    border: 1px solid #5d5c5c;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    cursor: pointer;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    transition: all 0.7s ease 0s;
+    width: 40px;
+}
+
 .main {
   display: inline-block;
 
@@ -1295,7 +1321,7 @@ header {
   text-align: center;
   top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 140;
 }
 .logo { float:left}
 header .btn { float:right}
@@ -1303,7 +1329,12 @@ header .btn, header .menubtn { margin-left:15px; margin-top:15px;}
 .btn { border:1px solid #5D5C5C;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px; 
-  border-radius: 20px; height:40px;  padding:12px 45px; color:#FFFFFF }
+  border-radius: 20px; height:40px;     padding: 12px 29px; color:#FFFFFF;
+    font-size: 15px;
+}
+
+
+
 .menubtn {border:1px solid #5D5C5C; cursor:pointer;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px; 
@@ -1369,6 +1400,20 @@ aside {
 .flexslider .slides {
     background: none repeat scroll 0 0 black !important;
 }
+a { cursor: pointer}
+html body a:hover {
+    color: #951647;
+}
+.reveal-modal select {  background-color: #f6f6f6 !important;
+    border: 1px solid #ccc;
+        border-radius: 22px !important;
+    -webkit-border-radius: 22px !important;
+    font-size: 14px !important;
+    height: 42px !important;
+    margin: 0 0 12px !important;
+    padding: 8px 27px !important;
+    width: auto;}
+
 .overlay {width: 100%; text-align:center}	
 .blockrow {
     clear: both;
@@ -1379,6 +1424,26 @@ aside {
 .block-content { background:white}
 .bigbox-search-button {
     text-indent: -9999px;
+}
+html body .button {
+    background: none repeat scroll 0 0 #e13d7f;
+    border: medium none !important;
+    color: #ffffff;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    margin-left: 13px;
+    padding: 0 49px;
+    width: auto !important;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+  }
+
+html body .button:hover {
+    background-color: #951647;
+    color: #fff;
 }
 
 
@@ -1441,7 +1506,8 @@ html body .topteams .blockrow.odd {
 }
 html body .topteams .blockrow:hover { background:#d8edd3 !important;}
 
-
+.site-content ul { margin-left: 30px}
+.search-results-list { margin-left: 0px !important}
 
 .site-content,
 .teaminfo {
@@ -1631,6 +1697,11 @@ footer .full .support-text { font-weight:500;}
 .social a.youtube span {
     background-position: -87px 0;
 }
+
+.googleplus .icon {
+    background-position: -133px 0;
+}
+
 .social .icon {
     margin-bottom: 17px;
     margin-left: 40px;
@@ -1887,7 +1958,8 @@ header .searcharea .bigbox-search-button {
     margin-bottom: 14px;
 }
 .team-summary ul { margin:0px; padding:0px; list-style:none}
-.team-summary ul  li { width:100%}
+.team-summary ul li {  float: left;
+    width: 100%;}
 .team-summary ul  li span {  background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     float: left;
     text-align: left;
@@ -1896,6 +1968,92 @@ header .searcharea .bigbox-search-button {
 .data {
     border-left: 1px solid white;
     padding-left: 13px;
+}
+.topmatch { margin-bottom: 20px}
+
+.topmatch .ftp-line {
+    display: inline-block;
+    float: left;
+    vertical-align: top;
+    width: 100%;
+}
+.topmatch .btn {
+
+    float: right;
+    height: 27px;
+    margin-left: 5px;
+    padding: 2px 25px;
+}
+.ft-image-match {
+    float: left;
+    min-height: 90px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.stadium img, .date-time img {
+    float: left;
+    margin-right: 10px;
+    width: 22px !important; margin-left: 10px;
+}
+.ft-image-match img {
+    left: 50%;
+    margin-left: -290px;
+    max-width: none;
+    position: absolute;
+    width: 200% !important;
+}
+.stadium {
+    border-bottom: 1px solid white;
+    color: black;
+    float: left;
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: 10px;
+    padding-left: 0 !important;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 100%;
+    background: #f2f2f2;
+}
+.date-time {
+    color: black;
+    float: left;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid white;
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: 10px;
+    padding-left: 0 !important;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 100%;
+    background: #f2f2f2;
+}
+.btnsgroup { background: none repeat scroll 0 0 #e8e4e4;
+    border-top: 1px solid #efefef;
+    color: black;
+    float: left;
+    font-size: 14px;
+    font-weight: lighter;
+    margin: 0;
+    padding-bottom: 10px;
+    padding-left: 0 !important;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 100%;
+    }
+.gamematch {
+    background: none repeat scroll 0 0 #171616;
+    color: white;
+    float: left;
+    font-size: 17px;
+    font-weight: lighter;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
 }
 
 .teaminfo .page-header {
@@ -1932,8 +2090,8 @@ header .searcharea .bigbox-search-button {
 .bluebtn:hover {background:#3499aa; color:#FFFFFF}
 
 strong, b {
-    font-weight: 500 !important;
 
+    font-family: 'HelveticaNeueLTStd-Bd', sans-serif;
 }
 .responsive { width:100%;
   border-collapse: collapse;
@@ -2004,7 +2162,8 @@ transition: background 0.7s;}
 .search-results .site-content,
 .one-column .site-content, 
 .one-column .teaminfo,
-.account .teaminfo  {
+.account .teaminfo,
+.checkout .site-content {
     float: right;
     min-height: 10px;
     width: 100%;
@@ -2231,9 +2390,39 @@ h3 {
     padding-bottom: 6px;
 }
 html body a {color: #e13d7f}
-
+.cart-summary table { width: 100%}
 .addresstable { width: auto; min-width: 50%}
 
+.checkout .page-header {
+
+    color: white;
+    font-size: 28px;
+    left: 50%;
+    margin-left: -611px !important;
+    margin-top: 191px !important;
+    min-width: 260px !important;
+    padding: 12px 12px 12px 27px;
+    position: absolute;
+    width: auto;
+}
+.rightAlign { text-align: right; font-weight: bold}
+
+.guarenteetxt {
+    background: url("../images/ticks.png") no-repeat scroll 10px 10px #cfe8c8;
+    padding: 10px;
+    text-indent: 33px;
+}
+
+.priceHelp {
+    color: #aaa;
+    display: block;
+    font-size: 11px;
+}
+.cart-right { border: 1px solid #efefef; margin-right: 20px; padding-bottom: 10px}
+.bigprice {
+    color: black;
+    font-size: 140%;
+}
 
 .buy .page-header,
 .search-results .page-header,
@@ -2242,6 +2431,7 @@ html body a {color: #e13d7f}
 .sell3 .page-header,
 .sales .page-header,
 .one-column .page-header,
+.checkout .page-header,
 .account .page-header,
 .addresses .page-header,
 .purchases  .page-header,
@@ -2449,7 +2639,9 @@ textarea {
 
 .othervents {
     list-style: none outside none;
-    width: 100%; margin-top: 20px;
+    margin-left: 0 !important;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .othervents li {
@@ -2502,7 +2694,10 @@ textarea {
     margin: 160px 0 40px -611px !important;
     padding-left: 0 !important;
     width: 990px !important;}
-.stadiumpicture { position: static}
+.stadiumpicture {
+    position: static;
+    width: 453px !important;
+}
 .gamename {  color: white;
     display: block;
     width: 100%;}
@@ -2545,12 +2740,12 @@ textarea {
 }
 .register-icon { background: url("../images/register.png") no-repeat 0 0}
 .login-icon { background: url("../images/key.png") no-repeat 0 0}
-
+.sell-2 .pinkbtn {background: #57cadd !important}
 .search-results .page-header {
     width: 100% !important;
     left: 50%; top: 100px; margin-left: -600px;
 }
-
+.blubtn { background: #57cadd}
 .step-process li {
     border-bottom: 1px solid #ccc;
     display: inline-block;
@@ -2568,9 +2763,13 @@ textarea {
     vertical-align: middle;
     width: 55px;
     color: #c3c3c3;}
+
+.sell2 .selldivider  { padding-top: 20px; margin-bottom: 10px !important}
+
 .step-process li { background: url("../images/arrowright.png") no-repeat scroll right 10px ;}
 .step-process {
     display: inline-block;
+    margin-left: 0 !important;
     padding-top: 10px;
 }
 .step-process li.active .selltitle, .step-process li.active .number {color: #57cadd}
@@ -2597,12 +2796,45 @@ h3.sell-divider {
     padding-bottom: 10px;
     width: 100%;
 }
+.checkoutarea {margin-bottom: 50px;
+}
+
+
+.countrieslist {  background-color: #f6f6f6 !important;
+    border: 1px solid #ccc;
+    border-radius: 22px !important;
+    -webkit-border-radius: 22px !important;
+    font-size: 14px !important;
+    height: 42px !important;
+    margin: 0 0 12px !important;
+    padding: 8px 27px !important;
+    width: auto;}
+h3.buy-divider {
+    border-bottom: medium none;
+    border-left: 4px solid #e13d7f;
+    font-weight: 500;
+    margin-bottom: 20px !important;
+    padding: 17px; background: #f5e6ed;
+
+}
+.pinklabel { color: #e13d7f !important; font-weight: bold}
+
+.row.buydivider {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
 
 .blueprice {
     color: #2ba6cb;
     font-size: 30px;
 }
 
+.pinkprice {
+    color: #2ba6cb;
+    font-size: 30px;
+}
 
 .inlinefields {
     float: left;
@@ -2625,6 +2857,25 @@ h3.sell-divider {
     white-space: pre-line;
     width: 230px;
 }
+
+
+.buydivider .label {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #2ba6cb;
+    display: inline-block;
+    float: left;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 1px 4px 2px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    white-space: pre-line;
+    width: 230px;
+}
+
+
 .fields > input {
     max-width: 440px;
 }
@@ -2636,7 +2887,7 @@ h3.sell-divider {
     display: inline-block;
     margin-bottom: 10px;
 }
-
+.searchbtn-mobile { display: none}
 .error label, label.error {
     bottom: -3px;
     color: #c60f13;
@@ -2711,6 +2962,7 @@ select.input {
     border: 1px solid #80c36f;
     display: inline-block;
     line-height: 19px;
+    margin-top: 30px;
     max-width: none;
     padding: 10px;
     text-align: center;
@@ -2795,7 +3047,9 @@ body.news .site-content {
     height: 50px;
     line-height: inherit;
     padding-bottom: 12px;
-    padding-top: 12px;
+    padding-top: 18px;
+    text-align: left;
+    text-indent: 10px;
     vertical-align: middle;
     width: 227px;
 }
@@ -2824,16 +3078,53 @@ body.news .site-content {
         width: 960px;
     }
 
+    .topmatch .btn {
+        padding: 2px 21px;
+    }
+
+    .stadiumpicture {
+        position: static;
+        width: 41.6667% !important;
+    }
+
+    .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
+
+        margin-left: -501px !important;
+
+    }
+
+
+    .buydivider .label,
+    .selldivider .label { margin-bottom: 10px}
+
+    .fields {
+        padding-left: 5px;
+    }
+
+    .checkout .page-header {
+
+        margin-left: -480px !important;
+
+    }
+
     .row {
         width: 960px;
     }
+    .ft-image-match img {
 
+        margin-left: -180px;
+
+    }
     .searcharea {
         right: 30px;
         width: 622px;
 
     }
+    .ft-image-match {
 
+        min-height: 70px;
+
+    }
     .site-content, .teaminfo {
         width: 662px;
     }
@@ -2889,6 +3180,12 @@ body.news .site-content {
         height: 103px;
 
     }
+    .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
+    body .flexslider .slides img {
+
+        max-width: none !important;
+
+    }
 
 }
 
@@ -2905,7 +3202,59 @@ body.news .site-content {
 
     header { background: orange !important}
 
+    body .flexslider .slides img {
 
+        max-width: none !important;
+
+    }
+
+
+    .inner-banner {
+        margin-left: -560px;
+
+    }
+    html body.checkout .page-header {
+        margin-left: 49px !important;
+    }
+    .page-header {
+
+        left: 0 !important;
+        margin-left: 0 !important;
+
+    }
+
+    .banner-home { overflow: hidden !important}
+
+    .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
+    .stadiumpicture {
+        position: static !important;
+        width: 41.6667%  !important;
+    }
+
+    .social .icon {
+
+        margin-left: 30px;
+
+    }
+
+    .myaccount.btn {
+        background: url("../images/profiles.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+        float: left;
+        padding: 0;
+        text-indent: -9999px;
+        width: 40px !important;
+    }
+
+    .ft-image-match {
+
+        min-height: 80px;
+
+    }
+    .checkout .page-header {
+
+        margin-left: -361px !important;
+
+    }
     .searcharea {
 
         right: 80px;
@@ -3042,7 +3391,64 @@ body.news .site-content {
 
 @media only screen and (max-width: 767px) {
 
+    html body.checkout .page-header {
 
+        background: none repeat scroll 0 0 #e13d7f;
+        border-radius: 0;
+        color: white;
+        font-size: 25px !important;
+
+        margin-bottom: 0!important;
+        margin-left: 0 !important;
+        margin-top: 11px !important;
+        min-width: 260px !important;
+        padding: 12px 12px 12px 27px !important;
+        position: static !important;
+        text-align: center;
+        width: 100%;
+    }
+
+    .selldivider  .btn {
+
+
+        float: right;
+
+    }
+
+    .sell-1 .page-header .gamedetail,
+    .sell-2 .page-header .gamedetail,
+    .sell-3 .page-header .gamedetail {
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        padding: 20px;
+        width: 100%;
+    }
+    .sell-1 .page-header,
+    .sell-2 .page-header,
+    .sell-3 .page-header {
+        background: none repeat scroll 0 0 #57cadd;
+        margin: 15px 0 0 !important;
+        padding: 10px 0 !important;
+        position: static !important;
+        width: 100% !important;
+    }
+
+    .inline-label {
+        float: right;
+        width: 90%;
+    }
+    .inline-radio { float: left}
+
+    .bluehighlight {
+
+        width: 310px !important;
+    }
+
+    .step-process { margin-left: 0px !important}
+    .step-process li {
+        width: 100px !important;
+    }
 
     .hottickets .block-content, .topteams .block-content { display: none}
     .hottickets .block-heading, .topteams .block-heading { cursor: pointer}
@@ -3108,7 +3514,7 @@ body.news .site-content {
         margin: 0 !important;
         position: absolute;
         right: 0;
-        top: 60px;
+        top: 100px;
         width: 100%;
         z-index: 99;
     }
@@ -3128,7 +3534,7 @@ body.news .site-content {
         height: 500px;
 
     }
-    body .flexslider .slides img {
+    html body .flexslider .slides img {
         display: block;
         min-height: 10px !important;
         width: 100% !important;
@@ -3151,7 +3557,8 @@ body.news .site-content {
         margin: 0 auto;
     }
     .home .banner-home {
-        height: 400px;
+        height: 290px;
+        margin-top: 0;
     }
     .home .site-content { text-align: center}
     .home .site-content .three.columns {
@@ -3196,7 +3603,7 @@ body.news .site-content {
     .menu-container {
         display: inline-block;
         float: none;vertical-align: top;
-        position: relative;
+        position: static;
     }
     header .btn {
         display: inline-block;
@@ -3216,6 +3623,278 @@ body.news .site-content {
         overflow: hidden;
 
     }
+    header .searcharea {display:none}
+    .searcharea.active {display:block}
+    header .searcharea {
+        margin-right: 0px;
+
+        width: 280px;
+    }
+    header .searcharea .forminput { width: 234px;}
+    .searchbtn-mobile.active { background-color: #e13d7f}
+
+    .buy-detail {
+
+        margin: 160px 0 40px -131px !important;
+
+        width: 280px !important;
+
+    }
+
+    .ticket-sales .banner-home, .ticket-listing .banner-home, .ticket-purchase .banner-home, .ticket-account-information .banner-home, .ticket-account-address .banner-home
+    { margin-top: 39px !important}
+
+
+    .page-header {
+        color: white;
+        font-size: 17px;
+        line-height: 22px;
+    }
+    .inner-banner {
+        max-width: none;
+        min-height:0px !important;
+        vertical-align: top;
+        width: 100%;
+    }
+    .stadiumpicture {
+        position: static !important;
+        width: auto !important;
+    }
+
+    .home .searchbtn-mobile  { display:none !important}
+
+    html body .page-header {
+        background: none repeat scroll 0 0 #80c36f;
+        border-radius: 0 0px 0 0;
+        -webkit-border-radius: 0 0px 0 0;
+        color: white;
+        font-size: 25px !important;
+        left: 50%;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-top: 0;
+        min-width: 260px !important;
+        padding: 12px 12px 12px 27px;
+        position: static;
+        text-align: center;
+        width: 100%;
+    }
+    header { background: #000 !important}
+    .searchbtn-mobile { display: block !important}
+    .banner-home {
+        float: left;
+        margin-bottom: 20px;
+        margin-top: 25px;
+        width: 100%;
+    }
+
+    .header_nav {
+        left: 0;
+        right: auto;
+        top: 150px;
+        width: 100%;
+    }
+
+    .header_nav:before {
+
+        display: none;
+
+    }
+    .btn.loginbtn {
+
+        padding: 12px 21px !important;
+    }
+    .nav-bar > li > a {
+
+        width: 100% !important;
+    }
+    .myaccount.btn {
+        background: url("../images/profiles.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+        float: left;
+        padding: 0;
+        text-indent: -9999px;
+        width: 40px !important;
+    }
+    .search-results .page-header {
+
+        margin-top: 10px !important;
+
+    }
+    .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
+    .search-results .page-header, .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
+
+        position: static !important;
+
+
+        background: none repeat scroll 0 0 #80c36f;
+        border-radius: 0 0px 0 0;
+        -webkit-border-radius: 0 0px 0 0;
+        color: white;
+        font-size: 25px !important;
+        left: 50%;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-top: 0;
+        min-width: 260px !important;
+        padding: 12px 12px 12px 27px;
+
+        text-align: center;
+        width: 100%;
+    }
+    .banner-home .row {
+        width: 100%;
+    }
+    .accordion-toggle {
+        padding-right: 42px;
+    }
+    .contact-display li { font-size: 18px;}
+
+    .sell2 .inlinefields { margin-bottom: 20px}
+
+    #registration-form .label-seperator { float: none !important}
+
+    .social a span {
+        margin: 14px !important;
+    }
+    .date-result {
+        clear: none;
+        float: left;
+        margin-left: 0;
+        width: 100%;
+    }
+    .second-navs {
+        height: auto;
+    }
+    .second-navs ul {
+        width: 280px;
+    }
+    .second-navs li {
+        display: inline-block;
+        width: 100%;
+    }
+    .second-navs li a { border-radius:0px !important;-webkit-border-radius: 0px !important;}
+    .activation {
+
+        margin-bottom: 10px;
+        margin-right: 0;
+        margin-top: 10px;
+    }
+    .quickfilter {
+        width: 250px !important;
+    }
+    .collapsible_header .thumb-crop {
+        margin-right: 0;
+        width: 255px;
+    }
+    .buy .buy-detail {
+        background: none repeat scroll 0 0 #111010;
+        margin: 10px 0 0 !important;
+        width: 100% !important;
+    }
+    .checkout .fields {
+        margin-top: 10px;
+        padding-left: 5px;
+        width: 100%;
+    }
+
+    html body.buy .site-content table.responsive td,
+    html body.buy .site-content table.responsive th {  font-size: 12px;
+        padding: 5px 4px !important;}
+    html body.buy .site-content table.responsive {
+        margin-top: 50px;
+        position: relative;
+    }
+    html body.buy table.responsive th .yellowbtn {   position: absolute;
+        right: 0;
+        top: -37px;}
+    html body.buy table.responsive th:nth-child(4n) { float: left; width: 0px !important; padding: 0px !important}
+    html body.buy table.responsive th:nth-child(3n) {
+        padding-left: 11px !important;
+        width: 161px;
+    }
+    body.buy .site-content .seven {
+        padding: 0;
+
+    }
+
+    html body.team .site-content table.responsive td,
+    html body.team .site-content table.responsive th {  font-size: 12px;
+        padding: 5px 4px !important;}
+    html body.team .site-content table.responsive {
+        margin-top: 50px;
+        position: relative;
+    }
+    html body.team table.responsive th .yellowbtn {   position: absolute;
+        right: 0;
+        top: -37px;}
+    html body.team table.responsive th:nth-child(4n) { float: left; width: 0px !important; padding: 0px !important}
+    html body.team table.responsive th:nth-child(3n) {
+        padding-left: 11px !important;
+        width: 161px;
+    }
+    body.buy .site-content .seven {
+        padding: 0;
+
+    }
+
+
+
+    body.buy .site-content { text-align: left}
+    body.buy .site-content .filter-label {
+        margin-bottom: 10px;
+
+        text-align: center;
+        width: 100%;
+    }
+    body.buy { text-align: center}
+    body.buy .row {
+        display: inline-block;
+        margin: 0 auto !important;
+        min-width: 10px;
+        width: 280px;
+    }
+    .buy-detail .gamename,
+    .buy-detail .gamedetail {   display: inline-block;
+        float: none;
+        font-size: 17px;
+        width: 280px;}
+
+    .toolbar select {
+
+        width: 100%; margin-bottom: 10px;
+    }
+    .buy-detail .bluebtn {
+        width: 280px;
+    }
+    .teaminfo {
+        height: auto !important;
+        min-height: 10px !important;
+        position: static !important;
+        text-align: center;
+    }
+    .club-logo {
+        display: inline-block;
+        float: none;
+        margin: -80px auto 0 !important;
+        width: 70px;
+    }
+    .teaminfo .page-header {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        color: black;
+        float: left;
+        font-size: 18px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: static;
+    }
+    .team-summary {
+        color: black;
+        float: right;
+        margin-top: 23px;
+        text-align: left;
+        width: 280px;
+    }
+
 
 }
 
