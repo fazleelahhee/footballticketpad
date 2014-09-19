@@ -3087,6 +3087,13 @@ body.news .site-content {
         width: 41.6667% !important;
     }
 
+    .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
+
+        margin-left: -501px !important;
+
+    }
+
+
     .buydivider .label,
     .selldivider .label { margin-bottom: 10px}
 
@@ -3706,7 +3713,7 @@ body.news .site-content {
         width: 40px !important;
     }
     .search-results .page-header {
-      
+
         margin-top: 10px !important;
 
     }
@@ -3752,7 +3759,17 @@ body.news .site-content {
         margin-left: 0;
         width: 100%;
     }
-
+    .second-navs {
+        height: auto;
+    }
+    .second-navs ul {
+        width: 280px;
+    }
+    .second-navs li {
+        display: inline-block;
+        width: 100%;
+    }
+    .second-navs li a { border-radius:0px !important;-webkit-border-radius: 0px !important;}
 
 }
 
