@@ -2639,7 +2639,9 @@ textarea {
 
 .othervents {
     list-style: none outside none;
-    width: 100%; margin-top: 20px;
+    margin-left: 0 !important;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .othervents li {
@@ -3178,6 +3180,10 @@ body.news .site-content {
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
 
     header { background: orange !important}
+
+
+    .banner-home { overflow: hidden !important}
+
     .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
     .stadiumpicture {
         position: static !important;
@@ -3185,7 +3191,7 @@ body.news .site-content {
     }
 
     .social .icon {
-     
+
         margin-left: 30px;
 
     }
