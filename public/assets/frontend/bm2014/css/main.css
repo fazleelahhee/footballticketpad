@@ -3181,6 +3181,17 @@ body.news .site-content {
 
     header { background: orange !important}
 
+    .inner-banner {
+        margin-left: -560px;
+
+    }
+
+    .page-header {
+
+        left: 0 !important;
+        margin-left: 0 !important;
+
+    }
 
     .banner-home { overflow: hidden !important}
 
