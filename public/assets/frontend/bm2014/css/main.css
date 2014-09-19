@@ -3174,6 +3174,11 @@ body.news .site-content {
 
     }
     .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
+    body .flexslider .slides img {
+
+        max-width: none !important;
+
+    }
 
 }
 
