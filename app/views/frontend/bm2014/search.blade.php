@@ -3,9 +3,7 @@
 <section class="banner-home">
 
     <h1 class="page-header">
-        @if($node instanceof Pages)
-        {{ e($node->title) }}
-        @endif
+        Search Results 
     </h1>
 
 
