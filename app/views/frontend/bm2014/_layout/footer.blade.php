@@ -204,7 +204,7 @@
                     <span class="icon"></span>
                 </a>
 
-                
+
                 <a href="https://twitter.com/Ticket_Pad" target="_blank" class="twitter">
                 	<span class="icon"></span>
                 </a>

@@ -3178,6 +3178,10 @@ body.news .site-content {
 
     header { background: orange !important}
 
+    .stadiumpicture {
+        position: static !important;
+        width: 41.6667%  !important;
+    }
 
     .myaccount.btn {
         background: url("../images/profiles.png") no-repeat scroll center center rgba(0, 0, 0, 0);
@@ -3684,6 +3688,12 @@ body.news .site-content {
     .contact-display li { font-size: 18px;}
 
     .sell2 .inlinefields { margin-bottom: 20px}
+
+    #registration-form .label-seperator { float: none !important}
+
+    .social a span {
+        margin: 14px !important;
+    }
 
 }
 
