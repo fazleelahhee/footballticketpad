@@ -3082,6 +3082,11 @@ body.news .site-content {
         padding: 2px 21px;
     }
 
+    .stadiumpicture {
+        position: static;
+        width: 41.6667% !important;
+    }
+
     .buydivider .label,
     .selldivider .label { margin-bottom: 10px}
 
@@ -3189,7 +3194,9 @@ body.news .site-content {
         margin-left: -560px;
 
     }
-
+    html body.checkout .page-header {
+        margin-left: 49px !important;
+    }
     .page-header {
 
         left: 0 !important;

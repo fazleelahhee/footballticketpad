@@ -8,6 +8,7 @@
 <section class="main">
 
         <div class="row">
+            <span class="sidebar-space"></span>
             @include(Template::name('frontend.%s.sidebars.side1'))
         </div>
 </section>
