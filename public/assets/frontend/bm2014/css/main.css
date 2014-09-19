@@ -3190,6 +3190,13 @@ body.news .site-content {
 
     header { background: orange !important}
 
+    body .flexslider .slides img {
+
+        max-width: none !important;
+
+    }
+
+
     .inner-banner {
         margin-left: -560px;
 
