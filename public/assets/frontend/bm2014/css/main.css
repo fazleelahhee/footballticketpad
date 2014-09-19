@@ -3651,7 +3651,7 @@ body.news .site-content {
     }
     .stadiumpicture { position: static !important}
 
-    .home .searchbtn-mobile  { display:none}
+    .home .searchbtn-mobile  { display:none !important}
 
     html body .page-header {
         background: none repeat scroll 0 0 #80c36f;
@@ -3741,6 +3741,13 @@ body.news .site-content {
     .social a span {
         margin: 14px !important;
     }
+    .date-result {
+        clear: none;
+        float: left;
+        margin-left: 0;
+        width: 100%;
+    }
+
 
 }
 

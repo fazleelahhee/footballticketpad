@@ -127,18 +127,20 @@
 
 <script type="text/x-template" id="ticket-element-template">
     <li>
-        <a class=" btn pinkbtn pull-right" href="#">Buy</a>
+
         <a href="#"><span class="game"><%= title %></span></a>
         <span class="date-result"><%= event_date %></span>
         <span class="subtext"><a href="#"><%= short_text %></a></span>
+        <a class=" btn pinkbtn pull-right" href="#">Buy</a>
     </li>
 </script>
 
 <script type="text/x-template" id="category-element-template">
          <li>
-              <a class="btn greenbtn pull-right" href="#">See tickets</a>
+
               <a href="#"><span class="game"> Manchester City</span></a>
               <span class="subtext"><a href="#">Premier League</a></span>
+             <a class="btn greenbtn pull-right" href="#">See tickets</a>
           </li>
 </script>
 
