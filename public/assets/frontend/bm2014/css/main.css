@@ -3770,6 +3770,19 @@ body.news .site-content {
         width: 100%;
     }
     .second-navs li a { border-radius:0px !important;-webkit-border-radius: 0px !important;}
+    .activation {
+
+        margin-bottom: 10px;
+        margin-right: 0;
+        margin-top: 10px;
+    }
+    .quickfilter {
+        width: 250px !important;
+    }
+    .collapsible_header .thumb-crop {
+        margin-right: 0;
+        width: 255px;
+    }
 
 }
 
