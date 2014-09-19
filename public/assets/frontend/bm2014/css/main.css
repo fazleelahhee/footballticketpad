@@ -3078,6 +3078,10 @@ body.news .site-content {
         width: 960px;
     }
 
+    .topmatch .btn {
+        padding: 2px 21px;
+    }
+
     .buydivider .label,
     .selldivider .label { margin-bottom: 10px}
 
