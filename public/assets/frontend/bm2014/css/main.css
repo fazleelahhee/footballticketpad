@@ -3162,6 +3162,7 @@ body.news .site-content {
         height: 103px;
 
     }
+    .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
 
 }
 
@@ -3177,7 +3178,7 @@ body.news .site-content {
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
 
     header { background: orange !important}
-
+    .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
     .stadiumpicture {
         position: static !important;
         width: 41.6667%  !important;
@@ -3658,7 +3659,7 @@ body.news .site-content {
         text-indent: -9999px;
         width: 40px !important;
     }
-    .gobtn, .btn {-webkit-appearance: none; -webkit-appearance: none; -moz-appearance: none;}
+    .gobtn, .btn, .pinkbtn {-webkit-appearance: none !important; -webkit-appearance: none !important; -moz-appearance: none !important;}
     .search-results .page-header, .ticket-sales .page-header, .ticket-listing .page-header, .ticket-purchase .page-header, .ticket-account-information .page-header, .ticket-account-address .page-header {
 
         position: static !important;
