@@ -3656,7 +3656,10 @@ body.news .site-content {
         vertical-align: top;
         width: 100%;
     }
-    .stadiumpicture { position: static !important}
+    .stadiumpicture {
+        position: static !important;
+        width: auto !important;
+    }
 
     .home .searchbtn-mobile  { display:none !important}
 
@@ -3782,6 +3785,16 @@ body.news .site-content {
     .collapsible_header .thumb-crop {
         margin-right: 0;
         width: 255px;
+    }
+    .buy .buy-detail {
+        background: none repeat scroll 0 0 #80c36f;
+        margin: 10px 0 0 !important;
+        width: 100% !important;
+    }
+    .checkout .fields {
+        margin-top: 10px;
+        padding-left: 5px;
+        width: 100%;
     }
 
 }
