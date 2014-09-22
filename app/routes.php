@@ -270,6 +270,10 @@ Route::any('/ticket/sell/agreement/{id}', array('as'=>'ticket.sell.3','uses'=>'S
 
 Route::any('/ticket/sell/published/{id}', array('as'=>'ticket.sell.4','uses'=>'SellController@publishTicket'))
     ->where('id', '[0-9]+');
+
+//ticket checkout
+Route::get('checkout/{id}', array('as'=>'ticket.checkout', 'uses'=>'CheckoutController@index'))->where('id', '[0-9]+');
+
 /*
 |--------------------------------------------------------------------------
 | Football tickets customer account
