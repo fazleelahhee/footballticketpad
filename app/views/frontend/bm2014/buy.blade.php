@@ -15,7 +15,7 @@
          <span class="gamename"> <strong>Chelsea</strong> vs  <strong>Manchester United</strong> Tickets</span>
          <span class="gamedetail">Saturday, 16th August 2014, 3:00pm. Turf moor - Burnley FC, Burnley, UK</span>
 
-         <a href="/sell-1" class="btn bluebtn">SELL TICKETS</a>
+         <a href="/ticket/sell/1" class="btn bluebtn">SELL TICKETS</a>
 
      </span>
 
