@@ -3,6 +3,7 @@
 {{ HTML::style('ckeditor/contents.css') }}
 @stop
 @section('content')
+<form action="{{route('ticket.checkout.order', array('id'=>$productId))}}" method="post">
 <section class="banner-home">
     <h1 class="page-header">
         {{ e($node->title) }}
@@ -65,25 +66,106 @@
             <div class="checkoutarea">
                 <!---------buyer details------------>
                 <h3 class="buy-divider row">Buyer details</h3>
-                <label class="radio">
-                    <input type="radio" name="delivery_country" value="uk" checked>
-                    United Kingdom -
-                    <span>&pound;0.00</span>
-                </label>
-                <hr>
-                <label class="radio">
-                    <input type="radio" autocomplete="off" name="delivery_country" value="others">
-                    Other countries
-                </label>
+<!--                <label class="radio">-->
+<!--                    <input type="radio" name="delivery_country" value="uk" checked>-->
+<!--                    United Kingdom --->
+<!--                    <span>&pound;0.00</span>-->
+<!--                </label>-->
+<!--                <hr>-->
+<!--                <label class="radio">-->
+<!--                    <input type="radio" autocomplete="off" name="delivery_country" value="others">-->
+<!--                    Other countries-->
+<!--                </label>-->
 
                 <select class="countrieslist" name="other_country">
                     <option value="-1">Select Country</option>
-                    <option value="49">Andorra</option>
-                    <option value="24">Argentina</option>
+                    <option value="uk">UK - Monday to Friday Special Delivery &pound;7</option>
+                    <option value="uk1">UK - Saturday Guarantee (pre 1pm) &pound;12 </option>
+                    <option value="uk2">UK - Hotel Delivery &pound;10 </option>
+                    <option value="internationl">International Delivery &pound;50</option>
                 </select>
                 <hr>
                 @if (!empty($customer))
-                <h2> Display Customer Data</h2>
+                <span class="label-seperator">Personal details</span>
+                <div class="registration-form">
+                    <div class="columns six">
+                        <label>
+                            {{ $customer['firstname'] }}  {{$customer['lastname']}}
+                        </label>
+                    </div>
+
+                    <div class="columns six">
+                        <label>
+
+                        </label>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+
+                    @if(!isset($shipping['entity_id']))
+                    <span class="label-seperator">Address</span>
+                        <input type="hidden" value='shipping' name="new_shipping_address" >
+                        <div class="columns six">
+                            <label>
+                                {{ Form::text('street', '', ['class'=>'input street', 'placeholder' => 'Address' ]) }}
+                            </label>
+                        </div>
+
+                        <div class="columns six">
+                            <label>
+                                {{ Form::text('postcode', '', ['class'=>'input postcode', 'placeholder' => 'Post Code' ]) }}
+                            </label>
+                        </div>
+
+                        <div class="columns six">
+                            <label>
+                                {{ Form::text('city', '', ['class'=>'input city', 'placeholder' => 'City' ]) }}
+                            </label>
+                        </div>
+
+                        <div class="columns six">
+                            <select name="country_id" id="country">
+                                <option value="GB"> United Kingdom </option>
+                            </select>
+                        </div>
+
+                        <div class="columns six">
+                            <label>
+                                {{ Form::select('country_code', ['0044' => 'GB(+44)', '0088' => 'BD(+88)'], '0044', ['class'=>'input country-code', 'placeholder' => 'Country Code' ] ) }}
+                            </label>
+
+                        </div>
+
+                        <div class="columns six">
+                            <label>
+                                {{ Form::text('contact_no', '', ['class'=>'input contact-no', 'placeholder' => 'Mobile Number' ]) }}
+                            </label>
+                        </div>
+                        <div style="clear: both">
+                        </div>
+                    @else
+                        <span class="label-seperator">Address</span>
+                        <div class="columns six">
+                            <label>
+                                {{ $shipping['street'] }} <br />
+                                {{ $shipping['city'] }} <br />
+                                {{ $shipping['postcode'] }} <br />
+                                {{ $shipping['country_id'] }} <br />
+
+                            </label>
+                        </div>
+
+                        <div class="columns six">
+                            <label>
+
+                            </label>
+                        </div>
+                        <div style="clear: both">
+                        </div>
+
+
+                    @endif
+                </div>
                 @else
                 <div class="login-container">If you already registered please <a href="#" class="ajax-login">click here</a> to login.</div>
 
@@ -182,7 +264,7 @@
                     </div>
 
                     <div class="columns six">
-                        <select name="country" id="country">
+                        <select name="country_id" id="country">
                            <option value="GB"> United Kingdom </option>
                         </select>
                     </div>
@@ -198,7 +280,7 @@
                     I agree to <a href="/terms-conditions" target="_blank">terms &amp; conditions </a>
                 </label>
                 <br/><br/>
-                <input type="button" value="SUBMIT ORDER" class="btn pinkbtn pull-right">
+                <input type="submit" value="SUBMIT ORDER" class="btn pinkbtn pull-right">
             </div>
         </div>
         <!---------main cart------------>
@@ -212,7 +294,7 @@
                             <span class="pinkline"></span>
                             <span class="blueline"></span>
                         </span>
-
+            <input name="qty" class="qty" value="1" type="hidden" />
             <table>
                 <tr>
                     <td><span class="ticket-qty">1</span> ticket(s) x &pound;<span class="single-ticket-price">{{number_format($ticket->ticket->ticketInformation->price, 2)}}</span></td>
@@ -238,6 +320,7 @@
     </div>
 </div>
 <!---------main content------------>
+</form>
 @stop
 
 {{
@@ -288,6 +371,7 @@
                 $('.ticket-line-price').html(ticketLinePrice.toFixed(2));
                 var totalAmount = ticketLinePrice+deliveryFee;
                 $('.ticket-total-price').html(totalAmount.toFixed(2));
+                $('.qty').val(qty);
             });
 
             $('select[name=other_country]').change(function (e) {

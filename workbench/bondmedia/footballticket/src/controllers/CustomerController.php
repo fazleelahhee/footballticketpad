@@ -13,7 +13,7 @@ class CustomerController extends BaseController
      */
     protected function registrationAction()
     {
-        if (Request::ajax()) {
+
             $rules     = array(
                 'first_name'            => 'Required|Min:3|Max:60|Alpha',
                 'last_name'             => 'Required|Min:3|Max:60|Alpha',
@@ -85,11 +85,11 @@ class CustomerController extends BaseController
             }
 
 
-        } else {
-            $response = Response::make('Invalid Request', '406');
-            $response->header('Content-Type', 'application/json');
-            return $response;
-        }
+//        } else {
+//            $response = Response::make('Invalid Request', '406');
+//            $response->header('Content-Type', 'application/json');
+//            return $response;
+//        }
     }
 
     protected function customerList()

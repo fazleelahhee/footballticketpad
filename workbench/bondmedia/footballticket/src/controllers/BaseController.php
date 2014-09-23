@@ -54,9 +54,14 @@ class BaseController extends Controller {
         }
     }
 
-    public function submitPostToApi($uri = '') {
-        $apiUrlPath = Config::get('api.mage_soap_api_url');
-        $apiFullPath = $apiUrlPath.$uri;
+    public function submitPostToApi($uri = '', $api = true) {
+        if ($api) {
+            $apiUrlPath = Config::get('api.mage_soap_api_url');
+            $apiFullPath = $apiUrlPath.$uri;
+        } else {
+            $apiFullPath = $uri;
+        }
+
         $h = curl_init();
         curl_setopt($h, CURLOPT_URL, $apiFullPath);
         curl_setopt($h, CURLOPT_POST, true);
@@ -68,6 +73,7 @@ class BaseController extends Controller {
         {
             $this->responseInfo = curl_getinfo($h);
         }
+
         return $this;
     }
 }

@@ -249,6 +249,8 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'before' => 
 */
 Route::post('/ticket/registration', array('before' => 'csrf', 'as' => 'ticket.registrations', 'uses' => 'CustomerController@registrationAction'));
 
+Route::post('/ticket/registrationInternal', array('as' => 'ticket.registrationsInternal', 'uses' => 'CustomerController@registrationAction'));
+
 Route::get('/ticket/events/ticket-types', array('as'=>'ticket.events.ticket-types','uses'=>'TicketTypeController@index'));
 Route::get('/ticket/events/form-of-ticket-types', array('as'=>'ticket.events.formOfTicketTypes','uses'=>'FormOfTicketController@index'));
 //TicketRestrictionController
@@ -272,7 +274,8 @@ Route::any('/ticket/sell/published/{id}', array('as'=>'ticket.sell.4','uses'=>'S
     ->where('id', '[0-9]+');
 
 //ticket checkout
-Route::get('checkout/{id}', array('as'=>'ticket.checkout', 'uses'=>'CheckoutController@index'))->where('id', '[0-9]+');
+Route::get('/checkout/{id}', array('as'=>'ticket.checkout', 'uses'=>'CheckoutController@index'))->where('id', '[0-9]+');
+Route::any('/checkout/order/{id}', array('as'=>'ticket.checkout.order', 'uses'=>'CheckoutController@order'))->where('id', '[0-9]+');
 
 /*
 |--------------------------------------------------------------------------
