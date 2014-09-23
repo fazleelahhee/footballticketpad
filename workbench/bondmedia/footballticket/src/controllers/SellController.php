@@ -61,12 +61,57 @@ class SellController extends BaseController
         return View::make(Template::name('frontend.%s.sell.3'), compact('node'));
     }
 
-    public function publishTicket() {
+    public function publishTicket($ticketId = '') {
+        $data =  array();
+        $customer = Session::get('customer');
+        $data['ticketInformation']   = Session::get('ticket_part_1');
+        $data['paymentMethod']       = Session::get('ticket_part_2');
+        $data['paymentAgreement']    = Session::get('ticket_part_3');
 
-        $ticketInformation  = Session::get('ticket_part_1');
-        $paymentMethod      = Session::get('ticket_part_2');
-        $paymentAgrement    = Session::get('ticket_part_3');
+        $node = FootBallEvent::find($ticketId);
+        $info = $node->toArray();
+        $attributeSet = TicketSoap::process('product_attribute_set.list');
+        $product = array(
+            'simple',
+            $attributeSet[0]['set_id'],
+            uniqid()."-{$ticketId}-{$customer['entity_id']}-{$data['ticketInformation']['ticket_type']}-{$data['ticketInformation']['loc_block']}-{$data['ticketInformation']['loc_row']}",
+            array(
+                'categories' => array(2),
+                'websites' => array(1),
+                'name' => $info['title'],
+                'description' => $info['content'],
+                'short_description' => $info['content'],
+                'weight' => '1',
+                'status' => '1',
+                'url_key' => $info['slug'],
+                'url_path' => $info['slug'],
+                'visibility' => '4',
+                'price' => '100',
+                'tax_class_id' => 0,
+                'meta_title' => $info['title'],
+                'meta_keyword' => strip_tags($info['content']),
+                'meta_description' => strip_tags($info['content']),
+                'stock_data' => array(
+                    'qty' => 100,
+                    'is_in_stock'=>1,
+                    'min_sale_qty'=> 1
 
+                )
+            )
+        );
+
+        $response = TicketSoap::process('catalog_product.create', $product);
+
+        if ($response) {
+            var_dump($response);
+            $relatedTicket = new RelatedTicket();
+            $relatedTicket->event_id = $ticketId;
+            $relatedTicket->product_id = $response;
+            $relatedTicket->ticket = json_encode($data);
+            $relatedTicket->save();
+        }
+        // related products
+        // RelatedTicket
 
 
     }

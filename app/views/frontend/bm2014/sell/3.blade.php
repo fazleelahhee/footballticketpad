@@ -41,7 +41,7 @@
         </div>
 
 
-        <h3 class="sell-divider row">Guarentee </h3>
+        <h3 class="sell-divider row">Guarantee </h3>
 
         <span class="bluehighlight row">
             <span class="guarenteeicon"></span>
@@ -49,7 +49,7 @@
 
         </span>
 
-
+        <form name="ticket_guarantee" action="" method="post">
         <div class="row selldivider credit-card-container">
 
             <p>Why do we need you credit card data?
@@ -72,7 +72,7 @@
             </p>
 
 
-            <input type="radio" class="inline-radio" name="ticket_ready" value="1">
+            <input type="radio" class="inline-radio" name="ticket_ready" value="1" checked>
             <label class="inline-label">Yes, i have them (if selected you will have 3 working days to send them)</label>
 
             <br/><br/>
@@ -84,14 +84,16 @@
         </div>
 
         <div class="row selldivider">
+<!--            <br/><br/>-->
+<!--            <input type="checkbox" class="inline-radio" >-->
+<!--            <label class="inline-label">I want to subscribe to football ticket pads newsletter</label>-->
             <br/><br/>
-            <input type="checkbox" class="inline-radio" >
-            <label class="inline-label">I want to subscribe to football ticket pads newsletter</label>
-            <br/><br/>
-            <input type="checkbox" class="inline-radio">
+            <input type="checkbox" class="inline-radio" name="term_and_conditions" value="1">
             <label class="inline-label">I accept <a href="#" data-reveal-id="Terms">terms and condition</a> and <a href="#" data-reveal-id="Privacy">privacy policy</a>
             </label>
         </div>
+
+        </form>
         <input type="button" class="btn bluebtn pull-right" value="PUBLISH">
         <a href="#"><span class="btn greybtn pull-right">BACK</span></a>
     </div>
@@ -154,6 +156,27 @@
             $.getAllCards();
         });
 
+        $(document).ready(function () {
+
+            $('input[value=PUBLISH]').click(function (e) {
+                var submit = true;
+                e.preventDefault();
+                if( $('.credit-card-container').find('input[type=radio]:checked').length < 1 ) {
+                    submit = false;
+                    alert('No credit card added!!!');
+                }
+
+                if(!$('input[name=term_and_conditions]').prop('checked')) {
+                    submit = false;
+                    alert("If you don't accept terms and conditions you can not sell ticket in here!!!");
+                }
+
+                if (submit) {
+                    $('form[name=ticket_guarantee]').submit();
+                }
+
+            });
+        });
     })(jQuery)
 </script>
 
