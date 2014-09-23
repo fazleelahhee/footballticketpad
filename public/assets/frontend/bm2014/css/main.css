@@ -2541,7 +2541,7 @@ textarea {
 }
 
 .contact-display {
-    list-style: none outside none;
+    list-style: none outside none; margin-left: 0px !important;
 }
 .contact-display li a {color: black}
 .contact-display li {
