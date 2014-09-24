@@ -265,5 +265,81 @@
             </ul>
         </li>
 
+        <li class="{{ in_array($menu, array('country', 'country/new', 'country/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Country</span></a>
+            <ul>
+                <li class="{{ $menu == 'country'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/country">Country</a>
+                </li>
+                @if($menu == 'country/edit')
+                <li class="{{ $menu == 'country/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/country/edit">Edit</a>
+                </li>
+
+                @else
+                <li class="{{ $menu == 'country/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/country/create">Add New</a>
+                </li>
+                @endif
+            </ul>
+        </li>
+
+        <li class="{{ in_array($menu, array('club', 'club/new', 'club/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Club</span></a>
+            <ul>
+                <li class="{{ $menu == 'club'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/club">Club</a>
+                </li>
+                @if($menu == 'club/edit')
+                <li class="{{ $menu == 'club/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/club/edit">Edit</a>
+                </li>
+
+                @else
+                <li class="{{ $menu == 'club/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/club/create">Add New</a>
+                </li>
+                @endif
+            </ul>
+        </li>
+
+        <li class="{{ in_array($menu, array('league', 'league/new', 'league/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">League</span></a>
+            <ul>
+                <li class="{{ $menu == 'league'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/league">League</a>
+                </li>
+                @if($menu == 'league/edit')
+                <li class="{{ $menu == 'league/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/league/edit">Edit</a>
+                </li>
+
+                @else
+                <li class="{{ $menu == 'league/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/league/create">Add New</a>
+                </li>
+                @endif
+            </ul>
+        </li>
+
+        <li class="{{ in_array($menu, array('season', 'season/new', 'season/edit'))? 'active':'' }}">
+            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Season</span></a>
+            <ul>
+                <li class="{{ $menu == 'season'?'active': '' }}">
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/season">Season</a>
+                </li>
+                @if($menu == 'league/edit')
+                <li class="{{ $menu == 'season/edit'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/season/edit">Edit</a>
+                </li>
+
+                @else
+                <li class="{{ $menu == 'season/new'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/season/create">Add New</a>
+                </li>
+                @endif
+            </ul>
+        </li>
+
     </ul>
 </nav>
