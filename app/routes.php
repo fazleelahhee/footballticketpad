@@ -199,6 +199,8 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     //filemanager
     Route::get('filemanager/show-admin', 'FilemanagerController@showInAdmin');
 
+
+
 });
 
 Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => array('auth.admin', 'assets_admin')), function () {
@@ -228,6 +230,12 @@ Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_a
 
 
 });
+
+Route::group(array('prefix' => Config::get('bondcms.admin_prefix'),  'before' => array('auth.admin', 'assets_admin')), function () {
+    //football ticket
+    Route::get('/club', array('as'=>'admin.club.index', 'uses'=>'FootballTicketController@index'));
+});
+
 
 /*
 |--------------------------------------------------------------------------
