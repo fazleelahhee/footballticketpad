@@ -1,12 +1,15 @@
 <?php
 
+use Bond\Repositories\FootballTicket\FootballTicketRepository as FootballTicket;
+use Bond\Exceptions\Validation\ValidationException;
+
 class FootballTicketController extends BaseController {
 
     protected $footballTicket;
 
-//    public function __construct(FootbollTicket $footballTicket) {
-//        $this->footballTicket = $footballTicket;
-//    }
+    public function __construct(FootballTicket $footballTicket) {
+        $this->footballTicket = $footballTicket;
+    }
 
     /**
      * Display a listing of the resource.
@@ -14,11 +17,10 @@ class FootballTicketController extends BaseController {
      * @return Response
      */
     public function index() {
-//        $footballTicket = $this->footballTicket->paginate(null, true);
+        $node = $this->footballTicket->paginate(null, true);
         $menu = $this->getActionType();
         View::share('menu', $menu);
-        //return View::make('backend.footballTicket.index', compact('footballTicket'));
-        return View::make('footballticket::admin.footballticket.test');
+        return View::make('footballticket::admin.footballticket.index', compact('node'));
     }
 
     /**
@@ -27,9 +29,10 @@ class FootballTicketController extends BaseController {
      * @return Response
      */
     public function create() {
-
-        return View::make('backend.news.create')
-            ->with('menu', 'news/new');;
+        $menu = $this->getActionType();
+        View::share('type', $menu);
+        View::share('menu', "$menu/new");
+        return View::make('footballticket::admin.footballticket.create');
     }
 
     /**
@@ -40,9 +43,11 @@ class FootballTicketController extends BaseController {
     public function store() {
 
         try {
-            $this->news->create(Input::all());
-            Notification::success('News was successfully added');
-            return Redirect::route('admin.news.index');
+            $input = Input::all();
+            unset($input['action_type']);
+            $this->footballTicket->create($input);
+            Notification::success('Football Ticket was successfully added');
+            return Redirect::route('admin.footballticket.index', array('action_type'=>Input::get('action_type')));
         } catch (ValidationException $e) {
             return Redirect::back()->withInput()->withErrors($e->getErrors());
         }

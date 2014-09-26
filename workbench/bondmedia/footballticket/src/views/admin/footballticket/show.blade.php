@@ -1,15 +1,15 @@
 @extends('backend/_layout/layout')
 @section('content')
 {{ HTML::style('ckeditor/contents.css') }}
-<div class="container">
+
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ $page->title }}</h3>
+            <h3 class="panel-title">{{ $news->title }}</h3>
         </div>
         <div class="panel-body">
             <div class="pull-left">
                 <div class="btn-toolbar">
-                    <a href="{{ url('admin/page') }}"
+                    <a href="{{ url('admin/news') }}"
                        class="btn btn-primary">
                         <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back
                     </a>
@@ -22,26 +22,30 @@
                 <tbody>
                 <tr>
                     <td><strong>Title</strong></td>
-                    <td>{{ $page->title }}</td>
+                    <td>{{ $news->title }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Slug</strong></td>
+                    <td>{{ $news->slug }}</td>
                 </tr>
                 <tr>
                     <td><strong>Published</strong></td>
-                    <td>{{ $page->is_published }}</td>
+                    <td>{{ $news->is_published }}</td>
                 </tr>
                 <tr>
                     <td><strong>Content</strong></td>
-                    <td>{{ $page->content }}</td>
+                    <td>{{ $news->content }}</td>
                 </tr>
                     <td><strong>Date Created</strong></td>
-                    <td>{{ $page->created_at }}</td>
+                    <td>{{ $news->created_at }}</td>
                 </tr>
                 <tr>
                     <td><strong>Date Updated</strong></td>
-                    <td>{{ $page->updated_at }}</td>
+                    <td>{{ $news->updated_at }}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
-</div>
+
 @stop

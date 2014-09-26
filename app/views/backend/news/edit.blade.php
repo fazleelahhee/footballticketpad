@@ -34,7 +34,7 @@
 
         <div class="controls">
             <div class="input-group">
-                <span class="input-group-addon">www.bondmedia.co.uk/</span>
+                <span class="input-group-addon">{{Config::get('app.url')}}</span>
                 {{ Form::text('slug', $news->slug, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
             </div>
             @if ($errors->first('slug'))

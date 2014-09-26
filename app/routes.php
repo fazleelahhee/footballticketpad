@@ -233,9 +233,17 @@ Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_a
 
 Route::group(array('prefix' => Config::get('bondcms.admin_prefix'),  'before' => array('auth.admin', 'assets_admin')), function () {
     //football ticket
-    Route::get('/club', array('as'=>'admin.club.index', 'uses'=>'FootballTicketController@index'));
+    Route::resource('footballticket?action_type={action_type}', 'FootballTicketController');
+    Route::get('/footballticket?action_type={action_type}', array('as'=>'admin.footballticket.index', 'uses'=>'FootballTicketController@index'));
+
+    Route::get('footballticket/{id}/delete', array('as' => 'admin.footballticket.delete', 'uses' => 'FootballTicketController@confirmDestroy'))
+        ->where('id', '[0-9]+');
+
+    Route::get('/footballticket?action_type={action_type}', array('as' => 'dashboard.footballticket', 'uses' => 'FootballTicketController@index'));
+
 });
 
+Route::get('/footballticket/{id}/{slug?}', array('as' => 'dashboard.footballticket.show', 'uses' => 'FootballTicketController@show'));
 
 /*
 |--------------------------------------------------------------------------
