@@ -326,16 +326,16 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Season</span></a>
             <ul>
                 <li class="{{ $menu == 'season'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/season">Season</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=season">Season</a>
                 </li>
                 @if($menu == 'league/edit')
                 <li class="{{ $menu == 'season/edit'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/season/edit">Edit</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/edit?action_type=season>Edit</a>
                 </li>
 
                 @else
                 <li class="{{ $menu == 'season/new'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/season/create">Add New</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/create?action_type=season">Add New</a>
                 </li>
                 @endif
             </ul>
