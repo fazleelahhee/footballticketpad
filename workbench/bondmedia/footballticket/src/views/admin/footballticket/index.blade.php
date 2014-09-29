@@ -9,7 +9,7 @@
         <div class="panel-body">
             <div class="pull-left">
                 <div class="btn-toolbar">
-                    <a href="" class="btn btn-primary">
+                    <a href="{{URL::to('admin/footballticket/create?action_type='.$type)}}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-plus"></span>&nbsp;New {{$menu}}
                     </a>
                 </div>
@@ -43,18 +43,18 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ URL::route('admin.footballticket.show', array($v->id)) }}">
+                                        <a href="{{ URL::route('admin.footballticket.index', array($v->id)) }}">
                                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show {{$menu}}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ URL::route('admin.footballticket.edit', array($v->id)) }}">
+                                        <a href="{{ URL::route('admin.footballticket.edit', array('id'=>$v->id)) }}?action_type={{$type}}">
                                             <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit {{$menu}}
                                         </a>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="{{ URL::route('admin.footballticket.delete', array($v->id)) }}">
+                                        <a href="{{ URL::route('admin.footballticket.delete', array($v->id)) }}?action_type={{$type}}">
                                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete {{$menu}}
                                         </a>
                                     </li>
@@ -90,30 +90,30 @@
     </div>
 
 @stop
-@section('scripts')
+{{ Assets::jsStart() }}
 <script type="text/javascript">
-    $(document).ready(function () {
-
-        $('#notification').show().delay(4000).fadeOut(700);
-
-        // publish settings
-        $(".publish").bind("click", function (e) {
-            var id = $(this).attr('id');
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "{{ url('/admin/footballticket/" + id + "/toggle-publish/') }}",
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/images/publish.png" : "{{url('/')}}/assets/images/not_publish.png";
-                        $("#publish-image-" + id).attr('src', imagePath);
+    (function ($) {
+        $(document).ready(function () {
+            $('#notification').show().delay(4000).fadeOut(700);
+            // publish settings
+            $(".publish").bind("click", function (e) {
+                var id = $(this).attr('id');
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ url('/admin/footballticket/" + id + "/toggle-publish/') }}",
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/images/publish.png" : "{{url('/')}}/assets/images/not_publish.png";
+                            $("#publish-image-" + id).attr('src', imagePath);
+                        }
+                    },
+                    error: function () {
+                        alert("error");
                     }
-                },
-                error: function () {
-                    alert("error");
-                }
-            })
+                })
+            });
         });
-    });
+    })(jQuery)
 </script>
-@stop
+{{ Assets::jsEnd() }}

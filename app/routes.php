@@ -233,13 +233,24 @@ Route::group(array('namespace' => 'App\Controllers\Admin', 'before' => 'assets_a
 
 Route::group(array('prefix' => Config::get('bondcms.admin_prefix'),  'before' => array('auth.admin', 'assets_admin')), function () {
     //football ticket
-    Route::resource('footballticket?action_type={action_type}', 'FootballTicketController');
+    Route::resource('footballticket/', 'FootballTicketController');
+
     Route::get('/footballticket?action_type={action_type}', array('as'=>'admin.footballticket.index', 'uses'=>'FootballTicketController@index'));
+
+    Route::get('footballticket/edit/{id}/', array('as' => 'admin.footballticket.edit', 'uses' => 'FootballTicketController@edit'))
+        ->where('id', '[0-9]+');
+
+    Route::post('footballticket/update/{id}/', array('as' => 'admin.footballticket.update', 'uses' => 'FootballTicketController@update'))
+        ->where('id', '[0-9]+');
 
     Route::get('footballticket/{id}/delete', array('as' => 'admin.footballticket.delete', 'uses' => 'FootballTicketController@confirmDestroy'))
         ->where('id', '[0-9]+');
-
+    Route::post('footballticket/{id}/destroy', array('as' => 'admin.footballticket.destroy', 'uses' => 'FootballTicketController@destroy'))
+        ->where('id', '[0-9]+');
     Route::get('/footballticket?action_type={action_type}', array('as' => 'dashboard.footballticket', 'uses' => 'FootballTicketController@index'));
+
+    Route::post('/footballticket/{id}/toggle-publish', array('as' => 'admin.footballticket.toggle-publish', 'uses' => 'FootballTicketController@togglePublish'))
+        ->where('id', '[0-9]+');
 
 });
 

@@ -269,16 +269,16 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Country</span></a>
             <ul>
                 <li class="{{ $menu == 'country'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/country">Country</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=country">Country</a>
                 </li>
                 @if($menu == 'country/edit')
                 <li class="{{ $menu == 'country/edit'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/country/edit">Edit</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/edit/?action_type=country">Edit</a>
                 </li>
 
                 @else
                 <li class="{{ $menu == 'country/new'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/country/create">Add New</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/create/?action_type=country">Add New</a>
                 </li>
                 @endif
             </ul>
@@ -288,16 +288,16 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Club</span></a>
             <ul>
                 <li class="{{ $menu == 'club'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/club">Club</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=club">Club</a>
                 </li>
                 @if($menu == 'club/edit')
                 <li class="{{ $menu == 'club/edit'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/club/edit">Edit</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/edit?action_type=club">Edit</a>
                 </li>
 
                 @else
                 <li class="{{ $menu == 'club/new'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/club/create">Add New</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/create?action_type=club">Add New</a>
                 </li>
                 @endif
             </ul>
@@ -307,16 +307,16 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">League</span></a>
             <ul>
                 <li class="{{ $menu == 'league'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/league">League</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=league">League</a>
                 </li>
                 @if($menu == 'league/edit')
                 <li class="{{ $menu == 'league/edit'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/league/edit">Edit</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/edit/?action_type=league">Edit</a>
                 </li>
 
                 @else
                 <li class="{{ $menu == 'league/new'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/league/create">Add New</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/create/?action_type=league">Add New</a>
                 </li>
                 @endif
             </ul>

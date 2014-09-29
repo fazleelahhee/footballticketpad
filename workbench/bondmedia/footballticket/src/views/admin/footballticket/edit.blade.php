@@ -7,20 +7,18 @@
 
     <div class="page-header">
         <h3>
-            News Update
-            <div class="pull-right">
-                {{ HTML::link('/admin/news','Back', array('class'=>'btn btn-primary')) }}
-            </div>
+            Update {{$type}}
         </h3>
     </div>
-    {{ Form::open( array( 'action' => array( 'App\Controllers\Admin\NewsController@update', $news->id), 'method' => 'PATCH')) }}
+    <form action="{{route('admin.footballticket.update', array('id'=>$node->id)).'?action_type='.$type}}" method="post">
 
+    <input name="action_type" type="hidden" value="{{$type}}" />
     <!-- Title -->
     <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Title</label>
 
         <div class="controls">
-            {{ Form::text('title', $news->title, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Title', 'value'=>Input::old('title'))) }}
+            {{ Form::text('title', $node->title, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Title', 'value'=>Input::old('title'))) }}
             @if ($errors->first('title'))
             <span class="help-block">{{ $errors->first('title') }}</span>
             @endif
@@ -35,23 +33,10 @@
         <div class="controls">
             <div class="input-group">
                 <span class="input-group-addon">{{Config::get('app.url')}}</span>
-                {{ Form::text('slug', $news->slug, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
+                {{ Form::text('slug', $node->slug, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
             </div>
             @if ($errors->first('slug'))
             <span class="help-block">{{ $errors->first('slug') }}</span>
-            @endif
-        </div>
-    </div>
-    <br>
-
-     <!-- Datetime -->
-    <div class="control-group {{ $errors->has('datetime') ? 'has-error' : '' }}">
-        <label class="control-label" for="title">Datetime</label>
-
-        <div class="controls">
-            {{ Form::text('datetime', $news->datetime, array('class'=>'form-control', 'id' => 'datetime', 'value'=>Input::old('datetime'))) }}
-            @if ($errors->first('datetime'))
-            <span class="help-block">{{ $errors->first('datetime') }}</span>
             @endif
         </div>
     </div>
@@ -62,7 +47,7 @@
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
-            {{ Form::textarea('content', $news->content, array('class'=>'form-control', 'id' => 'content_page', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
+            {{ Form::textarea('content', $node->content, array('class'=>'form-control', 'id' => 'content_page', 'placeholder'=>'Content', 'value'=>Input::old('content'))) }}
             @if ($errors->first('content'))
             <span class="help-block">{{ $errors->first('content') }}</span>
             @endif
@@ -74,7 +59,7 @@
     <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
 
         <div class="controls">
-            <label class="checkbox">{{ Form::checkbox('is_published', 'is_published',$news->is_published) }} Publish ?</label>
+            <label class="checkbox">{{ Form::checkbox('is_published', 'is_published',$node->is_published) }} Publish ?</label>
             @if ($errors->first('is_published'))
             <span class="help-block">{{ $errors->first('is_published') }}</span>
             @endif

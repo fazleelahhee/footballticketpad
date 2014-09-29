@@ -20,6 +20,7 @@ class FootballTicketController extends BaseController {
         $node = $this->footballTicket->paginate(null, true);
         $menu = $this->getActionType();
         View::share('menu', $menu);
+        View::share('type', $menu);
         return View::make('footballticket::admin.footballticket.index', compact('node'));
     }
 
@@ -44,6 +45,8 @@ class FootballTicketController extends BaseController {
 
         try {
             $input = Input::all();
+            $type = $input['action_type'];
+
             unset($input['action_type']);
             $this->footballTicket->create($input);
             Notification::success('Football Ticket was successfully added');
@@ -60,9 +63,8 @@ class FootballTicketController extends BaseController {
      * @return Response
      */
     public function show($id) {
-
-        $news = $this->news->find($id);
-        return View::make('backend.news.show', compact('news'));
+        $news = $this->footballTicket->find($id);
+        return View::make('footballticket::admin.footballticket.show', compact('news'));
     }
 
     /**
@@ -72,10 +74,11 @@ class FootballTicketController extends BaseController {
      * @return Response
      */
     public function edit($id) {
-
-        $news = $this->news->find($id);
-        return View::make('backend.news.edit', compact('news'))
-            ->with('menu', 'news/edit');
+        $menu = $this->getActionType();
+        $node = $this->footballTicket->find($id);
+        View::share('type', $menu);
+        View::share('menu', "$menu/edit");
+        return View::make('footballticket::admin.footballticket.edit', compact('node'));
     }
 
     /**
@@ -87,9 +90,14 @@ class FootballTicketController extends BaseController {
     public function update($id) {
 
         try {
-            $this->news->update($id, Input::all());
-            Notification::success('News was successfully updated');
-            return Redirect::route('admin.news.index');
+            $menu = $this->getActionType();
+            $input = Input::all();
+            $type = $input['action_type'];
+            unset($input['action_type']);
+            $this->footballTicket->update($id, $input);
+            Notification::success($type.' was successfully updated');
+            $redirect = Redirect::to(URL::to('admin/footballticket?action_type='.$type));
+            return $redirect;
         } catch (ValidationException $e) {
             return Redirect::back()->withInput()->withErrors($e->getErrors());
         }
@@ -102,22 +110,24 @@ class FootballTicketController extends BaseController {
      * @return Response
      */
     public function destroy($id) {
-
-        $this->news->destroy($id);
-        Notification::success('News was successfully deleted');
-        return Redirect::action('App\Controllers\Admin\NewsController@index');
+        $menu = $this->getActionType();
+        $this->footballTicket->destroy($id);
+        $type=  Input::get('action_type');
+        Notification::success($type.' was successfully deleted');
+        return Redirect::to(URL::to('admin/footballticket?action_type='.$type));
     }
 
     public function confirmDestroy($id) {
-
-        $news = $this->news->find($id);
-        return View::make('backend.news.confirm-destroy', compact('news'))
-            ->with('menu', 'news/edit');
+        $menu = $this->getActionType();
+        $node = $this->footballTicket->find($id);
+        View::share('type', $menu);
+        return View::make('footballticket::admin.footballticket.confirm-destroy', compact('node'))
+            ->with('menu', 'footballticket/edit');
     }
 
     public function togglePublish($id) {
 
-        return $this->news->togglePublish($id);
+        return $this->footballTicket->togglePublish($id);
     }
 
     public function getActionType() {
