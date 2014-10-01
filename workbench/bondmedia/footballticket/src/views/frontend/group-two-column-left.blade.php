@@ -13,15 +13,10 @@
         </div>
 </section>
 <!---------sidebar------------>
-
-
-
 <section class="banner-home">
-
-
-    <h1 class="page-header">@if($node instanceof Pages)
+    <h1 class="page-header">
         {{ e($node->title) }}
-        @endif</h1>
+    </h1>
 
 
     <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
@@ -32,8 +27,7 @@
         <span class="pinkline"></span>
         <span class="blueline"></span>
     </span>	
-    
-    
+
 </section>
 
 
@@ -42,12 +36,14 @@
 <!---------main content------------>
 <div class="row">
      <div class="site-content">
-         @if($node instanceof Pages)
          {{ Template::doShortCode($node->content ) }}
+
+         @if($type == 'club')
+            @include('footballticket::frontend.partials.ticket-listing')
          @endif
      </div>
 </div>
-<!---------main content------------>
 
-    
+
+<!---------main content------------>
 @stop    

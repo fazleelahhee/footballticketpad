@@ -33,6 +33,8 @@ class FootballTicketController extends BaseController {
         $menu = $this->getActionType();
         View::share('type', $menu);
         View::share('menu', "$menu/new");
+        View::share('mode', "new");
+
         return View::make('footballticket::admin.footballticket.create');
     }
 
@@ -48,9 +50,10 @@ class FootballTicketController extends BaseController {
             $type = $input['action_type'];
 
             unset($input['action_type']);
+            $this->footballTicket->setSlugPrefix($type);
             $this->footballTicket->create($input);
             Notification::success('Football Ticket was successfully added');
-            return Redirect::route('admin.footballticket.index', array('action_type'=>Input::get('action_type')));
+            return Redirect::to(URL::to('admin/footballticket?action_type='.$type));
         } catch (ValidationException $e) {
             return Redirect::back()->withInput()->withErrors($e->getErrors());
         }
@@ -62,9 +65,12 @@ class FootballTicketController extends BaseController {
      * @param  int $id
      * @return Response
      */
-    public function show($id) {
-        $news = $this->footballTicket->find($id);
-        return View::make('footballticket::admin.footballticket.show', compact('news'));
+    public function show($type, $slug) {
+        //$template = 'frontend.%s.group-two-column-left';
+        $node = $this->footballTicket->findByUri($type,$slug);
+        View::share('body_class', "page {$type} {$slug}");
+        View::share('type', $type);
+        return View::make('footballticket::frontend.group-two-column-left', compact('node'));
     }
 
     /**
@@ -78,6 +84,12 @@ class FootballTicketController extends BaseController {
         $node = $this->footballTicket->find($id);
         View::share('type', $menu);
         View::share('menu', "$menu/edit");
+        View::share('mode', "edit");
+        $meta = FootballTicketMeta::where('football_ticket_id', '=', $id)->get();
+        foreach($meta->toArray() as $val) {
+            View::share('meta_'.$val['key'], $val['value']);
+        }
+
         return View::make('footballticket::admin.footballticket.edit', compact('node'));
     }
 
@@ -152,4 +164,6 @@ class FootballTicketController extends BaseController {
 
         return $output;
     }
+
+
 }

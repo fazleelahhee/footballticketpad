@@ -23,6 +23,7 @@
     </div>
     {{ Form::open(array('action' => 'FootballTicketController@store')) }}
 
+   <input name="action_type" type="hidden" value="{{$type}}">
     <!-- Title -->
     <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Title</label>
@@ -42,7 +43,7 @@
 
         <div class="controls">
             <div class="input-group">
-                <span class="input-group-addon">{{Config::get('app.url')}}</span>
+                <span class="input-group-addon">{{Config::get('app.url')}}group/{{$type}}/</span>
                 {{ Form::text('slug', null, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
             </div>
             @if ($errors->first('slug'))
@@ -84,7 +85,7 @@
 
 @stop
 
-@section('script')
+{{ Assets::jsStart() }}
 
 @include('backend.partials.ckeditor')
 
@@ -104,4 +105,4 @@
         }
     });
 </script>
-@stop
+{{ Assets::jsEnd() }}

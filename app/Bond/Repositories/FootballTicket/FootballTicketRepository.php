@@ -3,6 +3,7 @@
 use Input;
 use Config;
 use FootballTickets;
+use FootballTicketMeta;
 use Response;
 use Bond\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Bond\Exceptions\Validation\ValidationException;
@@ -13,6 +14,8 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
     protected $perPage;
     protected $footballTicket;
     protected $slug_prefix = 'club';
+
+
     /**
      * Rules
      *
@@ -22,6 +25,7 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
         'title'    => 'required',
         'content'  => 'required'
     ];
+
 
     public function __construct(FootballTickets $footballTicket) {
 
@@ -33,6 +37,14 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
         if(!empty($type)) {
             $this->slug_prefix =  $type;
         }
+    }
+
+    /**
+     * @param string $slug_prefix
+     */
+    public function setSlugPrefix($slug_prefix)
+    {
+        $this->slug_prefix = $slug_prefix;
     }
 
     public function all() {
@@ -66,10 +78,33 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
         return $this->footballTicket->findOrFail($id);
     }
 
+    public function findByUri($type, $slug) {
+        return $this->footballTicket->where('type', '=', $type)
+                                    ->where('slug', '=', $slug)
+                                    ->first();
+    }
+
+    public function findByType($type = '') {
+        return $this->footballTicket->where('type', '=', $type)
+            ->orderBy('created_at', 'ASC')
+            ->groupBy('slug')
+            ->get();
+    }
+
     public function create($attributes) {
         $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
         if ($this->isValid($attributes)) {
             $this->footballTicket->fill($attributes)->save();
+            if($this->footballTicket->type == 'club') {
+                $footballTicketMeta = new FootballTicketMeta();
+                $footballTicketMeta->fill(
+                    array(
+                        'football_ticket_id' => $this->footballTicket->id,
+                        'key'                => 'country',
+                        'value'              => $attributes['country']
+                    )
+                )->save();
+            }
             return true;
         }
 
@@ -105,3 +140,4 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
         return Response::json(array('result' => 'success', 'changed' => ($footballTicket->is_published) ? 1 : 0));
     }
 }
+

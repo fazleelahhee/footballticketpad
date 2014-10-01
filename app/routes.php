@@ -254,7 +254,7 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'),  'before' =>
 
 });
 
-Route::get('/footballticket/{id}/{slug?}', array('as' => 'dashboard.footballticket.show', 'uses' => 'FootballTicketController@show'));
+Route::get('/group/{type}/{slug}', array('as' => 'dashboard.footballticket.show', 'uses' => 'FootballTicketController@show'));
 
 /*
 |--------------------------------------------------------------------------
