@@ -9,7 +9,7 @@
         </li>
         @yield('nev_menu_after_dashboard')
         <li class="{{ in_array($menu, array('article', 'article/create', 'article/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Article</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa fa-align-left"></i> <span class="menu-item-parent">Article</span></a>
             <ul>
                 <li class="{{ $menu == 'article'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/article">Article</a>
@@ -28,7 +28,7 @@
         </li>
         @yield('nev_menu_after_article')
         <li class="{{ in_array($menu, array('category', 'category/create', 'category/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Category</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-tag"></i> <span class="menu-item-parent">Category</span></a>
             <ul>
                 <li class="{{ $menu == 'category'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/category">Category</a>
@@ -47,7 +47,7 @@
         </li>
         @yield('nev_menu_after_category')
         <li class="{{ in_array($menu, array('pages', 'pages/new', 'pages/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Pages</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Pages</span></a>
             <ul>
                 <li class="{{ $menu == 'pages'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages">Pages</a>
@@ -84,7 +84,7 @@
             </ul>
         </li>
         <li class="{{ in_array($menu, array('faq', 'faq/new', 'faq/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Faq</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-question"></i> <span class="menu-item-parent">Faq</span></a>
             <ul>
                 <li class="{{ $menu == 'faq'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/faq">Faq</a>
@@ -103,7 +103,7 @@
         </li>
         @yield('nev_menu_after_news')
         <li class="{{ in_array($menu, array('media', 'media/new'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Media</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-picture-o"></i> <span class="menu-item-parent">Media</span></a>
             <ul>
                 <li class="{{ $menu == 'media'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/media">Media</a>
@@ -138,7 +138,7 @@
         </li>
         @yield('nev_menu_after_appearance')
         <li class="{{ in_array($menu, array('gallery', 'gallery/new', 'gallery/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Gallery</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Gallery</span></a>
             <ul>
                 <li class="{{ $menu == 'gallery'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/photo_gallery">Gallery</a>
@@ -161,7 +161,7 @@
         @yield('nev_menu_after_gallery')
 
         <li class="{{ $type != 'block' && in_array($menu, array('slider', 'slider/new', 'slider/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Slider</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-th-large"></i> <span class="menu-item-parent">Slider</span></a>
             <ul>
                 <li class="{{ $type != 'block' && $menu == 'slider'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider">Slider</a>
@@ -183,7 +183,7 @@
         </li>
 
         <li class="{{ $type == 'block' && in_array($menu, array('slider', 'slider/new', 'slider/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">BlockPress</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-cubes"></i> <span class="menu-item-parent">BlockPress</span></a>
             <ul>
                 <li class="{{ $type == 'block' && $menu == 'slider'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider?type=block">Block</a>
@@ -205,7 +205,7 @@
         </li>
         @yield('nev_menu_after_slider')
         <li class="{{ in_array($menu, array('filemanager'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">File Manager</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-files-o"></i> <span class="menu-item-parent">File Manager</span></a>
             <ul>
                 <li class="{{ $menu == 'filemanager'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/filemanager/show-admin">Show</a>
@@ -214,7 +214,7 @@
         </li>
         @yield('nev_menu_after_filemanager')
         <li class="{{ in_array($menu, array('users', 'users/new', 'users/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Users</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Users</span></a>
             <ul>
                 <li class="{{ $menu == 'users'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/user">Users</a>
@@ -232,7 +232,7 @@
         </li>
         @yield('nev_menu_after_user')
         <li class="{{ in_array($menu, array('settings', 'settings/general', 'settings/website'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Settings</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-cog"></i> <span class="menu-item-parent">Settings</span></a>
             <ul>
                 <li class="{{ $menu == 'settings/general'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/settings/general">General</a>
@@ -247,7 +247,7 @@
 
 
         <li class="{{ in_array($menu, array('events', 'events/new', 'events/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Events</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-shield"></i> <span class="menu-item-parent">Events</span></a>
             <ul>
                 <li class="{{ $menu == 'events'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/events">events</a>
@@ -266,7 +266,7 @@
         </li>
 
         <li class="{{ in_array($menu, array('country', 'country/new', 'country/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Country</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-flag"></i> <span class="menu-item-parent">Country</span></a>
             <ul>
                 <li class="{{ $menu == 'country'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=country">Country</a>
@@ -285,7 +285,7 @@
         </li>
 
         <li class="{{ in_array($menu, array('club', 'club/new', 'club/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Club</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-life-ring"></i> <span class="menu-item-parent">Club</span></a>
             <ul>
                 <li class="{{ $menu == 'club'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=club">Club</a>
@@ -304,7 +304,7 @@
         </li>
 
         <li class="{{ in_array($menu, array('league', 'league/new', 'league/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">League</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-align-justify"></i> <span class="menu-item-parent">League</span></a>
             <ul>
                 <li class="{{ $menu == 'league'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=league">League</a>
@@ -323,7 +323,7 @@
         </li>
 
         <li class="{{ in_array($menu, array('season', 'season/new', 'season/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">Season</span></a>
+            <a href="#"><i class="fa fa-lg fa-fw fa-list-ul"></i> <span class="menu-item-parent">Season</span></a>
             <ul>
                 <li class="{{ $menu == 'season'?'active': '' }}">
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=season">Season</a>

@@ -140,7 +140,7 @@
                     <li class="divider"></li>
                     <li>
                         <a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i
-                                class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+                                class="fa fa-sign-out fa-lg"> </i> <strong><u>L</u>ogout</strong></a>
                     </li>
                 </ul>
             </li>
@@ -150,7 +150,7 @@
         <div id="logout" class="btn-header transparent pull-right">
             <span> <a href="{{ BMAdmin::url('logout') }}" title="Sign Out" data-action="userLogout"
                       data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i
-                        class="fa fa-sign-out"></i></a> </span>
+                        class="fa fa-sign-out "> </i>  <span class="signoutbtns">Logout</span> </a> </span>
         </div>
         <!-- end logout button -->
 
@@ -285,7 +285,7 @@
 <div class="page-footer">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
-            <span class="txt-color-white">SmartAdmin WebApp © 2013-2014</span>
+            <span class="txt-color-white">Bond CMS <a href="http://www.bondmedia.co.uk/" target="_blank">www.bondmedia.co.uk</a> </span>
         </div>
 
         <div class="col-xs-6 col-sm-6 text-right hidden-xs">

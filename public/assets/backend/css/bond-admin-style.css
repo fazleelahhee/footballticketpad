@@ -11,3 +11,128 @@
 .image-container {margin-top: 25px;}
 .slider-image {padding-right: 10px; padding-bottom: 10px; float: left; display: block; width: 160px; height: 160; border: 1px solid #0000ff}
 .slider-image img {margin-left: 5px; margin-top:5px; max-width: 150px; max-height: 150px;}
+
+
+
+
+
+.signoutbtns {
+    height: 25px !important;
+    line-height: 25px !important;
+    margin-right: 4px;
+    vertical-align: top;
+}
+
+#logout .fa.fa-sign-out {
+    padding-left: 10px;
+}
+
+
+#nestable .dd-content, #nestable .dd-handle {
+    height: 44px;
+    padding-top: 11px;
+}
+
+
+#nestable .dd-handle:before {
+    color: #fff;
+    content: "≡";
+    cursor: move;
+    display: block;
+    font-size: 20px;
+    font-weight: normal;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    text-indent: 0;
+    top: 10px;
+    width: 100%;
+}
+
+
+.btn {
+
+    padding: 8px 32px;
+
+}
+
+.dd-handle {
+    background: none repeat scroll 0 0 #3276b1 !important;
+    border: 1px solid #2c699d !important;
+
+}
+.delete-node { color: #a90329}
+
+
+#left-panel .active, #left-panel .active.open {
+    background: none repeat scroll 0 0 #000;
+}
+
+#left-panel .active .menu-item-parent, #left-panel .active.open .menu-item-parent { color: #fff}
+
+#left-panel .active  .active { background: none}
+
+#left-panel .open {
+    background: none repeat scroll 0 0 #2a2725;
+}
+
+.btn-link {
+    padding: 0;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color:transparent;
+
+}
+
+.jarviswidget > header, .panel-heading {
+    background: none repeat scroll 0 0 #2a2725 !important;
+    border: 1px solid #2a2725 !important;
+    color: white !important;
+    height: 44px;
+    line-height: 44px;
+}
+
+.jarviswidget header:first-child .nav-tabs li a {
+    color: white;
+}
+
+.jarviswidget header:first-child .nav-tabs li.active a {
+    color: black;
+}
+
+.jarviswidget header .nav-tabs > li > a {
+
+    padding: 11px 35px;
+}
+
+.jarviswidget > header .widget-icon i {  color: white !important;}
+
+.jarviswidget header:first-child .nav-tabs li a span {
+    font-size: 14px;
+}
+
+#main {
+
+    min-height: 840px;
+
+}
+
+#left-panel .active.open i,
+#left-panel .active.open .menu-item-parent {
+    color: #3276b1;
+}
+
+
+
+
+.menuconfig a {
+    margin: 1px 1px 3px;
+    padding: 20px;
+    width: 150px;
+}
+
+.menuconfig .glyphicon {
+    font-size: 43px;
+    padding-bottom: 18px;
+}
