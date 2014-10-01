@@ -12,7 +12,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa fa-align-left"></i> <span class="menu-item-parent">Article</span></a>
             <ul>
                 <li class="{{ $menu == 'article'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/article">Article</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/article">View Articles</a>
                 </li>
                 @if($menu == 'article/edit')
                 <li class="{{ $menu == 'article/edit'?'active': '' }}" >
@@ -31,7 +31,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-tag"></i> <span class="menu-item-parent">Category</span></a>
             <ul>
                 <li class="{{ $menu == 'category'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/category">Category</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/category">View Categories</a>
                 </li>
                 @if($menu == 'category/edit')
                 <li class="{{ $menu == 'category/edit'?'active': '' }}" >
@@ -50,7 +50,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-pencil"></i> <span class="menu-item-parent">Pages</span></a>
             <ul>
                 <li class="{{ $menu == 'pages'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages">Pages</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/pages">View Pages</a>
                 </li>
                 @if($menu == 'pages/edit')
                     <li class="{{ $menu == 'pages/edit'?'active': '' }}" >
@@ -69,7 +69,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">News</span></a>
             <ul>
                 <li class="{{ $menu == 'news'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/news">News</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/news">View News</a>
                 </li>
                 @if($menu == 'news/edit')
                 <li class="{{ $menu == 'news/edit'?'active': '' }}" >
@@ -87,7 +87,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-question"></i> <span class="menu-item-parent">Faq</span></a>
             <ul>
                 <li class="{{ $menu == 'faq'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/faq">Faq</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/faq"> View Faq</a>
                 </li>
                 @if($menu == 'faq/edit')
                 <li class="{{ $menu == 'faq/edit'?'active': '' }}" >
@@ -106,7 +106,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-picture-o"></i> <span class="menu-item-parent">Media</span></a>
             <ul>
                 <li class="{{ $menu == 'media'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/media">Media</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/media">View Media</a>
                 </li>
 
                 <li class="{{ $menu == 'media/list'?'active': '' }}" >
@@ -141,7 +141,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Gallery</span></a>
             <ul>
                 <li class="{{ $menu == 'gallery'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/photo_gallery">Gallery</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/photo_gallery">View Gallery</a>
                 </li>
 
 
@@ -164,7 +164,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-th-large"></i> <span class="menu-item-parent">Slider</span></a>
             <ul>
                 <li class="{{ $type != 'block' && $menu == 'slider'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider">Slider</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider">View Slider</a>
                 </li>
 
 
@@ -186,7 +186,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-cubes"></i> <span class="menu-item-parent">BlockPress</span></a>
             <ul>
                 <li class="{{ $type == 'block' && $menu == 'slider'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider?type=block">Block</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/slider?type=block">View Blocks</a>
                 </li>
 
 
@@ -250,7 +250,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-shield"></i> <span class="menu-item-parent">Events</span></a>
             <ul>
                 <li class="{{ $menu == 'events'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/events">events</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/events">View Events</a>
                 </li>
                 @if($menu == 'events/edit')
                 <li class="{{ $menu == 'events/edit'?'active': '' }}" >
@@ -269,7 +269,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-flag"></i> <span class="menu-item-parent">Country</span></a>
             <ul>
                 <li class="{{ $menu == 'country'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=country">Country</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=country">View Countries</a>
                 </li>
                 @if($menu == 'country/edit')
                 <li class="{{ $menu == 'country/edit'?'active': '' }}" >
@@ -288,7 +288,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-life-ring"></i> <span class="menu-item-parent">Club</span></a>
             <ul>
                 <li class="{{ $menu == 'club'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=club">Club</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=club">View Clubs</a>
                 </li>
                 @if($menu == 'club/edit')
                 <li class="{{ $menu == 'club/edit'?'active': '' }}" >
@@ -307,7 +307,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-align-justify"></i> <span class="menu-item-parent">League</span></a>
             <ul>
                 <li class="{{ $menu == 'league'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=league">League</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=league">View Leagues</a>
                 </li>
                 @if($menu == 'league/edit')
                 <li class="{{ $menu == 'league/edit'?'active': '' }}" >
@@ -326,7 +326,7 @@
             <a href="#"><i class="fa fa-lg fa-fw fa-list-ul"></i> <span class="menu-item-parent">Season</span></a>
             <ul>
                 <li class="{{ $menu == 'season'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=season">Season</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket?action_type=season">View Seasons</a>
                 </li>
                 @if($menu == 'league/edit')
                 <li class="{{ $menu == 'season/edit'?'active': '' }}" >

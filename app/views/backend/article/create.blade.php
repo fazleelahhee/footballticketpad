@@ -188,7 +188,7 @@
         </div>
     </div>
     <br>
-    {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+    {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
     </div>
         </div>

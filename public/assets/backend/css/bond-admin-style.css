@@ -26,7 +26,10 @@
 #logout .fa.fa-sign-out {
     padding-left: 10px;
 }
-
+.publish {
+    float: left;
+    margin-right: 30px !important;
+}
 
 #nestable .dd-content, #nestable .dd-handle {
     height: 44px;
@@ -49,10 +52,22 @@
     width: 100%;
 }
 
+.ns-actions a {
+    margin: 0 5px;
+}
 
 .btn {
 
     padding: 8px 32px;
+
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 5px;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 5px;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 5px;
 
 }
 
@@ -93,6 +108,14 @@
     line-height: 44px;
 }
 
+.tempremove { display: none}
+
+#extr-page #header #logo {
+    margin-left: 0;
+    margin-top: 13px !important;
+}
+
+.dd { max-width: 930px}
 .jarviswidget header:first-child .nav-tabs li a {
     color: white;
 }
@@ -100,7 +123,7 @@
 .jarviswidget header:first-child .nav-tabs li.active a {
     color: black;
 }
-
+.hero { text-align:  center}
 .jarviswidget header .nav-tabs > li > a {
 
     padding: 11px 35px;
@@ -111,21 +134,42 @@
 .jarviswidget header:first-child .nav-tabs li a span {
     font-size: 14px;
 }
-
+#wid-id-0 > header i {
+    color: white;
+}
 #main {
 
     min-height: 840px;
 
 }
 
+.header-search { display: none}
+
+#logo-group > span {
+
+    margin-top: 5px;
+ }
+
 #left-panel .active.open i,
 #left-panel .active.open .menu-item-parent {
     color: #3276b1;
 }
 
+.page-footer {
+    position: fixed;
+    z-index: 901;
+}
+
+#login-form > header {
+    background: none repeat scroll 0 0 #2a2725;
+    color: white;
+}
 
 
+#logo img {
 
+    width: 132px;
+}
 .menuconfig a {
     margin: 1px 1px 3px;
     padding: 20px;
@@ -136,3 +180,28 @@
     font-size: 43px;
     padding-bottom: 18px;
 }
+
+.nav-tabs i { display: none}
+
+
+.dataTables_wrapper table .edit-node {  background: #3276b1;
+    padding: 5px 15px; color: white;
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 5px;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 5px;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 5px; }
+
+.dataTables_wrapper table .delete-node {  background: #ca4e4e;
+    padding: 5px 15px; color: white;
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 5px;
+
+    /* Firefox 1-3.6 */
+    -moz-border-radius: 5px;
+
+    /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+    border-radius: 5px; }

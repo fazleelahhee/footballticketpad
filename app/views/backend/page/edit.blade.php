@@ -250,7 +250,7 @@ Assets::setScripts([
                         </div>
                         <div class="">
                             <!-- Form actions -->
-                            {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+                            {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
                         </div>
 
                         {{ Form::close() }}

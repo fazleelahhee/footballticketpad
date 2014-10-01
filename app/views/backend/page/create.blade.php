@@ -241,7 +241,7 @@ Assets::setScripts([
 
                                     <div class="controls feature-image-container">
                                         <input name="feature_image" value="" type="hidden" id="feature_image"/>
-                                        {{ Form::button('Feature Image',  array('class'=>'btn btn-info', 'id'=>'feature_image_btn')) }}
+                                        {{ Form::button('Upload Featured Image',  array('class'=>'btn btn-info', 'id'=>'feature_image_btn')) }}
                                         {{ Form::button('Remove',  array('class'=>'btn btn-info', 'id'=>'remove_feature_image_btn', 'style'=>"display: none")) }}
                                         @if ($errors->first('feature_image'))
                                         <span class="help-block">{{ $errors->first('feature_image') }}</span>
@@ -256,7 +256,7 @@ Assets::setScripts([
                             </div>
                             <div class="">
                             <!-- Form actions -->
-                            {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
+                            {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
                             </div>
 
                             {{ Form::close() }}
