@@ -10,7 +10,7 @@
             Update {{$type}}
         </h3>
     </div>
-    <form action="{{route('admin.footballticket.update', array('id'=>$node->id)).'?action_type='.$type}}" method="post">
+    <form action="{{route('admin.footballticket.update', array('id'=>$node->id)).'?action_type='.$type}}" method="post" data-id="{{$node->id}}" class="edit-form">
 
     <input name="action_type" type="hidden" value="{{$type}}" />
     <!-- Title -->

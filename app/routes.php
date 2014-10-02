@@ -267,6 +267,9 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'before' => 
 
     Route::post('/ticket/events/form-of-ticket/add', array('as'=>'ticket.events.formOfTicket.add','uses'=>'FormOfTicketController@create'));
     Route::post('/ticket/events/ticket-restriction/add', array('as'=>'ticket.events.restriction.add','uses'=>'TicketRestrictionController@create'));
+
+    //save mfootball ticket meta
+    Route::post('/footballticket/meta-data/save', array('as'=>'footballticket.meta.data.save', 'uses'=>'FootballTicketController@saveMeta'));
 });
 
 /*

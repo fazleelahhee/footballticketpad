@@ -118,7 +118,7 @@
             return str;
         }
 
-        $(this).keyup(function () {
+        var makeSlug = function () {
             var slugcontent = $.trim(removeDiacritics(self.val()));
             var slugcontent_hyphens = slugcontent.replace(/\s/g, '-');
             var finishedslug = slugcontent_hyphens.replace(/[^a-zA-Z0-9\-]/g, '-');
@@ -132,8 +132,10 @@
                 $('input.' + settings.slug).val(finishedslug.toLowerCase());
                 $('span.' + settings.slug).text(finishedslug.toLowerCase());
             }
+        }
 
-        });
+        $(this).keyup(makeSlug);
+        $(this).blur(makeSlug);
 
         return self;
     }

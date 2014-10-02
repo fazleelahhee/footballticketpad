@@ -166,4 +166,28 @@ class FootballTicketController extends BaseController {
     }
 
 
+    public function saveMeta() {
+        $input = Input::all();
+
+        $key   = $input['key'];
+        $value = json_encode($input['value']);
+        $id    = $input['id'];
+
+        $footballMeta = new FootballTicketMeta();
+        $footballMeta->fill(array(
+            'football_ticket_id' => $id,
+            'key'                => $key,
+            'value'              => $value
+        ))->save();
+
+        if ($footballMeta->id && $footballMeta->id !=- '') {
+            $response = Response::make( json_encode( ['id' => $footballMeta->id ]) , '200' );
+            $response->header('Content-Type', 'application/json');
+            return $response;
+        } else {
+            $response = Response::make( json_encode( ['message' => 'unable to create' ]) , '400' );
+            $response->header('Content-Type', 'application/json');
+            return $response;
+        }
+    }
 }

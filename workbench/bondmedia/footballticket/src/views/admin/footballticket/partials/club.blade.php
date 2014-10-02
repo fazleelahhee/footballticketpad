@@ -5,7 +5,11 @@
     <select name="country" class="select input">
         <option value=""> - </option>
         @foreach($countries as $country)
-        <option value="{{$country->id}}" {{ $meta_country == $country->id?  'selected': '' }}>{{$country->title}}</option>
+            @if (isset($meta_country))
+                <option value="{{$country->id}}" {{ $meta_country == $country->id?  'selected': '' }}>{{$country->title}}</option>
+            @else
+                <option value="{{$country->id}}">{{$country->title}}</option>
+            @endif
         @endforeach
     </select>
     </div>
@@ -41,7 +45,7 @@
                     </select>
                 </td>
                 <td>
-                    <a href="#" class="add-tounaments-season btn" data-url="123">Add Tournament/ Season </a>
+                    <button  type="button" class="add-tounaments-season btn btn-default " data-url="123">Add Tournament/ Season </button>
                 </td>
             </tr>
             </tbody>
@@ -56,17 +60,17 @@
 <div class="control-group">
     <div class="controls">
         <label>Tournaments/Seasons list</label>
-        <table class="table">
+        <table class="table league-container">
             <th>Tournaments</th>
             <th>Seasons</th>
+            <th></th>
             <tbody>
                 <tr>
                     <td>
-                        <input name="league[season][]" type="hidden" value="2014">
-                        <input name="league[tournament][]" type="hidden" value="Premier League">
                         Premier League
                     </td>
                     <td>2014</td>
+                    <td><a href="#" class="delete-league" data-meta-id="">X</a></td>
                 </tr>
             </tbody>
         </table>
@@ -78,9 +82,57 @@
 {{ Assets::jsStart() }}
 <script type="text/javascript" charset="UTF-8">
     (function ($) {
-        $(document).ready(function  () {
+        $('.league-container').on('click', '.delete-league', function  (e) {
+            e.preventDefault();
+
 
         });
+
+        $('.add-tounaments-season').click(function (e) {
+            e.preventDefault();
+            var tournament  = $("select[name=tournament]").val();
+            var tournamentHTML  = $.trim($("select[name=tournament]  option:selected").text());
+            var season      = $("select[name=season]").val();
+            var seasonHTML      = $.trim($("select[name=season] option:selected").text());
+            var clubId      = $(".edit-form").data('id');
+
+            if ( tournament == '') {
+                alert('Please select league/ tournaments');
+                return;
+            }
+
+            if ( season == '') {
+                alert('Please select season');
+                return;
+            }
+            var data = {
+                id: clubId,
+                key: 'tournament',
+                value: {
+                    tournament: tournament,
+                    season: season,
+                    tournamentHTML: tournamentHTML,
+                    seasonHTML: seasonHTML
+            }}
+            $.ajax({
+                url:  "{{route('footballticket.meta.data.save')}}",
+                data: data,
+                dataType: 'json',
+                type: 'post',
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+                    if(response.id) {
+                        $('.league-container').append('<tr>' +
+                            '<td>'+tournamentHTML+'</td>' +
+                            '<td>'+seasonHTML+'</td>' +
+                            '<td><a href="#" class="delete-league" data-meta-id="'+response.id+'">X</a></td></tr>')
+                    }
+                }
+            })
+        });
+
     })(jQuery)
 </script>
 {{ Assets::jsEnd() }}
