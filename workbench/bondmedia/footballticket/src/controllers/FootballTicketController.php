@@ -85,9 +85,20 @@ class FootballTicketController extends BaseController {
         View::share('type', $menu);
         View::share('menu', "$menu/edit");
         View::share('mode', "edit");
+
+
         $meta = FootballTicketMeta::where('football_ticket_id', '=', $id)->get();
         foreach($meta->toArray() as $val) {
-            View::share('meta_'.$val['key'], $val['value']);
+            $var_view = 'meta_'.$val['key'];
+            if($var_view  == 'meta_tournament' ) {
+                $meta_var =  json_decode($val['value'], true);
+                $meta_var['id'] = $val['id'];
+                $var_value[] = $meta_var;
+                View::share($var_view, $var_value);
+            } else {
+                View::share($var_view, $val['value']);
+            }
+
         }
 
         return View::make('footballticket::admin.footballticket.edit', compact('node'));
@@ -190,4 +201,24 @@ class FootballTicketController extends BaseController {
             return $response;
         }
     }
+
+    public function deleteMeta() {
+        $input = Input::all();
+        $meta = FootballTicketMeta::find($input['id']);
+
+        if($meta != null ) {
+            $meta->delete();
+
+            $response = Response::make( json_encode( ['id' => $input['id'] ]) , '200' );
+            $response->header('Content-Type', 'application/json');
+            return $response;
+        } else {
+            $response = Response::make( json_encode( ['message' => 'unable to create' ]) , '400' );
+            $response->header('Content-Type', 'application/json');
+            return $response;
+        }
+    }
 }
+
+
+

@@ -330,7 +330,7 @@
                 </li>
                 @if($menu == 'league/edit')
                 <li class="{{ $menu == 'season/edit'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/edit?action_type=season>Edit</a>
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/footballticket/edit?action_type=season">Edit</a>
                 </li>
 
                 @else

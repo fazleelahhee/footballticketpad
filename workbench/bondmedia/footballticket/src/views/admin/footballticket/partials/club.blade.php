@@ -65,13 +65,25 @@
             <th>Seasons</th>
             <th></th>
             <tbody>
-                <tr>
-                    <td>
-                        Premier League
-                    </td>
-                    <td>2014</td>
-                    <td><a href="#" class="delete-league" data-meta-id="">X</a></td>
-                </tr>
+            @if(isset($meta_tournament))
+            @foreach($meta_tournament as $t)
+            <tr>
+                <td>
+                    {{$t['tournamentHTML']}}
+                </td>
+                <td>
+                    {{$t['seasonHTML']}}
+                </td>
+                <td><a href="#" class="delete-league" data-meta-id="{{$t['id']}}">X</a></td>
+            </tr>
+            @endforeach
+            @else
+            <tr>
+                <td colspan="3">
+                    No tournament found!
+                </td>
+            </tr>
+            @endif
             </tbody>
         </table>
     </div>
@@ -85,6 +97,24 @@
         $('.league-container').on('click', '.delete-league', function  (e) {
             e.preventDefault();
 
+            var data = {
+                id :  $(this).data('meta-id')
+                },
+                self = $(this);
+            $.ajax({
+                url:  "{{route('footballticket.meta.data.delete')}}",
+                data: data,
+                dataType: 'json',
+                type: 'post',
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+                    if(response.id) {
+                        self.closest('tr').remove();
+                    }
+                }
+            })
 
         });
 

@@ -270,6 +270,9 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'before' => 
 
     //save mfootball ticket meta
     Route::post('/footballticket/meta-data/save', array('as'=>'footballticket.meta.data.save', 'uses'=>'FootballTicketController@saveMeta'));
+
+    Route::post('/footballticket/meta-data/delete', array('as'=>'footballticket.meta.data.delete', 'uses'=>'FootballTicketController@deleteMeta'));
+
 });
 
 /*

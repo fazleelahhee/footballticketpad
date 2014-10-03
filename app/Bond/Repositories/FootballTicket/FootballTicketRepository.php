@@ -95,7 +95,7 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
         $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
         if ($this->isValid($attributes)) {
             $this->footballTicket->fill($attributes)->save();
-            if($this->footballTicket->type == 'club') {
+            if(in_array($this->footballTicket->type, array('club', 'league'))) {
                 $footballTicketMeta = new FootballTicketMeta();
                 $footballTicketMeta->fill(
                     array(
@@ -120,6 +120,26 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
         if ($this->isValid($attributes)) {
 
             $this->footballTicket->fill($attributes)->save();
+            $footballTicketMeta = new FootballTicketMeta();
+            if(in_array($this->footballTicket->type, array('club', 'league'))) {
+            $countryMeta = $footballTicketMeta->where('football_ticket_id', '=', $this->footballTicket->id)
+                ->where('key', '=', 'country')
+                ->first();
+
+                if($countryMeta == null) {
+                    $countryMeta = new FootballTicketMeta();
+                }
+
+                $countryMeta->fill(
+                    array(
+                        'football_ticket_id' => $this->footballTicket->id,
+                        'key'                => 'country',
+                        'value'              => $attributes['country']
+                    )
+                )->save();
+            }
+
+
             return true;
         }
 

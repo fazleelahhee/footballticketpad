@@ -10,3 +10,5 @@ View::composer('backend/_layout/menu', 'Bond\Composers\Admin\MenuComposer');
 
 //footballticket
 View::composer('footballticket::admin.footballticket.partials.club', 'Bondmedia\Footballticket\Composers\Admin\ClubComposer');
+//footballticket
+View::composer('footballticket::admin.footballticket.partials.league', 'Bondmedia\Footballticket\Composers\Admin\LeagueComposer');
