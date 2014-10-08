@@ -10,3 +10,6 @@ class FootballTicketMeta extends BaseModel {
     }
 }
 
+//if(isset($val['tournament'])) {
+//    DB::statement("DELETE FROM football_ticket_club_tournaments WHERE tournament_id='' AND ");
+//}

@@ -131,7 +131,7 @@
     <div class="control-group {{ $errors->has('team_type') ? 'has-error' : '' }}">
         <label class="control-label" for="home-team-id">Home Team</label>
         <div class="controls">
-            {{ Form::select('home_team_id', array(''=>'-', '1'=>'Man U'), '', array('class'=>'form-control', 'id'=>'home-team-id')) }}
+            {{ Form::select('home_team_id', $club, '', array('class'=>'form-control', 'id'=>'home-team-id')) }}
             @if ($errors->first('home-team-id'))
             <span class="help-block">{{ $errors->first('home_team_id') }}</span>
             @endif
@@ -142,7 +142,7 @@
     <div class="control-group {{ $errors->has('away-team-id') ? 'has-error' : '' }}">
         <label class="control-label" for="away-team-id">Away Team</label>
         <div class="controls">
-            {{ Form::select('away_team_id', array(''=>'-', '2'=>'Chelsea'), '', array('class'=>'form-control', 'id'=>'away-team-id')) }}
+            {{ Form::select('away_team_id', $club, '', array('class'=>'form-control', 'id'=>'away-team-id')) }}
             @if ($errors->first('home-team-id'))
             <span class="help-block">{{ $errors->first('away_team_id') }}</span>
             @endif
@@ -153,7 +153,7 @@
     <div class="control-group {{ $errors->has('season_id') ? 'has-error' : '' }}">
         <label class="control-label" for="season-id">Season</label>
         <div class="controls">
-            {{ Form::select('season_id', array(''=>'-', '2'=>'2014'), '', array('class'=>'form-control', 'id'=>'season-id')) }}
+            {{ Form::select('season_id', $season, '', array('class'=>'form-control', 'id'=>'season-id')) }}
             @if ($errors->first('season_id'))
             <span class="help-block">{{ $errors->first('season_id') }}</span>
             @endif
@@ -164,7 +164,7 @@
     <div class="control-group {{ $errors->has('tournament_id') ? 'has-error' : '' }}">
         <label class="control-label" for="tournament-id">Tournament</label>
         <div class="controls">
-            {{ Form::select('tournament_id', array(''=>'-', '2'=>'premier league '), '', array('class'=>'form-control', 'id'=>'tournament-id')) }}
+            {{ Form::select('tournament_id', $tournaments, '', array('class'=>'form-control', 'id'=>'tournament-id')) }}
             @if ($errors->first('tournament_id'))
             <span class="help-block">{{ $errors->first('tournament_id') }}</span>
             @endif
@@ -203,6 +203,7 @@
     </div>
     <br>
 
+     @include('backend.events.partials.images')
 
 
     {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
@@ -221,7 +222,7 @@
 
 <script type="text/javascript">
 
-    (function ($) {
+    ;(function ($) {
         window.PopUpSelector = function (options) {
             var body        = $('body'),
                 url         = options.url,

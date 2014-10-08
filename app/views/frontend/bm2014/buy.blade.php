@@ -4,24 +4,18 @@
 @stop
 @section('content')
 
-
-
 <section class="banner-home">
-
-
-
     <span class="page-header buy-detail">
-
-         <span class="gamename"> <strong>Chelsea</strong> vs  <strong>Manchester United</strong> Tickets</span>
-         <span class="gamedetail">Saturday, 16th August 2014, 3:00pm. Turf moor - Burnley FC, Burnley, UK</span>
-
-         <a href="/ticket/sell/1" class="btn bluebtn">SELL TICKETS</a>
-
+         <span class="gamename"> <strong>{{$node->homeTeam}}</strong> vs  <strong>{{$node->awayTeam}}</strong> Tickets</span>
+         <span class="gamedetail">{{date('l, dS F Y, h:ia', strtotime($node->datetime))}}. {{$node->event_location}}</span>
+         <a href="/ticket/sell/{{$node->id}}" class="btn bluebtn">SELL TICKETS</a>
      </span>
 
- 	
-    <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
-    
+    @if($node->venue_image != '')
+    <img class="inner-banner" src="{{$node->feature_image}}" alt="banner image" />
+    @else
+    <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="banner image" />
+    @endif
     <span class="ftp-line">
     	<span class="greenline"></span>
         <span class="yellowline"></span>
@@ -32,27 +26,11 @@
     
 </section>
 
-
-
-
-<!---------main content------------>
 <div class="row">
-
-
-
-
-
      <div class="site-content">
-
-
-
          <div class="description-team">
-
-
-
              <div class="description">
-                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                 </p>
+                 <p>{{$node->content}}</p>
              </div>
 
              <div class="sharebox">
@@ -72,21 +50,18 @@
 
 
              <div class="columns five stadiumpicture">
+                 @if($node->venue_image != '')
+                 <img src="{{$node->venue_image}}" />
+                 @else
                  <img src="{{ Assets::Path('images/stadiumpic.png') }}" />
-
+                 @endif
                  <p class="guarenteetxt">Guarentee text to be placed here. FTP to provide</p>
-
              </div>
-
-
              <div class="columns seven">
-
                  <!---------toolbar------------>
                  <div class="row toolbar">
 
                      <span class="filter-label pull-left offset-right">Filter by</span>
-
-
 
                      <div class="pull-right">
 
@@ -118,7 +93,7 @@
 
 
                  <!---------FAZLEEEEEE listing------------>
-
+                 @if(!empty($tickets))
                  <table class="responsive">
                      <thead>
                      <th>Location</th>
@@ -128,269 +103,30 @@
                      </thead>
 
                      <tbody>
-
-
-
-                     <tr>
-                         <td>
-                    	    Longside Upper Pier
-                         </td>
-                         <td>
-                            1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-                     <tr>
-                         <td>
-                             Longside Upper Pier
-                         </td>
-                         <td>
-                             1 to 10
-                         </td>
-                         <td>
-                             &pound;59.99
-                             <small>FINAL PRICE</small>
-                         </td>
-                         <td>
-                             <input class="btn pinkbtn" type="button" value="BUY">
-
-                         </td>
-                     </tr>
-
-
-
-
-
-
-
-
-
+                         @foreach($tickets as $ticket)
+                         <tr>
+                             <td data-ticket-type="{{$ticket['ticketInformation']['ticket_type']}}" class="td-ticket-type">
+                                @foreach($ticketTypes as $ticketType)
+                                    @if($ticketType->id == $ticket['ticketInformation']['ticket_type'])
+                                        {{$ticketType->title}}
+                                    @endif
+                                @endforeach
+                             </td>
+                             <td>
+                                1 to {{$ticket['ticketInformation']['number_of_ticket']}}
+                             </td>
+                             <td>
+                                 &pound;{{$ticket['ticketInformation']['price']}}
+                                 <small>FINAL PRICE</small>
+                             </td>
+                             <td>
+                                 <a href="/checkout/{{$ticket['product_id']}}" class="btn pinkbtn">BUY</a>
+                             </td>
+                         </tr>
+                         @endforeach
                      </tbody>
                  </table>
-
+                 @endif
 
 
 

@@ -3,7 +3,7 @@
 {{ HTML::style('ckeditor/contents.css') }}
 @stop
 @section('content')
-<form action="{{route('ticket.checkout.order', array('id'=>$productId))}}" method="post">
+<form action="{{route('ticket.checkout.order', array('id'=>$productId))}}" method="post" id="ticket-checkout-form">
 <section class="banner-home">
     <h1 class="page-header">
         {{ e($node->title) }}
@@ -326,6 +326,7 @@
 {{
     Assets::setScripts(
     [
+        'jquery-form'            => 'js/jquery-form.min.js',
         'underscore'             => 'js/underscore.min.js'
     ], false, true);
 }}
@@ -401,6 +402,17 @@
             var template = _.template($('#login-form-template').html());
             $('.login-container').html(template());
         })
+
+        //ajax submit
+
+        // wait for the DOM to be loaded
+        $(document).ready(function() {
+            // bind 'myForm' and provide a simple callback function
+            $('#ticket-checkout-form').ajaxForm(function() {
+                alert("Ticket has been been purchased.");
+                window.location = '/';
+            });
+        });
 
     })(jQuery)
 </script>

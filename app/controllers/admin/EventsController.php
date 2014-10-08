@@ -8,6 +8,7 @@ use Validator;
 use Response;
 use Str;
 use Notification;
+use FootballTickets;
 use Bond\Repositories\Events\EventsRepository AS Events;
 use Bond\Exceptions\Validation\ValidationException;
 
@@ -30,6 +31,11 @@ class EventsController extends BaseController {
 
     public function create() {
 
+        View::share('season', FootballTickets::getDataForOptions('season'));
+        View::share('tournaments', FootballTickets::getDataForOptions('league'));
+        View::share('club', FootballTickets::getDataForOptions('club'));
+        View::share('countries', FootballTickets::getDataForOptions('contry'));
+        View::share('events', null);
         return View::make('backend.events.create')
             ->with('menu', 'events/events');;
     }
@@ -40,7 +46,6 @@ class EventsController extends BaseController {
      * @return Response
      */
     public function store() {
-
         try {
             $this->events->create(Input::all());
             Notification::success('Events was successfully added');
@@ -70,9 +75,14 @@ class EventsController extends BaseController {
      * @return Response
      */
     public function edit($id) {
+        View::share('season', FootballTickets::getDataForOptions('season'));
+        View::share('tournaments', FootballTickets::getDataForOptions('league'));
+        View::share('club', FootballTickets::getDataForOptions('club'));
+        View::share('countries', FootballTickets::getDataForOptions('country'));
 
         $events = $this->events->find($id);
-        return View::make('backend.events.edit', compact('events'))
+        View::share('events', $events);
+        return View::make('backend.events.edit')
             ->with('menu', 'events/edit');
     }
 

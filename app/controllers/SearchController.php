@@ -22,7 +22,8 @@ class SearchController extends BaseController {
         $ticketApi = Config::get('api.mage_soap_api_url');
         $node = null;
         if(!empty($q)) {
-            $query_param = "&filter[1][attribute]=name&filter[1][like]=%25{$q}%25";
+            //$query_param = "&filter[1][attribute]=name&filter[1][like]=%25{$q}%25";
+            $query_param = $q;
         } else {
             $query_param = '';
         }

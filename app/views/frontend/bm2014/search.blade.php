@@ -69,10 +69,6 @@
                             html += '<span class="subtext"><a href="#">Premier League</a></span>';
                             html += ' <a class="btn greenbtn pull-right" href="/buy">See tickets</a>';
                             html += '</li>';
-
-
-
-
                             $('.event-category').append(html);
                             i++;
                         }
@@ -88,7 +84,8 @@
 
             //ticket
             $.ajax({
-                url: '{{$ticketApi}}api/rest/products?order=name{{$query_param}}',
+                //url: '{{$ticketApi}}api/rest/products?order=name{{$query_param}}',
+                url: '{{route("ticket.events.search")}}?q={{$query_param}}',
                 type: 'GET',
                 dataType: 'json',
                 beforeSend: function (xhr) {
@@ -99,21 +96,17 @@
                 success: function (response) {
                     var i = 0;
                     _.each(response, function (item) {
-                        if(item.entity_id) {
+                        if(item.id) {
 //                            var html = template({
 //                                title: '',
 //                                event_date: '04 November 19:00',
 //                                short_text: ''
 //                            });
                             var html = '<li>';
-                            html += '<a href="/buy"><span class="game">'+item.name+'</span></a>';
-                            html += '<span class="date-result">04 November 19:00</span>';
-                            html += '<span class="subtext"><a href="#">'+item.description+'</a></span>';
-                            html += '<a class=" btn pinkbtn pull-right" href="/buy">Buy</a></li>';
-
-
-
-
+                            html += '<a href="/events/'+item.slug+'"><span class="game">'+item.name+'</span></a>';
+                            html += '<span class="date-result">'+item.datetime+'</span>';
+                            html += '<span class="subtext"><a href="#">'+item.content+'</a></span>';
+                            html += '<a class=" btn pinkbtn pull-right" href="/events/'+item.slug+'">Buy</a></li>';
                             $('.event-ticket').append(html);
                             i++;
                         }

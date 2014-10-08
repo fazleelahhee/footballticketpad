@@ -89,7 +89,7 @@ class CheckoutController extends BaseController {
             } else {
                 //customer id from, session
                 $customerId = $customer['entity_id'];
-                if ($input['new_shipping_address'] == 'shipping') {
+                if (isset($input['new_shipping_address']) && $input['new_shipping_address'] == 'shipping') {
                     //update user address
                     $params = array();
                     $params['customer_id']  = $customerId;
