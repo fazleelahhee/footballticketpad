@@ -182,16 +182,16 @@
 </script>
 
 <script>
-//    (function ($) {
-//       // wait for the DOM to be loaded
-//        $(document).ready(function() {
-//            // bind 'myForm' and provide a simple callback function
-//            $('#ticket-guarantee').ajaxForm(function() {
-//                alert("Thank you very much! Ticket has been submitted.");
-//                window.location = '/';
-//            });
-//        });
-//    })(jQuery)
+    (function ($) {
+       // wait for the DOM to be loaded
+        $(document).ready(function() {
+            // bind 'myForm' and provide a simple callback function
+            $('#ticket-guarantee').ajaxForm(function() {
+                alert("Thank you very much! Ticket has been submitted.");
+                window.location = '/';
+            });
+        });
+    })(jQuery)
 </script>
 
 {{ Assets::jsEnd() }}
