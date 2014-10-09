@@ -36,21 +36,19 @@
     <label>Name</label>
                  <span class="field first-name" data-first-name="">
 
-                     Jonathan
 
                  </span>
 
     <label>Surname</label>
                  <span class="field last-name" data-last-name="">
 
-                     Burrows
 
                  </span>
 
     <label>Email</label>
                  <span class="field email" data-email="">
 
-                     am@bondedia.co.uk
+
 
                  </span>
 
@@ -58,15 +56,11 @@
     <label>Recieve newsletter</label>
                  <span class="field newsletters" data-newsletters="">
 
-                     yes
-
                  </span>
 
 
     <label>mobile</label>
                  <span class="field mobile" data-mobile="">
-
-                     077016615551
 
                  </span>
 
@@ -84,16 +78,14 @@
     </h3>
 
     <label>Account holder</label>
-                 <span class="field bank-account-holder" data-account-holder="BOND MEDIA">
-                     BOND MEDIA
+                 <span class="field bank-account-holder" data-account-holder="">
+
                  </span>
     <label>IBAN (contact bank)</label>
-                 <span class="field bank-iban" data-iban="U7CO7SEVO7E7SC7">
-                     U7CO7SEVO7E7SC7
+                 <span class="field bank-iban" data-iban="">
                  </span>
     <label>BIC or SWIFT (contact bank)</label>
-                 <span class="field bank-swift" data-swift="ch8secs8">
-                     ch8secs8
+                 <span class="field bank-swift" data-swift="">
                  </span>
     <a class="pull-left clearboth bank-account-modify">modify</a>
     <a class="pull-left clearboth bank-account-add">add another bank</a>
@@ -118,39 +110,25 @@
     <label>VAT reg no</label>
                  <span class="field vat-id" data-vat-id="">
 
-                     uwudwdhwhdu
-
                  </span>
 
 
     <label>Company name</label>
                  <span class="field company" data-company="">
-
-                     VIP SPORTS EVENTS LTD
-
                  </span>
 
     <label>Address</label>
                  <span class="field street" data-street="">
-
-                     7 yemen road
-
                  </span>
 
 
     <label>Postcode</label>
                  <span class="field postcode" data-postcode="">
-
-                     e6 1eb
-
                  </span>
 
 
     <label>City</label>
                  <span class="field city" data-city="">
-
-                     Wirral
-
                  </span>
 
 
@@ -179,24 +157,20 @@
 
 
     <label>Account holder</label>
-                 <span class="field card-account-holder" data-account-holder="Bond media">
-                     Bond media
+                 <span class="field card-account-holder" data-account-holder="">
                  </span>
 
     <label>card type</label>
-                 <span class="field card-type" data-card-type="Mastercard">
-                     Mastercard
+                 <span class="field card-type" data-card-type="">
                  </span>
 
 
     <label>Card number</label>
-                 <span class="field card-number" data-card-number="XXX XXXX XXXX 0987">
-                     XXX XXXX XXXX 0987
+                 <span class="field card-number" data-card-number="">
                  </span>
 
     <label>Card Exp</label>
-                 <span class="field card-expire" data-card-expire="11/15">
-                     11/15
+                 <span class="field card-expire" data-card-expire="">
                  </span>
 
 

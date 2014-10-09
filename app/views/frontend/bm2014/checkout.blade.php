@@ -280,7 +280,7 @@
                     I agree to <a href="/terms-conditions" target="_blank">terms &amp; conditions </a>
                 </label>
                 <br/><br/>
-                <input type="submit" value="SUBMIT ORDER" class="btn pinkbtn pull-right">
+                <input type="submit" value="SUBMIT ORDER" class="btn pinkbtn pull-right submit-order">
             </div>
         </div>
         <!---------main cart------------>
@@ -337,6 +337,17 @@ Assets::setStyles(
         'underscore'             => 'js/underscore.min.js'
     ], false, true);
 }}
+{{
+Assets::setScripts(
+[
+'serializejson'          => 'js/jquery.serializejson.min.js',
+
+'jquery-validator'       => 'js/jquery-validator/jquery.validate.min.js',
+'validator-add-method'   => 'js/jquery-validator/additional-methods.min.js',
+'password-strongify'     => 'js/password-strongify.js',
+
+], false, true);
+}}
 
 {{ Assets::jsStart() }}
 <script type="text/javascript" charset="utf-8">
@@ -370,6 +381,10 @@ Assets::setStyles(
 <script type="text/javascript" charset="utf-8">
     (function ($) {
         var body = $('body');
+        $.validator.setDefaults({
+            success: "valid"
+        });
+
         $(document).ready(function () {
             $('select[name=number_of_ticket]').change(function (e) {
                 var qty = $(this).val();
@@ -402,6 +417,12 @@ Assets::setStyles(
                     $('select[name=other_country]').val('-1');
                 }
             });
+//
+//            $('.submit-order').click(function () {
+//                 $(".ajax-loading-modal").remove();
+//                 body.append('<div class="ajax-loading-modal"></div>');
+//                 body.addClass("loading");
+//            });
         });
 
         $('.ajax-login').click(function (e) {
@@ -413,23 +434,138 @@ Assets::setStyles(
         //ajax submit
 
         // wait for the DOM to be loaded
+        var form = $('#ticket-checkout-form');
         $(document).ready(function() {
             var ticketContainer =  $('body');
-            // bind 'myForm' and provide a simple callback function
-            $('#ticket-checkout-form').ajaxForm({
+            form.ajaxForm({
 
                 beforeSubmit: function(arr, $form, options) {
                     $(".ajax-loading-modal").remove();
-                    ticketContainer.append('<div class="ajax-loading-modal"></div>');
-                    ticketContainer.addClass("loading");
+
+                    if(form.valid()) {
+                        ticketContainer.append('<div class="ajax-loading-modal"></div>');
+                        ticketContainer.addClass("loading");
+                        return true;
+                    } else {
+                        return false;
+                    }
                 },
-                success: function() {
+                success: function(response) {
+
+                    console.log(response);
+                    //alert("Ticket has been been purchased.");
+                    //window.location = '/';
+                    @if (empty($customer))
+                    $.ajax({
+                        url: '/customer/account/login',
+                        data:{
+                            login : {
+                                username: $('input[name=email]').val(),
+                                password: $('input[name=password]').val()
+                            }},
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (response) {
+                            ticketContainer.removeClass('loading');
+                            alert('ticket has been purchased!');
+                            @if(isset($reload) && trim($reload) == 'self')
+                                window.location.reload();
+                            @else
+                            window.location.href = '/account/listing';
+                            @endif
+
+                        },
+                        error: function (response) {
+                            body.removeClass("loading");
+                            console.log(response);
+                        }
+                    });
+                    @else
+                        alert('ticket has been purchased!');
+                        window.location.href = '/account/listing';
+                    @endif
+                },
+
+                error: function (response) {
                     ticketContainer.removeClass('loading');
-                    alert("Ticket has been been purchased.");
-                    window.location = '/';
+                    alert(response.responseText);
                 }
 
             });
+
+            $('input[name="password"]').passStrengthify({
+                minimum: 8,
+                labels: {
+                    tooShort: '',
+                    passwordStrength: ''
+                }
+            });
+
+
+            form.validate({
+                rules: {
+                    first_name: {
+                        required: true,
+                        minlength: 2,
+                        maxlength:60
+                    },
+                    last_name: {
+                        required: true,
+                        minlength: 2,
+                        maxlength:60
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    email_confirmation: {
+                        equalTo: '[name="email"]'
+                    },
+                    password: {
+                        required: true
+                    },
+                    password_confirmation: {
+                        equalTo: '[name="password"]'
+                    },
+                    terms_n_conditions: {
+                        required: true
+                    },
+                    contact_no: {
+                        digits: true,
+                        minlength: 8,
+                        maxlength: 20
+                    }
+                },
+                messages: {
+                    first_name: {
+                        required: "Please enter First Name",
+                        minlength: $.validator.format("Please, at least {0} characters are necessary")
+                    },
+                    last_name: {
+                        required: "Please enter Last Name",
+                        minlength: $.validator.format("Please, at least {0} characters are necessary")
+                    },
+                    email: {
+                        required: "Please enter email address"
+                    },
+                    email_confirmation: {
+                        equalTo: "Email does not match."
+                    },
+                    password: {
+                        required: "Please enter password"
+                    },
+                    password_confirmation: {
+                        equalTo: "Password does not match."
+                    },
+                    terms_n_conditions: {
+                        required: "Please accept terms and conditions."
+                    },
+                    contact_no: {
+                        digits: "Accept only digits"
+                    }
+                }
+            });
+
         });
 
     })(jQuery)

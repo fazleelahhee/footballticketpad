@@ -60,8 +60,9 @@ class CheckoutController extends BaseController {
                 $response = $this->submitPostToApi( route('ticket.registrationsInternal'),false)->getApiResponse();
                 $user = json_decode($response);
 
-                if($user->message != "user successfully created.") {
-                    throw new Exception($response);
+                if(!isset($user->message) || $user->message != "user successfully created.") {
+                    $response = json_decode($response, true);
+                    throw new Exception(implode('<br />',$response));
                 }
 
                 //update user address
@@ -86,6 +87,14 @@ class CheckoutController extends BaseController {
                 $this->setDataToPost($params);
                 $this->submitPostToApi('customer/index/address');
                 $customerId = $user->userId;
+
+                //update customer phone
+                $params = array('phone' => $params['telephone']);
+                $params['customer_id']  = $user->userId;
+                $params['type']         = 'set';
+                $this->setDataToPost($params);
+                $this->submitPostToApi('customer/index/personal');
+
             } else {
                 //customer id from, session
                 $customerId = $customer['entity_id'];
@@ -125,14 +134,14 @@ class CheckoutController extends BaseController {
             $this->submitPostToApi('customer/index/address');
             $response = $this->getApiResponse();
             $billing = json_decode($response, true);
-            var_dump($billing);
+            //var_dump($billing);
 
             $addressParams['address_type'] = 'shipping';
             $this->setDataToPost($addressParams);
             $this->submitPostToApi('customer/index/address');
             $response = $this->getApiResponse();
             $shipping = json_decode($response, true);
-            var_dump($shipping);
+            //var_dump($shipping);
 
             // Set customer, for example guest
             $resultCustomerSet = TicketSoap::process('cart_customer.set', array( $shoppingCartId, array(
@@ -215,11 +224,13 @@ class CheckoutController extends BaseController {
 
             // create order
             $resultOrderCreation = TicketSoap::process("cart.order", array($shoppingCartId, null, null));
-            if (!empty($resultOrderCreation)) {
-                $response = Response::make(json_encode(array('message'=>'order has been successfully placed', 'orderId'=>$resultOrderCreation)), '200');
-                $response->header('Content-Type', 'application/json');
-                return $response;
-            }
+//            View::share('body_class', 'checkout');
+//            return View::make(Template::name('frontend.%s.checkout-confirmation'), array('orderNumber' => $resultOrderCreation));
+
+            $response = Response::make(json_encode(array('orderNumber'=>$resultOrderCreation)), '200');
+            $response->header('Content-Type', 'application/json');
+            return $response;
+
         } catch (Exception $e) {
             $response = Response::make($e->getMessage(), '400');
             $response->header('Content-Type', 'application/json');
