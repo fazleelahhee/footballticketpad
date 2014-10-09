@@ -30,7 +30,7 @@
      <div class="site-content">
          <div class="description-team">
              <div class="description">
-                 <p>{{$node->content}}</p>
+                 {{$node->content}}
              </div>
 
              <div class="sharebox">
