@@ -137,7 +137,7 @@
                 success: function (response) {
                     if(response.data) {
                         var bank = response.data;
-                        if(bank.account_holder) {
+                        if(bank.id) {
                             $('.bank-account').data('id', bank.id);
                             $('#account_holder').val(bank.account_holder);
                             $('#account_holder').data('account-holder',bank.account_holder);
@@ -193,9 +193,7 @@
                         type: 'post',
                         success: function (response) {
                             var bank = response.data;
-                            if(bank.account_holder) {
-                                $('form[name=ticket_personal]').submit();
-                            }
+                            $('form[name=ticket_personal]').submit();
                         }
                     }).done(function ()
                     {}).complete(function (response, status) {

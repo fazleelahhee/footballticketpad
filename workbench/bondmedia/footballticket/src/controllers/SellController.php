@@ -74,7 +74,7 @@ class SellController extends BaseController
         $product = array(
             'simple',
             $attributeSet[0]['set_id'],
-            uniqid()."-{$ticketId}-{$customer['entity_id']}-{$data['ticketInformation']['ticket_type']}-{$data['ticketInformation']['loc_block']}-{$data['ticketInformation']['loc_row']}",
+            "-{$ticketId}-{$customer['entity_id']}-{$data['ticketInformation']['ticket_type']}-{$data['ticketInformation']['loc_block']}-{$data['ticketInformation']['loc_row']}",
             array(
                 'categories' => array(2),
                 'websites' => array(1),
@@ -86,7 +86,7 @@ class SellController extends BaseController
                 'url_key' => $info['slug'],
                 'url_path' => $info['slug'],
                 'visibility' => '4',
-                'price' => '100',
+                'price' => $data['ticketInformation']['price'],
                 'tax_class_id' => 0,
                 'meta_title' => $info['title'],
                 'meta_keyword' => strip_tags($info['content']),
