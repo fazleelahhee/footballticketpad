@@ -145,7 +145,7 @@ jQuery.fn.slug = function (options) {
     }
 
     jQuery(this).keyup(makeSlug);
-
+    jQuery(this).blur(makeSlug);
     return $this;
 };
 

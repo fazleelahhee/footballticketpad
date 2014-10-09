@@ -4,16 +4,11 @@ use Bond\Interfaces\BaseModelInterface as BaseModelInterface;
 
 class FootballTickets extends BaseModel implements BaseModelInterface {
 
-    public $slug_prefix = 'club';
     public $table = 'football_ticket';
-    public $fillable=['title', 'slug', 'content', 'datetime', 'is_published'];
+    public $fillable=['title', 'slug', 'content', 'is_published', 'type', 'feature_image', 'venue_image'];
     protected $appends = ['url'];
 
     public function __construct() {
-        $type = Input::get('action_type');
-        if(!empty($type)) {
-            $this->slug_prefix =  $type;
-        }
         parent::__construct();
     }
 
@@ -26,6 +21,14 @@ class FootballTickets extends BaseModel implements BaseModelInterface {
         return "{$this->slug_prefix}/{$this->attributes['slug']}";
     }
 
+    public static function getDataForOptions($type) {
+        $results = DB::table('football_ticket')->select('id', 'title')->where('type', '=', $type)->get();
+        $output = array(''=>'Select');
+        foreach($results as $r) {
+            $output[$r->id] = $r->title;
+        }
+        return $output;
+    }
 
 }
 

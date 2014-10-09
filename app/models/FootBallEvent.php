@@ -7,21 +7,15 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
     public $table = 'events';
     public $fillable=['title', 'slug', 'content', 'datetime', 'is_published', 'team_type',
         'home_team_id', 'away_team_id', 'season_id', 'tournament_id', 'event_in_home',
-        'venue_id', 'feature_image', 'ticket_type_ids', 'form_of_ticket_ids', 'ticket_restriction_ids', 'event_location'];
-
-//    protected $ticketTypes = array();
-//    protected $formOfTickets = array();
-//    protected $selectedRestrictions = array();
+        'venue_image', 'feature_image', 'ticket_type_ids', 'form_of_ticket_ids', 'ticket_restriction_ids', 'event_location'];
 
     protected $appends = ['url'];
 
     public function setUrlAttribute($value) {
-
         $this->attributes['url'] = $value;
     }
 
     public function getUrlAttribute() {
-
         return "events/" . $this->attributes['id'] . "/" . $this->attributes['slug'];
     }
 

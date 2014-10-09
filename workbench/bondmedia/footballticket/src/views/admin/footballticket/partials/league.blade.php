@@ -1,25 +1,17 @@
 <input name="type" type="hidden" value="{{$type}}" />
 
-<!-- Published -->
 <div class="control-group">
     <div class="controls">
-        <label>Tournaments/Seasons</label>
-        <table class="table">
-            <th>Tournaments</th>
-            <th>Seasons</th>
-            <tbody>
-                <tr>
-                    <td>
-                        <input name="league[season][]" type="hidden" value="2014">
-                        <input name="league[tournament][]" type="hidden" value="Premier League">
-                        Premier League
-                    </td>
-                    <td>2014</td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="#" class="add-tounaments-season" data-url="123">Add Tournament/ Season </a>
+        <select name="country" class="select input">
+            <option value=""> - </option>
+            @foreach($countries as $country)
+            @if (isset($meta_country))
+            <option value="{{$country->id}}" {{ $meta_country == $country->id?  'selected': '' }}>{{$country->title}}</option>
+            @else
+            <option value="{{$country->id}}">{{$country->title}}</option>
+            @endif
+            @endforeach
+        </select>
     </div>
-
 </div>
 <br>

@@ -10,7 +10,7 @@
             Update {{$type}}
         </h3>
     </div>
-    <form action="{{route('admin.footballticket.update', array('id'=>$node->id)).'?action_type='.$type}}" method="post">
+    <form action="{{route('admin.footballticket.update', array('id'=>$node->id)).'?action_type='.$type}}" method="post" data-id="{{$node->id}}" class="edit-form">
 
     <input name="action_type" type="hidden" value="{{$type}}" />
     <!-- Title -->
@@ -32,7 +32,7 @@
 
         <div class="controls">
             <div class="input-group">
-                <span class="input-group-addon">{{Config::get('app.url')}}</span>
+                <span class="input-group-addon">{{Config::get('app.url')}}group/{{$type}}/</span>
                 {{ Form::text('slug', $node->slug, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
             </div>
             @if ($errors->first('slug'))
@@ -66,12 +66,15 @@
         </div>
     </div>
     <br>
+
+    @include('footballticket::admin.footballticket.partials.'.$type)
+
     {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
 
 @stop
 
-@section('script')
+{{ Assets::jsStart() }}
 {{ HTML::script('assets/bootstrap/js/bootstrap-tagsinput.js') }}
 {{ HTML::script('assets/js/jquery.slug.js') }}
 {{ HTML::script('bootstrap_datepicker/js/bootstrap-datepicker.js') }}
@@ -90,4 +93,4 @@
         });
     });
 </script>
-@stop
+{{ Assets::jsEnd() }}

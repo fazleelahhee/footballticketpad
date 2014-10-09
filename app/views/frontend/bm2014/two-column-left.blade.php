@@ -41,16 +41,10 @@
 
 <!---------main content------------>
 <div class="row">
-
-
-
      <div class="site-content">
-
          @if($node instanceof Pages)
          {{ Template::doShortCode($node->content ) }}
          @endif
-
-                            
      </div>
 </div>
 <!---------main content------------>

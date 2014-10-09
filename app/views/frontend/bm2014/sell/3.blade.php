@@ -49,7 +49,7 @@
 
         </span>
 
-        <form name="ticket_guarantee" action="" method="post">
+        <form name="ticket_guarantee" id="ticket-guarantee" action="" method="post">
         <div class="row selldivider credit-card-container">
 
             <p>Why do we need you credit card data?
@@ -113,8 +113,16 @@
 @stop
 
 {{
+Assets::setStyles(
+[
+'loading'         => 'css/ajax-loading.css'
+], false, true);
+}}
+
+{{
     Assets::setScripts(
     [
+        'jquery-form'            => 'js/jquery-form.min.js',
         'underscore'             => 'js/underscore.min.js'
     ], false, true);
 }}
@@ -173,6 +181,30 @@
 
                 if (submit) {
                     $('form[name=ticket_guarantee]').submit();
+                }
+
+            });
+        });
+    })(jQuery)
+</script>
+
+<script>
+    (function ($) {
+       // wait for the DOM to be loaded
+        $(document).ready(function() {
+            var ticketContainer =  $('body');
+            // bind 'myForm' and provide a simple callback function
+            $('#ticket-guarantee').ajaxForm({
+
+                beforeSubmit: function(arr, $form, options) {
+                    $(".ajax-loading-modal").remove();
+                    ticketContainer.append('<div class="ajax-loading-modal"></div>');
+                    ticketContainer.addClass("loading");
+                },
+                success: function() {
+                    ticketContainer.removeClass('loading');
+                    alert("Ticket has been added to selling list");
+                    window.location = '/';
                 }
 
             });

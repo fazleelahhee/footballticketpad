@@ -1,0 +1,23 @@
+{
+    "name": "bondmedia/website",
+    "description": "",
+    "authors": [
+        {
+            "name": "Fazle Elahee",
+            "email": "fe@bondmedia.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Bondmedia\\Website\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

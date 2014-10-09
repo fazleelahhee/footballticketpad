@@ -132,7 +132,7 @@ Assets::setScripts([
     <div class="control-group {{ $errors->has('team_type') ? 'has-error' : '' }}">
         <label class="control-label" for="home-team-id">Home Team</label>
         <div class="controls">
-            {{ Form::select('home_team_id', array(''=>'-', '1'=>'Man U'), $events->home_team_id, array('class'=>'form-control', 'id'=>'home-team-id')) }}
+            {{ Form::select('home_team_id', $club, $events->home_team_id, array('class'=>'form-control', 'id'=>'home-team-id')) }}
             @if ($errors->first('home-team-id'))
             <span class="help-block">{{ $errors->first('home_team_id') }}</span>
             @endif
@@ -143,13 +143,36 @@ Assets::setScripts([
     <div class="control-group {{ $errors->has('away-team-id') ? 'has-error' : '' }}">
         <label class="control-label" for="away-team-id">Away Team</label>
         <div class="controls">
-            {{ Form::select('away_team_id', array(''=>'-', '2'=>'Chelsea'), $events->away_team_id, array('class'=>'form-control', 'id'=>'away-team-id')) }}
+            {{ Form::select('away_team_id', $club, $events->away_team_id, array('class'=>'form-control', 'id'=>'away-team-id')) }}
             @if ($errors->first('home-team-id'))
             <span class="help-block">{{ $errors->first('away_team_id') }}</span>
             @endif
         </div>
     </div>
     <br>
+
+    <div class="control-group {{ $errors->has('season_id') ? 'has-error' : '' }}">
+        <label class="control-label" for="season-id">Season</label>
+        <div class="controls">
+            {{ Form::select('season_id', $season, $events->season_id, array('class'=>'form-control', 'id'=>'season-id')) }}
+            @if ($errors->first('season_id'))
+            <span class="help-block">{{ $errors->first('season_id') }}</span>
+            @endif
+        </div>
+    </div>
+    <br>
+
+    <div class="control-group {{ $errors->has('tournament_id') ? 'has-error' : '' }}">
+        <label class="control-label" for="tournament-id">Tournament</label>
+        <div class="controls">
+            {{ Form::select('tournament_id', $tournaments, $events->tournament_id, array('class'=>'form-control', 'id'=>'tournament-id')) }}
+            @if ($errors->first('tournament_id'))
+            <span class="help-block">{{ $errors->first('tournament_id') }}</span>
+            @endif
+        </div>
+    </div>
+    <br>
+
     <div class="control-group {{ $errors->has('ticket_type_ids') ? 'has-error' : '' }}">
         <label class="control-label" for="available-ticket-type">
             <a href="#" class="available-ticket-type">Select Available Ticket Type</a>
@@ -181,6 +204,8 @@ Assets::setScripts([
         </div>
     </div>
     <br>
+     @include('backend.events.partials.images')
+
     {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
 

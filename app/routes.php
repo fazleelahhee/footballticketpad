@@ -100,6 +100,8 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     Route::get('events/{id}/delete', array('as' => 'admin.events.delete', 'uses' => 'EventsController@confirmDestroy'))
         ->where('id', '[0-9]+');
 
+    Route::any('events/destroy/{id}', array('as' => 'admin.events.destroy', 'uses' => 'EventsController@destroy'))
+        ->where('id', '[0-9]+');
     // faq
     Route::resource('faq', 'FaqController');
     Route::get('faq/{id}/delete', array('as' => 'admin.faq.delete', 'uses' => 'FaqController@confirmDestroy'))
@@ -254,7 +256,7 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'),  'before' =>
 
 });
 
-Route::get('/footballticket/{id}/{slug?}', array('as' => 'dashboard.footballticket.show', 'uses' => 'FootballTicketController@show'));
+Route::get('/group/{type}/{slug}', array('as' => 'dashboard.footballticket.show', 'uses' => 'FootballTicketController@show'));
 
 /*
 |--------------------------------------------------------------------------
@@ -267,6 +269,12 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'before' => 
 
     Route::post('/ticket/events/form-of-ticket/add', array('as'=>'ticket.events.formOfTicket.add','uses'=>'FormOfTicketController@create'));
     Route::post('/ticket/events/ticket-restriction/add', array('as'=>'ticket.events.restriction.add','uses'=>'TicketRestrictionController@create'));
+
+    //save mfootball ticket meta
+    Route::post('/footballticket/meta-data/save', array('as'=>'footballticket.meta.data.save', 'uses'=>'FootballTicketController@saveMeta'));
+
+    Route::post('/footballticket/meta-data/delete', array('as'=>'footballticket.meta.data.delete', 'uses'=>'FootballTicketController@deleteMeta'));
+
 });
 
 /*
@@ -304,6 +312,8 @@ Route::any('/ticket/sell/published/{id}', array('as'=>'ticket.sell.4','uses'=>'S
 Route::get('/checkout/{id}', array('as'=>'ticket.checkout', 'uses'=>'CheckoutController@index'))->where('id', '[0-9]+');
 Route::any('/checkout/order/{id}', array('as'=>'ticket.checkout.order', 'uses'=>'CheckoutController@order'))->where('id', '[0-9]+');
 
+Route::any('/search/ticket', array('as'=>'ticket.events.search', 'uses'=>'FootballTicketController@searchEvent'));
+Route::get('/events/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
 /*
 |--------------------------------------------------------------------------
 | Football tickets customer account
@@ -436,6 +446,7 @@ Route::group(array('before'=> 'customer.account'), function () {
 
 Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
     //should be an end
+
     Route::any( '{all}', 'IndexController@showPage')->where('all', '.*');
 });
 

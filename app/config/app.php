@@ -134,7 +134,8 @@ return array(
         'Bond\Providers\TemplateServiceProvider',
         'Fbf\LaravelSimpleFaqs\LaravelSimpleFaqsServiceProvider',
         'Bondmedia\Admin\AdminServiceProvider',
-        'Bondmedia\Footballticket\FootballticketServiceProvider'
+        'Bondmedia\Footballticket\FootballticketServiceProvider',
+        'Bondmedia\Website\WebsiteServiceProvider'
     ),
 
     /*

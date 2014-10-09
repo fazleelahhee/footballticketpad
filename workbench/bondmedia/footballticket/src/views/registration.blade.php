@@ -219,7 +219,7 @@
                             @if(isset($reload) && trim($reload) == 'self')
                                 window.location.reload();
                             @else
-                                    window.location.href = '/account-information';
+                                    window.location.href = '/account/listing';
                             @endif
 
                         },
