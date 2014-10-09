@@ -113,6 +113,13 @@
 @stop
 
 {{
+Assets::setStyles(
+[
+'loading'         => 'css/ajax-loading.css'
+], false, true);
+}}
+
+{{
     Assets::setScripts(
     [
         'jquery-form'            => 'js/jquery-form.min.js',
@@ -185,10 +192,21 @@
     (function ($) {
        // wait for the DOM to be loaded
         $(document).ready(function() {
+            var ticketContainer =  $('body');
             // bind 'myForm' and provide a simple callback function
-            $('#ticket-guarantee').ajaxForm(function() {
-                alert("Thank you very much! Ticket has been submitted.");
-                window.location = '/';
+            $('#ticket-guarantee').ajaxForm({
+
+                beforeSubmit: function(arr, $form, options) {
+                    $(".ajax-loading-modal").remove();
+                    ticketContainer.append('<div class="ajax-loading-modal"></div>');
+                    ticketContainer.addClass("loading");
+                },
+                success: function() {
+                    ticketContainer.removeClass('loading');
+                    alert("Ticket has been added to selling list");
+                    window.location = '/';
+                }
+
             });
         });
     })(jQuery)
