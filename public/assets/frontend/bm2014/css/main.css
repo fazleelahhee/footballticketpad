@@ -98,7 +98,11 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
 
 }
 
-
+.description-team .description {
+    float: left;
+    width: 80%;
+}
+.description-team  .sharebox { float: right;}
 
 .lsf-icon:before {
 
