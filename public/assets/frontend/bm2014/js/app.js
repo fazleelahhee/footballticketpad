@@ -136,27 +136,17 @@
     });
 
 
-    $(window).resize(function () {
-
-        if ($(window).width() <= 1000) {
-
-            // is mobile device
-            $('.sidebar').prependTo(".sidebar-mobile");
 
 
-        }
-
-    });
 
 
-    if (parseInt($(window).width()) < 1000) {
 
 
-        // is mobile device
-        $('.sidebar').prependTo(".sidebar-mobile");
 
 
-    }
+
+
+
 
 
 })(jQuery, this);

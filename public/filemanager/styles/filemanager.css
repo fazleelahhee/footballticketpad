@@ -13,9 +13,9 @@
 }
 
 body {
-	padding: 10px;
-	background-color:#F4F1ED;
-	overflow-x:hidden; /** prevent overflow if #uploader h1 path value is too long */
+    background-color: #efefef;
+    overflow-x: hidden;
+    padding: 10px;
 }
 
 video, audio {
@@ -128,42 +128,7 @@ video, audio {
 	margin: 50px auto;
 }
 
-button {
-  -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-	background-color:#ededed;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	color:#777777;
-	padding:0.1em 0.3em;
-	text-decoration:none;
-	text-shadow:1px 1px 0px #ffffff;
-	margin:0 0.2em 0.5em 0.2em;
-	line-height:1.7em;
-}
 
-button:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-	background-color:#dfdfdf;
-}
-
-button span {
-	display: block;
-	padding-left: 20px;
-	background-position: left center;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	white-space: nowrap;
-}
 
 button:active,
 button:focus {
@@ -211,17 +176,17 @@ x:-o-prefocus, #file-input-container {top:16px;width:205px;}
 }
 
 #filepath {
-	background-color: #F4F1ED;
-	border: 1px solid #dcdcdc;
-	margin: 0;
-	padding: 0.1em 0.3em;
-	line-height: 1.7em;
-	-webkit-border-top-left-radius: 6px;
-	-webkit-border-bottom-left-radius: 6px;
-	-moz-border-radius-topleft: 6px;
-	-moz-border-radius-bottomleft: 6px;
-	border-top-left-radius: 6px;
-	border-bottom-left-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    display: inline-block;
+    height: 32px;
+    line-height: 27px;
+    margin-bottom: 20px !important;
+    margin-left: 0 !important;
+    margin-right: -6px;
+    padding: 4px !important;
 }
 
 @-moz-document url-prefix() {
@@ -229,17 +194,19 @@ x:-o-prefocus, #file-input-container {top:16px;width:205px;}
 		padding:0.2em 0.3em;
 	}
 }
+
+
 button#browse {
-	margin-left:0;
-	-webkit-border-top-left-radius: 0px;
-	-webkit-border-bottom-left-radius: 0px;
-	-moz-border-radius-topleft: 0px;
-	-moz-border-radius-bottomleft: 0px;
-	border-top-left-radius: 0px;
-	border-bottom-left-radius: 0px;
-	min-height: 16px;
-	min-width: 40px;
+    background-color: #44ae8c;
+    border-radius: 7px;
+    -wekit-border-radius: 7px;
+
+    margin-left: 0;
+    min-height: 16px;
+    min-width: 40px;
+    text-indent: -9999px;
 }
+
 button#browse span {
 	margin:0;
 	padding:0;
@@ -248,6 +215,9 @@ button#browse span {
 	color:#666;
 	text-shadow: none;
 }
+
+#delete { background-color: #ca4e4e}
+#select {  background-color: #44ae8c;}
 /** Input file Replacement - end */
 
 #q {
@@ -405,7 +375,7 @@ div.clip {
 }
 
 .contextMenu {
-	background-color:#F4F1ED;
+	background-color:#3276b1;
 }
 
 .contextMenu li.hover a {
@@ -413,7 +383,8 @@ div.clip {
 }
 
 .contextMenu a {
-	font-size: 11px;
+    color: white;
+    font-size: 11px;
 }
 
 /* these apply to the contextual menus as well as the buttons */
@@ -476,7 +447,7 @@ div.jqifade{
 }
 
 button.ON {
-	background:none repeat scroll 0 0 #F9F8F7;
+	background:none repeat scroll 0 0 #000;
 	border: 1px inset #ccc;
 }
 
@@ -497,3 +468,35 @@ button.ON {
 	width:30px;
 	height:30px;
 }
+
+
+
+button {
+    background: none repeat scroll 0 0 #3276b1;
+    border: medium none;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    color: white !important;
+    display: inline-block;
+    line-height: 1.7em;
+    margin: 0 0.2em 0.5em;
+    padding: 7px;
+    text-decoration: none;
+
+}
+button span {
+    color: white;
+    text-shadow: none;
+    display: block;
+    padding-left: 20px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    white-space: nowrap;
+}
+
+
+#jqi_state0_buttonCancel { background-color: #ca4e4e}
+#upload { background-color: #44ae8c}

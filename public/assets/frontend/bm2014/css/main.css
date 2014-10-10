@@ -3381,6 +3381,9 @@ body.news .site-content {
         padding-left: 15px;
     }
 
+    .sidebar-mobile { display: block !important}
+
+    .main .row .sidebar { display: none !important}
 }
 
 
@@ -3394,6 +3397,12 @@ body.news .site-content {
 
 
 @media only screen and (max-width: 767px) {
+
+    .sidebar-mobile { display: block !important}
+
+    .main .row .sidebar { display: none !important}
+
+
 
     html body.checkout .page-header {
 
@@ -3916,3 +3925,5 @@ body.news .site-content {
 
 
 }
+
+.sidebar-mobile { display: none}
