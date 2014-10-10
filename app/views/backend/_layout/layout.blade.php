@@ -53,7 +53,12 @@
 
         <!-- Note: The activity badge color changes when clicked and resets the number to 0
         Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-        <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+
+
+        <!-- <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>-->
+
+
+
 
         <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
         <div class="ajax-dropdown">
@@ -103,12 +108,12 @@
     <!-- pulled right: nav area -->
     <div class="pull-right">
 
-        <!-- collapse menu button -->
+        <!-- collapse menu button
         <div id="hide-menu" class="btn-header pull-right">
             <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i
                         class="fa fa-reorder"></i></a> </span>
         </div>
-        <!-- end collapse menu -->
+        end collapse menu -->
 
         <!-- #MOBILE -->
         <!-- Top menu profile link : this shows only when top menu is active -->
@@ -192,12 +197,12 @@
         </form>
         <!-- end input: search field -->
 
-        <!-- fullscreen button -->
+        <!-- fullscreen button
         <div id="fullscreen" class="btn-header transparent pull-right">
             <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i
                         class="fa fa-arrows-alt"></i></a> </span>
         </div>
-        <!-- end fullscreen button -->
+       end fullscreen button -->
     </div>
     <!-- end pulled right: nav area -->
 
@@ -211,13 +216,20 @@
     <div class="login-info">
         <span> <!-- User image size is adjusted inside CSS, it should stay as it -->
 
-            <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+            <!--<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
                 <img src="{{ Assets::Path('img/avatars/sunny.png', true) }}" alt="me" class="online"/>
                 <span>
                     {{ BMUser::getUserName() }}
                 </span>
                 <i class="fa fa-angle-down"></i>
-            </a>
+            </a>-->
+
+
+                <img class="welcomeimg" src="{{ Assets::Path('img/avatars/sunny.png', true) }}" alt="me" class="online"/>
+                <span class="welcomes">
+                    {{ BMUser::getUserName() }}
+                </span>
+
 
         </span>
     </div>
@@ -230,11 +242,11 @@
     will not initialize.
     -->
     @include('backend._layout.menu')
-    <span class="minifyme" data-action="minifyMenu">
-        <i class="fa fa-arrow-circle-left hit"></i>
-    </span>
-</aside>
-<!-- END NAVIGATION -->
+    <!-- <span class="minifyme" data-action="minifyMenu">
+         <i class="fa fa-arrow-circle-left hit"></i>
+     </span> -->
+ </aside>
+ <!-- END NAVIGATION -->
 
 <!-- MAIN PANEL -->
 <div id="main" role="main">
