@@ -72,7 +72,7 @@
 
 
     //accordion for faq page
-    $('#accordion').find('.accordion-toggle').click(function () {
+    $('.accordion').find('.accordion-toggle').click(function () {
 
 
         //Hide the other panels
