@@ -2,6 +2,7 @@
 
 use Config;
 use Faqs;
+use DB;
 use Response;
 use Bond\Repositories\BaseRepositoryInterface as BaseRepositoryInterface;
 use Bond\Exceptions\Validation\ValidationException;
@@ -35,6 +36,14 @@ class FaqRepository extends Validator implements BaseRepositoryInterface {
 
     }
 
+    public function byCategory($cat) {
+        $result =DB::table('faq')->orderBy('order', 'ASC')
+            ->join('fbf_faq_category_fbf_laravel_simple_faqs', 'fbf_faq_category_fbf_laravel_simple_faqs.fbf_laravel_simple_faqs_id', '=', 'faq.id')
+            ->where('is_published', 1)
+            ->where('fbf_faq_category_fbf_laravel_simple_faqs.fbf_faq_category_id', '=', $cat)
+            ->get();
+        return $result;
+    }
     public function all() {
 
         return $this->news->orderBy('order', 'ASC')
@@ -70,6 +79,19 @@ class FaqRepository extends Validator implements BaseRepositoryInterface {
         if ($this->isValid($attributes)) {
 
             $this->news->fill($attributes)->save();
+            //save category
+            if(isset($attributes['category']) && is_array($attributes['category'])) {
+                $categories = $attributes['category'];
+                $data = array();
+                foreach($categories as $cat) {
+                    $data[] = array(
+                        'fbf_faq_category_id' => $cat,
+                        'fbf_laravel_simple_faqs_id' => $this->news->id
+                    );
+                }
+                DB::table('fbf_faq_category_fbf_laravel_simple_faqs')->insert($data);
+            }
+
             return true;
         }
 
@@ -85,6 +107,22 @@ class FaqRepository extends Validator implements BaseRepositoryInterface {
         if ($this->isValid($attributes)) {
 
             $this->news->fill($attributes)->save();
+
+            //update category
+            if(isset($attributes['category']) && is_array($attributes['category'])) {
+                //before update delete already exists
+                DB::table('fbf_faq_category_fbf_laravel_simple_faqs')
+                    ->where('fbf_laravel_simple_faqs_id', '=', $this->news->id)->delete();
+                $categories = $attributes['category'];
+                $data = array();
+                foreach($categories as $cat) {
+                    $data[] = array(
+                        'fbf_faq_category_id' => $cat,
+                        'fbf_laravel_simple_faqs_id' => $this->news->id
+                    );
+                }
+                DB::table('fbf_faq_category_fbf_laravel_simple_faqs')->insert($data);
+            }
             return true;
         }
 

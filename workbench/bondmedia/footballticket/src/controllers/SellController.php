@@ -96,14 +96,12 @@ class SellController extends BaseController
                     'is_in_stock'=>1,
                     'min_sale_qty'=> 1
 
-                )
+                ),
+
             )
         );
-
         $response = TicketSoap::process('catalog_product.create', $product);
-
         if ($response) {
-            var_dump($response);
             $relatedTicket = new RelatedTicket();
             $relatedTicket->event_id = $ticketId;
             $relatedTicket->product_id = $response;

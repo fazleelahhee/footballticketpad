@@ -8,7 +8,7 @@ use Validator;
 use Response;
 use Str;
 use Notification;
-
+use DB;
 use Bond\Repositories\Faq\FaqRepository as Faq;
 use Bond\Exceptions\Validation\ValidationException;
 
@@ -40,7 +40,7 @@ class FaqController extends BaseController {
      * @return Response
      */
     public function create() {
-
+        View::share('categories', DB::table('fbf_faq_category')->get());
         return View::make('backend.faq.create')
             ->with('menu', 'faq/new');;
     }
@@ -55,6 +55,7 @@ class FaqController extends BaseController {
         try {
             $this->news->create(Input::all());
             Notification::success('Faq was successfully added');
+
             return Redirect::route('admin.faq.index');
         } catch (ValidationException $e) {
             return Redirect::back()->withInput()->withErrors($e->getErrors());
@@ -82,6 +83,14 @@ class FaqController extends BaseController {
     public function edit($id) {
 
         $news = $this->news->find($id);
+        View::share('categories', DB::table('fbf_faq_category')->get());
+        $selected = DB::table('fbf_faq_category_fbf_laravel_simple_faqs')
+            ->where('fbf_laravel_simple_faqs_id', '=', $id )->get();
+        $selectedCat = array();
+        foreach($selected as $s) {
+            $selectedCat[] = $s->fbf_faq_category_id;
+        }
+        View::share('selectedCat', $selectedCat);
         return View::make('backend.faq.edit', compact('news'))
             ->with('menu', 'faq/edit');
     }

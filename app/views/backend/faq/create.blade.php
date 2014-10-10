@@ -103,6 +103,7 @@
         </div>
     </div>
     <br />
+    @include('backend.faq.partials.category')
     {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
 

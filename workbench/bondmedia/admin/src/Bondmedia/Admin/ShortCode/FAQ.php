@@ -19,8 +19,15 @@ class FAQ extends BaseShortCodeAbstract implements BaseShortCodeInterface{
      */
     public function render() {
         $faq = new FaqRepository(new Faqs());
+
+        if(isset($this->params['category'])) {
+            $faqContent = $faq->byCategory($this->params['category']);
+        } else {
+            $faqContent = $faq->all();
+        }
+
         return View::make($this->template)
-            ->with('faqs', $faq->all())
+            ->with('faqs', $faqContent)
             ->render();
     }
 }

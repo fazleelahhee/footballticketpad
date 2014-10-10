@@ -92,6 +92,7 @@
         </div>
     </div>
     <br />
+    @include('backend.faq.partials.category')
     {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
 
