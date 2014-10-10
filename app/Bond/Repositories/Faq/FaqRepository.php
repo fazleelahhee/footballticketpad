@@ -130,7 +130,6 @@ class FaqRepository extends Validator implements BaseRepositoryInterface {
     }
 
     public function destroy($id) {
-
         $news = $this->news->find($id)->delete();
     }
 
