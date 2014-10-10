@@ -1,6 +1,6 @@
 
 @if(!empty($faqs))
-<div id="accordion">
+<div class="accordion">
     @foreach($faqs as $faq)
     <h4 class="accordion-toggle">
         {{ $faq->title }}
