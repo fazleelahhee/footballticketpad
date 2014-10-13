@@ -23,6 +23,9 @@
         @else
         <img class="inner-banner" src="{{ Assets::Path('images/chelsea.jpg') }}" alt="test" />
         @endif
+
+
+
     </span>
     
     <span class="ftp-line">

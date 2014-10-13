@@ -12,8 +12,12 @@
     <h1 class="page-header">
         Confirmation
     </h1>
- 	
-    <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
+
+    @if(isset($feature_image) && $feature_image != '')
+    <img class="inner-banner" src="{{ $feature_image }}" alt="{{$node->title}}" />
+    @else
+    <img class="inner-banner" src="{{ Assets::Path('images/default.jpg') }}" alt="{{$node->title}}" />
+    @endif
     
     <span class="ftp-line">
     	<span class="greenline"></span>
