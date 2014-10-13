@@ -18,7 +18,7 @@
     <h1 class="page-header">News
     </h1>
 
-    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="Football Ticket Pad" />
 
     <span class="ftp-line">
     	<span class="greenline"></span>
@@ -57,7 +57,7 @@
 
                     </a>
 
-                    <p>{{{ mb_substr(strip_tags($v->content),0,2000) }}}</p>
+                    <p>{{{ mb_substr(strip_tags($v->content),0,1000) }}}</p>
                 </div>
                 <div style="clear: both"></div>
                     <p>
