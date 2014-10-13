@@ -43,7 +43,7 @@
                     <tbody>
                     @foreach( $articles as $article )
                     <tr>
-                        <td> {{ link_to_route( 'admin.article.show', $article->title, $article->id, array( 'class' => 'btn btn-link btn-xs' )) }}</td>
+                        <td>  <a href="{{ URL::route('admin.article.show', array($article->id)) }}">{{ $article->title, $article->id, array( 'class' => 'btn btn-link btn-xs' )) }} </a> </td>
                         <td>{{{ $article->created_at }}}</td>
                         <td>{{{ $article->updated_at }}}</td>
                         <td>
