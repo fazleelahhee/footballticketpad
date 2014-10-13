@@ -26,9 +26,9 @@
     </h1>
 
     @if($article->feature_image != '')
-    <img class="inner-banner" src="{{ $article->feature_image  }}" alt="{{ $v->title }}" /></a>
+    <img class="inner-banner" src="{{ $article->feature_image  }}" alt="{{ $article->title }}" /></a>
     @else
-    <img class="inner-banner" src="" alt="{{ Assets::Path('images/default.jpg') }}" /></a>
+    <img class="inner-banner" src="{{ Assets::Path('images/default.jpg') }}" alt="" /></a>
     @endif
 
 
