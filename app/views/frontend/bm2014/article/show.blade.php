@@ -38,56 +38,54 @@
 
 
 
+<div class="row">
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg12">
+
+
+    <div class="container site-content">
+
+
+        <div class="row">
+
             <h1 class="page-header">
                 <small>{{ $article->title }}</small>
             </h1>
-            @yield('partial/breadcrumbs', Breadcrumbs::render('blog.post.show', $article))
-        </div>
-    </div>
+            @foreach($article->tags as $tag)
+            <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}"><span class="label label-warning">{{ $tag->name }}</span></a>
+            @endforeach
 
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="pull-left">
-                @foreach($article->tags as $tag)
-                <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}"><span class="label label-warning">{{ $tag->name }}</span></a>
-                @endforeach
-            </div>
-            <br>
-            <br>
-            <br>
             <p><i class="icon-time"></i> Posted on {{ $article->created_at }} by <a href="#">Bondmeda</a>
             </p>
             {{ $article->content }}
 
-        </div>
-        <div class="col-lg-4">
-            <div class="row">
-                <h4>Categories</h4>
-
-                <div class="tagcloud tabbed_tag">
-                    @foreach($categories as $category)
-                    <a href="{{ URL::route('dashboard.category', array('category'=>$category->title)) }}">{{ $category->title }}</a>
-                    @endforeach
-                </div>
+            <h4>Categories</h4>
+            <div class="tagcloud tabbed_tag">
+                @foreach($categories as $category)
+                <a href="{{ URL::route('dashboard.category', array('category'=>$category->title)) }}">{{ $category->title }}</a>
+                @endforeach
             </div>
 
-            <div class="row">
-                <h4>Tags</h4>
-
-                <div class="tagcloud tabbed_tag">
-                    @foreach($tags as $tag)
-                    <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
-                    @endforeach
-                </div>
+            <h4>Tags</h4>
+            <div class="tagcloud tabbed_tag">
+                @foreach($tags as $tag)
+                <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
+                @endforeach
             </div>
+
+
+
+
         </div>
+
     </div>
+
+
 </div>
+
+
+
+
 @stop
 
 @section('script')
