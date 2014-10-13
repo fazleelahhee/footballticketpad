@@ -54,8 +54,9 @@
             <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}"><span class="label label-warning">{{ $tag->name }}</span></a>
             @endforeach
 
-            <p><i class="icon-time"></i> Posted on {{ $article->created_at }} by <a href="#">Bondmeda</a>
+            <p><strong>Posted on {{ $article->created_at }}</strong>
             </p>
+
             {{ $article->content }}
 
             <h4>Categories</h4>
@@ -71,7 +72,7 @@
                 <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
                 @endforeach
             </div>-->
-
+            <br/>    <br/>
             <div class="sharebox">
 
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
