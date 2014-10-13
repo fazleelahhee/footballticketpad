@@ -21,7 +21,8 @@
 <section class="banner-home">
 
 
-    <h1 class="page-header">News
+    <h1 class="page-header">
+        {{ $article->title }}
     </h1>
 
     <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
@@ -48,9 +49,7 @@
 
         <div class="row">
 
-            <h1 class="page-header">
-                <small>{{ $article->title }}</small>
-            </h1>
+
             @foreach($article->tags as $tag)
             <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}"><span class="label label-warning">{{ $tag->name }}</span></a>
             @endforeach
@@ -66,12 +65,23 @@
                 @endforeach
             </div>
 
-            <h4>Tags</h4>
+            <!--<h4>Tags</h4>
             <div class="tagcloud tabbed_tag">
                 @foreach($tags as $tag)
                 <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
                 @endforeach
+            </div>-->
+
+            <div class="sharebox">
+
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_sharing_toolbox"></div>
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f426a07524dc6b4"></script>
+
+
             </div>
+
 
 
 
