@@ -61,7 +61,7 @@
                 </div>
                 <div style="clear: both"></div>
                     <p>
-                        <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}" class="btn pinkbtn pull-right smallbtn">Read More</a>
+                        <a href="{{ URL::route('dashboard.article.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}" class="btn pinkbtn pull-right smallbtn">Read More</a>
                     </p>
 
                 <br/><br/><br/>
