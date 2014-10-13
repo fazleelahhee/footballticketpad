@@ -10,19 +10,19 @@
           </span>
           
           <span class="block-content">
-            	
-            
+
+            @foreach($hotTickets as $ticket)
                 <!-- repeater -->
-                <a href="#">
+                <a href="/events/{{$ticket->slug}}">
                 <span class="blockrow">
                 	
                     <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
+                    	<span class="day">{{date('d', strtotime($ticket->datetime))}}</span>
+                        <span class="month">{{date('M', strtotime($ticket->datetime))}}</span>
                     </span>
                     
                     <span class="game">
-                    	Barcelona vs Real Madrid
+                    	{{$ticket->title}}
                     </span>
                     
                     
@@ -30,177 +30,7 @@
                 </a>
                 <!-- repeater -->
 
-
-
-               <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	Barcelona vs Real Madrid
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-               <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	Barcelona vs Real Madrid
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-               <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	Barcelona vs Real Madrid
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-               <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	Barcelona vs Real Madrid
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-               <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	Barcelona vs Real Madrid
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-               <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	Barcelona vs Real Madrid
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-               <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	Barcelona vs Real Madrid
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-               <!-- repeater -->
-                <a href="#">
-                <span class="blockrow">
-
-                    <span class="date">
-                    	<span class="day">16</span>
-                        <span class="month">SEP</span>
-                    </span>
-
-                    <span class="game">
-                    	Barcelona vs Real Madrid
-                    </span>
-
-
-                </span>
-                </a>
-                <!-- repeater -->
-
-
-
-
-
-
-
-
-               
-                
-                
-                
+            @endforeach
           </span>
       	
    </div>

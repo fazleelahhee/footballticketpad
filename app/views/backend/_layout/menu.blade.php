@@ -264,6 +264,10 @@
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/events/create">Add New</a>
                 </li>
                 @endif
+
+                <li class="{{ $menu == 'events/widget'?'active': '' }}" >
+                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/widget/events">Hot Ticket Widget</a>
+                </li>
             </ul>
         </li>
 

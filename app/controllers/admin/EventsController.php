@@ -7,10 +7,12 @@ use Input;
 use Validator;
 use Response;
 use Str;
+use DB;
 use Notification;
 use FootballTickets;
 use Bond\Repositories\Events\EventsRepository AS Events;
 use Bond\Exceptions\Validation\ValidationException;
+use FootBallEvent;
 
 class EventsController extends BaseController {
 
@@ -23,7 +25,6 @@ class EventsController extends BaseController {
     }
 
     public function index() {
-
         $events = $this->events->paginate(null, true);
         return View::make('backend.events.index', compact('events'))
             ->with('menu', 'events');
@@ -126,5 +127,46 @@ class EventsController extends BaseController {
     public function togglePublish($id) {
 
         return $this->news->togglePublish($id);
+    }
+
+    public function widget() {
+        $hotTickets = FootBallEvent::where('widget_display', '=', '1')
+                      ->orderBy('widget_order', 'ASC')
+                      ->whereRaw('datetime >= NOW()')
+                      ->get();
+
+        $hotTicketsId = array();
+
+        foreach($hotTickets as $t) {
+            $hotTicketsId[] = $t->id;
+        }
+        $games = FootBallEvent::whereRaw('datetime >= NOW()')
+                ->orderBy('title', 'ASC')
+                ->whereNotIn('id', $hotTicketsId)
+                ->get();
+
+        View::share('tickets', $hotTickets);
+        View::share('games', $games);
+
+        return View::make('backend.events.widget')
+            ->with('menu', 'events/widget');
+    }
+
+    public function widgetUpdate() {
+        $tickets = Input::get('tickets');
+        $updateIds = array();
+        if(is_array($tickets)) {
+            foreach($tickets as $ticket) {
+                $id = (int) $ticket['id'];
+                $order = (int) $ticket['index'];
+                $updateIds[] = $id;
+                DB::table('events')
+                ->where('id', $id)
+                ->update(array('widget_display' => 1, 'widget_order'=>$order));
+            }
+
+            DB::table('events')->whereNotIn('id', $updateIds)->update(array('widget_display' => 0, 'widget_order'=>0));
+        }
+        echo json_encode(array('success'));
     }
 }

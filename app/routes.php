@@ -57,7 +57,6 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
 
     // admin dashboard
     Route::get('/', array('as' => 'admin.dashboard', function () {
-
         return View::make('backend/_layout/dashboard')
             ->with('active', 'home')
             ->with('menu', 'dashboard');
@@ -69,20 +68,17 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     Route::get('media/list', 'MediaController@showListAction');
     Route::post('media/list_json', 'MediaController@listJsonAction');
     Route::any('media/filemanager', 'MediaController@filemanagerAction');
-
     Route::get('media/edit/{id}', 'MediaController@editAction')->where('id', '[0-9]+');
     Route::any('media/destroy/{id}', 'MediaController@destroy')->where('id', '[0-9]+');
     Route::get('media/delete/{id}', 'MediaController@deleteAction')->where('id', '[0-9]+');
 
     //page
     Route::get('pages', array('as'=>'admin.page.index','uses'=>'PageAdminController@showPages'));
-
     Route::post('pages/list', 'PageAdminController@listAction');
     Route::get('pages/edit/{id}', 'PageAdminController@editAction')->where('id', '[0-9]+');
     Route::get('pages/new', 'PageAdminController@newAction');
     // user
     Route::resource('user', 'UserController');
-
     Route::get('user/{id}/delete', array('as' => 'admin.user.delete', 'uses' => 'UserController@confirmDestroy'))
         ->where('id', '[0-9]+');
 
@@ -102,6 +98,10 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
 
     Route::any('events/destroy/{id}', array('as' => 'admin.events.destroy', 'uses' => 'EventsController@destroy'))
         ->where('id', '[0-9]+');
+
+    Route::get('widget/events', array('as' => 'admin.events.widget', 'uses' => 'EventsController@widget'));
+    Route::post('widget/events/update', array('as' => 'admin.events.widget.update', 'uses' => 'EventsController@widgetUpdate'));
+
     // faq
     Route::resource('faq', 'FaqController');
     Route::get('faq/{id}/delete', array('as' => 'admin.faq.delete', 'uses' => 'FaqController@confirmDestroy'))
@@ -434,10 +434,10 @@ Route::group(array('before'=> 'customer.account'), function () {
 
     Route::get('/account/account-information/billing', 'AccountController@getCustomerBillingAddress'); //get customer billing address information
     Route::post('/account/account-information/billing', 'AccountController@setCustomerBillingAddress'); //set customer billing address  information
-
     Route::get('/account/account-information/shipping', 'AccountController@getCustomerShippingAddress'); //get customer address information
     Route::post('/account/account-information/shipping', 'AccountController@setCustomerShippingAddress'); //set customer address information
 });
+
 /*
 |--------------------------------------------------------------------------
 | General Routes
@@ -446,7 +446,6 @@ Route::group(array('before'=> 'customer.account'), function () {
 
 Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
     //should be an end
-
     Route::any( '{all}', 'IndexController@showPage')->where('all', '.*');
 });
 

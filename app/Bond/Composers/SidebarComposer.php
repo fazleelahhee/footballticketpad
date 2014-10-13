@@ -4,6 +4,8 @@ use Setting;
 use Config;
 use Session;
 use FootballTickets;
+use FootBallEvent;
+
 class SidebarComposer {
     public function compose($view) {
         $featureClub = FootballTickets::where('type', '=', 'club')
@@ -18,5 +20,12 @@ class SidebarComposer {
         $view->with('featureClub', $featureClub);
 
 
+        $hotTickets = FootBallEvent::where('widget_display', '=', '1')
+            ->orderBy('widget_order', 'ASC')
+            ->whereRaw('datetime >= NOW()')
+            ->take(10)
+            ->get();
+
+        $view->with('hotTickets', $hotTickets);
     }
 }
