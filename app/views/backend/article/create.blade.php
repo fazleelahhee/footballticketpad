@@ -91,7 +91,7 @@
 
         <div class="controls">
             <div class="input-group">
-                <span class="input-group-addon">www.bondmedia.co.uk/</span>
+                <span class="input-group-addon">/</span>
                 {{ Form::text('slug', null, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
             </div>
             @if ($errors->first('slug'))
