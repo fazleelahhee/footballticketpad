@@ -5,8 +5,6 @@
         "home":"home.blade.php",
         "one-column":"one-column.blade.php",
         "two-column-left":"two-column-left.blade.php",
-        "two-column-right":"two-column-right.blade.php",
-        "three-column":"three-column.blade.php",
 		"team":"team.blade.php",
 		"account":"account.blade.php",
         "addresses":"addresses.blade.php",

@@ -2575,7 +2575,7 @@ textarea {
     width: 100%;
 }
 .row .btn {   border: medium none !important;
-    line-height: 2;
+
     text-align: center;}
 
 .flex-direction-nav {display:none}
@@ -3079,7 +3079,7 @@ body.news .site-content {
 ================================================== */
 @media only screen and (min-width: 1001px) and (max-width: 1239px) {
 
-    header { background: red !important}
+
 
     .contain {
         width: 960px;
@@ -3207,7 +3207,7 @@ body.news .site-content {
 
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
 
-    header { background: orange !important}
+
 
     body .flexslider .slides img {
 

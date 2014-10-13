@@ -64,7 +64,7 @@
                 @endif
             </ul>
         </li>
-        @yield('nev_menu_after_pages')
+       <!-- @yield('nev_menu_after_pages')
         <li class="{{ in_array($menu, array('news', 'news/new', 'news/edit'))? 'active':'' }}">
             <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">News</span></a>
             <ul>
@@ -83,6 +83,8 @@
                 @endif
             </ul>
         </li>
+
+        -->
         <li class="{{ in_array($menu, array('faq', 'faq/new', 'faq/edit'))? 'active':'' }}">
             <a href="#"><i class="fa fa-lg fa-fw fa-question"></i> <span class="menu-item-parent">Faq</span></a>
             <ul>
