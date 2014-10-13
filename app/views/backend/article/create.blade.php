@@ -101,18 +101,23 @@
     </div>
     <br>
 
-    <!-- Tag -->
-    <div class="control-group {{ $errors->has('tag') ? 'has-error' : '' }}">
-        <label class="control-label" for="title">Tag</label>
+        <!-- Slug -->
+        <div class="control-group {{ $errors->has('slug') ? 'has-error' : '' }}">
+            <label class="control-label" for="title">Slug</label>
 
-        <div class="controls">
-            {{ Form::text('tag', null, array('class'=>'form-control', 'id' => 'tag', 'placeholder'=>'Tag', 'value'=>Input::old('tag'))) }}
-            @if ($errors->first('tag'))
-            <span class="help-block">{{ $errors->first('tag') }}</span>
-            @endif
+            <div class="controls">
+                <div class="input-group">
+                    <span class="input-group-addon">/</span>
+                    {{ Form::text('slug', null, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
+                </div>
+                @if ($errors->first('slug'))
+                <span class="help-block">{{ $errors->first('slug') }}</span>
+                @endif
+            </div>
         </div>
-    </div>
-    <br>
+        <br>
+
+
 
     <!-- Category -->
     <div class="control-group {{ $errors->has('category') ? 'error' : '' }}">
