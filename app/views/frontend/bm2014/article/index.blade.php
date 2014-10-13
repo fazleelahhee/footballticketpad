@@ -57,7 +57,7 @@
 
                     </a>
 
-                    <p>{{{ mb_substr(strip_tags($v->content),0,1000) }}}</p>
+                    {{{ mb_substr(strip_tags($v->content),0,1000) }}}
                 </div>
                 <div style="clear: both"></div>
                     <p>
