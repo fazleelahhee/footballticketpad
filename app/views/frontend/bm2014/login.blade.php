@@ -48,7 +48,7 @@
                 Ticket Pad. It's freeYou can buy and sell the best tickets all around
                 the world. </p>
 
-
+            <br/>
             <a href="/registration" class="btn greenbtn pull-right">REGISTER</a>
 
         </div>
@@ -67,7 +67,7 @@
                     <input type="password" name="password" id="password" placeholder="PASSWORD"/>
                 </div>
                 <div class="row">
-                    <a href="/forgot-password" class="pull-left forgottenpassword">I forgot my password</a>
+                   <!-- <a href="/forgot-password" class="pull-left forgottenpassword">I forgot my password</a>--->
                     <input type="button" class="btn pinkbtn pull-right login-btn" value="LOGIN">
                 </div>
             </form>

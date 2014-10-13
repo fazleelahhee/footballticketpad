@@ -2574,7 +2574,7 @@ textarea {
     padding-bottom: 10px;
     width: 100%;
 }
-.row .btn {border:none !important}
+.row .btn {border:none !important; text-align: center}
 
 .flex-direction-nav {display:none}
 
@@ -2775,6 +2775,7 @@ textarea {
     display: inline-block;
     margin-left: 0 !important;
     padding-top: 10px;
+    width: 100%;
 }
 .step-process li.active .selltitle, .step-process li.active .number {color: #57cadd}
 .selltitle {
@@ -3927,3 +3928,8 @@ body.news .site-content {
 }
 
 .sidebar-mobile { display: none}
+
+#form-subscribe { display: inline-block;
+    width: 270px;
+    vertical-align: top;}
+#form-subscribe input { display:inline-block;vertical-align: top; }
