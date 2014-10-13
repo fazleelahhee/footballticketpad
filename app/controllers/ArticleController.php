@@ -21,9 +21,9 @@ class ArticleController extends BaseController {
      * @return Response
      */
     public function index() {
-
-        $articles = $this->article->paginate();
-        return View::make(Template::name('frontend.%s.article.index'), compact('articles'));
+        View::share('body_class', 'articles news');
+        $news = $this->article->paginate();
+        return View::make(Template::name('frontend.%s.article.index'), compact('news'));
     }
 
     /**

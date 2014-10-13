@@ -14,7 +14,7 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
     protected $perPage;
     protected $footballTicket;
     protected $slug_prefix = 'club';
-
+    protected $meta_data = array('club_logo', 'nickname', 'founded', 'rivals','recorded_goal_scorer', 'record_signing', '');
 
     /**
      * Rules
@@ -92,18 +92,35 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
     }
 
     public function create($attributes) {
+
         $attributes['is_published'] = isset($attributes['is_published']) ? true : false;
         if ($this->isValid($attributes)) {
             $this->footballTicket->fill($attributes)->save();
             if(in_array($this->footballTicket->type, array('club', 'league'))) {
                 $footballTicketMeta = new FootballTicketMeta();
-                $footballTicketMeta->fill(
-                    array(
-                        'football_ticket_id' => $this->footballTicket->id,
-                        'key'                => 'country',
-                        'value'              => $attributes['country']
-                    )
-                )->save();
+                if(isset($attributes['country']) && $attributes['country'] != '') {
+                    $footballTicketMeta->fill(
+                        array(
+                            'football_ticket_id' => $this->footballTicket->id,
+                            'key'                => 'country',
+                            'value'              => $attributes['country']
+                        )
+                    )->save();
+                }
+
+                foreach($this->meta_data as $_val) {
+                    if(isset($attributes[$_val])) {
+                        $footballTicketMeta = new FootballTicketMeta();
+                        $footballTicketMeta->fill(
+                            array(
+                                'football_ticket_id' => $this->footballTicket->id,
+                                'key'                => $_val,
+                                'value'              => $attributes[$_val]
+                            )
+                        )->save();
+                    }
+                }
+
             }
             return true;
         }
@@ -130,15 +147,37 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
                     $countryMeta = new FootballTicketMeta();
                 }
 
-                $countryMeta->fill(
-                    array(
-                        'football_ticket_id' => $this->footballTicket->id,
-                        'key'                => 'country',
-                        'value'              => $attributes['country']
-                    )
-                )->save();
-            }
+                if(isset($attributes['country']) && $attributes['country'] != '') {
+                    $countryMeta->fill(
+                        array(
+                            'football_ticket_id' => $this->footballTicket->id,
+                            'key'                => 'country',
+                            'value'              => $attributes['country']
+                        )
+                    )->save();
+                }
 
+                foreach($this->meta_data as $_val) {
+                    if(isset($attributes[$_val])) {
+                        $footballTicketMeta = $footballTicketMeta->where('football_ticket_id', '=', $this->footballTicket->id)
+                            ->where('key', '=', $_val)
+                            ->first();
+
+                        if($countryMeta == null) {
+                            $footballTicketMeta = new FootballTicketMeta();
+                        }
+                        $footballTicketMeta = new FootballTicketMeta();
+                        $footballTicketMeta->fill(
+                            array(
+                                'football_ticket_id' => $this->footballTicket->id,
+                                'key'                => $_val,
+                                'value'              => $attributes[$_val]
+                            )
+                        )->save();
+                    }
+                }
+
+            }
 
             return true;
         }

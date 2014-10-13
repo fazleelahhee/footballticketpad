@@ -69,7 +69,27 @@ class FootballTicketController extends BaseController {
         $node = $this->footballTicket->findByUri($type,$slug);
         View::share('body_class', "page {$type} {$slug}");
         View::share('type', $type);
-        return View::make('footballticket::frontend.group-two-column-left', compact('node'));
+        $meta = FootballTicketMeta::where('football_ticket_id', '=', $node->id)->get();
+        foreach($meta->toArray() as $val) {
+            $var_view = 'meta_'.$val['key'];
+            if($var_view  == 'meta_tournament' ) {
+                $meta_var =  json_decode($val['value'], true);
+                $meta_var['id'] = $val['id'];
+                $var_value[] = $meta_var;
+                View::share($var_view, $var_value);
+            } else {
+                View::share($var_view, $val['value']);
+            }
+
+        }
+
+        if($type == 'club') {
+            View::share('tickets', FootBallEvent::getClubRelatedTickets($node->id));
+            return View::make(Template::name('frontend.%s.team'), compact('node'));
+        } else {
+            return View::make('footballticket::frontend.group-two-column-left', compact('node'));
+        }
+
     }
 
     /**

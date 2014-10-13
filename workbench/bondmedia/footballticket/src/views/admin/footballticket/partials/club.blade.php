@@ -178,8 +178,10 @@
         <img class="feature-img-preview" src="{{$node->feature_image}}" style="max-width:300px; max-height:200px;" />
         <hr class='image-preview-div' style='margin-top: 10px;' />
         <input name="feature_image" value="{{$node->feature_image}}" type="hidden" id="feature_image"/>
-        @endif
+        @else
         <input name="feature_image" value="" type="hidden" id="feature_image"/>
+        @endif
+
         {{ Form::button('Feature Image',  array('class'=>'btn btn-info', 'id'=>'feature_image_btn')) }}
         {{ Form::button('Remove',  array('class'=>'btn btn-info', 'id'=>'remove_feature_image_btn', 'style'=>"display: none")) }}
         @if ($errors->first('feature_image'))
@@ -198,13 +200,123 @@
         <img class="venue-img-preview" src="{{$node->venue_image}}" style="max-width:300px; max-height:200px;" />
         <hr class='image-preview-div' style='margin-top: 10px;' />
         <input name="venue_image" value="{{$node->venue_image}}" type="hidden" id="venue_image"/>
-        @endif
+        @else
         <input name="venue_image" value="" type="hidden" id="venue_image"/>
+        @endif
         {{ Form::button('Venue Image',  array('class'=>'btn btn-info', 'id'=>'venue_image_btn')) }}
         {{ Form::button('Remove',  array('class'=>'btn btn-info', 'id'=>'remove_venue_image_btn', 'style'=>"display: none")) }}
         @if ($errors->first('venue_image'))
         <span class="help-block">{{ $errors->first('venue_image') }}</span>
         @endif
+    </div>
+</div>
+<br>
+
+
+<div class="control-group {{ $errors->has('club_logo') ? 'has-error' : '' }}">
+    <label class="control-label" for="title">Club Logo</label>
+
+    <div class="controls club-logo-container">
+
+        @if (isset($meta_club_logo) && $meta_club_logo != '' )
+        <img class="club-logo-preview" src="{{$meta_club_logo}}" style="max-width:300px; max-height:200px;" />
+        <hr class='image-preview-div' style='margin-top: 10px;' />
+        <input name="club_logo" value="{{$meta_club_logo}}" type="hidden" id="club_logo"/>
+        @else
+        <input name="club_logo" value="" type="hidden" id="club_logo"/>
+        @endif
+
+        {{ Form::button('Club Logo',  array('class'=>'btn btn-info', 'id'=>'club_logo_btn')) }}
+        {{ Form::button('Remove',  array('class'=>'btn btn-info', 'id'=>'remove_club_logo_btn', 'style'=>"display: none")) }}
+        @if ($errors->first('club_logo'))
+        <span class="help-block">{{ $errors->first('club_logo') }}</span>
+        @endif
+    </div>
+</div>
+<br>
+<h2> Club Fact File</h2>
+<div class="control-group">
+    <div class="controls">
+        <label class="control-label" for="nickname">Nickname</label>
+        <div class="controls">
+            @if (isset($meta_nickname) && $meta_nickname != '' )
+            {{ Form::text('nickname', $meta_nickname, array('class'=>'form-control', 'id' => 'nickname', 'placeholder'=>'Nickname', 'value'=>Input::old('nickname'))) }}
+            @else
+            {{ Form::text('nickname', null, array('class'=>'form-control', 'id' => 'nickname', 'placeholder'=>'Nickname', 'value'=>Input::old('nickname'))) }}
+            @endif
+            @if ($errors->first('title'))
+            <span class="help-block">{{ $errors->first('nickname') }}</span>
+            @endif
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="control-group">
+    <div class="controls">
+        <label class="control-label" for="founded">Founded</label>
+        <div class="controls">
+            @if (isset($meta_founded) && $meta_founded != '' )
+            {{ Form::text('founded', $meta_founded, array('class'=>'form-control', 'id' => 'founded', 'placeholder'=>'Founded', 'value'=>Input::old('founded'))) }}
+            @else
+            {{ Form::text('founded', null, array('class'=>'form-control', 'id' => 'founded', 'placeholder'=>'founded', 'value'=>Input::old('founded'))) }}
+            @endif
+            @if ($errors->first('founded'))
+            <span class="help-block">{{ $errors->first('founded') }}</span>
+            @endif
+        </div>
+    </div>
+</div>
+<br>
+
+
+<div class="control-group">
+    <div class="controls">
+        <label class="control-label" for="rivals">Rivals</label>
+        <div class="controls">
+            @if (isset($meta_rivals) && $meta_rivals != '' )
+            {{ Form::text('rivals', $meta_rivals, array('class'=>'form-control', 'id' => 'rivals', 'placeholder'=>'Rivals', 'value'=>Input::old('rivals'))) }}
+            @else
+            {{ Form::text('rivals', null, array('class'=>'form-control', 'id' => 'rivals', 'placeholder'=>'founded', 'value'=>Input::old('rivals'))) }}
+            @endif
+            @if ($errors->first('rivals'))
+            <span class="help-block">{{ $errors->first('rivals') }}</span>
+            @endif
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="control-group">
+    <div class="controls">
+        <label class="control-label" for="recorded_goal_scorer">Record goal scorer</label>
+        <div class="controls">
+            @if (isset($meta_recorded_goal_scorer) && $meta_recorded_goal_scorer != '' )
+            {{ Form::text('recorded_goal_scorer', $meta_recorded_goal_scorer, array('class'=>'form-control', 'id' => 'recorded_goal_scorer', 'placeholder'=>'recorded_goal_scorer', 'value'=>Input::old('recorded_goal_scorer'))) }}
+            @else
+            {{ Form::text('recorded_goal_scorer', null, array('class'=>'form-control', 'id' => 'recorded_goal_scorer', 'placeholder'=>'recorded_goal_scorer', 'value'=>Input::old('recorded_goal_scorer'))) }}
+            @endif
+            @if ($errors->first('recorded_goal_scorer'))
+            <span class="help-block">{{ $errors->first('recorded_goal_scorer') }}</span>
+            @endif
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="control-group">
+    <div class="controls">
+        <label class="control-label" for="record_signing">Record signing</label>
+        <div class="controls">
+            @if (isset($meta_record_signing) && $meta_record_signing != '' )
+            {{ Form::text('record_signing', $meta_record_signing, array('class'=>'form-control', 'id' => 'record_signing', 'placeholder'=>'record_signing', 'value'=>Input::old('record_signing'))) }}
+            @else
+            {{ Form::text('record_signing', null, array('class'=>'form-control', 'id' => 'record_signing', 'placeholder'=>'record_signing', 'value'=>Input::old('record_signing'))) }}
+            @endif
+            @if ($errors->first('record_signing'))
+            <span class="help-block">{{ $errors->first('record_signing') }}</span>
+            @endif
+        </div>
     </div>
 </div>
 <br>
@@ -250,6 +362,7 @@
                     this.elem.prepend(image);
                     this.elem.find('#feature_image').val(imageUrl);
                     this.elem.find('#remove_feature_image_btn').css({display: 'block'});
+                    return;
                 }
 
                 if(imageUrl && this.type == 'venue') {
@@ -260,6 +373,18 @@
                     this.elem.prepend(image);
                     this.elem.find('#venue_image').val(imageUrl);
                     this.elem.find('#remove_venue_image_btn').css({display: 'block'});
+                    return;
+                }
+
+                if(imageUrl && this.type == 'logo') {
+                    $('.club-logo-container').find('.club-logo-preview').remove();
+                    $('.club-logo-container').find('.image-preview-div').remove();
+                    var image = $('<img class="venue-img-preview" src="'+imageUrl+'" style="max-width:300px; max-height:200px;" />');
+                    this.elem.prepend("<hr class='image-preview-div' style='margin-top: 10px;' />");
+                    this.elem.prepend(image);
+                    this.elem.find('#club_logo').val(imageUrl);
+                    this.elem.find('#remove_club_logo_btn').css({display: 'block'});
+                    return;
                 }
             }
         }
@@ -329,6 +454,24 @@
                 img_prev_div: ".image-preview-div",
                 feature_img: '#venue_image',
                 remove: '#remove_venue_image_btn'
+            });
+        });
+
+
+        $('#club_logo_btn').click(function () {
+            AppFileManager.type = 'logo';
+            $(this).fileManager({
+                container: '.club-logo-container'
+            });
+        });
+
+        $('#remove_club_logo_btn').click(function () {
+            $(this).removeFeatureImage({
+                container: '.club-logo-container',
+                img_pre: ".club-logo-preview",
+                img_prev_div: ".image-preview-div",
+                feature_img: '#club_logo',
+                remove: '#remove_club_logo_btn'
             });
         });
     });

@@ -1,52 +1,107 @@
 @extends(Template::name('frontend.%s._layout.layout'))
 @section('content')
-<div class="container">
+
+
+<!---------sidebar------------>
+<section class="main">
+
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Blog</h1>
-            @yield('partial/breadcrumbs', Breadcrumbs::render('blog', $articles))
-        </div>
+        @include(Template::name('frontend.%s.sidebars.side1'))
     </div>
-    <div class="col-md-12">
+</section>
+<!---------sidebar------------>
+
+
+<section class="banner-home">
+
+
+    <h1 class="page-header">News
+    </h1>
+
+    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+
+    <span class="ftp-line">
+    	<span class="greenline"></span>
+        <span class="yellowline"></span>
+        <span class="pinkline"></span>
+        <span class="blueline"></span>
+    </span>
+
+
+</section>
+
+
+
+
+<div class="row">
+
+
+
+
+<div class="container site-content">
+
 
         <div class="row">
-            @foreach( $articles as $article )
-            <div class="row">
-                <div class="col-sm-12">
-                    <a href="{{ URL::route('dashboard.article.show', array('id'=>$article->id, 'slug'=>$article->slug)) }}">
-                        <h4>{{ $article->title }}<span datetime="{{ $article->created_at }}" class="label label-default label-arrow label-arrow-left time"></span>
-                        </h4></a>
-                    <hr>
-                </div>
-                <div class="col-sm-12">
-                    <p>{{{ mb_substr(strip_tags($article->content),0,1000) }}}</p>
+            @foreach( $news as $v )
 
-                    <div class="pull-right">
-                        @foreach($article->tags as $tag)
-                        <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}"><span class="label label-warning">{{ $tag->name }}</span></a>
-                        @endforeach
-                    </div>
-                    <p>
-                        <a href="{{ URL::route('dashboard.article.show', array('id'=>$article->id, 'slug'=>$article->slug)) }}" class="btn btn-xs btn-primary">Read More</a>
-                    </p>
+
+            <div class="columns twelve">
+                <div class="columns twelve nopadding featuredimg-news">
+                    <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
+                    <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}"><img class="img-square center-block radius" src="{{ Assets::Path('images/vangaal.jpg') }}" alt="{{ $v->title }}" /></a>
                 </div>
+                <div class="columns twelve nopadding">
+
+                    <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
+                        <h4 class="blogtitle">{{ $v->title }}</h4>
+
+                    </a>
+
+                    <p>{{{ mb_substr(strip_tags($v->content),0,2000) }}}</p>
+                </div>
+                <div style="clear: both"></div>
+                    <p>
+                        <a href="{{ URL::route('dashboard.news.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}" class="btn pinkbtn pull-right smallbtn">Read More</a>
+                    </p>
+
+                <br/><br/><br/>
+
+              <span class="ftp-line">
+                    <span class="greenline"></span>
+                    <span class="yellowline"></span>
+                    <span class="pinkline"></span>
+                    <span class="blueline"></span>
+                </span>
+
             </div>
-            <hr>
-            @endforeach
+
+             @endforeach
         </div>
-    </div>
+
+
+
     <div class="pull-left">
         <ul class="pagination">
-            {{ $articles->links() }}
+            {{ $news->links() }}
         </ul>
     </div>
+
+
 </div>
+
+
+
+
+</div>
+
+
+
+
+
 @stop
 
-
 @section('script')
-@parent
-
+{{ HTML::script('assets/js/moment-with-langs.min.js') }}
 <script type="text/javascript">
     moment().format();
     moment.lang('en');
@@ -54,19 +109,13 @@
     jQuery(document).ready(function ($) {
         var now = moment();
         $('.time').each(function (i, e) {
-
             var time = moment($(e).attr('datetime'));
             $(e).text(time.from(now));
 
         });
-
     });
 </script>
 @stop
 
-{{
-Assets::setScripts(
-    [
-        'moment-with-langs'         => 'js/moment-with-langs.min.js'
-    ]);
-}}
+
+

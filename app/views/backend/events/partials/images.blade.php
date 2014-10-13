@@ -7,8 +7,10 @@
         <img class="feature-img-preview" src="{{$events->feature_image}}" style="max-width:300px; max-height:200px;" />
         <hr class='image-preview-div' style='margin-top: 10px;' />
         <input name="feature_image" value="{{$events->feature_image}}" type="hidden" id="feature_image"/>
-        @endif
+        @else
         <input name="feature_image" value="" type="hidden" id="feature_image"/>
+        @endif
+
         {{ Form::button('Feature Image',  array('class'=>'btn btn-info', 'id'=>'feature_image_btn')) }}
         {{ Form::button('Remove',  array('class'=>'btn btn-info', 'id'=>'remove_feature_image_btn', 'style'=>"display: none")) }}
         @if ($errors->first('feature_image'))
@@ -25,8 +27,10 @@
         <img class="venue-img-preview" src="{{$events->venue_image}}" style="max-width:300px; max-height:200px;" />
         <hr class='image-preview-div' style='margin-top: 10px;' />
         <input name="venue_image" value="{{$events->venue_image}}" type="hidden" id="venue_image"/>
-        @endif
+        @else
         <input name="venue_image" value="" type="hidden" id="venue_image"/>
+        @endif
+
         {{ Form::button('Venue Image',  array('class'=>'btn btn-info', 'id'=>'venue_image_btn')) }}
         {{ Form::button('Remove',  array('class'=>'btn btn-info', 'id'=>'remove_venue_image_btn', 'style'=>"display: none")) }}
         @if ($errors->first('venue_image'))

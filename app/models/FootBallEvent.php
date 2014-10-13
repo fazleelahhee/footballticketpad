@@ -45,4 +45,16 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
         }
         return array();
     }
+
+    public static function getClubRelatedTickets($clubId = '') {
+        $results = DB::table('events')
+            ->select('events.id', 'events.slug', 'events.title', 'events.datetime', DB::raw('MIN(events_related_tickets.price) AS price'))
+            ->join('events_related_tickets','events_related_tickets.event_id','=','events.id')
+            ->where('events.away_team_id', '=',$clubId)
+            ->orWhere('events.home_team_id', '=', $clubId)
+            ->groupBy('events.id')
+            ->get();
+
+        return $results;
+    }
 }

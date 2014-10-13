@@ -1,3 +1,4 @@
+@if(count($tickets) > 0)
 <table class="responsive">
     <thead>
     <tr><th>Game</th>
@@ -9,84 +10,27 @@
     <tbody>
 
 
-
+    @foreach($tickets as $ticket)
     <tr>
         <td>
                     	<span class="game">
-                    		Burnley vs Chelsea
+                    		{{$ticket->title}}
                     	</span>
         </td>
         <td>
+            {{date('l dS F Y', strtotime($ticket->datetime))}}
             Saturday 16th August 2014  <br> 3:00pm
         </td>
         <td>
-            £59.99
+            &pound;{{$ticket->price}}
         </td>
         <td>
-            <input class="btn pinkbtn" type="button" value="BUY">
-            <input class="btn bluebtn" type="button" value="SELL">
+
+            <a href="{{ '/events/'.$ticket->slug }}" class="btn pinkbtn"> BUY </a>
+            <a href="{{ '/ticket/sell/'.$ticket->id }}" class="btn bluebtn"> SELL </a>
         </td>
     </tr>
-
-
-    <tr>
-        <td>
-                    	<span class="game">
-                    		Burnley vs Chelsea
-                    	</span>
-        </td>
-        <td>
-            Saturday 16th August 2014  <br> 3:00pm
-        </td>
-        <td>
-            £59.99
-        </td>
-        <td>
-            <input class="btn pinkbtn" type="button" value="BUY">
-            <input class="btn bluebtn" type="button" value="SELL">
-        </td>
-    </tr>
-
-
-
-    <tr>
-        <td>
-                    	<span class="game">
-                    		Burnley vs Chelsea
-                    	</span>
-        </td>
-        <td>
-            Saturday 16th August 2014  <br> 3:00pm
-        </td>
-        <td>
-            £59.99
-        </td>
-        <td>
-            <input class="btn pinkbtn" type="button" value="BUY">
-            <input class="btn bluebtn" type="button" value="SELL">
-        </td>
-    </tr>
-
-
-
-    <tr>
-        <td>
-                    	<span class="game">
-                    		Burnley vs Chelsea
-                    	</span>
-        </td>
-        <td>
-            Saturday 16th August 2014  <br> 3:00pm
-        </td>
-        <td>
-            £59.99
-        </td>
-        <td>
-            <input class="btn pinkbtn" type="button" value="BUY">
-            <input class="btn bluebtn" type="button" value="SELL">
-        </td>
-    </tr>
-
-
+    @endforeach
     </tbody>
 </table>
+@endif
