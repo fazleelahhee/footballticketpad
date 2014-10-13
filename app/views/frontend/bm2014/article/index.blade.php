@@ -48,16 +48,21 @@
             <div class="columns twelve">
                 <div class="columns twelve nopadding featuredimg-news">
                     <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
-                    <a href="{{ URL::route('dashboard.article.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}"><img class="img-square center-block radius" src="{{ Assets::Path('images/vangaal.jpg') }}" alt="{{ $v->title }}" /></a>
+                    <a href="{{ URL::route('dashboard.article.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
+                        @if($v->feature_image != '')
+                        <img class="img-square center-block radius" src="{{ $v->feature_image  }}" alt="{{ $v->title }}" /></a>
+                        @else
+                        <img class="img-square center-block radius" src="{{ Assets::Path('images/default.jpg') }}" alt="{{ $v->title }}" /></a>
+                        @endif
                 </div>
                 <div class="columns twelve nopadding">
 
-                    <a href="{{ URL::route('dashboard.articlee.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
+                    <a href="{{ URL::route('dashboard.article.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
                         <h4 class="blogtitle">{{ $v->title }}</h4>
 
                     </a>
 
-                    {{{ mb_substr(strip_tags($v->content),0,1000) }}}
+                    {{{ $v->excerpt }}}
                 </div>
                 <div style="clear: both"></div>
                     <p>

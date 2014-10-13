@@ -101,22 +101,6 @@
     </div>
     <br>
 
-        <!-- Slug -->
-        <div class="control-group {{ $errors->has('slug') ? 'has-error' : '' }}">
-            <label class="control-label" for="title">Slug</label>
-
-            <div class="controls">
-                <div class="input-group">
-                    <span class="input-group-addon">/</span>
-                    {{ Form::text('slug', null, array('class'=>'form-control slug', 'id' => 'slug', 'placeholder'=>'Slug', 'value'=>Input::old('slug'))) }}
-                </div>
-                @if ($errors->first('slug'))
-                <span class="help-block">{{ $errors->first('slug') }}</span>
-                @endif
-            </div>
-        </div>
-        <br>
-
 
 
     <!-- Category -->
@@ -193,6 +177,8 @@
         </div>
     </div>
     <br>
+
+    @include('backend.article.partials.articles')
     {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
     </div>

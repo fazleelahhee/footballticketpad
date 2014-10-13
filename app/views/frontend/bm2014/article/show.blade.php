@@ -25,7 +25,12 @@
         {{ $article->title }}
     </h1>
 
-    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+    @if($v->feature_image != '')
+    <img class="inner-banner" src="{{ $v->feature_image  }}" alt="{{ $v->title }}" /></a>
+    @else
+    <img class="inner-banner" src="" alt="{{ Assets::Path('images/default.jpg') }}" /></a>
+    @endif
+
 
     <span class="ftp-line">
     	<span class="greenline"></span>

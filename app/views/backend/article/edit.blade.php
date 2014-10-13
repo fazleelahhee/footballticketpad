@@ -189,6 +189,7 @@
                                 </div>
                             </div>
                             <br>
+                            @include('backend.article.partials.articles')
                             {{ Form::submit('Save', array('class' => 'btn btn-success')) }}
                             {{ Form::close() }}
                         </div>

@@ -5,7 +5,7 @@ use Bond\Interfaces\BaseModelInterface as BaseModelInterface;
 class Article extends BaseModel implements BaseModelInterface {
 
     public $table = 'articles';
-    protected $fillable = ['title', 'slug', 'content', 'meta_keywords', 'meta_description', 'is_published'];
+    protected $fillable = ['title', 'slug', 'content', 'meta_keywords', 'meta_description', 'is_published', 'feature_image', 'excerpt'];
     protected $appends = ['url'];
 
     public function tags() {
