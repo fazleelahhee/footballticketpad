@@ -47,9 +47,6 @@
     <div class="container site-content">
 
 
-
-
-
             @foreach($article->tags as $tag)
             <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}"><span class="label label-warning">{{ $tag->name }}</span></a>
             @endforeach
@@ -59,19 +56,19 @@
 
             {{ $article->content }}
 
-            <h4>Categories</h4>
-            <div class="tagcloud tabbed_tag">
-                @foreach($categories as $category)
-                <a href="{{ URL::route('dashboard.category', array('category'=>$category->title)) }}">{{ $category->title }}</a>
-                @endforeach
-            </div>
+        <!--<h4>Categories</h4>
+        <div class="tagcloud tabbed_tag">
+            @foreach($categories as $category)
+            <a href="{{ URL::route('dashboard.category', array('category'=>$category->title)) }}">{{ $category->title }}</a>
+            @endforeach
+        </div>-->
 
-            <!--<h4>Tags</h4>
-            <div class="tagcloud tabbed_tag">
-                @foreach($tags as $tag)
-                <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
-                @endforeach
-            </div>-->
+        <!--<h4>Tags</h4>
+        <div class="tagcloud tabbed_tag">
+            @foreach($tags as $tag)
+            <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
+            @endforeach
+        </div>-->
             <br/>    <br/>
             <div class="sharebox">
 
