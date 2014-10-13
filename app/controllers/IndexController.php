@@ -33,6 +33,11 @@ class IndexController extends BaseController {
             'meta_keyword' => 'template'
         ])->meta_content)));
 
+        View::share('feature_image',@$pagesMeta->getMetaKey([
+            'page_id' => $node->id,
+            'meta_keyword' => 'feature_image'
+        ])->meta_content);
+
         return View::make(Template::name($template), compact('node'));
     }
 
