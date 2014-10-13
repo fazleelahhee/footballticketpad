@@ -16,9 +16,8 @@ class PageComposer {
         }
 
         if ( $node ) {
-            $view->with('meta_description', '');
-            $view->with('meta_description', 'display shit whole');
-            $view->with('meta_keywords', 'display shit keyword whole');
+            $view->with('meta_description', $node->meta_description);
+            $view->with('meta_keywords', $node->meta_content);
         }
     }
 }

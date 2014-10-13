@@ -106,6 +106,7 @@ class SellController extends BaseController
             $relatedTicket->event_id = $ticketId;
             $relatedTicket->product_id = $response;
             $relatedTicket->ticket = json_encode($data);
+            $relatedTicket->price = $data['ticketInformation']['price'];
             $relatedTicket->save();
         }
         // related products

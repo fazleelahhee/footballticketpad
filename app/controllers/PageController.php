@@ -24,6 +24,12 @@ class PageController extends BaseController {
                 'page_id' => $id,
                 'meta_keyword' => 'template'
             ])->meta_content);
+
+        View::share(PagesMeta::getMetaKey([
+            'page_id' => $id,
+            'meta_keyword' => 'feature_image'
+        ])->meta_content);
+
         return View::make(Template::name($template), compact('node'));
     }
 }
