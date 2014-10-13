@@ -2574,7 +2574,9 @@ textarea {
     padding-bottom: 10px;
     width: 100%;
 }
-.row .btn {border:none !important; text-align: center}
+.row .btn {   border: medium none !important;
+    line-height: 2;
+    text-align: center;}
 
 .flex-direction-nav {display:none}
 
