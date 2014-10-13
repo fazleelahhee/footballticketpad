@@ -17,6 +17,6 @@ class SidebarComposer {
             ->get();
         $view->with('featureClub', $featureClub);
 
-        
+
     }
 }

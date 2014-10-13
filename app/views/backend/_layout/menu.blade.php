@@ -129,13 +129,13 @@
                     <a href="/{{ Config::get('bondcms.admin_prefix') }}/menu">Menu</a>
                 </li>
 
-                <li class="{{ $menu == 'appearance/themes'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/appearance/themes">Themes</a>
-                </li>
-
-                <li class="{{ $menu == 'appearance/header'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/appearance/header">Header</a>
-                </li>
+<!--                <li class="{{ $menu == 'appearance/themes'?'active': '' }}" >-->
+<!--                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/appearance/themes">Themes</a>-->
+<!--                </li>-->
+<!---->
+<!--                <li class="{{ $menu == 'appearance/header'?'active': '' }}" >-->
+<!--                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/appearance/header">Header</a>-->
+<!--                </li>-->
             </ul>
         </li>
         @yield('nev_menu_after_appearance')

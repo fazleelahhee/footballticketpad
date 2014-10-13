@@ -39,9 +39,6 @@
     
 </section>
 
-
-
-
 <!---------main content------------>
 <div class="row">
 
@@ -52,10 +49,13 @@
         <h2>Top matches</h2>
          <hr>
 
+
+         @if(count($tickets) > 0)
+         @foreach($tickets as $ticket)
          <!--repeater--->
          <div class="columns four topmatch">
              <div class="ft-image-match">
-                 <img src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
+                 <img src="{{$ticket->feature_image}}" alt="{{$ticket->title}}" />
              </div>
 
              <span class="ftp-line">
@@ -65,198 +65,24 @@
                 <span class="blueline"></span>
             </span>
 
-             <span class="gamematch">Chelsea vs Man Utd</span>
-             <span class="stadium"><img src="{{ Assets::Path('images/stadium.png') }}" />Stamford Bridge</span>
-             <span class="date-time"><img src="{{ Assets::Path('images/whistle.png') }}" />Saturday, 16th August 2014, 3:00pm</span>
-
-                <div class="btnsgroup">
-
-                    <input type="button" value="SELL" class="btn bluebtn">
-                    <input type="button" value="BUY" class="btn pinkbtn">
-
-                </div>
-
-         </div>
-         <!--repeater--->
-
-
-
-
-
-
-         <!--repeater--->
-         <div class="columns four topmatch">
-
-             <div class="ft-image-match">
-                 <img src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
-             </div>
-
-             <span class="ftp-line">
-                <span class="greenline"></span>
-                <span class="yellowline"></span>
-                <span class="pinkline"></span>
-                <span class="blueline"></span>
-            </span>
-
-             <span class="gamematch">Chelsea vs Man Utd</span>
-             <span class="stadium"><img src="{{ Assets::Path('images/stadium.png') }}" />Stamford Bridge</span>
-             <span class="date-time"><img src="{{ Assets::Path('images/whistle.png') }}" />Saturday, 16th August 2014, 3:00pm</span>
+             <span class="gamematch">{{$ticket->title}}</span>
+             <span class="stadium"><img src="{{ Assets::Path('images/stadium.png') }}" />{{$ticket->event_location}}</span>
+             <span class="date-time"><img src="{{ Assets::Path('images/whistle.png') }}" />{{date('l dS F Y', strtotime($ticket->datetime))}}</span>
 
              <div class="btnsgroup">
 
-                 <input type="button" value="SELL" class="btn bluebtn">
-                 <input type="button" value="BUY" class="btn pinkbtn">
+                 <a href="{{ '/events/'.$ticket->slug }}" class="btn pinkbtn"> BUY </a>
+                 <a href="{{ '/ticket/sell/'.$ticket->id }}" class="btn bluebtn"> SELL </a>
 
              </div>
 
          </div>
          <!--repeater--->
+         @endforeach
+         @else
+         <p> No match found! </p>
+         @endif
 
-
-
-
-
-         <!--repeater--->
-         <div class="columns four topmatch">
-
-             <div class="ft-image-match">
-                 <img src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
-             </div>
-
-             <span class="ftp-line">
-                <span class="greenline"></span>
-                <span class="yellowline"></span>
-                <span class="pinkline"></span>
-                <span class="blueline"></span>
-            </span>
-
-             <span class="gamematch">Chelsea vs Man Utd</span>
-             <span class="stadium"><img src="{{ Assets::Path('images/stadium.png') }}" />Stamford Bridge</span>
-             <span class="date-time"><img src="{{ Assets::Path('images/whistle.png') }}" />Saturday, 16th August 2014, 3:00pm</span>
-
-             <div class="btnsgroup">
-
-                 <input type="button" value="SELL" class="btn bluebtn">
-                 <input type="button" value="BUY" class="btn pinkbtn">
-
-             </div>
-
-         </div>
-         <!--repeater--->
-
-
-
-
-
-
-         <!--repeater--->
-         <div class="columns four topmatch">
-
-             <div class="ft-image-match">
-                 <img src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
-             </div>
-
-             <span class="ftp-line">
-                <span class="greenline"></span>
-                <span class="yellowline"></span>
-                <span class="pinkline"></span>
-                <span class="blueline"></span>
-            </span>
-
-             <span class="gamematch">Chelsea vs Man Utd</span>
-             <span class="stadium"><img src="{{ Assets::Path('images/stadium.png') }}" />Stamford Bridge</span>
-             <span class="date-time"><img src="{{ Assets::Path('images/whistle.png') }}" />Saturday, 16th August 2014, 3:00pm</span>
-
-             <div class="btnsgroup">
-
-                 <input type="button" value="SELL" class="btn bluebtn">
-                 <input type="button" value="BUY" class="btn pinkbtn">
-
-             </div>
-
-         </div>
-         <!--repeater--->
-
-
-
-
-
-         <!--repeater--->
-         <div class="columns four topmatch">
-
-             <div class="ft-image-match">
-                 <img src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
-             </div>
-
-             <span class="ftp-line">
-                <span class="greenline"></span>
-                <span class="yellowline"></span>
-                <span class="pinkline"></span>
-                <span class="blueline"></span>
-            </span>
-
-             <span class="gamematch">Chelsea vs Man Utd</span>
-             <span class="stadium"><img src="{{ Assets::Path('images/stadium.png') }}" />Stamford Bridge</span>
-             <span class="date-time"><img src="{{ Assets::Path('images/whistle.png') }}" />Saturday, 16th August 2014, 3:00pm</span>
-
-             <div class="btnsgroup">
-
-                 <input type="button" value="SELL" class="btn bluebtn">
-                 <input type="button" value="BUY" class="btn pinkbtn">
-
-             </div>
-
-         </div>
-         <!--repeater--->
-
-
-
-
-
-         <!--repeater--->
-         <div class="columns four topmatch">
-
-             <div class="ft-image-match">
-                 <img src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
-             </div>
-
-             <span class="ftp-line">
-                <span class="greenline"></span>
-                <span class="yellowline"></span>
-                <span class="pinkline"></span>
-                <span class="blueline"></span>
-            </span>
-
-             <span class="gamematch">Chelsea vs Man Utd</span>
-             <span class="stadium"><img src="{{ Assets::Path('images/stadium.png') }}" />Stamford Bridge</span>
-             <span class="date-time"><img src="{{ Assets::Path('images/whistle.png') }}" />Saturday, 16th August 2014, 3:00pm</span>
-
-             <div class="btnsgroup">
-
-                 <input type="button" value="SELL" class="btn bluebtn">
-                 <input type="button" value="BUY" class="btn pinkbtn">
-
-             </div>
-
-         </div>
-         <!--repeater--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            
      </div>
 </div>
 <!---------main content------------>
