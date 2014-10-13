@@ -47,7 +47,7 @@
     <div class="container site-content">
 
 
-        <div class="row">
+
 
 
             @foreach($article->tags as $tag)
@@ -86,7 +86,7 @@
 
 
 
-        </div>
+
 
     </div>
 
