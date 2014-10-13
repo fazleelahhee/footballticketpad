@@ -6,6 +6,40 @@
 @stop
 
 @section('content')
+
+
+<!---------sidebar------------>
+<section class="main">
+
+    <div class="row">
+        @include(Template::name('frontend.%s.sidebars.side1'))
+    </div>
+</section>
+<!---------sidebar------------>
+
+
+<section class="banner-home">
+
+
+    <h1 class="page-header">News
+    </h1>
+
+    <img class="inner-banner" src="{{ Assets::Path('images/bannersize.jpg') }}" alt="test" />
+
+    <span class="ftp-line">
+    	<span class="greenline"></span>
+        <span class="yellowline"></span>
+        <span class="pinkline"></span>
+        <span class="blueline"></span>
+    </span>
+
+
+</section>
+
+
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-lg12">
