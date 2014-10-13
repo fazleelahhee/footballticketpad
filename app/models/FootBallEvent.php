@@ -7,7 +7,7 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
     public $table = 'events';
     public $fillable=['title', 'slug', 'content', 'datetime', 'is_published', 'team_type',
         'home_team_id', 'away_team_id', 'season_id', 'tournament_id', 'event_in_home',
-        'venue_image', 'feature_image', 'ticket_type_ids', 'form_of_ticket_ids', 'ticket_restriction_ids', 'event_location'];
+        'venue_image', 'feature_image', 'ticket_type_ids', 'form_of_ticket_ids', 'ticket_restriction_ids', 'event_location', 'feature_event'];
 
     protected $appends = ['url'];
 
@@ -52,6 +52,17 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
             ->join('events_related_tickets','events_related_tickets.event_id','=','events.id')
             ->where('events.away_team_id', '=',$clubId)
             ->orWhere('events.home_team_id', '=', $clubId)
+            ->groupBy('events.id')
+            ->get();
+
+        return $results;
+    }
+
+    public static function getLeagueRelatedTickets($clubId = '') {
+        $results = DB::table('events')
+            ->select('events.id', 'events.slug', 'events.title', 'events.datetime', DB::raw('MIN(events_related_tickets.price) AS price'))
+            ->join('events_related_tickets','events_related_tickets.event_id','=','events.id')
+            ->where('events.away_team_id', '=',$clubId)
             ->groupBy('events.id')
             ->get();
 

@@ -1,6 +1,27 @@
 <input name="type" type="hidden" value="{{$type}}" />
 
+<div class="control-group {{ $errors->has('featured') ? 'has-error' : '' }}">
+    <label class="control-label" for="title">
+        <input name="featured" value="1" type="checkbox" id="featured" {{ isset($node->featured) && $node->featured == 1? 'checked': '' }}/>
+        &nbsp; Featured </label>
+</div>
+<br />
+
+<div class="control-group {{ $errors->has('order') ? 'has-error' : '' }}">
+    <label class="control-label" for="title">
+        &nbsp; Order </label>
+    <div class="controls">
+    @if(isset($node->order) && $node->order >= 0)
+    <input name="order" type="text" id="order" value="{{$node->order}}" />
+    @else
+    <input name="order" value="" type="text" id="order" value="" />
+    @endif
+    </div>
+</div>
+<br />
 <div class="control-group">
+    <label class="control-label" for="country">
+        &nbsp; Country</label>
     <div class="controls">
     <select name="country" class="select input">
         <option value=""> - </option>

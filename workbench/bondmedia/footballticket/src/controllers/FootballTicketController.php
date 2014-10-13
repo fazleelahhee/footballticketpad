@@ -86,7 +86,11 @@ class FootballTicketController extends BaseController {
         if($type == 'club') {
             View::share('tickets', FootBallEvent::getClubRelatedTickets($node->id));
             return View::make(Template::name('frontend.%s.team'), compact('node'));
-        } else {
+        } else if($type == 'league') {
+            View::share('tickets', FootBallEvent::getLeagueRelatedTickets($node->id));
+            return View::make(Template::name('frontend.%s.league'), compact('node'));
+        }
+        else {
             return View::make('footballticket::frontend.group-two-column-left', compact('node'));
         }
 

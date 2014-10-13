@@ -6,7 +6,6 @@
 
 <!---------sidebar------------>
 <section class="main">
-
         <div class="row">
             <span class="sidebar-space"></span>
             @include(Template::name('frontend.%s.sidebars.side1'))
@@ -19,7 +18,7 @@
 <section class="banner-home">
 
 
-    <h1 class="page-header">@if($node instanceof Pages)
+    <h1 class="page-header">@if(isset($node->title))
         {{ e($node->title) }}
         @endif</h1>
 
@@ -42,25 +41,15 @@
 <!---------main content------------>
 <div class="row">
 
-
-
      <div class="site-content">
-
-         @if($node instanceof Pages)
+         @if(isset($node->content))
          {{ Template::doShortCode($node->content ) }}
          @endif
-
-
-
         <h2>Top matches</h2>
          <hr>
 
-
-
-
          <!--repeater--->
          <div class="columns four topmatch">
-
              <div class="ft-image-match">
                  <img src="{{ Assets::Path('images/account.jpg') }}" alt="test" />
              </div>

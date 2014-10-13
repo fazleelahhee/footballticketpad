@@ -226,110 +226,25 @@
           </span>
           
           <span class="block-content">
-            	
-            
+                @foreach($featureClub as $club)
                 <!-- repeater -->
-                <a href="/chelsea">
+                <a href="/group/club/{{$club->slug}}">
                 <span class="blockrow">
                 	
                     <span class="date">
-                    	<img src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
+                    	<img src="{{ $club->value }}" alt="chelsea FC" />
                     </span>
                     
                     <span class="game">
-                    	Chelsea FC
+                    	{{$club->title}}
                     </span>
                     
                     
                 </span>
                 </a>
+                @endforeach
                 <!-- repeater -->
-                
-                
-                
-                <!-- repeater -->
-                <a href="/chelsea">
-                <span class="blockrow">
-                	
-                    <span class="date">
-                    	<img src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
-                    </span>
-                    
-                    <span class="game">
-                    	Chelsea FC
-                    </span>
-                    
-                    
-                </span>
-                </a>
-                <!-- repeater -->
-                
-                
-                
-                
-                
-                <!-- repeater -->
-                <a href="/chelsea">
-                <span class="blockrow">
-                	
-                    <span class="date">
-                    	<img src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
-                    </span>
-                    
-                    <span class="game">
-                    	Chelsea FC
-                    </span>
-                    
-                    
-                </span>
-                </a>
-                <!-- repeater -->
-                
-                
-                
-                <!-- repeater -->
-                <a href="/chelsea">
-                <span class="blockrow">
-                	
-                    <span class="date">
-                    	<img src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
-                    </span>
-                    
-                    <span class="game">
-                    	Chelsea FC
-                    </span>
-                    
-                    
-                </span>
-                </a>
-                <!-- repeater -->
-                
-                
-                
-                <!-- repeater -->
-                <a href="/chelsea">
-                <span class="blockrow">
-                	
-                    <span class="date">
-                    	<img src="{{ Assets::Path('images/clublogo.png') }}" alt="chelsea FC" />
-                    </span>
-                    
-                    <span class="game">
-                    	Chelsea FC
-                    </span>
-                    
-                    
-                </span>
-                </a>
-                <!-- repeater -->
-                
-                
-                
-                
-               
-                
-                
-                
+
           </span>
       	
    </div>
