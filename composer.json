@@ -6,12 +6,13 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"cartalyst/sentry": "2.1.*",
-        "way/generators": "dev-master",
+        "way/generators": "~2.0",
         "intervention/image": "2.*",
         "davejamesmiller/laravel-breadcrumbs": "dev-master",
         "edvinaskrucas/notification": "1.*",
         "intervention/image": "2.*",
-        "fbf/laravel-simple-faqs": "dev-master"
+        "fbf/laravel-simple-faqs": "dev-master",
+        "hugofirth/mailchimp": "2.0.*"
 	},
     "autoload": {
         "classmap": [

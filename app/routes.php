@@ -43,6 +43,10 @@ Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch'
 
     // ticket-search
     Route::get('/ticket-search', ['as' => 'ticket.search', 'uses' => 'SearchController@ticketSearch']);
+
+    //mail chimp subscribe
+    Route::post('/subscribe', ['as' => 'email.subscribe', 'uses' => 'MailChimpController@subscribe']);
+
 });
 
 Route::post('/contact', array('as' => 'dashboard.contact.post', 'uses' => 'FormPostController@postContact'), array('before' => 'csrf'));
@@ -313,7 +317,7 @@ Route::get('/checkout/{id}', array('as'=>'ticket.checkout', 'uses'=>'CheckoutCon
 Route::any('/checkout/order/{id}', array('as'=>'ticket.checkout.order', 'uses'=>'CheckoutController@order'))->where('id', '[0-9]+');
 
 Route::any('/search/ticket', array('as'=>'ticket.events.search', 'uses'=>'FootballTicketController@searchEvent'));
-Route::get('/events/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
+Route::get('/search/ticket/category', array('as'=>'ticket.events.search.category', 'uses'=>'FootballTicketController@searchEventCategory'));
 /*
 |--------------------------------------------------------------------------
 | Football tickets customer account

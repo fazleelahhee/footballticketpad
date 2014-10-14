@@ -26,6 +26,8 @@ class SearchController extends BaseController {
             $query_param = $q;
         } else {
             $query_param = '';
+            //redirect to homepage
+            return Redirect::to('/');
         }
 
         View::share('body_class', 'search-results ticket-search');

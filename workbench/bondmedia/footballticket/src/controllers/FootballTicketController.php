@@ -270,10 +270,33 @@ class FootballTicketController extends BaseController {
             $output = DB::table('events')->where('events.title', 'LIKE', "%{$input['q']}%")
                       ->leftJoin('football_ticket', 'events.tournament_id', '=', 'football_ticket.id')
                       ->select('events.id','events.title AS name','football_ticket.title AS league', 'events.datetime', 'events.feature_image', 'events.content', 'events.slug')
-                      ->orderBy('events.title', 'ASC')
+                      ->orderBy('events.datetime', 'ASC')
+                      ->take(25)
+                      ->get();
+        }
+        $response = Response::make( json_encode( $output ) , '200' );
+        $response->header('Content-Type', 'application/json');
+        return $response;
+    }
+
+    public function searchEventCategory() {
+        $input = Input::all();
+        $output = array();
+        if ( $input['q'] ) {
+            $results = DB::table('football_ticket')->where('football_ticket.title', 'LIKE', "%{$input['q']}%")
+                      ->whereRaw("football_ticket.type='club'")
+                      ->take(5)
                       ->get();
         }
 
+        foreach($results as $result) {
+            $temp = array();
+            $temp['name'] = $result->title;
+            $temp['url'] = '/group/club/'.$result->slug;
+            $temp['league']['name'] = 'premier ship';
+
+            $output[] = $temp;
+        }
         $response = Response::make( json_encode( $output ) , '200' );
         $response->header('Content-Type', 'application/json');
         return $response;

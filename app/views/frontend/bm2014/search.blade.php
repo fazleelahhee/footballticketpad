@@ -57,7 +57,7 @@
         $(document).ready(function () {
             //category
             $.ajax({
-                url: '{{$ticketApi}}api/rest/categories?sortby=name&&q={{$q}}',
+                url: '{{route("ticket.events.search.category")}}?q={{$query_param}}',
                 type: 'GET',
                 dataType: 'json',
                 success: function (response) {
