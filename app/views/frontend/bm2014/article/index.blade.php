@@ -48,7 +48,7 @@
             <div class="columns twelve">
                 <div class="columns twelve nopadding featuredimg-news">
                     <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
-                    <a href="{{ URL::route('dashboard.article.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
+                    <a href="{{ URL::route('dashboard.news.show', array('slug'=>$v->slug)) }}">
                         @if($v->feature_image != '')
                         <img class="img-square center-block radius" src="{{ $v->feature_image  }}" alt="{{ $v->title }}" /></a>
                         @else
@@ -57,7 +57,7 @@
                 </div>
                 <div class="columns twelve nopadding">
 
-                    <a href="{{ URL::route('dashboard.article.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}">
+                    <a href="{{ URL::route('dashboard.news.show', array('slug'=>$v->slug)) }}">
                         <h4 class="blogtitle">{{ $v->title }}</h4>
 
                     </a>
@@ -66,7 +66,7 @@
                 </div>
                 <div style="clear: both"></div>
                     <p>
-                        <a href="{{ URL::route('dashboard.article.show', array('id'=>$v->id, 'slug'=>$v->slug)) }}" class="btn pinkbtn pull-right smallbtn">Read More</a>
+                        <a href="{{ URL::route('dashboard.news.show', array('slug'=>$v->slug)) }}" class="btn pinkbtn pull-right smallbtn">Read More</a>
                     </p>
 
                 <br/><br/><br/>
