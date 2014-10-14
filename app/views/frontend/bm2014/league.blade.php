@@ -50,7 +50,7 @@
          <hr>
 
 
-         @if(count($tickets) > 0)
+         @if( isset($tickets) && count($tickets) > 0)
          @foreach($tickets as $ticket)
          <!--repeater--->
          <div class="columns four topmatch">
