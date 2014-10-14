@@ -47,7 +47,7 @@
 
             <div class="columns twelve">
                 <div class="columns twelve nopadding featuredimg-news">
-                    <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">Bond</span>
+                    <span datetime="{{ $v->created_at }}" class="label label-default label-arrow label-arrow-left time">{{ date('dS M Y', strtotime($v->created_at)) }}</span>
                     <a href="{{ URL::route('dashboard.news.show', array('slug'=>$v->slug)) }}">
                         @if($v->feature_image != '')
                         <img class="img-square center-block radius" src="{{ $v->feature_image  }}" alt="{{ $v->title }}" /></a>
@@ -108,17 +108,17 @@
 @section('script')
 {{ HTML::script('assets/js/moment-with-langs.min.js') }}
 <script type="text/javascript">
-    moment().format();
-    moment.lang('en');
-
-    jQuery(document).ready(function ($) {
-        var now = moment();
-        $('.time').each(function (i, e) {
-            var time = moment($(e).attr('datetime'));
-            $(e).text(time.from(now));
-
-        });
-    });
+//    moment().format();
+//    moment.lang('en');
+//
+//    jQuery(document).ready(function ($) {
+//        var now = moment();
+//        $('.time').each(function (i, e) {
+//            var time = moment($(e).attr('datetime'));
+//            $(e).text(time.from(now));
+//
+//        });
+//    });
 </script>
 @stop
 

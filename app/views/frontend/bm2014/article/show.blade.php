@@ -56,7 +56,7 @@
             <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}"><span class="label label-warning">{{ $tag->name }}</span></a>
             @endforeach
 
-            <p><strong>Posted on {{ date('d/m/Y', strtotime($article->created_at)) }}</strong>
+            <p><strong>Posted on {{ date('dS M Y', strtotime($v->created_at)) }}</strong>
             </p>
 
             {{ $article->content }}
