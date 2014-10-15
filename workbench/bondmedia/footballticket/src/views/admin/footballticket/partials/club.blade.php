@@ -361,7 +361,7 @@
                 alert("You already have opened window, p[lease close that before open another one");
                 return null;
             }
-            this.fileManagerWindow = window.open("/filemanager/show?CKEditorFuncNum=1&langCode=en", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=100, left=500, width=600, height=400");
+            this.fileManagerWindow = window.open("/filemanager/show?CKEditorFuncNum=1&langCode=en", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=100, left=500, width=900, height=600");
             this.intervalId = window.setInterval(this.checkwindow, 500);
         };
         f.closeFileManager = function () {
