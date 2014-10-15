@@ -14,7 +14,7 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
     protected $perPage;
     protected $footballTicket;
     protected $slug_prefix = 'club';
-    protected $meta_data = array('club_logo', 'nickname', 'founded', 'rivals','recorded_goal_scorer', 'record_signing', '');
+    protected $meta_data = array('club_logo', 'nickname', 'founded', 'rivals','recorded_goal_scorer', 'record_signing', 'country');
 
     /**
      * Rules
@@ -139,33 +139,12 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
             $this->footballTicket->fill($attributes)->save();
             $footballTicketMeta = new FootballTicketMeta();
             if(in_array($this->footballTicket->type, array('club', 'league'))) {
-            $countryMeta = $footballTicketMeta->where('football_ticket_id', '=', $this->footballTicket->id)
-                ->where('key', '=', 'country')
-                ->first();
-
-                if($countryMeta == null) {
-                    $countryMeta = new FootballTicketMeta();
-                }
-
-                if(isset($attributes['country']) && $attributes['country'] != '') {
-                    $countryMeta->fill(
-                        array(
-                            'football_ticket_id' => $this->footballTicket->id,
-                            'key'                => 'country',
-                            'value'              => $attributes['country']
-                        )
-                    )->save();
-                }
 
                 foreach($this->meta_data as $_val) {
                     if(isset($attributes[$_val])) {
                         $footballTicketMeta = $footballTicketMeta->where('football_ticket_id', '=', $this->footballTicket->id)
-                            ->where('key', '=', $_val)
-                            ->first();
+                            ->where('key', '=', $_val)->delete();
 
-                        if($countryMeta == null) {
-                            $footballTicketMeta = new FootballTicketMeta();
-                        }
                         $footballTicketMeta = new FootballTicketMeta();
                         $footballTicketMeta->fill(
                             array(

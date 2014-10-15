@@ -61,6 +61,10 @@ class ArticleRepository extends Validator implements BaseRepositoryInterface {
         return $this->article->with(['tags', 'category'])->findOrFail($id);
     }
 
+    public function findBySlug($slug) {
+        return $this->article->with(['tags', 'category'])->where('slug', '=', $slug)->first();
+    }
+
     public function create($attributes) {
 
         $attributes['is_published'] = isset($attributes['is_published']) ? true : false;

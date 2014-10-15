@@ -22,7 +22,7 @@ class FormPostController extends BaseController {
             'sender_name_surname' => Input::get('sender_name_surname'),
             'sender_email'        => Input::get('sender_email'),
             'sender_phone_number' => Input::get('sender_phone_number'),
-            'subject'             => Input::get('subject'),
+            'subject'             => '',
             'post'                => Input::get('message')
         );
 
@@ -30,22 +30,25 @@ class FormPostController extends BaseController {
             'sender_name_surname' => 'required',
             'sender_email'        => 'required|email',
             'sender_phone_number' => 'required',
-            'subject'             => 'required',
+            //'subject'             => 'required',
             'post'                => 'required'
         );
 
         $validation = Validator::make($formData, $rules);
 
         if ($validation->fails()) {
-            return Redirect::action('FormPostController@getContact')->withErrors($validation)->withInput();
+            $response = Response::make(json_encode(array('result' => $validation->messages())), 400);
+            $response->header('Content-Type', 'application/json');
+            return $response;
         }
 
-        /*
+        $formData['sender_message'] = $formData['post'];
+
         Mail::send('emails.contact-form.form', $formData, function ($message) {
             $message->from(Input::get('sender_email'), Input::get('sender_name_surname'));
-            $message->to('noreply@bondmedia.co.uk', 'Lorem Lipsum')->subject(Input::get('subject'));
+            $message->to('feleahee@gmail.com', 'Fazle Elahee')->subject("Football Ticketpad contact form");
         });
-        */
+
 
         /*
         $mailer = new Mailer;
@@ -60,6 +63,16 @@ class FormPostController extends BaseController {
         $formPost->message = $formData['post'];
         $formPost->save();
 
-        return Redirect::action('FormPostController@getContact')->with('message', 'Success');
+        $response = Response::make(json_encode(array('result' => 'success')), 200);
+        $response->header('Content-Type', 'application/json');
+        return $response;
+    }
+
+    public function postConrporatForm() {
+
+    }
+
+    public function postGroupPurchase() {
+
     }
 }

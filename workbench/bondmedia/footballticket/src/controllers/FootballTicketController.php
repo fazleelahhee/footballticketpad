@@ -86,7 +86,11 @@ class FootballTicketController extends BaseController {
         if($type == 'club') {
             View::share('tickets', FootBallEvent::getClubRelatedTickets($node->id));
             return View::make(Template::name('frontend.%s.team'), compact('node'));
-        } else {
+        } else if($type == 'league') {
+            View::share('tickets', FootBallEvent::getLeagueRelatedTickets($node->id));
+            return View::make(Template::name('frontend.%s.league'), compact('node'));
+        }
+        else {
             return View::make('footballticket::frontend.group-two-column-left', compact('node'));
         }
 
@@ -266,8 +270,48 @@ class FootballTicketController extends BaseController {
             $output = DB::table('events')->where('events.title', 'LIKE', "%{$input['q']}%")
                       ->leftJoin('football_ticket', 'events.tournament_id', '=', 'football_ticket.id')
                       ->select('events.id','events.title AS name','football_ticket.title AS league', 'events.datetime', 'events.feature_image', 'events.content', 'events.slug')
-                      ->orderBy('events.title', 'ASC')
+                      ->orderBy('events.datetime', 'ASC')
+                      ->take(25)
                       ->get();
+        }
+        $response = Response::make( json_encode( $output ) , '200' );
+        $response->header('Content-Type', 'application/json');
+        return $response;
+    }
+
+    public function searchEventCategory() {
+        $input = Input::all();
+        $output = array();
+        try {
+            if ( $input['q'] ) {
+                $results = DB::table('football_ticket')
+                    ->select('football_ticket.*', 'football_ticket_club_tournaments.tournament_id')
+                    ->leftJoin('football_ticket_club_tournaments', 'football_ticket_club_tournaments.club_id', '=', 'football_ticket.id')
+                    ->where('football_ticket.title', 'LIKE', "%{$input['q']}%")
+                    ->whereRaw("football_ticket.type='club'")
+                    ->take(5)
+                    ->groupBy('football_ticket.id')
+                    ->get();
+            }
+
+            foreach($results as $result) {
+                $temp = array();
+                $temp['name'] = $result->title;
+                $temp['url'] = '/group/club/'.$result->slug;
+                $tournament = FootballTickets::find($result->tournament_id);
+                if ($tournament) {
+                    $temp['league']['name'] = $tournament->title;
+                    $temp['league']['url'] = '/group/league/'.$result->slug;
+                } else {
+                    $temp['league']['name'] = '';
+                    $temp['league']['url'] = '#';
+                }
+                $output[] = $temp;
+            }
+        } catch (Exception $e) {
+            $response = Response::make( json_encode( $e->getMessage() ) , 400 );
+            $response->header('Content-Type', 'application/json');
+            return $response;
         }
 
         $response = Response::make( json_encode( $output ) , '200' );

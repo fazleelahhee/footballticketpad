@@ -133,6 +133,7 @@ return array(
         'Bond\Providers\LogViewerServiceProvider',
         'Bond\Providers\TemplateServiceProvider',
         'Fbf\LaravelSimpleFaqs\LaravelSimpleFaqsServiceProvider',
+        'Hugofirth\Mailchimp\MailchimpServiceProvider',
         'Bondmedia\Admin\AdminServiceProvider',
         'Bondmedia\Footballticket\FootballticketServiceProvider',
         'Bondmedia\Website\WebsiteServiceProvider'
@@ -207,6 +208,7 @@ return array(
         'Breadcrumbs'       => 'DaveJamesMiller\Breadcrumbs\Facade',
         'Notification'      => 'Krucas\Notification\Facades\Notification',
         'Image'             => 'Intervention\Image\Facades\Image',
+        'MailchimpWrapper'  => 'Hugofirth\Mailchimp\Facades\MailchimpWrapper',
         'Search'            => 'Bond\Facades\Search',
         'Feeder'            => 'Bond\Facades\Feeder',
         'LogViewer'         => 'Bond\Facades\LogViewer',

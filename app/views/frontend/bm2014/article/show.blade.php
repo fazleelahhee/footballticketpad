@@ -20,34 +20,23 @@
 
 <section class="banner-home">
 
-
     <h1 class="page-header">
         {{ $article->title }}
     </h1>
-
     @if($article->feature_image != '')
     <img class="inner-banner" src="{{ $article->feature_image  }}" alt="{{ $article->title }}" /></a>
     @else
     <img class="inner-banner" src="{{ Assets::Path('images/default.jpg') }}" alt="" /></a>
     @endif
-
-
     <span class="ftp-line">
     	<span class="greenline"></span>
         <span class="yellowline"></span>
         <span class="pinkline"></span>
         <span class="blueline"></span>
     </span>
-
-
 </section>
 
-
-
 <div class="row">
-
-
-
 
     <div class="container site-content">
 
@@ -56,7 +45,7 @@
             <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}"><span class="label label-warning">{{ $tag->name }}</span></a>
             @endforeach
 
-            <p><strong>Posted on {{ $article->created_at }}</strong>
+            <p><strong>Posted on {{ date('dS M Y', strtotime($article->created_at)) }}</strong>
             </p>
 
             {{ $article->content }}
@@ -84,13 +73,6 @@
 
 
             </div>
-
-
-
-
-
-
-
     </div>
 
 

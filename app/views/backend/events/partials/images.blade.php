@@ -1,3 +1,10 @@
+<div class="control-group {{ $errors->has('feature_event') ? 'has-error' : '' }}">
+    <label class="control-label" for="title">
+        <input name="feature_event" value="1" type="checkbox" id="feature_event" {{ isset($events->feature_event) && $events->feature_event == 1? 'checked': '' }}/>
+        &nbsp; Feature Event</label>
+
+</div>
+<br />
 <div class="control-group {{ $errors->has('feature_image') ? 'has-error' : '' }}">
     <label class="control-label" for="title">Feature Image</label>
 

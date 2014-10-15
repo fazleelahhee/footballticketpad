@@ -12,12 +12,12 @@ Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch'
     Route::get('/', ['as' => 'dashboard', 'uses' => 'HomeController@index']);
 
     // article
-    Route::get('/article', array('as' => 'dashboard.article', 'uses' => 'ArticleController@index'));
-    Route::get('/article/{id}/{slug?}', array('as' => 'dashboard.article.show', 'uses' => 'ArticleController@show'));
+    //Route::get('/article', array('as' => 'dashboard.article', 'uses' => 'ArticleController@index'));
+    //Route::get('/article/{id}/{slug?}', array('as' => 'dashboard.article.show', 'uses' => 'ArticleController@show'));
 
     // news
-    Route::get('/news', array('as' => 'dashboard.news', 'uses' => 'NewsController@index'));
-    Route::get('/news/{id}/{slug?}', array('as' => 'dashboard.news.show', 'uses' => 'NewsController@show'));
+    Route::get('/news', array('as' => 'dashboard.news', 'uses' => 'ArticleController@index'));
+    Route::get('/news/{slug?}', array('as' => 'dashboard.news.show', 'uses' => 'ArticleController@showNews'));
 
     // tags
     Route::get('/tag/{tag}', array('as' => 'dashboard.tag', 'uses' => 'TagController@index'));
@@ -43,6 +43,10 @@ Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch'
 
     // ticket-search
     Route::get('/ticket-search', ['as' => 'ticket.search', 'uses' => 'SearchController@ticketSearch']);
+
+    //mail chimp subscribe
+    Route::post('/subscribe', ['as' => 'email.subscribe', 'uses' => 'MailChimpController@subscribe']);
+
 });
 
 Route::post('/contact', array('as' => 'dashboard.contact.post', 'uses' => 'FormPostController@postContact'), array('before' => 'csrf'));
@@ -57,7 +61,6 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
 
     // admin dashboard
     Route::get('/', array('as' => 'admin.dashboard', function () {
-
         return View::make('backend/_layout/dashboard')
             ->with('active', 'home')
             ->with('menu', 'dashboard');
@@ -69,20 +72,17 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
     Route::get('media/list', 'MediaController@showListAction');
     Route::post('media/list_json', 'MediaController@listJsonAction');
     Route::any('media/filemanager', 'MediaController@filemanagerAction');
-
     Route::get('media/edit/{id}', 'MediaController@editAction')->where('id', '[0-9]+');
     Route::any('media/destroy/{id}', 'MediaController@destroy')->where('id', '[0-9]+');
     Route::get('media/delete/{id}', 'MediaController@deleteAction')->where('id', '[0-9]+');
 
     //page
     Route::get('pages', array('as'=>'admin.page.index','uses'=>'PageAdminController@showPages'));
-
     Route::post('pages/list', 'PageAdminController@listAction');
     Route::get('pages/edit/{id}', 'PageAdminController@editAction')->where('id', '[0-9]+');
     Route::get('pages/new', 'PageAdminController@newAction');
     // user
     Route::resource('user', 'UserController');
-
     Route::get('user/{id}/delete', array('as' => 'admin.user.delete', 'uses' => 'UserController@confirmDestroy'))
         ->where('id', '[0-9]+');
 
@@ -102,6 +102,10 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
 
     Route::any('events/destroy/{id}', array('as' => 'admin.events.destroy', 'uses' => 'EventsController@destroy'))
         ->where('id', '[0-9]+');
+
+    Route::get('widget/events', array('as' => 'admin.events.widget', 'uses' => 'EventsController@widget'));
+    Route::post('widget/events/update', array('as' => 'admin.events.widget.update', 'uses' => 'EventsController@widgetUpdate'));
+
     // faq
     Route::resource('faq', 'FaqController');
     Route::get('faq/{id}/delete', array('as' => 'admin.faq.delete', 'uses' => 'FaqController@confirmDestroy'))
@@ -313,7 +317,9 @@ Route::get('/checkout/{id}', array('as'=>'ticket.checkout', 'uses'=>'CheckoutCon
 Route::any('/checkout/order/{id}', array('as'=>'ticket.checkout.order', 'uses'=>'CheckoutController@order'))->where('id', '[0-9]+');
 
 Route::any('/search/ticket', array('as'=>'ticket.events.search', 'uses'=>'FootballTicketController@searchEvent'));
+Route::any('/search/ticket/category', array('as'=>'ticket.events.search.category', 'uses'=>'FootballTicketController@searchEventCategory'));
 Route::get('/events/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
+
 /*
 |--------------------------------------------------------------------------
 | Football tickets customer account
@@ -434,10 +440,10 @@ Route::group(array('before'=> 'customer.account'), function () {
 
     Route::get('/account/account-information/billing', 'AccountController@getCustomerBillingAddress'); //get customer billing address information
     Route::post('/account/account-information/billing', 'AccountController@setCustomerBillingAddress'); //set customer billing address  information
-
     Route::get('/account/account-information/shipping', 'AccountController@getCustomerShippingAddress'); //get customer address information
     Route::post('/account/account-information/shipping', 'AccountController@setCustomerShippingAddress'); //set customer address information
 });
+
 /*
 |--------------------------------------------------------------------------
 | General Routes
@@ -446,7 +452,6 @@ Route::group(array('before'=> 'customer.account'), function () {
 
 Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
     //should be an end
-
     Route::any( '{all}', 'IndexController@showPage')->where('all', '.*');
 });
 

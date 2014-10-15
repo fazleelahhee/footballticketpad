@@ -379,22 +379,45 @@
                 <span class="footerblock newsletterplane"></span>
                 <span class="footerblock  support-text">NEVER MISS OUT</span>
                 <span class="footerblock">
-                    <form id="form-subscribe">
-                          <input class="formfooter" placeholder="Enter email address" >
-                          <input class="gobtn" type="button" value="GO"></button>
+                    <form id="form-subscribe" action="{{route('email.subscribe')}}" method="post">
+                          <input class="formfooter" type="email" placeholder="Enter email address" name="subscriber_email">
+                          <input class="gobtn" type="button" value="GO" />
                     </form>
                 </span>
                 <span class=" footerblock support-text">SUBSCRIBE NOW</span>
                 
             </div>
-            
+
+
         
         </div>
 	</div>
 
 
 
-
+    {{ Assets::jsStart() }}
+    <script>
+        (function ($) {
+            $('.gobtn').click(function () {
+                var email = $('input[name=subscriber_email]').val();
+                if(email != '') {
+                    $.ajax({
+                        url: $('#form-subscribe').attr('action'),
+                        type: 'post',
+                        data: {email: email},
+                        success: function (response) {
+                            alert('Thank you very much for subscribe with us.');
+                            $('input[name=subscriber_email]').val('');
+                        },
+                        error: function (response) {
+                            console.log(response.responseText);
+                        }
+                    })
+                }
+            });
+        })(jQuery)
+    </script>
+    {{ Assets::jsEnd() }}
 
 
 
@@ -522,3 +545,4 @@
     </div>
 
 </footer>
+
