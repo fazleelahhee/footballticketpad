@@ -2895,19 +2895,15 @@ h3.buy-divider {
     margin-bottom: 10px;
 }
 .searchbtn-mobile { display: none}
-
 .error label, label.error {
+    bottom: -3px;
     color: #c60f13;
-    display: inline-block;
-    float: left;
-    font-size: 12px;
+    font-size: 10px;
     left: 0;
-    margin-bottom: 12px;
-    margin-top: -9px !important;
-    position: static;
-    text-align: right;
+    position: absolute;
+    text-align: center;
     width: 100%;
-    padding-right: ;
+    z-index: 8;
 }
 
 
