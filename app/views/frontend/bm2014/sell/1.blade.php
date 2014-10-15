@@ -17,15 +17,15 @@
             <ul class="step-process">
                 <li class="active">
                     <span class="number">1</span>
-                    <span class="selltitle">Your Tickets</span>
+                    <span class="selltitle">{{ __t('Your Tickets') }}</span>
                 </li>
                 <li>
                     <span class="number">2</span>
-                    <span class="selltitle">Your Tickets</span>
+                    <span class="selltitle">{{ __t('Your Personal details') }}</span>
                 </li>
                 <li>
                     <span class="number">3</span>
-                    <span class="selltitle">Your Tickets</span>
+                    <span class="selltitle">{{ __t('Protection Guarantee') }} </span>
                 </li>
             </ul>
         </div>
@@ -38,23 +38,23 @@
             </div>
         </div>
         <div class="row selldivider">
-            <div class="label bluelabel">Number of tickets</div>
+            <div class="label bluelabel">{{ __t('Number of tickets') }}</div>
             <div class="fields">
-                <select name="number_of_ticket">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                <select name="number_of_ticket" required>
+                    <option value="">{{ __t('Select') }}</option>
+                    @for($i=1; $i<=20; $i++)
+                    <option value="{{$i}}">{{$i}}</option>
+                    @endfor
                 </select>
-                <small>The tickets must be a joining seats, if they are not then please list them seperately</small>
+                <small>{{ __t('The tickets must be a joining seats, if they are not then please list them seperately') }}</small>
             </div>
         </div>
 
         <div class="row selldivider">
             <div class="label bluelabel">Form of ticket</div>
             <div class="fields">
-                <select name="form_of_ticket">
+                <select name="form_of_ticket" required>
+                    <option value=""> Select </option>
                     @foreach($node->getFormOfTickets() as $type)
                     <option value="{{$type->id}}"> {{$type->title}} </option>
                     @endforeach
@@ -65,9 +65,10 @@
         </div>
 
         <div class="row selldivider">
-            <div class="label bluelabel">Ticket type</div>
+            <div class="label bluelabel">{{ __t('Ticket type') }}</div>
             <div class="fields">
-                <select name="ticket_type">
+                <select name="ticket_type" required>
+                    <option value=""> Select </option>
                     @foreach($node->getTicketTypes() as $type)
                     <option value="{{$type->id}}"> {{$type->title}} </option>
                     @endforeach
@@ -81,10 +82,10 @@
             <div class="fields">
 
                 <label class="inline-label">Block</label>
-                <input class="inline-input input" type="text" name="loc_block">
+                <input class="inline-input input" type="text" name="loc_block" required/>
 
                 <label class="inline-label">Row</label>
-                <input class="inline-input input" type="text" name="loc_row">
+                <input class="inline-input input" type="text" name="loc_row" required />
 
 
                 <small>It’s important that you provide a detailed description of your tickets as it increases your chance of selling them</small>
@@ -133,7 +134,7 @@
             <div class="label bluelabel">How much do you want to charge for each ticket?</div>
 
             <div class="fields">
-                <input class="inline-input input" placeholder="Enter price" type="text" name="price">
+                <input class="inline-input input" placeholder="Enter price" type="text" name="price" required>
             </div>
 
 
@@ -149,7 +150,8 @@
             <div class="label bluelabel">How do you want to sell them?</div>
 
             <div class="fields" >
-                <select name="sell_preference">
+                <select name="sell_preference" required>
+                    <option value=""> Select </option>
                     <option value="0">No preference</option>
                     <option value="1">All together</option>
                     <option value="2">Avoid leaving one ticket</option>
@@ -223,7 +225,14 @@
 
 @stop
 
-
+{{
+    Assets::setScripts(
+    [
+        'underscore'             => 'js/underscore.min.js',
+        'jquery-validator'       => 'js/jquery-validator/jquery.validate.min.js',
+        'jquery-form'            => 'js/jquery-form.min.js'
+    ], false, true);
+}}
 {{ Assets::jsStart() }}
 <script type="text/javascript">
     (function ($) {
@@ -248,6 +257,16 @@
                 } else {
                     $('.price-review').css({display: 'none'});
                 }
+            });
+
+            var validator = '';
+
+            $('input[type=submit]').click(function () {
+                validator = $('form[name=ticket_sell]').validate();
+            })
+            $('form[name=ticket_sell]').submit(function () {
+                validator = $('form[name=ticket_sell]').validate();
+                return validator.form();
             });
 
         });

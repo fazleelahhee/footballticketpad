@@ -9,3 +9,7 @@ function gratavarUrl($email) {
 
 	return "http://www.gravatar.com/avatar/" . md5($email) . "?s=100";
 }
+
+function __t($str = '',  $domain='') {
+    return $str;
+}

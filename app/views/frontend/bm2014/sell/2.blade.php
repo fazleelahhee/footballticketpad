@@ -12,19 +12,18 @@
     <div class="site-content">
         <div class="row">
             <ul class="step-process">
-                <li>
-                    <span class="number ">1</span>
+                <li >
+                    <span class="number">1</span>
                     <span class="selltitle">Your Tickets</span>
                 </li>
                 <li class="active">
                     <span class="number">2</span>
-                    <span class="selltitle">Your Tickets</span>
+                    <span class="selltitle">Your Personal details</span>
                 </li>
                 <li>
                     <span class="number">3</span>
-                    <span class="selltitle">Your Tickets</span>
+                    <span class="selltitle">Protection Guarantee </span>
                 </li>
-
             </ul>
         </div>
         @if (empty($customer))
