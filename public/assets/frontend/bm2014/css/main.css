@@ -3932,6 +3932,13 @@ body.news .site-content {
 .sidebar-mobile { display: none}
 
 #form-subscribe { display: inline-block;
-    width: 270px;
-    vertical-align: top;}
+    width: 270px; vertical-align: top;}
+
 #form-subscribe input { display:inline-block;vertical-align: top; }
+
+html body .formfooter {
+    border-radius: 22px 0 0 22px !important;
+    -webkit-border-radius: 22px 0 0 22px !important;
+    height: 38px !important;
+    width: 210px !important;
+}
