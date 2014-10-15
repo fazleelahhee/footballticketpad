@@ -6,17 +6,15 @@ class MailChimpController extends BaseController {
         try {
             $input = Input::all();
 
-            $subscrib = new Subscribe();
-            $subscrib->email = $input['email'];
-            $subscrib->save();
-            MailchimpWrapper::lists()->subscribe('071c5abfb5', array('email'=>$subscrib->email));
+//            $subscrib = new Subscribe();
+//            $subscrib->email = $input['email'];
+//            $subscrib->save();
+            MailchimpWrapper::lists()->subscribe('071c5abfb5', array('email'=> $input['email']));
         } catch (Exception $e) {
             $response = Response::make( json_encode( ['message' => $e->getMessage() ]) , '400' );
             $response->header('Content-Type', 'application/json');
             return $response;
         }
-
-
         $response = Response::make( json_encode( ['message' => 'submitted' ]) , '200' );
         $response->header('Content-Type', 'application/json');
         return $response;

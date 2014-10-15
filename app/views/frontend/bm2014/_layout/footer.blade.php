@@ -406,7 +406,8 @@
                         type: 'post',
                         data: {email: email},
                         success: function (response) {
-                            console.log(response)
+                            alert('Thank you very much for subscribe with us.');
+                            $('input[name=subscriber_email]').val('');
                         },
                         error: function (response) {
                             console.log(response.responseText);

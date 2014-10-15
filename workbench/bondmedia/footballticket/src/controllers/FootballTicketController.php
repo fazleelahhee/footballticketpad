@@ -282,21 +282,38 @@ class FootballTicketController extends BaseController {
     public function searchEventCategory() {
         $input = Input::all();
         $output = array();
-        if ( $input['q'] ) {
-            $results = DB::table('football_ticket')->where('football_ticket.title', 'LIKE', "%{$input['q']}%")
-                      ->whereRaw("football_ticket.type='club'")
-                      ->take(5)
-                      ->get();
+        try {
+            if ( $input['q'] ) {
+                $results = DB::table('football_ticket')
+                    ->select('football_ticket.*', 'football_ticket_club_tournaments.tournament_id')
+                    ->leftJoin('football_ticket_club_tournaments', 'football_ticket_club_tournaments.club_id', '=', 'football_ticket.id')
+                    ->where('football_ticket.title', 'LIKE', "%{$input['q']}%")
+                    ->whereRaw("football_ticket.type='club'")
+                    ->take(5)
+                    ->groupBy('football_ticket.id')
+                    ->get();
+            }
+
+            foreach($results as $result) {
+                $temp = array();
+                $temp['name'] = $result->title;
+                $temp['url'] = '/group/club/'.$result->slug;
+                $tournament = FootballTickets::find($result->tournament_id);
+                if ($tournament) {
+                    $temp['league']['name'] = $tournament->title;
+                    $temp['league']['url'] = '/group/league/'.$result->slug;
+                } else {
+                    $temp['league']['name'] = '';
+                    $temp['league']['url'] = '#';
+                }
+                $output[] = $temp;
+            }
+        } catch (Exception $e) {
+            $response = Response::make( json_encode( $e->getMessage() ) , 400 );
+            $response->header('Content-Type', 'application/json');
+            return $response;
         }
 
-        foreach($results as $result) {
-            $temp = array();
-            $temp['name'] = $result->title;
-            $temp['url'] = '/group/club/'.$result->slug;
-            $temp['league']['name'] = 'premier ship';
-
-            $output[] = $temp;
-        }
         $response = Response::make( json_encode( $output ) , '200' );
         $response->header('Content-Type', 'application/json');
         return $response;

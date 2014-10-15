@@ -317,7 +317,7 @@ Route::get('/checkout/{id}', array('as'=>'ticket.checkout', 'uses'=>'CheckoutCon
 Route::any('/checkout/order/{id}', array('as'=>'ticket.checkout.order', 'uses'=>'CheckoutController@order'))->where('id', '[0-9]+');
 
 Route::any('/search/ticket', array('as'=>'ticket.events.search', 'uses'=>'FootballTicketController@searchEvent'));
-Route::get('/search/ticket/category', array('as'=>'ticket.events.search.category', 'uses'=>'FootballTicketController@searchEventCategory'));
+Route::any('/search/ticket/category', array('as'=>'ticket.events.search.category', 'uses'=>'FootballTicketController@searchEventCategory'));
 /*
 |--------------------------------------------------------------------------
 | Football tickets customer account

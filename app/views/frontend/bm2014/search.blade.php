@@ -63,11 +63,11 @@
                 success: function (response) {
                     var i = 0;
                     _.each(response, function (item) {
-                        if(item.entity_id) {
+                        if(item.name) {
                             var html = '<li> ';
-                            html += '<a href="#"><span class="game">'+item.name+'</span></a>';
-                            html += '<span class="subtext"><a href="#">Premier League</a></span>';
-                            html += ' <a class="btn greenbtn pull-right" href="/buy">See tickets</a>';
+                            html += '<a href="'+item.url+'"><span class="game">'+item.name+'</span></a>';
+                            html += '<span class="subtext"><a href="'+item.league.url+'">'+item.league.name+'</a></span>';
+                            html += ' <a class="btn greenbtn pull-right" href="'+item.url+'">See tickets</a>';
                             html += '</li>';
                             $('.event-category').append(html);
                             i++;
