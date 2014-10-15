@@ -198,8 +198,10 @@ Assets::setStyles(
                 },
                 success: function(response) {
                     ticketContainer.removeClass('loading');
-//                    alert("Ticket has been added to selling list");
-//                    window.location = '/';
+                    if ( response.message ) {
+                        var template = _.template($('#ticket-reponse').html());
+                        $('.site-content').html(template({reference_number:response.message}));
+                    }
                 }
 
             });
@@ -207,13 +209,16 @@ Assets::setStyles(
     })(jQuery)
 </script>
 
-<script type="text/x-template">
+<script type="text/x-template" id="ticket-reponse">
     <div class="row">
         <h2>Ticket Confirmation</h2>
         <p>
-            Congratulations! You ticket has been added to listing.
+            Thank you for listing your tickets with Football Ticket Pad. Your tickets are now available for football fans all over the world to see and buy.
             <br />
-            your ticket reference number: <%=reference_number%>
+            Your listing ID is: <%=reference_number%>
+            <br />
+            Please ensure that your listing is kept up to date at all times. You can edit the listing in the “My Account” section of our website under the heading “Listings.”
+            <br />
         </p>
     </div>
 </script>
