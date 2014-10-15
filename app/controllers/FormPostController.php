@@ -46,7 +46,7 @@ class FormPostController extends BaseController {
 
         Mail::send('emails.contact-form.form', $formData, function ($message) {
             $message->from(Input::get('sender_email'), Input::get('sender_name_surname'));
-            $message->to('feleahee@gmail.com', 'Fazle Elahee')->subject("Football Ticketpad contact form");
+            $message->to('felahee@gmail.com', 'Fazle Elahee')->subject("Football Ticketpad contact form");
         });
 
 

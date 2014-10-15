@@ -20,23 +20,18 @@
 
         <div class="row">
             <ul class="step-process">
-
-                <li>
-                    <span class="number ">1</span>
+                <li >
+                    <span class="number">1</span>
                     <span class="selltitle">Your Tickets</span>
                 </li>
-
                 <li>
                     <span class="number">2</span>
-                    <span class="selltitle">Your Tickets</span>
+                    <span class="selltitle">Your Personal details</span>
                 </li>
-
-
                 <li class="active">
                     <span class="number">3</span>
-                    <span class="selltitle">Your Tickets</span>
+                    <span class="selltitle">Protection Guarantee </span>
                 </li>
-
             </ul>
         </div>
 
@@ -201,10 +196,10 @@ Assets::setStyles(
                     ticketContainer.append('<div class="ajax-loading-modal"></div>');
                     ticketContainer.addClass("loading");
                 },
-                success: function() {
+                success: function(response) {
                     ticketContainer.removeClass('loading');
-                    alert("Ticket has been added to selling list");
-                    window.location = '/';
+//                    alert("Ticket has been added to selling list");
+//                    window.location = '/';
                 }
 
             });
@@ -212,4 +207,14 @@ Assets::setStyles(
     })(jQuery)
 </script>
 
+<script type="text/x-template">
+    <div class="row">
+        <h2>Ticket Confirmation</h2>
+        <p>
+            Congratulations! You ticket has been added to listing.
+            <br />
+            your ticket reference number: <%=reference_number%>
+        </p>
+    </div>
+</script>
 {{ Assets::jsEnd() }}

@@ -20,6 +20,14 @@ class SellController extends BaseController
             return Redirect::route('ticket.sell.2', array('id'=>$ticketId));
         }
 
+        $ticketAggregatedPrice = DB::table('events_related_tickets')
+            ->select(DB::raw('MIN(price) AS min_price, MAX(price) AS max_price, AVG(price) AS avg_price'))
+            ->where('event_id', '=', $ticketId)
+            ->groupBy('event_id')
+            ->first();
+
+        View::share('ticketAggregatedPrice', $ticketAggregatedPrice);
+
         View::share('body_class', 'pages sell-1 sell1');
         $node = FootBallEvent::find($ticketId);
         return View::make(Template::name('frontend.%s.sell.1'), compact('node'));
@@ -109,8 +117,6 @@ class SellController extends BaseController
             $relatedTicket->price = $data['ticketInformation']['price'];
             $relatedTicket->save();
         }
-        // related products
-        // RelatedTicket
 
 
     }
