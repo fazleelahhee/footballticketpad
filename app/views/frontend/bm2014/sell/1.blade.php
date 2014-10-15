@@ -163,11 +163,11 @@
 
 
 
-        <h3 class="sell-divider row">Price Review</h3>
+        <h3 class="sell-divider row price-review" style="display: none">Price Review</h3>
 
         <div class="row selldivider">
             <label class="inline-label">Your tickets will be listed for</label>
-            <span class="blueprice">&pound;98.99</span>
+            <span class="blueprice review-amount"></span>
         </div>
 
         <div class="row selldivider">
@@ -181,19 +181,29 @@
                 </thead>
 
                 <tbody>
+                @if ($ticketAggregatedPrice)
                 <tr>
                     <td><strong>They are currently being sold for</strong></td>
-                    <td>&pound;199.36</td>
-                    <td>&pound;199.36</td>
-                    <td>&pound;199.36</td>
+                    <td>&pound;{{number_format ($ticketAggregatedPrice->max_price, 2)}}</td>
+                    <td>&pound;{{number_format ($ticketAggregatedPrice->avg_price, 2)}}</td>
+                    <td>&pound;{{number_format ($ticketAggregatedPrice->min_price, 2)}}</td>
                 </tr>
-
+               @else
                 <tr>
-                    <td><strong>They have previously been sold for</strong></td>
-                    <td>&pound;199.36</td>
-                    <td>&pound;199.36</td>
-                    <td>&pound;199.36</td>
+                    <td><strong>They are currently being sold for</strong></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
                 </tr>
+               @endif
+
+
+<!--                <tr>-->
+<!--                    <td><strong>They have previously been sold for</strong></td>-->
+<!--                    <td>&pound;199.36</td>-->
+<!--                    <td>&pound;199.36</td>-->
+<!--                    <td>&pound;199.36</td>-->
+<!--                </tr>-->
 
                 </tbody>
 
@@ -227,6 +237,19 @@
             });
 
             $('.restriction-option-no').prop('checked', true);
+
+            $('input[name=price]').focusout( function (e) {
+                e.preventDefault();
+                if( parseFloat($(this).val()) > 0) {
+                    var price = parseFloat($(this).val());
+                    $('.price-review').css({display: 'block'});
+                    $('.review-amount').html("&nbsp;&pound;"+price.toFixed(2))
+                    $(this).val(price.toFixed(2));
+                } else {
+                    $('.price-review').css({display: 'none'});
+                }
+            });
+
         });
     })(jQuery)
 </script>
