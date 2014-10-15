@@ -42,6 +42,7 @@ class FormPostController extends BaseController {
             return $response;
         }
 
+        $formData['sender_message'] = $formData['post'];
 
         Mail::send('emails.contact-form.form', $formData, function ($message) {
             $message->from(Input::get('sender_email'), Input::get('sender_name_surname'));
