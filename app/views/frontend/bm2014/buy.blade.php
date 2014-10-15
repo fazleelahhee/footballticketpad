@@ -10,12 +10,14 @@
          <span class="gamedetail">{{date('l, dS F Y, h:ia', strtotime($node->datetime))}}. {{$node->event_location}}</span>
          <a href="/ticket/sell/{{$node->id}}" class="btn bluebtn">SELL TICKETS</a>
      </span>
-
+<span class="club-effect">
     @if($node->venue_image != '')
     <img class="inner-banner" src="{{$node->feature_image}}" alt="banner image" />
     @else
     <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="banner image" />
     @endif
+</span>
+
     <span class="ftp-line">
     	<span class="greenline"></span>
         <span class="yellowline"></span>
