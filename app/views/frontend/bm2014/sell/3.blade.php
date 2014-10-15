@@ -196,10 +196,10 @@ Assets::setStyles(
                     ticketContainer.append('<div class="ajax-loading-modal"></div>');
                     ticketContainer.addClass("loading");
                 },
-                success: function() {
+                success: function(response) {
                     ticketContainer.removeClass('loading');
-                    alert("Ticket has been added to selling list");
-                    window.location = '/';
+//                    alert("Ticket has been added to selling list");
+//                    window.location = '/';
                 }
 
             });
@@ -207,4 +207,14 @@ Assets::setStyles(
     })(jQuery)
 </script>
 
+<script type="text/x-template">
+    <div class="row">
+        <h2>Ticket Confirmation</h2>
+        <p>
+            Congratulations! You ticket has been added to listing.
+            <br />
+            your ticket reference number: <%=reference_number%>
+        </p>
+    </div>
+</script>
 {{ Assets::jsEnd() }}

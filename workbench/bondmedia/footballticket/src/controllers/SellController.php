@@ -117,8 +117,6 @@ class SellController extends BaseController
             $relatedTicket->price = $data['ticketInformation']['price'];
             $relatedTicket->save();
         }
-        // related products
-        // RelatedTicket
 
 
     }
