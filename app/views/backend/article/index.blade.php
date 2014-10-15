@@ -43,7 +43,7 @@
                     <tbody>
                     @foreach( $articles as $article )
                     <tr>
-                        <td> {{ link_to_route( 'admin.article.show', $article->title, $article->id, array( 'class' => 'btn btn-link btn-xs' )) }}</td>
+                        <td><a href="{{ URL::route('admin.article.edit', array($article->id)) }}">{{$article->title}}</a></td>
                         <td>{{{ $article->created_at }}}</td>
                         <td>{{{ $article->updated_at }}}</td>
                         <td>
@@ -53,11 +53,11 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ URL::route('admin.article.show', array($article->id)) }}">
-                                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show Article
-                                        </a>
-                                    </li>
+<!--                                    <li>-->
+<!--                                        <a href="{{ URL::route('admin.article.show', array($article->id)) }}">-->
+<!--                                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show Article-->
+<!--                                        </a>-->
+<!--                                    </li>-->
                                     <li>
                                         <a href="{{ URL::route('admin.article.edit', array($article->id)) }}">
                                             <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Article

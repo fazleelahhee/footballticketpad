@@ -15,7 +15,7 @@ class SellController extends BaseController
         if(Request::isMethod('post'))
         {
             $data = Input::all();
-            Session::put('ticket_part_1', $data);
+            Session::put('ticket_part_1_'.$ticketId, $data);
             //redirect to second page
             return Redirect::route('ticket.sell.2', array('id'=>$ticketId));
         }
@@ -36,10 +36,14 @@ class SellController extends BaseController
     public function ticketSellerInfo($ticketId = '') {
         //$ticket = Input::all();
 
+        if(Session::get('ticket_part_1_'.$ticketId) == '') {
+            return Redirect::route('ticket.sell.1', array('id'=>$ticketId));
+        }
+
         if(Request::isMethod('post'))
         {
             $data = Input::all();
-            Session::put('ticket_part_2', $data);
+            Session::put('ticket_part_2_'.$ticketId, $data);
             //redirect to second page
             return Redirect::route('ticket.sell.3', array('id'=>$ticketId));
         }
@@ -53,10 +57,14 @@ class SellController extends BaseController
 
     public function ticketSellerAgreement($ticketId = '') {
 
+        if(Session::get('ticket_part_1_'.$ticketId) == '' || Session::get('ticket_part_2_'.$ticketId) == '') {
+            return Redirect::route('ticket.sell.1', array('id'=>$ticketId));
+        }
+
         if(Request::isMethod('post'))
         {
             $data = Input::all();
-            Session::put('ticket_part_3', $data);
+            Session::put('ticket_part_3_'.$ticketId, $data);
             //redirect to second page
             return Redirect::route('ticket.sell.4', array('id'=>$ticketId));
         }
@@ -70,54 +78,74 @@ class SellController extends BaseController
     }
 
     public function publishTicket($ticketId = '') {
-        $data =  array();
-        $customer = Session::get('customer');
-        $data['ticketInformation']   = Session::get('ticket_part_1');
-        $data['paymentMethod']       = Session::get('ticket_part_2');
-        $data['paymentAgreement']    = Session::get('ticket_part_3');
+        try {
+            $data =  array();
+            $customer = Session::get('customer');
+            $data['ticketInformation']   = Session::get('ticket_part_1_'.$ticketId);
+            $data['paymentMethod']       = Session::get('ticket_part_2_'.$ticketId);
+            $data['paymentAgreement']    = Session::get('ticket_part_3_'.$ticketId);
 
-        $node = FootBallEvent::find($ticketId);
-        $info = $node->toArray();
-        $attributeSet = TicketSoap::process('product_attribute_set.list');
-        $product = array(
-            'simple',
-            $attributeSet[0]['set_id'],
-            "-{$ticketId}-{$customer['entity_id']}-{$data['ticketInformation']['ticket_type']}-{$data['ticketInformation']['loc_block']}-{$data['ticketInformation']['loc_row']}",
-            array(
-                'categories' => array(2),
-                'websites' => array(1),
-                'name' => $info['title'],
-                'description' => $info['content'],
-                'short_description' => $info['content'],
-                'weight' => '1',
-                'status' => '1',
-                'url_key' => $info['slug'],
-                'url_path' => $info['slug'],
-                'visibility' => '4',
-                'price' => $data['ticketInformation']['price'],
-                'tax_class_id' => 0,
-                'meta_title' => $info['title'],
-                'meta_keyword' => strip_tags($info['content']),
-                'meta_description' => strip_tags($info['content']),
-                'stock_data' => array(
-                    'qty' => 100,
-                    'is_in_stock'=>1,
-                    'min_sale_qty'=> 1
+            if(Session::get('ticket_part_1_'.$ticketId) == ''
+                || Session::get('ticket_part_2_'.$ticketId) == ''
+                || Session::get('ticket_part_2_'.$ticketId) == ''
+            ) {
+                return Redirect::route('ticket.sell.1', array('id'=>$ticketId));
+            }
 
-                ),
+            $node = FootBallEvent::find($ticketId);
+            $info = $node->toArray();
+            $attributeSet = TicketSoap::process('product_attribute_set.list');
+            $product = array(
+                'simple',
+                $attributeSet[0]['set_id'],
+                "-{$ticketId}-{$customer['entity_id']}-{$data['ticketInformation']['ticket_type']}-{$data['ticketInformation']['loc_block']}-{$data['ticketInformation']['loc_row']}",
+                array(
+                    'categories' => array(2),
+                    'websites' => array(1),
+                    'name' => $info['title'],
+                    'description' => $info['content'],
+                    'short_description' => $info['content'],
+                    'weight' => '1',
+                    'status' => '1',
+                    'url_key' => $info['slug'],
+                    'url_path' => $info['slug'],
+                    'visibility' => '4',
+                    'price' => $data['ticketInformation']['price'],
+                    'tax_class_id' => 0,
+                    'meta_title' => $info['title'],
+                    'meta_keyword' => strip_tags($info['content']),
+                    'meta_description' => strip_tags($info['content']),
+                    'stock_data' => array(
+                        'qty' => 100,
+                        'is_in_stock'=>1,
+                        'min_sale_qty'=> 1
 
-            )
-        );
-        $response = TicketSoap::process('catalog_product.create', $product);
-        if ($response) {
-            $relatedTicket = new RelatedTicket();
-            $relatedTicket->event_id = $ticketId;
-            $relatedTicket->product_id = $response;
-            $relatedTicket->ticket = json_encode($data);
-            $relatedTicket->price = $data['ticketInformation']['price'];
-            $relatedTicket->save();
+                    ),
+
+                )
+            );
+            $response = TicketSoap::process('catalog_product.create', $product);
+            if ($response) {
+                $relatedTicket = new RelatedTicket();
+                $relatedTicket->event_id = $ticketId;
+                $relatedTicket->product_id = $response;
+                $relatedTicket->ticket = json_encode($data);
+                $relatedTicket->price = $data['ticketInformation']['price'];
+                $relatedTicket->save();
+            }
+        } catch (Exception $e) {
+            $response = Response::make(json_encode(['message' => $e->getMessage()]), '400');
+            $response->header('Content-Type', 'application/json');
+            return $response;
         }
 
+        Session::put('ticket_part_1_'.$ticketId, '');
+        Session::put('ticket_part_2_'.$ticketId, '');
+        Session::put('ticket_part_3_'.$ticketId, '');
+
+        $response = Response::make(json_encode(['message' => $response]), '200');
+        $response->header('Content-Type', 'application/json');
+        return $response;
 
     }
 

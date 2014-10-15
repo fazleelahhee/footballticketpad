@@ -13,7 +13,7 @@ Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch'
 
     // article
     //Route::get('/article', array('as' => 'dashboard.article', 'uses' => 'ArticleController@index'));
-    //Route::get('/article/{id}/{slug?}', array('as' => 'dashboard.article.show', 'uses' => 'ArticleController@show'));
+    Route::get('/article/{id}/{slug?}', array('as' => 'dashboard.article.show', 'uses' => 'ArticleController@show'));
 
     // news
     Route::get('/news', array('as' => 'dashboard.news', 'uses' => 'ArticleController@index'));
