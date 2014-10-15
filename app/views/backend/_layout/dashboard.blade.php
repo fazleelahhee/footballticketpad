@@ -12,7 +12,7 @@
                     <a href="{{ route('admin.page.index') }}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-book"></span> <br/>Pages</a>
 
                     <a href="{{ route('admin.user.index') }}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
-                    <a href="{{ route('admin.form-post.index') }}" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> <br/>Inbox</a>
+                
                     <a href="{{ route('admin.settings') }}" class="btn btn-default btn-lg" role="button"><span class="glyphicon glyphicon-cog"></span> <br/>Settings</a>
                 </div>
                 </div>
