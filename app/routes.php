@@ -318,6 +318,8 @@ Route::any('/checkout/order/{id}', array('as'=>'ticket.checkout.order', 'uses'=>
 
 Route::any('/search/ticket', array('as'=>'ticket.events.search', 'uses'=>'FootballTicketController@searchEvent'));
 Route::any('/search/ticket/category', array('as'=>'ticket.events.search.category', 'uses'=>'FootballTicketController@searchEventCategory'));
+Route::get('/events/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
+
 /*
 |--------------------------------------------------------------------------
 | Football tickets customer account
