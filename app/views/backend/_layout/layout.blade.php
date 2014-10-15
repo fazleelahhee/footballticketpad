@@ -302,7 +302,7 @@
 
         <div class="col-xs-6 col-sm-6 text-right hidden-xs">
             <div class="txt-color-white inline-block">
-              
+
 
                 <div class="btn-group dropup">
                     <button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
