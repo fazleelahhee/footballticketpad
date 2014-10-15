@@ -153,7 +153,7 @@
 
         <!-- logout button -->
         <div id="logout" class="btn-header transparent pull-right">
-            <span> <a href="{{ BMAdmin::url('logout') }}" title="Sign Out" data-action="userLogout"
+            <span> <a href="{{ route('admin.logout') }}" title="Sign Out" data-action="userLogout"
                       data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i
                         class="fa fa-sign-out "> </i>  <span class="signoutbtns">Logout</span> </a> </span>
         </div>
