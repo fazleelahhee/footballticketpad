@@ -139,28 +139,7 @@
             </ul>
         </li>
         @yield('nev_menu_after_appearance')
-        <li class="{{ in_array($menu, array('gallery', 'gallery/new', 'gallery/edit'))? 'active':'' }}">
-            <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Gallery</span></a>
-            <ul>
-                <li class="{{ $menu == 'gallery'?'active': '' }}">
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/photo_gallery">View Gallery</a>
-                </li>
-
-
-                @if($menu == 'gallery/edit')
-                <li class="{{ $menu == 'gallery/edit'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/photo_gallery/edit">Edit</a>
-                </li>
-
-                @else
-                <li class="{{ $menu == 'gallery/new'?'active': '' }}" >
-                    <a href="/{{ Config::get('bondcms.admin_prefix') }}/photo_gallery/create">Add New</a>
-                </li>
-                @endif
-
-            </ul>
-        </li>
-        @yield('nev_menu_after_gallery')
+        
 
         <li class="{{ $type != 'block' && in_array($menu, array('slider', 'slider/new', 'slider/edit'))? 'active':'' }}">
             <a href="#"><i class="fa fa-lg fa-fw fa-th-large"></i> <span class="menu-item-parent">Slider</span></a>

@@ -14,14 +14,8 @@
         "contact":"contact.blade.php",
         "register":"register.blade.php",
         "login":"login.blade.php",
-        "sell1":"sell1.blade.php",
-        "sell2":"sell2.blade.php",
-        "sell3":"sell3.blade.php",
         "search":"search.blade.php",
-        "corporate":"corporate.blade.php",
-        "buy":"buy.blade.php",
-        "league":"league.blade.php",
-        "checkout":"checkout.blade.php"
+        "corporate":"corporate.blade.php"
 
     },
     "screenshort": ""
