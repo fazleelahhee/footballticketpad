@@ -3912,6 +3912,12 @@ body.news .site-content {
         text-align: left;
         width: 280px;
     }
+    .collapsible_content {
+
+        overflow: scroll;
+
+    }
+    .accountarea .row { overflow: scroll;}
 
 
 }

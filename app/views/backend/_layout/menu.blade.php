@@ -139,7 +139,7 @@
             </ul>
         </li>
         @yield('nev_menu_after_appearance')
-        
+
 
         <li class="{{ $type != 'block' && in_array($menu, array('slider', 'slider/new', 'slider/edit'))? 'active':'' }}">
             <a href="#"><i class="fa fa-lg fa-fw fa-th-large"></i> <span class="menu-item-parent">Slider</span></a>
