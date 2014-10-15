@@ -2076,7 +2076,7 @@ header .searcharea .bigbox-search-button {
 .club-logo {
   float: left;
   margin-left: 10px;
-  margin-top: 46px;
+  margin-top: 46px; max-width: 110px;
 }
 
 .teaminfo {

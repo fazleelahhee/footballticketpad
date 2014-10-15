@@ -62,7 +62,7 @@
                 <span class="blockrow">
                 	
                     <span class="date">
-                    	<img src="{{ $club->value }}" alt="chelsea FC" />
+                    	<img src="{{ $club->value }}" alt="{{$club->title}}" />
                     </span>
                     
                     <span class="game">
