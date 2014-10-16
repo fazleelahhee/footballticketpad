@@ -3215,6 +3215,10 @@ body.news .site-content {
         max-width: none !important;
 
     }
+    .description-team .description {
+
+        width: 75% !important; margin-bottom: 20px !important;
+    }
 
 
     .buy-detail {
