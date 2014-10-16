@@ -3980,7 +3980,21 @@ html body .formfooter {
     text-align: center !important;
 }
 .st-head-row .pull-left {
+    display: inline-block;
+    float: none;
     text-align: center !important;
+    width: 100% !important;
+}
+.st-head-row .gamedetail .game {
+    display: inline-block;
+    float: none;
+    font-weight: 500;
+    height: auto;
+    line-height: inherit;
+    margin-bottom: 10px;
+    padding-bottom: 16px;
+    padding-top: 17px;
+    width: 100%;
 }
 
 
