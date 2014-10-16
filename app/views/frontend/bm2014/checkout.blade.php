@@ -268,7 +268,7 @@
                     </div>
 
                     <div class="columns six">
-                        <select name="country_id" id="country">
+                        <select class="input" name="country_id" id="country">
                            <option value="GB"> United Kingdom </option>
                         </select>
                     </div>
