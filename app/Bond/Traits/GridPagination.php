@@ -20,7 +20,7 @@ trait GridPagination {
             $order  = Input::get ('order');
 
             $orderColumn = isset($order[0]['column']) ? $columns[$order[0]['column']] : 'id';
-            $orderDir    = isset($order[0]['dir']) ? $order[0]['dir'] : 'ASC';
+            $orderDir    = isset($order[0]['dir']) ? $order[0]['dir'] : 'DESC';
 
             $search = isset($search['value']) ? $search['value'] : '';
 

@@ -43,7 +43,7 @@ class PageRepository extends Validator implements BaseRepositoryInterface
     public function all()
     {
 
-        return $this->page->get();
+        return $this->page->orderBy('created_at', 'DESC')->get();
     }
 
     public function lists()

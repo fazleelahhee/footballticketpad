@@ -24,5 +24,6 @@ CKEDITOR.editorConfig = function( config ) {
             { name: 'colors',      items : [ 'TextColor','BGColor' ] },
             { name: 'tools',       items : [ 'Maximize', 'ShowBlocks','-','About' ] }
         ];
+    config.allowedContent = true;
 };
 
