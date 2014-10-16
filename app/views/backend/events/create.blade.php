@@ -236,6 +236,8 @@
                 saveBtnElem = options.saveBtnElem,
                 selectElem  = options.selectElem,
                 addUrl      = options.addUrl,
+                delUrl      = options.delUrl,
+                delBtn      = options.delBtn,
                 loaded      = false,
                 types       = [],
                 self        = this;
@@ -340,6 +342,48 @@
                         .trigger('click');
                     self.displayOnForm();
                 });
+
+                body.on('change', 'select', function (e) {
+                    var parentDiv = $(this).closest('div.modal-body');
+                    var inputIdContainer = parentDiv.find('input.delete-ids');
+                    var removeBtn = parentDiv.find(delBtn);
+                    if(inputIdContainer.length > 0) {
+                        inputIdContainer.val($(this).val().join());
+                        removeBtn.css({display: 'block'});
+                    }
+                });
+
+                body.on('click', '.remove-selected-ticket', function (e) {
+                    e.preventDefault();
+                    var parentDiv = $(this).closest('div.modal-body');
+                    var ids  = parentDiv.find('input.delete-ids').val();
+                    if(ids  === '') {
+                        return;
+                    }
+                    var arrIds = ids.split(',');
+                    console.log(arrIds);
+                    var data = {
+                        ids:  parentDiv.find('input.delete-ids').val()
+                    }
+
+                    $.ajax({
+                        url: delUrl,
+                        data: data,
+                        type: 'post',
+                        dataType: 'json'
+
+                    });
+
+                    if(arrIds.length > 0 ) {
+                        for(var i=0; i<arrIds.length ; i++) {
+                            $(selectElem).find('option').each(function () {
+                                if($(this).attr('value') === arrIds[i]) {
+                                    $(this).remove();
+                                }
+                            });
+                        }
+                    }
+                });
                 return this;
             }
 
@@ -372,7 +416,9 @@
                 addInElem   : '.add-ticket-type-input',
                 addUrl      : '{{ route("ticket.events.ticket-types.add")}}',
                 saveBtnElem : '.selected-ticket-type',
-                selectElem  : '.ticket-types'
+                selectElem  : '.ticket-types',
+                delUrl      : '{{route("ticket.events.ticket-types.delete")}}',
+                delBtn      : '.remove-selected-ticket'
             }).init().events();
 
             new PopUpSelector({
@@ -386,7 +432,9 @@
                 addInElem   : '.add-ticket-type-input',
                 addUrl      : '{{ route("ticket.events.formOfTicket.add")}}',
                 saveBtnElem : '.set-form-of-ticket',
-                selectElem  : '.form-of-tickets'
+                selectElem  : '.form-of-tickets',
+                delUrl      : '{{route("ticket.events.ticket-types.delete")}}',
+                delBtn      : '.remove-selected-ticket'
             }).init().events();
 
             new PopUpSelector({
@@ -400,7 +448,10 @@
                 addInElem   : '.add-restriction-input',
                 addUrl      : '{{ route("ticket.events.restriction.add")}}',
                 saveBtnElem : '.set-restriction-ticket',
-                selectElem  : '.restrictions-ticket'
+                selectElem  : '.restrictions-ticket',
+                delUrl      : '{{route("ticket.events.ticket-types.delete")}}',
+                delBtn      : '.remove-selected-ticket'
+
             }).init().events();
 
             //
@@ -432,6 +483,8 @@
                             <% }) %>
                         </select>
                     </div>
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
                     </p>
                 </div>
                 <div class="modal-footer">

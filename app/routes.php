@@ -270,6 +270,7 @@ Route::get('/group/{type}/{slug}', array('as' => 'dashboard.footballticket.show'
 
 Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'before' => array('auth.admin', 'assets_admin')), function () {
     Route::post('/ticket/events/ticket-types/add', array('as'=>'ticket.events.ticket-types.add','uses'=>'TicketTypeController@create'));
+    Route::post('/ticket/events/ticket-types/remove', array('as'=>'ticket.events.ticket-types.delete','uses'=>'TicketTypeController@remove'));
 
     Route::post('/ticket/events/form-of-ticket/add', array('as'=>'ticket.events.formOfTicket.add','uses'=>'FormOfTicketController@create'));
     Route::post('/ticket/events/ticket-restriction/add', array('as'=>'ticket.events.restriction.add','uses'=>'TicketRestrictionController@create'));
