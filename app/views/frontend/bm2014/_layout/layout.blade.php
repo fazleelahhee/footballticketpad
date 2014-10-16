@@ -60,7 +60,8 @@
     //    $('ul#menu-header').nav-bar();
     //]]>
 
-    $('.responsivetable').stacktable();
+    $('.ticket-listing .responsivetable').stacktable();
+    $('.buy .responsivetable').stacktable();
 
 </script>
 
