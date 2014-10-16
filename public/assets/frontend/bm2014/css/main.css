@@ -3938,6 +3938,9 @@ body.news .site-content {
         height: auto;
         padding: 2px 9px;
     }
+    .stacktable .btn.pinkbtn {
+        padding: 10px 30px;
+    }
 
 }
 
@@ -4006,9 +4009,7 @@ html body .formfooter {
 }
 
 
-.stacktable .btn.pinkbtn {
-    padding: 10px 30px;
-}
+
 /* RESPONSIVE EXAMPLE */
 .st-head-row {
     padding-bottom: 20px;
