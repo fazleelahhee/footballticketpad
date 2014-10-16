@@ -7,8 +7,8 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
 
 Breadcrumbs::register('blog', function ($breadcrumbs) {
 
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Blog', route('dashboard.article'));
+    //$breadcrumbs->parent('home');
+    //$breadcrumbs->push('Blog', route('dashboard.article'));
 });
 
 Breadcrumbs::register('blog.post.show', function ($breadcrumbs, $article) {

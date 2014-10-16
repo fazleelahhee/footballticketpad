@@ -116,7 +116,10 @@
             ajax: {
                 url: "/{{ Config::get('bondcms.admin_prefix') }}/pages/list",
                 type: 'POST'
-            }
+            },
+
+            order: [[0, 'DESC']]
+
         });
 
 

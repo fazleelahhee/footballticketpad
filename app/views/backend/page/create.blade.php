@@ -293,7 +293,7 @@ Assets::setScripts([
         f.fileManagerWindow =null;
         f.elem = null;
         f.openFileManager = function () {
-            this.fileManagerWindow = window.open("/filemanager/show?CKEditorFuncNum=1&langCode=en", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=100, left=500, width=600, height=400");
+            this.fileManagerWindow = window.open("/filemanager/show?CKEditorFuncNum=1&langCode=en", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=100, left=500, width=900, height=600");
         };
         f.closeFileManager = function () {
             if(this.fileManagerWindow) {

@@ -39,29 +39,31 @@ class MediaController extends BaseController
         $uploadPath['day']   = date('d');
         $path                = '';
 
-        foreach ($uploadPath as $relPath) {
-            if (empty($path)) {
-                $path = $relPath;
-            } else {
-                $path = $path . DIRECTORY_SEPARATOR . $relPath;
-            }
-            if (!file_exists($path)) {
-                mkdir($path);
-            }
-        }
-
+        $uploadPath['uploadPath'] = public_path().Input::get('currentpath');
+//        foreach ($uploadPath as $relPath) {
+//            if (empty($path)) {
+//                $path = $relPath;
+//            } else {
+//                $path = $path . DIRECTORY_SEPARATOR . $relPath;
+//            }
+//            if (!file_exists($path)) {
+//                mkdir($path);
+//            }
+//        }
+        $path = $uploadPath['uploadPath'];
         //create relative path
         $uploadPath['dir'] = Config::get('bondcms.upload_directory');
         $relativePath      = '';
 
-        foreach ($uploadPath as $relPath) {
-            if (empty($relativePath)) {
-                $relativePath = $relPath;
-            } else {
-                $relativePath = $relativePath . DIRECTORY_SEPARATOR . $relPath;
-            }
-        }
+//        foreach ($uploadPath as $relPath) {
+//            if (empty($relativePath)) {
+//                $relativePath = $relPath;
+//            } else {
+//                $relativePath = $relativePath . DIRECTORY_SEPARATOR . $relPath;
+//            }
+//        }
 
+        $relativePath = rtrim(ltrim(Input::get('currentpath'), '/'), '/') ;
         if(Input::hasFile('file')) {
             $fileVar = "file";
         } else {

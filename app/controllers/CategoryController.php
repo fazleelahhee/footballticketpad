@@ -19,6 +19,7 @@ class CategoryController extends BaseController {
     public function index($title) {
 
         $articles = $this->category->getArticlesByTitle($title);
-        return View::make(Template::name('frontend.%s.category.index'), compact('articles'));
+        View::share('body_class', 'articles category');
+        return View::make(Template::name('frontend.%s.news.index'), array('news'=>$articles));
     }
 }
