@@ -61,34 +61,7 @@
              </div>
              <div class="columns seven">
                  <!---------toolbar------------>
-                 <div class="row toolbar">
 
-                     <span class="filter-label pull-left offset-right">Filter by</span>
-
-                     <div class="pull-right">
-
-                         <select>
-
-                             <option>No of tickets</option>
-                             <option>No of tickets</option>
-                             <option>No of tickets</option>
-                         </select>
-
-                         <select>
-
-                             <option>All types of tickets</option>
-                             <option>All types of tickets</option>
-                             <option>All types of tickets</option>
-                         </select>
-
-
-                     </div>
-
-
-
-
-
-                 </div>
                  <!---------toolbar------------>
 
 
@@ -96,6 +69,20 @@
 
                  <!---------FAZLEEEEEE listing------------>
                  @if(!empty($tickets))
+
+                 <div class="row toolbar">
+
+                     <span class="filter-label pull-left offset-right">Filter by</span>
+                     <div class="pull-right">
+                         <select name="fiter_of_ticket">
+                             <option value="-1"> Select Number of Ticket</option>
+                         </select>
+                         <select>
+                             <option value="-1">Select type of tickets</option>
+                         </select>
+                     </div>
+                 </div>
+
                  <table class="responsive">
                      <thead>
                      <th>Location</th>
@@ -114,7 +101,7 @@
                                     @endif
                                 @endforeach
                              </td>
-                             <td>
+                             <td data-number-of-ticket="{{$ticket['ticketInformation']['number_of_ticket']}}" class="td-num-of-ticket">
                                 1 to {{$ticket['ticketInformation']['number_of_ticket']}}
                              </td>
                              <td>
@@ -129,8 +116,27 @@
                      </tbody>
                  </table>
                  @endif
+{{ Assets::jsStart() }}
+<script type="text/javascript">
+    (function ($) {
+        var numOfTicket = [];
+        var ticketType = [];
+        $(document).ready(function () {
+            $('.td-num-of-ticket').each(function () {
+                var t = $(this).data('number-of-ticket');
+                if(numOfTicket.indexOf(t) !==  '-1') {
+                    numOfTicket.push(t);
+                }
+            });
 
+            if(numOfTicket.length > 0) {
 
+            }
+
+        })
+    })(jQuery)
+</script>
+{{ Assets::jsEnd() }}
 
 
                  <H2>Other events for <strong>Manchester United</strong></H2>

@@ -113,6 +113,14 @@
                     }
                 })
             });
+
+            /**
+             * pagination fixex
+             */
+            $('ul.pagination li a').each(function () {
+                var link = $(this).attr('href')+"&action_type={{$type}}";
+                $(this).attr('href', link);
+            });
         });
     })(jQuery)
 </script>

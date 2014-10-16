@@ -16,6 +16,9 @@ class PageComposer {
         }
 
         if ( $node ) {
+            if(isset($node->meta_title)) {
+                $view->with('meta_title', $node->meta_title);
+            }
             $view->with('meta_description', $node->meta_description);
             $view->with('meta_keywords', $node->meta_content);
         }
