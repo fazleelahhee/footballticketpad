@@ -3996,8 +3996,19 @@ html body .formfooter {
     padding-top: 17px;
     width: 100%;
 }
+.stacktable .btn {
+    border: 1px solid #5d5c5c;
+    border-radius: 20px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 15px;
+    height: auto;
+    padding: 2px 9px;
+}
 
-
+.stacktable .btn.pinkbtn {
+    padding: 10px 30px;
+}
 /* RESPONSIVE EXAMPLE */
 
 .stacktable.large-only { display: table; }
