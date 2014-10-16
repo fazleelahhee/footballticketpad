@@ -140,11 +140,20 @@ class EventsController extends BaseController {
         foreach($hotTickets as $t) {
             $hotTicketsId[] = $t->id;
         }
-        $games = FootBallEvent::whereRaw('datetime >= NOW()')
-                ->orderBy('title', 'ASC')
-                ->whereNotIn('id', $hotTicketsId)
-                ->get();
 
+        $games = array();
+
+        if(!empty($hotTicketsId)) {
+            $gameObj = FootBallEvent::whereRaw('datetime >= NOW()')
+                ->orderBy('title', 'ASC')
+                ->whereNotIn('id', $hotTicketsId);
+        } else {
+            $gameObj = FootBallEvent::whereRaw('datetime >= NOW()')
+                ->orderBy('title', 'ASC');
+        }
+
+        $games = $gameObj->get();
+        
         View::share('tickets', $hotTickets);
         View::share('games', $games);
 
