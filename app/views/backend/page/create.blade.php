@@ -373,6 +373,8 @@ Assets::setScripts([
             }
 
         });
+
+
     });
 </script>
 @stop
