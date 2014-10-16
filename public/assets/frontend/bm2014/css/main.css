@@ -3950,3 +3950,7 @@ html body .formfooter {
     height: 38px !important;
     width: 210px !important;
 }
+
+.articles .container.site-content img {
+    height: auto !important;
+}
