@@ -136,17 +136,5 @@
     });
 
 
-    $('.responsivetable').stacktable();
-
-
-
-
-
-
-
-
-
-
-
 
 })(jQuery, this);

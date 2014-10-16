@@ -59,6 +59,9 @@
     //<![CDATA[
     //    $('ul#menu-header').nav-bar();
     //]]>
+
+    $('.responsivetable').stacktable();
+
 </script>
 
 {{ Assets::dumpOnPageScripts() }}
