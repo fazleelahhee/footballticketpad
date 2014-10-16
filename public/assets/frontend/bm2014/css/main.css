@@ -3060,15 +3060,15 @@ body.news .site-content {
 .sidebar .game {
     display: inline-block;
     float: none;
-    font-size: 15px;
+    font-size: 14px;
     height: 50px;
     line-height: inherit;
+    margin-left: 10px;
     padding-bottom: 12px;
     padding-top: 18px;
     text-align: left;
-    text-indent: 10px;
     vertical-align: middle;
-    width: 227px;
+    width: 217px;
 }
 
 .one-column .page-header {
