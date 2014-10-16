@@ -3081,7 +3081,9 @@ body.news .site-content {
 @media only screen and (min-width: 1001px) and (max-width: 1239px) {
 
 
-
+    .banner-home {
+        overflow: hidden;
+    }
     .contain {
         width: 960px;
     }
@@ -3223,7 +3225,7 @@ body.news .site-content {
 
     html body .buy-detail {
         margin: 160px 0 40px 104px !important;
-        
+
     }
 
     .inner-banner {
