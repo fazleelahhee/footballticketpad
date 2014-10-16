@@ -779,7 +779,7 @@
 
 <script type="text/x-template" id="billing-form-template" charset="utf-8">
     <div id="billing-form-modal" class="reveal-modal" data-reveal style="display:none">
-        <h2>Billingh Address</h2>
+        <h2>Billing Address</h2>
         <p>
             <label for="vat-id">VAT reg no.</label>
             <input name="vat-id" id="vat-id" value="<%=vat_id%>" type="text" />

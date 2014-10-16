@@ -3081,7 +3081,9 @@ body.news .site-content {
 @media only screen and (min-width: 1001px) and (max-width: 1239px) {
 
 
-
+    .banner-home {
+        overflow: hidden;
+    }
     .contain {
         width: 960px;
     }
@@ -3215,7 +3217,16 @@ body.news .site-content {
         max-width: none !important;
 
     }
+    .description-team .description {
 
+        width: 75% !important; margin-bottom: 20px !important;
+    }
+
+
+    html body .buy-detail {
+        margin: 160px 0 40px 104px !important;
+
+    }
 
     .inner-banner {
         margin-left: -560px;
@@ -3937,8 +3948,12 @@ body.news .site-content {
 
 }
 
-.sidebar-mobile { display: none}
 
+
+.articles .container.site-content img {
+    height: auto !important;
+}
+.sidebar-mobile { display: none}
 #form-subscribe { display: inline-block;
     width: 270px; vertical-align: top;}
 
@@ -3949,4 +3964,57 @@ html body .formfooter {
     -webkit-border-radius: 22px 0 0 22px !important;
     height: 38px !important;
     width: 210px !important;
+}
+
+.sidebar-mobile { margin-top: 30px}
+
+
+.st-key { font-weight: bold; color: #e13d7f}
+.stacktable { width: 100%; }
+
+.st-head-row { padding-top: 1em; }
+.st-head-row.st-head-row-main { font-size: 1.5em; padding-top: 0; }
+.st-key { width: 49%; text-align: right; padding-right: 1%; }
+.st-val { width: 49%; padding-left: 1%; }
+.st-head-row {
+    text-align: center !important;
+}
+.st-head-row .pull-left {
+    display: inline-block;
+    float: none;
+    text-align: center !important;
+    width: 100% !important;
+}
+.st-head-row .gamedetail .game {
+    display: inline-block;
+    float: none;
+    font-weight: 500;
+    height: auto;
+    line-height: inherit;
+    margin-bottom: 10px;
+    padding-bottom: 16px;
+    padding-top: 17px;
+    width: 100%;
+}
+.stacktable .btn {
+    border: 1px solid #5d5c5c;
+    border-radius: 20px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 15px;
+    height: auto;
+    padding: 2px 9px;
+}
+
+.stacktable .btn.pinkbtn {
+    padding: 10px 30px;
+}
+/* RESPONSIVE EXAMPLE */
+
+.stacktable.large-only { display: table; }
+.stacktable.small-only { display: none; }
+
+@media (max-width: 800px) {
+    .stacktable.large-only { display: none; }
+    .stacktable.small-only { display: table; }
 }

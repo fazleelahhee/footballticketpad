@@ -47,7 +47,8 @@
         'jquery'          => 'js/jquery.2.0.3.js',
         'foundation'      => 'js/foundation.min.js',
         'foundation54'    => 'js/foundation-5.4/foundation.min.js',
-        'app'             => 'js/app.js'
+        'app'             => 'js/app.js',
+        'stackable'       => 'js/stack/stacktable.js'
     ], false, true);
 }}
 
@@ -58,6 +59,10 @@
     //<![CDATA[
     //    $('ul#menu-header').nav-bar();
     //]]>
+
+    $('.ticket-listing .responsivetable').stacktable();
+    $('body.buy .responsive').stacktable();
+
 </script>
 
 {{ Assets::dumpOnPageScripts() }}
