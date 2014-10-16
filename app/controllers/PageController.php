@@ -24,9 +24,6 @@ class PageController extends BaseController {
                 'page_id' => $id,
                 'meta_keyword' => 'template'
             ])->meta_content);
-
-
-
         return View::make(Template::name($template), compact('node'));
     }
 }
