@@ -3937,8 +3937,12 @@ body.news .site-content {
 
 }
 
-.sidebar-mobile { display: none}
 
+
+.articles .container.site-content img {
+    height: auto !important;
+}
+.sidebar-mobile { display: none}
 #form-subscribe { display: inline-block;
     width: 270px; vertical-align: top;}
 
@@ -3951,6 +3955,3 @@ html body .formfooter {
     width: 210px !important;
 }
 
-.articles .container.site-content img {
-    height: auto !important;
-}
