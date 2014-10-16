@@ -14,7 +14,7 @@
     @if($node->venue_image != '')
     <img class="inner-banner" src="{{$node->feature_image}}" alt="banner image" />
     @else
-    <img class="inner-banner" src="{{ Assets::Path('images/account.jpg') }}" alt="banner image" />
+    <img class="inner-banner" src="{{ Assets::Path('images/default.jpg') }}" alt="banner image" />
     @endif
 </span>
 

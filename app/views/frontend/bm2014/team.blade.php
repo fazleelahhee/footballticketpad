@@ -21,7 +21,7 @@
         @if(isset($node->feature_image ))
         <img class="inner-banner" src="{{ $node->feature_image }}" alt="test" />
         @else
-        <img class="inner-banner" src="{{ Assets::Path('images/chelsea.jpg') }}" alt="test" />
+        <img class="inner-banner" src="{{ Assets::Path('images/default.jpg') }}" alt="test" />
         @endif
 
 

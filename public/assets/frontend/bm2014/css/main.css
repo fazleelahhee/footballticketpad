@@ -4010,7 +4010,10 @@ html body .formfooter {
     padding: 10px 30px;
 }
 /* RESPONSIVE EXAMPLE */
-
+.st-head-row {
+    padding-bottom: 20px;
+    text-align: center !important;
+}
 .stacktable.large-only { display: table; }
 .stacktable.small-only { display: none; }
 
