@@ -61,7 +61,7 @@
     //]]>
 
     $('.ticket-listing .responsivetable').stacktable();
-    $('.buy .responsivetable').stacktable();
+    $('body.buy .responsive').stacktable();
 
 </script>
 
