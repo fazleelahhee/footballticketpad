@@ -3217,6 +3217,11 @@ body.news .site-content {
     }
 
 
+    .buy-detail {
+        margin: 160px 0 40px 104px !important;
+        width: 760px !important;
+    }
+
     .inner-banner {
         margin-left: -560px;
 
