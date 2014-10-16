@@ -153,7 +153,7 @@ class EventsController extends BaseController {
         }
 
         $games = $gameObj->get();
-        
+
         View::share('tickets', $hotTickets);
         View::share('games', $games);
 
