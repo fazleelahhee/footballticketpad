@@ -330,12 +330,23 @@ class FootballTicketController extends BaseController {
         $tickets = array();
         $ticketTypes =  array();
 
+        $groundImage = '';
         if(isset($node->id)) {
             $results = DB::table('events_related_tickets')->where('event_id', '=', $node->id)->get();
             foreach($results as $r) {
                 $temp = json_decode($r->ticket, true);
                 $temp['product_id'] = $r->product_id;
                 $tickets[] = $temp;
+            }
+
+            $groundImage = $node->venue_image;
+            //get home ground stadium images
+            if($node->event_in_home && empty($groundImage)) {
+                $homeTeam = DB::table('football_ticket')->where('id', '=', $node->home_team_id)
+                                                        ->first();
+                if(isset($homeTeam->id)) {
+                    $groundImage = $homeTeam->venue_image;
+                }
             }
         }
 
@@ -344,6 +355,7 @@ class FootballTicketController extends BaseController {
         View::share('node', $node);
         View::share('tickets', $tickets);
         View::share('ticketTypes', $ticketTypes);
+        View::share('groundImage', $groundImage);
         return View::make(Template::name('frontend.%s.buy'));
     }
 }

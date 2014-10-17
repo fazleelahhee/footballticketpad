@@ -11,7 +11,7 @@
          <a href="/ticket/sell/{{$node->id}}" class="btn bluebtn">SELL TICKETS</a>
      </span>
 <span class="club-effect">
-    @if($node->venue_image != '')
+    @if($node->feature_image != '')
     <img class="inner-banner" src="{{$node->feature_image}}" alt="banner image" />
     @else
     <img class="inner-banner" src="{{ Assets::Path('images/default.jpg') }}" alt="banner image" />
@@ -52,8 +52,8 @@
 
 
              <div class="columns five stadiumpicture">
-                 @if($node->venue_image != '')
-                 <img src="{{$node->venue_image}}" />
+                 @if($groundImage != '')
+                 <img src="{{$groundImage}}" />
                  @else
                  <img src="{{ Assets::Path('images/stadiumpic.png') }}" />
                  @endif
