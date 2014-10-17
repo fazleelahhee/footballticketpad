@@ -273,7 +273,10 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'before' => 
     Route::post('/ticket/events/ticket-types/remove', array('as'=>'ticket.events.ticket-types.delete','uses'=>'TicketTypeController@remove'));
 
     Route::post('/ticket/events/form-of-ticket/add', array('as'=>'ticket.events.formOfTicket.add','uses'=>'FormOfTicketController@create'));
+    Route::post('/ticket/events/form-of-ticket/remove', array('as'=>'ticket.events.formOfTicket.delete','uses'=>'FormOfTicketController@remove'));
+
     Route::post('/ticket/events/ticket-restriction/add', array('as'=>'ticket.events.restriction.add','uses'=>'TicketRestrictionController@create'));
+    Route::post('/ticket/events/ticket-restriction/remove', array('as'=>'ticket.events.restriction.delete','uses'=>'TicketRestrictionController@remove'));
 
     //save mfootball ticket meta
     Route::post('/footballticket/meta-data/save', array('as'=>'footballticket.meta.data.save', 'uses'=>'FootballTicketController@saveMeta'));

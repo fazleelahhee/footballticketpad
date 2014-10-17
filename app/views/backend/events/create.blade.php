@@ -353,9 +353,9 @@
                     }
                 });
 
-                body.on('click', '.remove-selected-ticket', function (e) {
+                body.on('click', delBtn , function (e) {
                     e.preventDefault();
-                    var parentDiv = $(this).closest('div.modal-body');
+                    var parentDiv = $('.'+$(this).data('parent'));
                     var ids  = parentDiv.find('input.delete-ids').val();
                     if(ids  === '') {
                         return;
@@ -448,8 +448,8 @@
                 addUrl      : '{{ route("ticket.events.formOfTicket.add")}}',
                 saveBtnElem : '.set-form-of-ticket',
                 selectElem  : '.form-of-tickets',
-                delUrl      : '{{route("ticket.events.ticket-types.delete")}}',
-                delBtn      : '.remove-selected-ticket'
+                delUrl      : '{{route("ticket.events.formOfTicket.delete")}}',
+                delBtn      : '.remove-selected-ticket-type'
             }).init().events();
 
             new PopUpSelector({
@@ -464,8 +464,8 @@
                 addUrl      : '{{ route("ticket.events.restriction.add")}}',
                 saveBtnElem : '.set-restriction-ticket',
                 selectElem  : '.restrictions-ticket',
-                delUrl      : '{{route("ticket.events.ticket-types.delete")}}',
-                delBtn      : '.remove-selected-ticket'
+                delUrl      : '{{route("ticket.events.restriction.delete")}}',
+                delBtn      : '.remove-selected-ticket-restriction'
 
             }).init().events();
 
@@ -499,7 +499,7 @@
                         </select>
                     </div>
                     <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
-                    <input type="button" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
+                    <input type="button" data-parent="available-ticket-type-template" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -521,11 +521,11 @@
                     </button>
                     <h4 class="modal-title">Available Form of Ticket</h4>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body">
                     <p>
                     <div class="form-group">
                         <input name="ticket_type_ids" value="" type="text" class="form-control add-ticket-type-input">
-                        <input type="button" value="Add" class="btn add-form-ticket">
+                        <input type="button"  value="Add" class="btn add-form-ticket">
                     </div>
 
                     <div class="form-group">
@@ -537,7 +537,7 @@
                     </div>
 
                     <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
-                    <input type="button" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
+                    <input type="button" data-parent="available-form-of-ticket-template" value="Delete Ticket Type" class="btn remove-selected-ticket-type" style="display: none">
 
                     </p>
                 </div>
@@ -576,7 +576,7 @@
                     </div>
 
                     <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
-                    <input type="button" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
+                    <input type="button" data-parent="available-restriction-ticket-template" value="Delete Ticket Type" class="btn remove-selected-ticket-restriction" style="display: none">
                     </p>
                 </div>
                 <div class="modal-footer">
