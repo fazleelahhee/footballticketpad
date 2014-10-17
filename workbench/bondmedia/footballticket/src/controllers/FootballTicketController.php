@@ -267,12 +267,17 @@ class FootballTicketController extends BaseController {
         $input = Input::all();
         $output = array();
         if ( $input['q'] ) {
-            $output = DB::table('events')->where('events.title', 'LIKE', "%{$input['q']}%")
+            $results = DB::table('events')->where('events.title', 'LIKE', "%{$input['q']}%")
                       ->leftJoin('football_ticket', 'events.tournament_id', '=', 'football_ticket.id')
-                      ->select('events.id','events.title AS name','football_ticket.title AS league', 'events.datetime', 'events.feature_image', 'events.content', 'events.slug')
+                      ->select('events.id','events.title AS name','football_ticket.title AS league', 'events.datetime', 'events.feature_image', 'events.content', 'events.slug', 'events.season_id', 'events.tournament_id')
                       ->orderBy('events.datetime', 'ASC')
                       ->take(25)
                       ->get();
+        }
+
+        foreach($results as $result) {
+            $result->_url = FootBallEvent::getUrl($result);
+            $output[] =  $result;
         }
         $response = Response::make( json_encode( $output ) , '200' );
         $response->header('Content-Type', 'application/json');
@@ -319,13 +324,24 @@ class FootballTicketController extends BaseController {
         return $response;
     }
 
-    public function displayEvents($slug = '') {
+    public function displayEvents($league='',$season='', $slug = '') {
+
+
 
         $node = DB::table('events')->where('events.slug', '=', "$slug")
             ->leftJoin('football_ticket AS h', 'h.id', '=', 'events.home_team_id')
             ->leftJoin('football_ticket AS a', 'a.id', '=', 'events.away_team_id')
+            ->join('football_ticket AS s', 's.id', '=', 'events.season_id')
+            ->join('football_ticket AS l', 'l.id', '=', 'events.tournament_id')
             ->select('events.*','h.title AS homeTeam','a.title AS awayTeam')
+            ->where('l.slug', '=',$league)
+            ->where('s.slug', '=',$season)
             ->first();
+
+
+        if(empty($node)) {
+            App::abort(404);
+        }
 
         $tickets = array();
         $ticketTypes =  array();
@@ -341,14 +357,32 @@ class FootballTicketController extends BaseController {
 
             $groundImage = $node->venue_image;
             //get home ground stadium images
+            $homeTeam = DB::table('football_ticket')->where('id', '=', $node->home_team_id)
+                ->first();
+            View::share('homeTeam', $homeTeam);
+
+
             if($node->event_in_home && empty($groundImage)) {
-                $homeTeam = DB::table('football_ticket')->where('id', '=', $node->home_team_id)
-                                                        ->first();
+
                 if(isset($homeTeam->id)) {
                     $groundImage = $homeTeam->venue_image;
                 }
+
+
             }
+
+            //home team events
+            $homeTeamEvents = DB::table('events')
+                                       ->whereRaw('events.home_team_id ='.$node->home_team_id.' OR events.away_team_id = '.$node->home_team_id)
+
+                                       ->where('events.id', '<>', $node->id)
+                                       ->take(5)
+                                       ->orderBy('datetime', 'ASC')
+                                       ->get();
+
+            View::share('homeTeamEvents', $homeTeamEvents);
         }
+
 
         $ticketTypes = DB::table('events_ticket_type')->get();
         View::share('body_class', 'page buy');
@@ -356,6 +390,7 @@ class FootballTicketController extends BaseController {
         View::share('tickets', $tickets);
         View::share('ticketTypes', $ticketTypes);
         View::share('groundImage', $groundImage);
+
         return View::make(Template::name('frontend.%s.buy'));
     }
 }

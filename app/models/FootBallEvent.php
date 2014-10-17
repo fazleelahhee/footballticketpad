@@ -16,7 +16,32 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
     }
 
     public function getUrlAttribute() {
-        return "events/" . $this->attributes['id'] . "/" . $this->attributes['slug'];
+        //return "events/" . $this->attributes['id'] . "/" . $this->attributes['slug'];
+        $season = FootballTickets::find($this->attributes['season_id']);
+        $league = FootballTickets::find($this->attributes['tournament_id']);
+        $output = "";
+        if($season && $league ) {
+            $output .= route('ticket.events.display', array('league'=>$league->slug, 'season'=>$season->slug, 'slug'=>$this->attributes['slug']));
+        } else {
+            return '';
+        }
+        return $output;
+    }
+
+    public static function getUrl($events) {
+        if(isset($events->season_id) && $events->tournament_id) {
+            $season = FootballTickets::find($events->season_id);
+            $league = FootballTickets::find($events->tournament_id);
+
+            $output = "";
+            if($season && $league ) {
+                $output .= route('ticket.events.display', array('league'=>$league->slug, 'season'=>$season->slug, 'slug'=>$events->slug));
+            } else {
+                return '';
+            }
+            return $output;
+        }
+
     }
 
     public function getTicketTypes() {

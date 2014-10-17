@@ -103,7 +103,7 @@
 //                                short_text: ''
 //                            });
                             var html = '<li>';
-                            html += '<a href="/events/'+item.slug+'"><span class="game">'+item.name+'</span></a>';
+                            html += '<a href="'+item._url+'"><span class="game">'+item.name+'</span></a>';
                             html += '<span class="date-result">'+item.datetime+'</span>';
                             html += '<span class="subtext"><a href="#">'+item.content+'</a></span>';
                             html += '<a class=" btn pinkbtn pull-right" href="/events/'+item.slug+'">Buy</a></li>';

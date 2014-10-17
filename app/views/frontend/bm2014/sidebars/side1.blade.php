@@ -13,7 +13,7 @@
 
             @foreach($hotTickets as $ticket)
                 <!-- repeater -->
-                <a href="/events/{{$ticket->slug}}">
+                <a href="{{ FootBallEvent::getUrl($ticket) }}">
                 <span class="blockrow">
                 	
                     <span class="date">

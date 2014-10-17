@@ -203,46 +203,17 @@
 </script>
 {{ Assets::jsEnd() }}
 
-
-                 <H2>Other events for <strong>Manchester United</strong></H2>
-                 <ul class="othervents">
-
-                     <li>
-                         <span>FC Bayern vs Manchester united</span>
-                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
-
-
-                     </li>
-
-                     <li>
-                         <span>FC Bayern vs Manchester united</span>
-                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
-
-
-                     </li>
-
-
-                     <li>
-                         <span>FC Bayern vs Manchester united</span>
-                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
-
-
-                     </li>
-
-
-                     <li>
-                         <span>FC Bayern vs Manchester united</span>
-                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
-
-
-                     </li>
-
-
-
-                 </ul>
-
-
-
+@if(isset($homeTeamEvents) && count($homeTeamEvents) > 0)
+     <H2>Other events for <strong>{{$homeTeam->title}}</strong></H2>
+     <ul class="othervents">
+        @foreach($homeTeamEvents as $e)
+         <li>
+             <span>{{ $e->title }}</span>
+             <span class="date-details">{{date('l, dS F Y, h:ia', strtotime($e->datetime)) }}, {{$e->event_location}}</span>
+         </li>
+         @endforeach
+     </ul>
+@endif
 
 
                  <!---------FAZLEEEEEE listing------------>
