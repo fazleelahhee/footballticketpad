@@ -392,12 +392,27 @@
     })(jQuery);
 
     (function ($) {
+        function getTimes() {
+            var hour = ['08', '09','10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'];
+            var min = ['00', '05', '15', '20', '25', '30', '35', '40', '45', '50', '55']
+            var output = [];
+
+            for(var i=0; i<hour.length; i++) {
+                for(var j=0; j<min.length; j++) {
+                    output.push(hour[i]+':'+min[j]);
+                }
+            }
+
+            return output;
+        }
+
         $(document).ready(function () {
 
             $("#title").slug();
-
+            var $alloedTime = getTimes();
             $('#datetime').datetimepicker({
-                format:'Y-m-d H:i:s'
+                format:'d/m/Y H:i',
+                allowTimes: $alloedTime
             });
 
             if ($('#tag').length != 0) {
@@ -520,6 +535,10 @@
                             <% }) %>
                         </select>
                     </div>
+
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
+
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -555,6 +574,9 @@
                             <% }) %>
                         </select>
                     </div>
+
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
                     </p>
                 </div>
                 <div class="modal-footer">

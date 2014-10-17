@@ -61,9 +61,12 @@ class EventsRepository extends Validator implements BaseRepositoryInterface {
 
         $attributes['is_published']     = isset($attributes['is_published']) ? true : false;
         $attributes['event_in_home']    = isset($attributes['event_in_home']) ? true : false;
-//        if (isset($attributes['datetime']) && !empty($attributes['datetime'])) {
-//            $attributes['datetime'] = '2014-09-21 21:30:31';
-//        }
+
+        if (isset($attributes['datetime']) && !empty($attributes['datetime'])) {
+            $dateArr = explode(' ', $attributes['datetime']);
+            $d1 = explode('/', $dateArr[0]);
+            $attributes['datetime'] = "{$d1[2]}-{$d1[1]}-{$d1[0]} {$dateArr[1]}:00";
+        }
         if ($this->isValid($attributes)) {
 
             $this->events->fill($attributes)->save();
@@ -78,9 +81,11 @@ class EventsRepository extends Validator implements BaseRepositoryInterface {
         $attributes['is_published']     = isset($attributes['is_published']) ? true : false;
         $attributes['event_in_home']    = isset($attributes['event_in_home']) ? true : false;
 
-//        if (isset($attributes['datetime']) && !empty($attributes['datetime'])) {
-//            $attributes['datetime'] = '2014-09-21 21:30:31';
-//        }
+        if (isset($attributes['datetime']) && !empty($attributes['datetime'])) {
+            $dateArr = explode(' ', $attributes['datetime']);
+            $d1 = explode('/', $dateArr[0]);
+            $attributes['datetime'] = "{$d1[2]}-{$d1[1]}-{$d1[0]} {$dateArr[1]}:00";
+        }
 
         $this->events = $this->find($id);
 

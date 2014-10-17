@@ -61,7 +61,7 @@ Assets::setScripts([
         <label class="control-label" for="title">Datetime</label>
 
         <div class="controls">
-            {{ Form::text('datetime', $events->datetime, array('class'=>'form-control', 'id' => 'datetime', 'value'=>Input::old('datetime'))) }}
+            {{ Form::text('datetime', date('d/m/Y H:i', strtotime($events->datetime)), array('class'=>'form-control', 'id' => 'datetime', 'value'=>Input::old('datetime'))) }}
             @if ($errors->first('datetime'))
             <span class="help-block">{{ $errors->first('datetime') }}</span>
             @endif
@@ -350,10 +350,25 @@ Assets::setScripts([
     (function ($) {
         $(document).ready(function () {
 
-            $("#title").slug();
+            function getTimes() {
+                var hour = ['08', '09','10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'];
+                var min = ['00', '05', '15', '20', '25', '30', '35', '40', '45', '50', '55']
+                var output = [];
 
+                for(var i=0; i<hour.length; i++) {
+                    for(var j=0; j<min.length; j++) {
+                        output.push(hour[i]+':'+min[j]);
+                    }
+                }
+
+                return output;
+            }
+
+            $("#title").slug();
+            var alloedTime = getTimes();
             $('#datetime').datetimepicker({
-                format:'Y-m-d H:i:s'
+                format:'d/m/Y H:i',
+                allowTimes: alloedTime
             });
 
             if ($('#tag').length != 0) {
