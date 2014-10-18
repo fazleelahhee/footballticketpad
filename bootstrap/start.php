@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local'     => array('bonds-mac-mini.home', 'abduls-mac-mini.home'),
+	'local'     => array('bonds-mac-mini.home', 'abduls-mac-mini.home', 'Fazles-MacBook-Pro.local'),
     'stage'     =>  array('bondserver.bondmedia.co.uk')
 ));
 
