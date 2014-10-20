@@ -78,7 +78,7 @@
     <br>
 
     @include('footballticket::admin.footballticket.partials.'.$type)
-
+    @include('footballticket::admin.footballticket.partials.common')
     {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}
 

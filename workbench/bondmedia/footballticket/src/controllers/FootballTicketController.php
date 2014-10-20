@@ -67,6 +67,11 @@ class FootballTicketController extends BaseController {
     public function show($type, $slug) {
         //$template = 'frontend.%s.group-two-column-left';
         $node = $this->footballTicket->findByUri($type,$slug);
+
+        if(empty($node)) {
+            App::abort(404);
+        }
+        
         View::share('body_class', "page {$type} {$slug}");
         View::share('type', $type);
         $meta = FootballTicketMeta::where('football_ticket_id', '=', $node->id)->get();
@@ -82,6 +87,11 @@ class FootballTicketController extends BaseController {
             }
 
         }
+
+
+        View::share('meta_title', $node->meta_title);
+        View::share('meta_description', $node->meta_description);
+        View::share('meta_keywords', $node->meta_content);
 
         if($type == 'club') {
             View::share('tickets', FootBallEvent::getClubRelatedTickets($node->id));
