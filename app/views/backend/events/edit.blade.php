@@ -21,7 +21,7 @@ Assets::setScripts([
         <h3>
             Update Events
             <div class="pull-right">
-                {{ HTML::link('/admin/events','Back', array('class'=>'btn btn-primary')) }}
+                {{ HTML::link($events->getUrlAttribute(),'View', array('class'=>'btn btn-primary','target'=>'_blank' )) }}
             </div>
         </h3>
     </div>
