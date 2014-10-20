@@ -7,7 +7,8 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
     public $table = 'events';
     public $fillable=['title', 'slug', 'content', 'datetime', 'is_published', 'team_type',
         'home_team_id', 'away_team_id', 'season_id', 'tournament_id', 'event_in_home',
-        'venue_image', 'feature_image', 'ticket_type_ids', 'form_of_ticket_ids', 'ticket_restriction_ids', 'event_location', 'feature_event'];
+        'venue_image', 'feature_image', 'ticket_type_ids', 'form_of_ticket_ids', 'ticket_restriction_ids', 'event_location', 'feature_event',
+        'meta_title','meta_description', 'meta_keyword'];
 
     protected $appends = ['url'];
 

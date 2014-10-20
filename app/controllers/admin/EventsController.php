@@ -37,6 +37,42 @@ class EventsController extends BaseController {
         View::share('club', FootballTickets::getDataForOptions('club'));
         View::share('countries', FootballTickets::getDataForOptions('contry'));
         View::share('events', null);
+
+        //get ticket type
+        $results = DB::table('events_ticket_type')
+            ->select('id', 'title')
+            ->where('default', '=', '1')
+            ->get();
+        $ticketType = array();
+        foreach($results as $result) {
+            $ticketType[$result->id] = $result->title;
+        }
+
+        View::share('defaultTicketType', $ticketType);
+
+        //get ticket type
+        $results = DB::table('events_ticket_restrictions')
+            ->select('id', 'title')
+            ->where('default', '=', '1')
+            ->get();
+        $ticketRestriction= array();
+        foreach($results as $result) {
+            $ticketRestriction[$result->id] = $result->title;
+        }
+
+        View::share('defaultTicketRestriction', $ticketRestriction);
+        
+        //get ticket type
+        $results = DB::table('events_form_of_ticket')
+            ->select('id', 'title')
+            ->where('default', '=', '1')
+            ->get();
+        $ticketFormType = array();
+        foreach($results as $result) {
+            $ticketFormType[$result->id] = $result->title;
+        }
+        View::share('defaultTicketFormType', $ticketFormType);
+
         return View::make('backend.events.create')
             ->with('menu', 'events/events');;
     }

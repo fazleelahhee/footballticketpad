@@ -174,9 +174,12 @@
     <div class="control-group {{ $errors->has('ticket_type_ids') ? 'has-error' : '' }}">
         <label class="control-label" for="available-ticket-type">
             <a href="#" class="available-ticket-type">Select Available Ticket Type</a>
-            <input name="ticket_type_ids" value="" id="ticket-type-ids" type="hidden">
+            <input name="ticket_type_ids" value="{{ implode(',', array_keys($defaultTicketType)) }}" id="ticket-type-ids" type="hidden">
         </label>
         <div class="selected-types-container">
+            @foreach($defaultTicketType as $type)
+            <p>{{$type}}</p>
+            @endforeach
         </div>
     </div>
     <br>
@@ -184,10 +187,13 @@
     <div class="control-group {{ $errors->has('form_of_ticket_ids') ? 'has-error' : '' }}">
         <label class="control-label" for="form-of-ticket-ids">
             <a href="#" class="available-form-of-ticket-ids">Select available form of ticket</a>
-            <input name="form_of_ticket_ids" value="" id="form-of-ticket-ids" type="hidden">
+            <input name="form_of_ticket_ids" value="{{ implode(',', array_keys($defaultTicketFormType)) }}" id="form-of-ticket-ids" type="hidden">
         </label>
 
         <div class="selected-form-of-ticket-container">
+            @foreach($defaultTicketFormType as $type)
+            <p>{{$type}}</p>
+            @endforeach
         </div>
     </div>
     <br>
@@ -195,10 +201,13 @@
     <div class="control-group {{ $errors->has('ticket_restrictions_ids') ? 'has-error' : '' }}">
         <label class="control-label" for="ticket-restrictions-ids">
             <a href="#" class="available-ticket-restrictions-ids">Select available restrictions for this event</a>
-            <input name="ticket_restriction_ids" value="" id="ticket-restrictions-ids" type="hidden">
+            <input name="ticket_restriction_ids" value="{{ implode(',', array_keys($defaultTicketRestriction)) }}" id="ticket-restrictions-ids" type="hidden">
         </label>
 
         <div class="selected-restriction-ticket-container">
+            @foreach($defaultTicketRestriction as $type)
+            <p>{{$type}}</p>
+            @endforeach
         </div>
     </div>
     <br>
@@ -468,9 +477,9 @@
                 delBtn      : '.remove-selected-ticket-restriction'
 
             }).init().events();
-
-            //
         });
+
+
 
     })(jQuery);
 </script>

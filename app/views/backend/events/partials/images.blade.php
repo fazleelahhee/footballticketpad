@@ -200,9 +200,9 @@
 
     <div class="controls">
         @if(isset($events->meta_description))
-        {{ Form::text('meta_description', null, array('class'=>'form-control', 'id' => 'meta_description', 'placeholder'=>'Meta Description', 'value'=>Input::old('meta_description'))) }}
+        {{ Form::textarea('meta_description', $events->meta_description, array('class'=>'form-control', 'id' => 'meta_description', 'placeholder'=>'Meta Description', 'value'=>Input::old('meta_description'))) }}
         @else
-        {{ Form::text('meta_description', $events->meta_description, array('class'=>'form-control', 'id' => 'meta_description', 'placeholder'=>'Meta Description', 'value'=>Input::old('meta_description'))) }}
+        {{ Form::textarea('meta_description', '', array('class'=>'form-control', 'id' => 'meta_description', 'placeholder'=>'Meta Description', 'value'=>Input::old('meta_description'))) }}
 
         @endif
         @if ($errors->first('meta_description'))
