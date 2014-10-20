@@ -18,8 +18,7 @@
                     	</span>
         </td>
         <td>
-            {{date('l dS F Y', strtotime($ticket->datetime))}}
-            Saturday 16th August 2014  <br> 3:00pm
+            {{date('l dS F Y <\b\r> ', strtotime($ticket->datetime))}}
         </td>
         <td>
             &pound;{{$ticket->price}}

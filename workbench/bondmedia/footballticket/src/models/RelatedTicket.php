@@ -2,7 +2,7 @@
 
 class RelatedTicket extends \Illuminate\Database\Eloquent\Model{
     public $table = 'events_related_tickets';
-    protected $fillable = ['price','event_id', 'product_id', 'ticket' ];
+    protected $fillable = ['price','event_id', 'product_id', 'ticket' , 'available_qty', 'user_id'];
 
     public static function getTicketsByEvent($eventId = '') {
         if (empty($eventId)) {
@@ -13,9 +13,10 @@ class RelatedTicket extends \Illuminate\Database\Eloquent\Model{
     }
 
     public static function getTicketByTicketId($id = '') {
-        if (empty($id)) {
-            return null;
+        if(empty($id)) {
+            App::abort(404);
         }
+
         $output = [];
         $t = 'events_related_tickets';
         $e = 'events';
@@ -31,5 +32,19 @@ class RelatedTicket extends \Illuminate\Database\Eloquent\Model{
 
         }
         return $output;
+    }
+
+    public static function getEventsByUser($id = '') {
+        if(empty($id)) {
+            App::abort(404);
+        }
+        $t = 'events_related_tickets';
+        $e = 'events';
+        $result= DB::table($t)
+            ->select("{$t}.ticket", "{$t}.event_id", "{$e}.*", "{$t}.available_qty", "{$t}.ticket_status")
+            ->leftJoin($e, "{$t}.event_id", "=", "{$e}.id")
+            ->groupBy("{$t}.event_id")
+            ->where("{$t}.user_id",'=',$id)->get();
+        return $result;
     }
 }
