@@ -71,7 +71,7 @@ class FootballTicketController extends BaseController {
         if(empty($node)) {
             App::abort(404);
         }
-        
+
         View::share('body_class', "page {$type} {$slug}");
         View::share('type', $type);
         $meta = FootballTicketMeta::where('football_ticket_id', '=', $node->id)->get();

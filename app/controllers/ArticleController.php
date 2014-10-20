@@ -33,6 +33,7 @@ class ArticleController extends BaseController {
     public function show($id, $slug = null) {
         $article = $this->article->find($id);
         View::composer(Template::name('frontend.%s._layout.layout'), function ($view) use ($article) {
+            $view->with('meta_title', $article->meta_title);
             $view->with('meta_keywords', $article->meta_keywords);
             $view->with('meta_description', $article->meta_description);
         });
@@ -46,6 +47,7 @@ class ArticleController extends BaseController {
     public function showNews($slug = null) {
         $article = $this->article->findBySlug($slug);
         View::composer(Template::name('frontend.%s._layout.layout'), function ($view) use ($article) {
+            $view->with('meta_title', $article->meta_title);
             $view->with('meta_keywords', $article->meta_keywords);
             $view->with('meta_description', $article->meta_description);
         });
