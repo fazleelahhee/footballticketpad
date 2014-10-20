@@ -103,7 +103,7 @@
 
                 <div class="restrictions-yes" style="display: none">
                     <ul>
-                        @foreach($node->getFormOfTickets() as $type)
+                        @foreach($node->getSelectedRestrictions() as $type)
                         <li><input type="checkbox" value="{{$type->id}}" name="restrictions[{{$type->id}}]"> <label>{{$type->title}}</label></li>
                         @endforeach
                     </ul>
