@@ -176,3 +176,57 @@
 </script>
 
 {{ Assets::jsEnd() }}
+
+
+<!-- Meta Title -->
+<div class="control-group {{ $errors->has('meta_title') ? 'has-error' : '' }}">
+    <label class="control-label" for="title">Meta Title</label>
+
+    <div class="controls">
+        @if(isset($events->meta_title))
+        {{ Form::text('meta_title', $events->meta_title, array('class'=>'form-control', 'id' => 'meta_title', 'placeholder'=>'Meta Title', 'value'=>Input::old('meta_title'))) }}
+        @else
+        {{ Form::text('meta_title', null, array('class'=>'form-control', 'id' => 'meta_title', 'placeholder'=>'Meta Title', 'value'=>Input::old('meta_title'))) }}
+        @endif
+        @if ($errors->first('meta_description'))
+        <span class="help-block">{{ $errors->first('meta_title') }}</span>
+        @endif
+    </div>
+</div>
+<br>
+<!-- Meta Description -->
+<div class="control-group {{ $errors->has('meta_description') ? 'has-error' : '' }}">
+    <label class="control-label" for="title">Meta Description</label>
+
+    <div class="controls">
+        @if(isset($events->meta_description))
+        {{ Form::text('meta_description', null, array('class'=>'form-control', 'id' => 'meta_description', 'placeholder'=>'Meta Description', 'value'=>Input::old('meta_description'))) }}
+        @else
+        {{ Form::text('meta_description', $events->meta_description, array('class'=>'form-control', 'id' => 'meta_description', 'placeholder'=>'Meta Description', 'value'=>Input::old('meta_description'))) }}
+
+        @endif
+        @if ($errors->first('meta_description'))
+        <span class="help-block">{{ $errors->first('meta_description') }}</span>
+        @endif
+    </div>
+</div>
+<br>
+
+
+<!-- Meta Keywords -->
+<div class="control-group {{ $errors->has('meta_keyword') ? 'has-error' : '' }}">
+    <label class="control-label" for="title">Meta Keywords</label>
+
+    <div class="controls">
+        @if(isset($events->meta_keyword))
+        {{ Form::textarea('meta_keyword', $events->meta_keyword, array('class'=>'form-control', 'id' => 'meta_keyword', 'placeholder'=>'Meta Keywords', 'value'=>Input::old('meta_keywords'))) }}
+        @else
+        {{ Form::textarea('meta_keyword', '', array('class'=>'form-control', 'id' => 'meta_keyword', 'placeholder'=>'Meta Keywords', 'value'=>Input::old('meta_keywords'))) }}
+        @endif
+
+        @if ($errors->first('meta_keyword'))
+        <span class="help-block">{{ $errors->first('meta_keyword') }}</span>
+        @endif
+    </div>
+</div>
+<br>
