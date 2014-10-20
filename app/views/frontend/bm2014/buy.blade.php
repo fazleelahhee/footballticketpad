@@ -203,7 +203,7 @@
 </script>
 {{ Assets::jsEnd() }}
 
-@if(isset($homeTeamEvents) && count($homeTeamEvents) > 0)
+@if(isset($homeTeamEvents) && count($homeTeamEvents) > 0 && isset($homeTeam->title))
      <H2>Other events for <strong>{{$homeTeam->title}}</strong></H2>
      <ul class="othervents">
         @foreach($homeTeamEvents as $e)
