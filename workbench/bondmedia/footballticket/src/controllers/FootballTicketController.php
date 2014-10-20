@@ -395,6 +395,12 @@ class FootballTicketController extends BaseController {
 
 
         $ticketTypes = DB::table('events_ticket_type')->get();
+
+        View::share('meta_title', $node->meta_title);
+        View::share('meta_description', $node->meta_description);
+        View::share('meta_keywords', $node->meta_keyword);
+
+        
         View::share('body_class', 'page buy');
         View::share('node', $node);
         View::share('tickets', $tickets);

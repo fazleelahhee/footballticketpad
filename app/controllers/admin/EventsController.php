@@ -61,7 +61,7 @@ class EventsController extends BaseController {
         }
 
         View::share('defaultTicketRestriction', $ticketRestriction);
-        
+
         //get ticket type
         $results = DB::table('events_form_of_ticket')
             ->select('id', 'title')
