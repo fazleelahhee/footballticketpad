@@ -3071,15 +3071,15 @@ body.news .site-content {
 .sidebar .game {
     display: inline-block;
     float: none;
-    font-size: 14px;
+    font-size: 13px;
     height: 50px;
     line-height: inherit;
-    margin-left: 10px;
+    margin-left: 6px;
     padding-bottom: 12px;
-    padding-top: 18px;
+    padding-top: 15px;
     text-align: left;
     vertical-align: middle;
-    width: 217px;
+    width: 221px;
 }
 
 .one-column .page-header {
