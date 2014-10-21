@@ -45,13 +45,9 @@ class FootballTickets extends BaseModel implements BaseModelInterface {
                    ->orderBy('football_ticket.title', 'ASC')
                    ->get();
         foreach($results as $result) {
-
             $result->clubLogo = FootballTicketMeta::getTicketMeta($result->id, 'club_logo');
-
             $output[] = $result;
         }
-
-
         return $output;
     }
 }

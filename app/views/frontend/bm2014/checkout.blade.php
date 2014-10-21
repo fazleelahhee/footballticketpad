@@ -358,9 +358,12 @@ Assets::setScripts(
     ;(function ($) {
         var loginURL = "{{route('customer.account.checkout.login')}}";
 
-        $('body').on('click', '.login-btn', function () {
-            console.log('Should work....');
+        $(document).ready(function () {
+            $('body').on('click', '.login-btn', function () {
+                console.log('Should work....');
+            });
         });
+
     });
 </script>
 
