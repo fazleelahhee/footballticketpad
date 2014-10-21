@@ -102,7 +102,17 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
     float: left;
     width: 80%;
 }
-.description-team  .sharebox { float: right;}
+.addthis_sharing_toolbox {
+    float: right;
+    position: absolute;
+    width: 100%;
+}
+.description-team .sharebox {
+    float: right;
+    position: relative;
+    text-align: right;
+    width: 20%;
+}
 
 .lsf-icon:before {
 
