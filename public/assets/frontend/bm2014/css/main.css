@@ -98,7 +98,7 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
 
 }
 
-.default-fallback {
+html body .default-fallback {
     float: left;
     height: 90px;
     position: relative;
@@ -107,7 +107,7 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
     width: 100%;
     background: url("../images/default.jpg") no-repeat 0 0;
 }
-.default-fallback > img {
+html body .default-fallback > img {
     display: inline-block !important;
     float: none;
     margin-bottom: 0 !important;
@@ -118,7 +118,7 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
     position: static !important;
     width: auto !important;
 }
-.default-fallback > span {
+html body .default-fallback > span {
     display: inline-block;
     height: auto;
     margin-bottom: 30px !important;
