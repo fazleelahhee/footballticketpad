@@ -56,7 +56,7 @@
          <div class="columns four topmatch">
              <div class="ft-image-match">
                  <a href="{{FootBallEvent::getUrl($ticket)}}">
-                     @if(isset($ticket->feature_image) && trim($ticket->feature_image) != '')
+                     @if(trim($ticket->feature_image) != '')
                      <img src="{{$ticket->feature_image}}" alt="{{$ticket->title}}" />
                      @else
                      <div class="default-fallback">
