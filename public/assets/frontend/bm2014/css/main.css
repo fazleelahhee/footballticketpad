@@ -2039,6 +2039,18 @@ header .searcharea .bigbox-search-button {
     margin-left: 0;
 }
 
+.clublist.columnlist > li {
+    float: left;
+    margin-bottom: 25px;
+    width: 50%; color: black;
+}
+
+.clublist.columnlist img {
+    margin-bottom: -22px;
+    margin-right: 10px;
+    width: 49px;
+}
+
 .ft-image-match {
     float: left;
     min-height: 90px;
