@@ -100,7 +100,7 @@
              @if(!empty($clubs))
              <div class="columns six">
                  <h2>Search by Team</h2>
-                 <ul class="clublist columnlist">
+                 <ul class="clublist columnlist columns twelve">
                     @foreach($clubs as $club)
                      <li class="columns six nopadding">
                          <a href="/group/club/{{$club->slug}}">
