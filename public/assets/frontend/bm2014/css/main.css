@@ -98,6 +98,36 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
 
 }
 
+.default-fallback {
+    float: left;
+    height: 90px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    background: url("../images/default.jpg") no-repeat 0 0;
+}
+.default-fallback > img {
+    display: inline-block !important;
+    float: none;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 17px;
+    max-width: 50px;
+    position: static !important;
+    width: auto !important;
+}
+.default-fallback > span {
+    display: inline-block;
+    height: auto;
+    margin-bottom: 30px !important;
+    vertical-align: middle;
+    width: 20px;
+}
+
+
+
 .description-team .description {
     float: left;
     width: 80%;
@@ -1750,6 +1780,9 @@ h2 {
     font-size: 24px;
     margin-bottom: 5px !important;
 }
+
+
+
 
 .page-header { font-size: 24px; background:url(../images/trans.png); width:auto; color:white;
 
