@@ -96,7 +96,7 @@
 
 
          <hr>
-         
+
              @if(!empty($clubs))
              <div class="columns six">
                  <h2>Search by Team</h2>
@@ -120,11 +120,11 @@
                  <h2>Upcoming Matches</h2>
                  <ul class="list-upcoming-matches">
                      @foreach($upcomingEvents as $e)
-                     <li >
-                          <span>
+                     <li  class="columns twelve">
+                          <span  class="columns four">
                               {{date('M. d D')}}
                           </span>
-                         <div>
+                         <div  class="columns eight">
                              <a href="{{ FootBallEvent::getUrl($e) }}">{{$e->title}}</a>
                           </div>
                      </li>

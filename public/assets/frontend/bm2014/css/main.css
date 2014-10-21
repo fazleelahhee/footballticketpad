@@ -2037,7 +2037,7 @@ header .searcharea .bigbox-search-button {
 .clublist.columnlist,
 .list-upcoming-matches {
     list-style: none outside none;
-    margin-left: 0;
+    margin-left: 0 !important;
 }
 
 .clublist.columnlist > li {
