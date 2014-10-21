@@ -94,7 +94,9 @@
          <p> No match found! </p>
          @endif
 
-         <div class="row">
+
+         <hr>
+         
              @if(!empty($clubs))
              <div class="columns six">
                  <h2>Search by Team</h2>
@@ -133,7 +135,6 @@
 
              @endif
 
-         </div>
      </div>
 </div>
 <!---------main content------------>
