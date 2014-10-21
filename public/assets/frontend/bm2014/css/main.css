@@ -1764,11 +1764,11 @@ h2 {
        background: url("../images/trans.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
 
       color: white;
-      font-size: 28px;
+      font-size: 26px;
       left: 50%;
       margin-left: -331px;
       margin-top: 311px;
-      min-width: 260px !important;
+      min-width: 310px !important;
       padding: 12px 12px 12px 27px;
       position: absolute;
       width: auto;
