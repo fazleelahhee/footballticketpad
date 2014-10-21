@@ -102,7 +102,18 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
     float: left;
     width: 80%;
 }
-.description-team  .sharebox { float: right;}
+.addthis_sharing_toolbox {
+
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+.description-team .sharebox {
+    float: right;
+    position: relative;
+    text-align: right;
+    width: 20%;
+}
 
 .lsf-icon:before {
 
@@ -1753,11 +1764,11 @@ h2 {
        background: url("../images/trans.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
 
       color: white;
-      font-size: 28px;
+      font-size: 26px;
       left: 50%;
       margin-left: -331px;
-      margin-top: 311px;
-      min-width: 260px !important;
+      margin-top: 313px;
+      min-width: 310px !important;
       padding: 12px 12px 12px 27px;
       position: absolute;
       width: auto;
@@ -3060,15 +3071,15 @@ body.news .site-content {
 .sidebar .game {
     display: inline-block;
     float: none;
-    font-size: 14px;
+    font-size: 13px;
     height: 50px;
     line-height: inherit;
-    margin-left: 10px;
+    margin-left: 6px;
     padding-bottom: 12px;
-    padding-top: 18px;
+    padding-top: 15px;
     text-align: left;
     vertical-align: middle;
-    width: 217px;
+    width: 221px;
 }
 
 .one-column .page-header {
@@ -3229,6 +3240,10 @@ body.news .site-content {
     .description-team .description {
 
         width: 75% !important; margin-bottom: 20px !important;
+    }
+    .description-team .sharebox {
+
+        width: 25% !important;
     }
 
 
