@@ -98,6 +98,37 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
 
 }
 
+html body .default-fallback {
+    background: url("../images/blky.jpg") no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    float: left;
+    height: 90px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+html body .default-fallback > img {
+    display: inline-block !important;
+    float: none;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 17px;
+    max-width: 50px;
+    position: static !important;
+    width: auto !important;
+}
+html body .default-fallback > span {
+    color: white;
+    display: inline-block;
+    height: auto;
+    margin-bottom: 30px !important;
+    vertical-align: middle;
+    width: 20px;
+}
+
+
+
 .description-team .description {
     float: left;
     width: 80%;
@@ -1751,6 +1782,9 @@ h2 {
     margin-bottom: 5px !important;
 }
 
+
+
+
 .page-header { font-size: 24px; background:url(../images/trans.png); width:auto; color:white;
 
   -webkit-border-radius: 0 12px 0 0 ; 
@@ -1993,9 +2027,9 @@ header .searcharea .bigbox-search-button {
     width: 100%;
 }
 .topmatch .btn {
-
     float: right;
     height: 27px;
+    line-height: 24px;
     margin-left: 5px;
     padding: 2px 25px;
 }
