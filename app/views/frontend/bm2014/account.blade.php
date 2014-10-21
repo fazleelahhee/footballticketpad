@@ -67,13 +67,13 @@
 
     </div>
 
-    <!---
-    <div class="pull-right">
-        <span data-tooltip aria-haspopup="true" class="has-tip pausedlisting" title="Paused listing">1</span>
-        <span data-tooltip aria-haspopup="true" class="has-tip blockedlisting" title="Blocked listing">1</span>
-        <span data-tooltip aria-haspopup="true" class="has-tip activelisting" title="Active listing">1</span>
-    </div>
-    -->
+
+<!--    <div class="pull-right">-->
+<!--        <span data-tooltip aria-haspopup="true" class="has-tip pausedlisting" title="Paused listing">1</span>-->
+<!--        <span data-tooltip aria-haspopup="true" class="has-tip blockedlisting" title="Blocked listing">1</span>-->
+<!--        <span data-tooltip aria-haspopup="true" class="has-tip activelisting" title="Active listing">1</span>-->
+<!--    </div>-->
+
 
 </div>
 

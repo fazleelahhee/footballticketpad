@@ -32,8 +32,5 @@ class FootballTickets extends BaseModel implements BaseModelInterface {
         }
         return $output;
     }
-
-
-
 }
 

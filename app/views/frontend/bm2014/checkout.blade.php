@@ -355,6 +355,16 @@ Assets::setScripts(
 
 {{ Assets::jsStart() }}
 <script type="text/javascript" charset="utf-8">
+    ;(function ($) {
+        var loginURL = "{{route('customer.account.checkout.login')}}";
+
+        $('body').on('click', '.login-btn', function () {
+            console.log('Should work....');
+        });
+    });
+</script>
+
+<script type="text/javascript" charset="utf-8">
     (function ($) {
         var body = $('body');
 
@@ -578,7 +588,7 @@ Assets::setScripts(
 <script type="text/x-template" id="login-form-template" charset="utf-8">
     <div id="ajax-login-container">
             <h2 class="login-icon">Login</h2>
-            <form  action="#">
+            <form  action="{{route('customer.account.checkout.login')}}" method="post">
                 <div class="row">
                     <input type="text" name="username" id="username" placeholder="EMAIL"/>
                 </div>
