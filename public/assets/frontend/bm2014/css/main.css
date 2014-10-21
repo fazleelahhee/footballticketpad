@@ -119,6 +119,7 @@ html body .default-fallback > img {
     width: auto !important;
 }
 html body .default-fallback > span {
+    color: white;
     display: inline-block;
     height: auto;
     margin-bottom: 30px !important;
