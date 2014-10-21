@@ -3292,7 +3292,8 @@ body.news .site-content {
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
 
 
-
+    .clublist li { width: 100% !important}
+    
     body .flexslider .slides img {
 
         max-width: none !important;
