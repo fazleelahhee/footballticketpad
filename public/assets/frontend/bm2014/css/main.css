@@ -2026,6 +2026,9 @@ header .searcharea .bigbox-search-button {
     vertical-align: top;
     width: 100%;
 }
+
+.brderbtm { border-bottom: 1px solid #efefef}
+
 .topmatch .btn {
     float: right;
     height: 27px;
@@ -2036,6 +2039,7 @@ header .searcharea .bigbox-search-button {
 
 .clublist.columnlist,
 .list-upcoming-matches {
+    display: inline-block;
     list-style: none outside none;
     margin-left: 0 !important;
 }

@@ -120,8 +120,8 @@
                  <h2>Upcoming Matches</h2>
                  <ul class="list-upcoming-matches">
                      @foreach($upcomingEvents as $e)
-                     <li  class="columns twelve">
-                          <span  class="columns four">
+                     <li class="columns twelve brderbtm">
+                          <span  class="columns four nopadding">
                               {{date('M. d D')}}
                           </span>
                          <div  class="columns eight">
