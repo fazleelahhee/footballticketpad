@@ -99,13 +99,13 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
 }
 
 html body .default-fallback {
+    background: url("../images/blky.jpg") no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
     float: left;
     height: 90px;
     position: relative;
     text-align: center;
     vertical-align: middle;
     width: 100%;
-    background: url("../images/default.jpg") no-repeat 0 0;
 }
 html body .default-fallback > img {
     display: inline-block !important;
