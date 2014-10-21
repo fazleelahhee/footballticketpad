@@ -2027,9 +2027,9 @@ header .searcharea .bigbox-search-button {
     width: 100%;
 }
 .topmatch .btn {
-
     float: right;
     height: 27px;
+    line-height: 24px;
     margin-left: 5px;
     padding: 2px 25px;
 }
