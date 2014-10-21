@@ -100,7 +100,7 @@
                  <h2>Search by Team</h2>
                  <ul class="clublist columnlist">
                     @foreach($clubs as $club)
-                     <li>
+                     <li class="columns six">
                          <a href="/group/club/{{$club->slug}}">
                              <img src="{{ @$club->clubLogo->value}}" />
                              <span>{{$club->title}}</span>
@@ -118,7 +118,7 @@
                  <h2>Upcoming Matches</h2>
                  <ul class="list-upcoming-matches">
                      @foreach($upcomingEvents as $e)
-                     <li>
+                     <li >
                           <span>
                               {{date('M. d D')}}
                           </span>
