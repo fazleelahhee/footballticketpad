@@ -2,6 +2,8 @@
 
 <div class="control-group">
     <div class="controls">
+        <label class="control-label" for="country">
+            &nbsp; Country</label>
         <select name="country" class="select input">
             <option value=""> - </option>
             @foreach($countries as $country)
@@ -15,3 +17,22 @@
     </div>
 </div>
 <br>
+
+<div class="control-group">
+    <div class="controls">
+        <label class="control-label" for="season">
+            &nbsp; Current Season</label>
+        <select name="season" class="select input">
+            <option value=""> - </option>
+            @foreach($season as $s)
+            @if (isset($meta_season))
+            <option value="{{$s->id}}" {{ $meta_season == $s->id?  'selected': '' }}>{{$s->title}}</option>
+            @else
+            <option value="{{$s->id}}">{{$s->title}}</option>
+            @endif
+            @endforeach
+        </select>
+    </div>
+</div>
+<br>
+

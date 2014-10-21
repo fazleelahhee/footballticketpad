@@ -94,6 +94,46 @@
          <p> No match found! </p>
          @endif
 
+         <div class="row">
+             @if(!empty($clubs))
+             <div class="columns six">
+                 <h2>Search by Team</h2>
+                 <ul class="clublist columnlist">
+                    @foreach($clubs as $club)
+                     <li>
+                         <a href="/group/club/{{$club->slug}}">
+                             <img src="{{ @$club->clubLogo->value}}" />
+                             <span>{{$club->title}}</span>
+                         </a>
+                     </li>
+                     @endforeach
+
+                 </ul>
+             </div>
+             @endif
+
+             @if(!empty($upcomingEvents))
+             <div class="columns six">
+
+                 <h2>Upcoming Matches</h2>
+                 <ul class="list-upcoming-matches">
+                     @foreach($upcomingEvents as $e)
+                     <li>
+                          <span>
+                              {{date('M. d D')}}
+                          </span>
+                         <div>
+                             <a href="{{ FootBallEvent::getUrl($e) }}">{{$e->title}}</a>
+                          </div>
+                     </li>
+                     @endforeach
+                 </ul>
+
+              </div>
+
+             @endif
+
+         </div>
      </div>
 </div>
 <!---------main content------------>

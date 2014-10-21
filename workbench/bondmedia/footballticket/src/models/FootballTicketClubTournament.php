@@ -2,7 +2,7 @@
 
 class FootballTicketClubTournament extends BaseModel {
     public $table = 'football_ticket_club_tournaments';
-    public $fillable=['tournament_id', 'club_id'];
+    public $fillable=['tournament_id', 'club_id', 'season_id'];
     public function __construct() {
         parent::__construct();
     }

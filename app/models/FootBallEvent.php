@@ -91,6 +91,7 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
             ->select('events.*')
             ->where('events.tournament_id', '=',$tid)
             ->where('events.feature_event', '=', '1')
+            ->whereRaw('events.datetime >= NOW() ' )
             ->groupBy('events.id')
             ->orderBy('events.datetime', 'DESC')
             ->take(6)
@@ -101,6 +102,26 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
             $result->awayTeamClubLog = FootballTicketMeta::getTicketMeta($result->away_team_id, 'club_logo');
             $output[] = $result;
         }
+        return $output;
+    }
+
+    public static function upcoming($tid = 0) {
+        $output = array();
+
+        $output = DB::table('events')
+            ->select('events.*')
+            ->where('events.tournament_id', '=',$tid)
+            ->groupBy('events.id')
+            ->orderBy('events.datetime', 'DESC')
+            ->whereRaw('events.datetime >= NOW() ' )
+            ->take(10)
+            ->get();
+
+//        foreach($results as $result) {
+//            $result->homeTeamClubLog = FootballTicketMeta::getTicketMeta($result->home_team_id, 'club_logo');
+//            $result->awayTeamClubLog = FootballTicketMeta::getTicketMeta($result->away_team_id, 'club_logo');
+//            $output[] = $result;
+//        }
         return $output;
     }
 }

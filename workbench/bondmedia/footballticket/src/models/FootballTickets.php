@@ -32,5 +32,27 @@ class FootballTickets extends BaseModel implements BaseModelInterface {
         }
         return $output;
     }
+
+
+    public static function getClubs($tournament_id, $season_id) {
+        $output = array();
+        $results = DB::table('football_ticket_club_tournaments')
+                   ->join('football_ticket', 'football_ticket.id', '=','football_ticket_club_tournaments.club_id')
+                   ->select('football_ticket.*')
+                   ->where('football_ticket_club_tournaments.tournament_id','=',$tournament_id)
+                   ->where('football_ticket_club_tournaments.season_id', '=', $season_id)
+                   ->groupBy('football_ticket.id')
+                   ->orderBy('football_ticket.title', 'ASC')
+                   ->get();
+        foreach($results as $result) {
+
+            $result->clubLogo = FootballTicketMeta::getTicketMeta($result->id, 'club_logo');
+
+            $output[] = $result;
+        }
+
+
+        return $output;
+    }
 }
 
