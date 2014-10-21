@@ -2042,6 +2042,7 @@ header .searcharea .bigbox-search-button {
     display: inline-block;
     list-style: none outside none;
     margin-left: 0 !important;
+    margin-top: 20px;
 }
 
 .clublist.columnlist > li {
