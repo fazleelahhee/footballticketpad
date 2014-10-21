@@ -103,9 +103,10 @@ body {font-family: 'HelveticaNeueLTStd-Lt', sans-serif; background: white; paddi
     width: 80%;
 }
 .addthis_sharing_toolbox {
-    float: right;
+ 
     position: absolute;
     width: 100%;
+    z-index: 10;
 }
 .description-team .sharebox {
     float: right;
