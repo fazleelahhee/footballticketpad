@@ -3160,6 +3160,7 @@ body.news .site-content {
 ================================================== */
 @media only screen and (min-width: 1001px) and (max-width: 1239px) {
 
+    .clublist li { width: 100% !important}
 
     .banner-home {
         overflow: hidden;
