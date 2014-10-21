@@ -14,7 +14,7 @@ class FootballTicketRepository extends Validator implements BaseRepositoryInterf
     protected $perPage;
     protected $footballTicket;
     protected $slug_prefix = 'club';
-    protected $meta_data = array('club_logo', 'nickname', 'founded', 'rivals','recorded_goal_scorer', 'record_signing', 'country');
+    protected $meta_data = array('club_logo', 'nickname', 'founded', 'rivals','recorded_goal_scorer', 'record_signing', 'country', 'season');
 
     /**
      * Rules

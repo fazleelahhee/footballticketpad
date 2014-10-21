@@ -75,6 +75,7 @@ class FootballTicketController extends BaseController {
         View::share('body_class', "page {$type} {$slug}");
         View::share('type', $type);
         $meta = FootballTicketMeta::where('football_ticket_id', '=', $node->id)->get();
+        $season = '';
         foreach($meta->toArray() as $val) {
             $var_view = 'meta_'.$val['key'];
             if($var_view  == 'meta_tournament' ) {
@@ -86,6 +87,9 @@ class FootballTicketController extends BaseController {
                 View::share($var_view, $val['value']);
             }
 
+            if($var_view  == 'meta_season' ) {
+                $season = $val['value'];
+            }
         }
 
 
@@ -97,7 +101,10 @@ class FootballTicketController extends BaseController {
             View::share('tickets', FootBallEvent::getClubRelatedTickets($node->id));
             return View::make(Template::name('frontend.%s.team'), compact('node'));
         } else if($type == 'league') {
+
             View::share('tickets', FootBallEvent::getLeagueRelatedTickets($node->id));
+            View::share('clubs', FootballTickets::getClubs($node->id, $season));
+            View::share('upcomingEvents', FootBallEvent::upcoming($node->id));
             return View::make(Template::name('frontend.%s.league'), compact('node'));
         }
         else {
@@ -223,7 +230,8 @@ class FootballTicketController extends BaseController {
             $ftct = new FootballTicketClubTournament();
             $ftct->fill(array(
                 'tournament_id' => $input['value']['tournament'],
-                'club_id' => $input['id']
+                'club_id' => $input['id'],
+                'season_id'=> $input['value']['season']
             ))->save();
         }
 
