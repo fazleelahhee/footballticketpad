@@ -2042,7 +2042,7 @@ header .searcharea .bigbox-search-button {
 .clublist.columnlist > li {
     float: left;
     margin-bottom: 25px;
-    width: 50%; color: black;
+    color: black;
 }
 
 .clublist.columnlist img {
