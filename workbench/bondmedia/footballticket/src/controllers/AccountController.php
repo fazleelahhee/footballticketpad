@@ -14,6 +14,11 @@ class AccountController extends BaseController {
         View::share('body_class', 'ticket-listing static');
         View::share('tabs', 'listing');
         View::share('node', $node);
+        $customer = Session::get('customer');
+
+        $events = RelatedTicket::getEventsByUser($customer['entity_id']);
+
+        View::share('events', $events);
         return View::make(Template::name('frontend.%s.account'));
     }
 

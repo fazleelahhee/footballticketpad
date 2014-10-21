@@ -68,6 +68,7 @@
     <br>
 
     @include('footballticket::admin.footballticket.partials.'.$type)
+    @include('footballticket::admin.footballticket.partials.common')
 
     {{ Form::submit('Update', array('class' => 'btn btn-success')) }}
     {{ Form::close() }}

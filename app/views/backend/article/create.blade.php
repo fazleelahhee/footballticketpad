@@ -146,7 +146,18 @@
     <div class="tab-pane fade" id="s2">
         <div class="row">
             <div class="col-md-12">
+                <!-- Meta Title -->
+                <div class="control-group {{ $errors->has('meta_title') ? 'has-error' : '' }}">
+                    <label class="control-label" for="title">Meta Title</label>
 
+                    <div class="controls">
+                        {{ Form::text('meta_title', null, array('class'=>'form-control', 'id' => 'meta_title', 'placeholder'=>'Meta Title', 'value'=>Input::old('meta_title'))) }}
+                        @if ($errors->first('meta_description'))
+                        <span class="help-block">{{ $errors->first('meta_title') }}</span>
+                        @endif
+                    </div>
+                </div>
+                <br>
                 <!-- Meta Description -->
                 <div class="control-group {{ $errors->has('meta_description') ? 'has-error' : '' }}">
                     <label class="control-label" for="title">Meta Description</label>

@@ -15,7 +15,7 @@ class TicketTypeController extends \BaseController {
                 $ticketType = new TicketType();
                 return $ticketType->ticketByIds(explode(',', $ids));
             }
-            $types = TicketType::all();
+            $types = TicketType::where('status', '=','1')->get();
             return $types;
         } catch( Exception $e) {
             return $e;
@@ -106,5 +106,15 @@ class TicketTypeController extends \BaseController {
 		//
 	}
 
-
+    public function remove() {
+        $ids = Input::get('ids');
+        if($ids != '') {
+            $arrIds = explode(',', $ids);
+            //filter ids
+            foreach($arrIds as $key=>$val) {
+                $arrIds[$key] = (int) $val;
+            }
+            DB::table('events_ticket_type')->whereIn('id', $arrIds)->update(array('status'=>0));
+        }
+    }
 }

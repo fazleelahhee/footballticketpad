@@ -21,7 +21,7 @@ Assets::setScripts([
         <h3>
             Update Events
             <div class="pull-right">
-                {{ HTML::link('/admin/events','Back', array('class'=>'btn btn-primary')) }}
+                {{ HTML::link($events->getUrlAttribute(),'View', array('class'=>'btn btn-primary','target'=>'_blank' )) }}
             </div>
         </h3>
     </div>
@@ -61,7 +61,7 @@ Assets::setScripts([
         <label class="control-label" for="title">Datetime</label>
 
         <div class="controls">
-            {{ Form::text('datetime', $events->datetime, array('class'=>'form-control', 'id' => 'datetime', 'value'=>Input::old('datetime'))) }}
+            {{ Form::text('datetime', date('d/m/Y H:i', strtotime($events->datetime)), array('class'=>'form-control', 'id' => 'datetime', 'value'=>Input::old('datetime'))) }}
             @if ($errors->first('datetime'))
             <span class="help-block">{{ $errors->first('datetime') }}</span>
             @endif
@@ -222,138 +222,197 @@ Assets::setScripts([
 
 <script type="text/javascript">
 
-    (function ($) {
-        window.PopUpSelector = function (options) {
-            var body        = $('body'),
-                url         = options.url,
-                inputIds    = options.inputIds,
-                container   = options.container,
-                linkToClick = options.linkToClick,
-                template    = options.template,
-                templateCon = options.templateCon,
-                addEvent    = options.addEvent,
-                addInElem   = options.addInElem,
-                saveBtnElem = options.saveBtnElem,
-                selectElem  = options.selectElem,
-                addUrl      = options.addUrl,
-                loaded      = false,
-                types       = [],
-                self        = this;
+;(function ($) {
+    window.PopUpSelector = function (options) {
+        var body        = $('body'),
+            url         = options.url,
+            inputIds    = options.inputIds,
+            container   = options.container,
+            linkToClick = options.linkToClick,
+            template    = options.template,
+            templateCon = options.templateCon,
+            addEvent    = options.addEvent,
+            addInElem   = options.addInElem,
+            saveBtnElem = options.saveBtnElem,
+            selectElem  = options.selectElem,
+            addUrl      = options.addUrl,
+            delUrl      = options.delUrl,
+            delBtn      = options.delBtn,
+            loaded      = false,
+            types       = [],
+            self        = this;
 
-            this.init = function  () {
-                $.ajax({
-                    url: url,
-                    dataType: 'json',
-                    type: 'GET'
-                }).done(function (response) {
-                    if( response.length > 0) {
-                        _.each(response, function (val) {
-                            if(val.title) {
-                                types[val.id] = val;
-                            }
-                        });
-                        loaded = true;
-                        self.displayOnForm();
-                    }
-                });
-
-                return this;
-            }
-
-            this.displayOnForm = function() {
-                var ArrIds = $(inputIds).val().split(',');
-                var ids = [];
-                _.each(ArrIds, function (val, key) {
-                    ids[key] = parseInt(val);
-                });
-                $(container).html('');
-                _.each(types, function (val, key) {
-                    if (_.contains(ids, key)) {
-                        $(container).append(
-                            '<p>'+val.title+'</p>'
-                        );
-                    }
-                });
-
-                return this;
-            }
-
-            this.events = function () {
-                $(linkToClick).click(function (e) {
-                    e.preventDefault();
-                    var _template = _.template($(template).html());
-                    $(templateCon).remove();
-                    var ids = [];
-                    if($(inputIds).val() != undefined || $(inputIds).val().length > 0 ) {
-                        var ArrIds = $(inputIds).val().split(',');
-                        _.each(ArrIds, function (val, key) {
-                            ids[key] = parseInt(val);
-                        });
-                    }
-
-                    body.append(_template({
-                        types: types,
-                        ids: ids
-                    }));
-
-                    $(templateCon).modal({show: true});
-
-                });
-
-
-                body.on('click', addEvent,function (e) {
-                    e.preventDefault();
-                    var data = {
-                        name: $(addInElem).val()
-                    }
-
-                    $.ajax({
-                        url: addUrl,
-                        data: data,
-                        type: 'post',
-                        dataType: 'json',
-                    }).done(function(response) {
-                        if (response.id) {
-                            $(selectElem).append(
-                                '<option value='+response.id+'>'+response.ticketType+'</option>'
-                            );
-                            self.init();
+        this.init = function  () {
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                type: 'GET'
+            }).done(function (response) {
+                if( response.length > 0) {
+                    _.each(response, function (val) {
+                        if(val.title) {
+                            types[val.id] = val;
                         }
                     });
-                });
-
-                body.on('click', saveBtnElem, function (e) {
-                    e.preventDefault();
-                    var selected = $(selectElem+' :selected');
-                    var values = [];
-
-                    _.each(selected, function (val, key) {
-                        values[key] = parseInt($(val).val());
-                    });
-
-                    if(values.length > 0) {
-                        $(inputIds).val(values.join(','));
-                    }
-
-                    $(templateCon)
-                        .find('.close')
-                        .trigger('click');
+                    loaded = true;
                     self.displayOnForm();
-                });
-                return this;
-            }
+                }
+            });
 
             return this;
         }
-    })(jQuery);
+
+        this.displayOnForm = function() {
+            var ArrIds = $(inputIds).val().split(',');
+            var ids = [];
+            _.each(ArrIds, function (val, key) {
+                ids[key] = parseInt(val);
+            });
+            $(container).html('');
+            _.each(types, function (val, key) {
+                if (_.contains(ids, key)) {
+                    $(container).append(
+                        '<p>'+val.title+'</p>'
+                    );
+                }
+            });
+
+            return this;
+        }
+
+        this.events = function () {
+            $(linkToClick).click(function (e) {
+                e.preventDefault();
+                var _template = _.template($(template).html());
+                $(templateCon).remove();
+                var ids = [];
+                if($(inputIds).val() != undefined || $(inputIds).val().length > 0 ) {
+                    var ArrIds = $(inputIds).val().split(',');
+                    _.each(ArrIds, function (val, key) {
+                        ids[key] = parseInt(val);
+                    });
+                }
+
+                body.append(_template({
+                    types: types,
+                    ids: ids
+                }));
+
+                $(templateCon).modal({show: true});
+
+            });
+
+
+            body.on('click', addEvent,function (e) {
+                e.preventDefault();
+                var data = {
+                    name: $(addInElem).val()
+                }
+
+                $.ajax({
+                    url: addUrl,
+                    data: data,
+                    type: 'post',
+                    dataType: 'json',
+                }).done(function(response) {
+                    if (response.id) {
+                        $(selectElem).append(
+                            '<option value='+response.id+'>'+response.ticketType+'</option>'
+                        );
+                        self.init();
+                    }
+                });
+            });
+
+            body.on('click', saveBtnElem, function (e) {
+                e.preventDefault();
+                var selected = $(selectElem+' :selected');
+                var values = [];
+
+                _.each(selected, function (val, key) {
+                    values[key] = parseInt($(val).val());
+                });
+
+                if(values.length > 0) {
+                    $(inputIds).val(values.join(','));
+                }
+
+                $(templateCon)
+                    .find('.close')
+                    .trigger('click');
+                self.displayOnForm();
+            });
+
+            body.on('change', 'select', function (e) {
+                var parentDiv = $(this).closest('div.modal-body');
+                var inputIdContainer = parentDiv.find('input.delete-ids');
+                var removeBtn = parentDiv.find(delBtn);
+                if(inputIdContainer.length > 0) {
+                    inputIdContainer.val($(this).val().join());
+                    removeBtn.css({display: 'block'});
+                }
+            });
+
+            body.on('click', delBtn , function (e) {
+                e.preventDefault();
+                var parentDiv = $('.'+$(this).data('parent'));
+                var ids  = parentDiv.find('input.delete-ids').val();
+                if(ids  === '') {
+                    return;
+                }
+                var arrIds = ids.split(',');
+                console.log(arrIds);
+                var data = {
+                    ids:  parentDiv.find('input.delete-ids').val()
+                }
+
+                $.ajax({
+                    url: delUrl,
+                    data: data,
+                    type: 'post',
+                    dataType: 'json'
+
+                });
+
+                if(arrIds.length > 0 ) {
+                    for(var i=0; i<arrIds.length ; i++) {
+                        $(selectElem).find('option').each(function () {
+                            if($(this).attr('value') === arrIds[i]) {
+                                $(this).remove();
+                            }
+                        });
+                    }
+                }
+            });
+            return this;
+        }
+
+        return this;
+    }
+})(jQuery);
 
     (function ($) {
         $(document).ready(function () {
 
-            $("#title").slug();
+            function getTimes() {
+                var hour = ['08', '09','10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'];
+                var min = ['00', '05', '15', '20', '25', '30', '35', '40', '45', '50', '55']
+                var output = [];
 
+                for(var i=0; i<hour.length; i++) {
+                    for(var j=0; j<min.length; j++) {
+                        output.push(hour[i]+':'+min[j]);
+                    }
+                }
+
+                return output;
+            }
+
+            $("#title").slug();
+            var alloedTime = getTimes();
             $('#datetime').datetimepicker({
-                format:'Y-m-d H:i:s'
+                format:'d/m/Y H:i',
+                allowTimes: alloedTime
             });
 
             if ($('#tag').length != 0) {
@@ -372,7 +431,9 @@ Assets::setScripts([
                 addInElem   : '.add-ticket-type-input',
                 addUrl      : '{{ route("ticket.events.ticket-types.add")}}',
                 saveBtnElem : '.selected-ticket-type',
-                selectElem  : '.ticket-types'
+                selectElem  : '.ticket-types',
+                delUrl      : '{{route("ticket.events.ticket-types.delete")}}',
+                delBtn      : '.remove-selected-ticket'
             }).init().events();
 
             new PopUpSelector({
@@ -386,7 +447,9 @@ Assets::setScripts([
                 addInElem   : '.add-ticket-type-input',
                 addUrl      : '{{ route("ticket.events.formOfTicket.add")}}',
                 saveBtnElem : '.set-form-of-ticket',
-                selectElem  : '.form-of-tickets'
+                selectElem  : '.form-of-tickets',
+                delUrl      : '{{route("ticket.events.formOfTicket.delete")}}',
+                delBtn      : '.remove-selected-ticket-type'
             }).init().events();
 
             new PopUpSelector({
@@ -400,7 +463,10 @@ Assets::setScripts([
                 addInElem   : '.add-restriction-input',
                 addUrl      : '{{ route("ticket.events.restriction.add")}}',
                 saveBtnElem : '.set-restriction-ticket',
-                selectElem  : '.restrictions-ticket'
+                selectElem  : '.restrictions-ticket',
+                delUrl      : '{{route("ticket.events.restriction.delete")}}',
+                delBtn      : '.remove-selected-ticket-restriction'
+
             }).init().events();
 
             //
@@ -432,6 +498,8 @@ Assets::setScripts([
                             <% }) %>
                         </select>
                     </div>
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" data-parent="available-ticket-type-template" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -453,11 +521,11 @@ Assets::setScripts([
                     </button>
                     <h4 class="modal-title">Available Form of Ticket</h4>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body">
                     <p>
                     <div class="form-group">
                         <input name="ticket_type_ids" value="" type="text" class="form-control add-ticket-type-input">
-                        <input type="button" value="Add" class="btn add-form-ticket">
+                        <input type="button"  value="Add" class="btn add-form-ticket">
                     </div>
 
                     <div class="form-group">
@@ -467,6 +535,10 @@ Assets::setScripts([
                             <% }) %>
                         </select>
                     </div>
+
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" data-parent="available-form-of-ticket-template" value="Delete Ticket Type" class="btn remove-selected-ticket-type" style="display: none">
+
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -502,6 +574,9 @@ Assets::setScripts([
                             <% }) %>
                         </select>
                     </div>
+
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" data-parent="available-restriction-ticket-template" value="Delete Ticket Type" class="btn remove-selected-ticket-restriction" style="display: none">
                     </p>
                 </div>
                 <div class="modal-footer">

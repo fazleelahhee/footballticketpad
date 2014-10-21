@@ -15,7 +15,7 @@ class FormOfTicketController extends \BaseController {
                 $types = new FormOfTicket();
                 return $types->ticketByIds(explode(',', $ids));
             }
-            $types = FormOfTicket::all();
+            $types = FormOfTicket::where('status', '=','1')->get();
             return $types;
         } catch( Exception $e) {
             return $e;
@@ -105,5 +105,16 @@ class FormOfTicketController extends \BaseController {
 		//
 	}
 
+    public function remove() {
+        $ids = Input::get('ids');
+        if($ids != '') {
+            $arrIds = explode(',', $ids);
+            //filter ids
+            foreach($arrIds as $key=>$val) {
+                $arrIds[$key] = (int) $val;
+            }
+            DB::table('events_form_of_ticket')->whereIn('id', $arrIds)->update(array('status'=>0));
+        }
+    }
 
 }

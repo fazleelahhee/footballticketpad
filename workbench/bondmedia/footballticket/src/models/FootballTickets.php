@@ -5,7 +5,10 @@ use Bond\Interfaces\BaseModelInterface as BaseModelInterface;
 class FootballTickets extends BaseModel implements BaseModelInterface {
 
     public $table = 'football_ticket';
-    public $fillable=['title', 'slug', 'content', 'is_published', 'type', 'feature_image', 'venue_image', 'featured', 'order'];
+    public $fillable=['title', 'slug', 'content', 'is_published', 'type',
+        'feature_image', 'venue_image', 'featured', 'order',
+        'meta_title', 'meta_content', 'meta_description'
+    ];
     protected $appends = ['url'];
 
     public function __construct() {

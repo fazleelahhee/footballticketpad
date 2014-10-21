@@ -116,7 +116,7 @@ class SellController extends BaseController
                     'meta_keyword' => strip_tags($info['content']),
                     'meta_description' => strip_tags($info['content']),
                     'stock_data' => array(
-                        'qty' => 100,
+                        'qty' => $data['ticketInformation']['number_of_ticket'],
                         'is_in_stock'=>1,
                         'min_sale_qty'=> 1
 
@@ -125,12 +125,17 @@ class SellController extends BaseController
                 )
             );
             $response = TicketSoap::process('catalog_product.create', $product);
+
+            $data['commission_in_per'] = Config::get('ticket.selling_commission');
+
             if ($response) {
                 $relatedTicket = new RelatedTicket();
                 $relatedTicket->event_id = $ticketId;
                 $relatedTicket->product_id = $response;
                 $relatedTicket->ticket = json_encode($data);
                 $relatedTicket->price = $data['ticketInformation']['price'];
+                $relatedTicket->available_qty = $data['ticketInformation']['number_of_ticket'];
+                $relatedTicket->user_id = $customer['entity_id'];
                 $relatedTicket->save();
             }
         } catch (Exception $e) {
@@ -142,6 +147,25 @@ class SellController extends BaseController
         Session::put('ticket_part_1_'.$ticketId, '');
         Session::put('ticket_part_2_'.$ticketId, '');
         Session::put('ticket_part_3_'.$ticketId, '');
+
+        $total_selling = $data['ticketInformation']['number_of_ticket'] * $data['ticketInformation']['price'];
+        $selling_fees_amount = (($data['ticketInformation']['number_of_ticket'] * $data['ticketInformation']['price']) * Config::get('ticket.selling_commission')) / 100;
+
+        $formData = array(
+            'seller_name' => "{$customer['firstname']} {$customer['lastname']}",
+            'number_of_ticket' => $data['ticketInformation']['number_of_ticket'],
+            'selling_price' => $data['ticketInformation']['price'],
+            'selling_fees'=> Config::get('ticket.selling_commission'),
+            'selling_fees_amount' => $selling_fees_amount,
+            'total_selling' => $total_selling,
+            'net_payment' => $total_selling - $selling_fees_amount
+        );
+
+        Mail::send('emails.tickets.listing-confirmation', $formData, function ($message) {
+            $customer = Session::get('customer');
+            $message->from(Config::get('ticket.default_email'), Config::get('ticket.default_name'));
+            $message->to($customer['email'], "{$customer['firstname']} {$customer['lastname']}")->subject("Ticket Listing confirmation");
+        });
 
         $response = Response::make(json_encode(['message' => $response]), '200');
         $response->header('Content-Type', 'application/json');

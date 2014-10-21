@@ -15,7 +15,7 @@ class TicketRestrictionController extends \BaseController {
                 $ticketType = new TicketRestriction();
                 return $ticketType->ticketByIds(explode(',', $ids));
             }
-            $types = TicketRestriction::all();
+            $types = TicketRestriction::where('status', '=','1')->get();
             return $types;
         } catch( Exception $e) {
             return $e;
@@ -105,5 +105,16 @@ class TicketRestrictionController extends \BaseController {
 		//
 	}
 
+    public function remove() {
+        $ids = Input::get('ids');
+        if($ids != '') {
+            $arrIds = explode(',', $ids);
+            //filter ids
+            foreach($arrIds as $key=>$val) {
+                $arrIds[$key] = (int) $val;
+            }
+            DB::table('events_ticket_restrictions')->whereIn('id', $arrIds)->update(array('status'=>0));
+        }
+    }
 
 }

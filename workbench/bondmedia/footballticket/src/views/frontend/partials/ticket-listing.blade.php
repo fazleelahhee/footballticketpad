@@ -18,15 +18,14 @@
                     	</span>
         </td>
         <td>
-            {{date('l dS F Y', strtotime($ticket->datetime))}}
-            Saturday 16th August 2014  <br> 3:00pm
+            {{date('l dS F Y <\b\r> ', strtotime($ticket->datetime))}}
         </td>
         <td>
             &pound;{{$ticket->price}}
         </td>
         <td>
 
-            <a href="{{ '/events/'.$ticket->slug }}" class="btn pinkbtn"> BUY </a>
+            <a href="{{ FootBallEvent::getUrl($ticket) }}" class="btn pinkbtn"> BUY </a>
             <a href="{{ '/ticket/sell/'.$ticket->id }}" class="btn bluebtn"> SELL </a>
         </td>
     </tr>

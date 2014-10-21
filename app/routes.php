@@ -6,6 +6,72 @@
 |--------------------------------------------------------------------------
 */
 
+Route::any('/customer/account/logout', function () {
+    $api_path = Config::get('api.mage_soap_api_path');
+    require_once("{$api_path}app/Mage.php");
+    umask(0);
+    Mage::app('default');
+    Mage::getSingleton('core/session', array('name'=>'frontend'));
+    $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
+    $session->logout();
+    Session::put('customer', null);
+    return Redirect::to('/login') ;
+});
+
+
+Route::group(array('before'=> 'customer.account'), function () {
+
+    Route::get('/account/listing', 'AccountController@ticketListing');
+    Route::get('/account/purchases', 'AccountController@ticketPurchase');
+    Route::get('/account/sales', 'AccountController@ticketSales');
+    Route::get('/account/account-information', 'AccountController@accountInformation');
+    Route::get('/account/addresses', 'AccountController@address');
+
+    Route::get('/account/account-information/bank', 'AccountController@getCustomerBankInfo'); //get customer bank information
+    Route::post('/account/account-information/bank', 'AccountController@setCustomerBankInfo'); //set customer bank information
+
+    Route::get('/account/account-information/card', 'AccountController@getCustomerCardInfo'); //get customer bank card information
+    Route::post('/account/account-information/card', 'AccountController@setCustomerCardInfo'); //set customer bank card information
+    Route::get('/account/account-information/card/all', 'AccountController@getCustomerAllCardInfo'); //get customer bank card information
+
+    Route::get('/account/account-information/card/all', 'AccountController@getCustomerAllCardInfo');
+
+    Route::get('/account/account-information/personal', 'AccountController@getCustomerInfo'); //get customer bank card information
+    Route::post('/account/account-information/personal', 'AccountController@setCustomerInfo'); //set customer bank card information
+
+    Route::post('account/account-information/password', function () {
+        $api_path = Config::get('api.mage_soap_api_path');
+        require_once("{$api_path}app/Mage.php");
+        umask(0);
+        Mage::app('default');
+
+        $password = Input::get('_password');
+        $confirm_password = Input::get('_confirm_password');
+        if($password != $confirm_password) {
+            header('content-type: application/json');
+            header($_SERVER["SERVER_PROTOCOL"]." 400");
+            echo json_encode(array('error'=>'password does not match'));
+        }
+
+        $SesCustomer  = Session::get('customer');
+        $customer = Mage::getModel("customer/customer");
+        $customer = $customer->load($SesCustomer['entity_id']);
+
+        $customer->setPassword($password);
+        $customer->save();
+
+        header('content-type: application/json');
+        header($_SERVER["SERVER_PROTOCOL"]." 200");
+        echo json_encode(array('data'=>array('message'=>'success')));
+    });
+
+    Route::get('/account/account-information/billing', 'AccountController@getCustomerBillingAddress'); //get customer billing address information
+    Route::post('/account/account-information/billing', 'AccountController@setCustomerBillingAddress'); //set customer billing address  information
+    Route::get('/account/account-information/shipping', 'AccountController@getCustomerShippingAddress'); //get customer address information
+    Route::post('/account/account-information/shipping', 'AccountController@setCustomerShippingAddress'); //set customer address information
+});
+
+
 Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
 
     // frontend dashboard
@@ -270,9 +336,13 @@ Route::get('/group/{type}/{slug}', array('as' => 'dashboard.footballticket.show'
 
 Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'before' => array('auth.admin', 'assets_admin')), function () {
     Route::post('/ticket/events/ticket-types/add', array('as'=>'ticket.events.ticket-types.add','uses'=>'TicketTypeController@create'));
+    Route::post('/ticket/events/ticket-types/remove', array('as'=>'ticket.events.ticket-types.delete','uses'=>'TicketTypeController@remove'));
 
     Route::post('/ticket/events/form-of-ticket/add', array('as'=>'ticket.events.formOfTicket.add','uses'=>'FormOfTicketController@create'));
+    Route::post('/ticket/events/form-of-ticket/remove', array('as'=>'ticket.events.formOfTicket.delete','uses'=>'FormOfTicketController@remove'));
+
     Route::post('/ticket/events/ticket-restriction/add', array('as'=>'ticket.events.restriction.add','uses'=>'TicketRestrictionController@create'));
+    Route::post('/ticket/events/ticket-restriction/remove', array('as'=>'ticket.events.restriction.delete','uses'=>'TicketRestrictionController@remove'));
 
     //save mfootball ticket meta
     Route::post('/footballticket/meta-data/save', array('as'=>'footballticket.meta.data.save', 'uses'=>'FootballTicketController@saveMeta'));
@@ -318,24 +388,15 @@ Route::any('/checkout/order/{id}', array('as'=>'ticket.checkout.order', 'uses'=>
 
 Route::any('/search/ticket', array('as'=>'ticket.events.search', 'uses'=>'FootballTicketController@searchEvent'));
 Route::any('/search/ticket/category', array('as'=>'ticket.events.search.category', 'uses'=>'FootballTicketController@searchEventCategory'));
-Route::get('/events/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
+//Route::get('/events/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
+Route::get('/{league}/{season}/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
 
 /*
 |--------------------------------------------------------------------------
 | Football tickets customer account
 |--------------------------------------------------------------------------
 */
-Route::any('/customer/account/logout', function () {
-    $api_path = Config::get('api.mage_soap_api_path');
-    require_once("{$api_path}app/Mage.php");
-    umask(0);
-    Mage::app('default');
-    Mage::getSingleton('core/session', array('name'=>'frontend'));
-    $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
-    $session->logout();
-    Session::put('customer', null);
-    return Redirect::to('/login') ;
-});
+
 Route::post('/customer/account/login', function () {
     header('Content-type: application/json');
     $api_path = Config::get('api.mage_soap_api_path');
@@ -391,58 +452,6 @@ Route::post('/customer/account/login', function () {
 });
 
 
-
-Route::group(array('before'=> 'customer.account'), function () {
-
-    Route::get('/account/listing', 'AccountController@ticketListing');
-    Route::get('/account/purchases', 'AccountController@ticketPurchase');
-    Route::get('/account/sales', 'AccountController@ticketSales');
-    Route::get('/account/account-information', 'AccountController@accountInformation');
-    Route::get('/account/addresses', 'AccountController@address');
-
-    Route::get('/account/account-information/bank', 'AccountController@getCustomerBankInfo'); //get customer bank information
-    Route::post('/account/account-information/bank', 'AccountController@setCustomerBankInfo'); //set customer bank information
-
-    Route::get('/account/account-information/card', 'AccountController@getCustomerCardInfo'); //get customer bank card information
-    Route::post('/account/account-information/card', 'AccountController@setCustomerCardInfo'); //set customer bank card information
-    Route::get('/account/account-information/card/all', 'AccountController@getCustomerAllCardInfo'); //get customer bank card information
-
-    Route::get('/account/account-information/card/all', 'AccountController@getCustomerAllCardInfo');
-
-    Route::get('/account/account-information/personal', 'AccountController@getCustomerInfo'); //get customer bank card information
-    Route::post('/account/account-information/personal', 'AccountController@setCustomerInfo'); //set customer bank card information
-
-    Route::post('account/account-information/password', function () {
-        $api_path = Config::get('api.mage_soap_api_path');
-        require_once("{$api_path}app/Mage.php");
-        umask(0);
-        Mage::app('default');
-
-        $password = Input::get('_password');
-        $confirm_password = Input::get('_confirm_password');
-        if($password != $confirm_password) {
-            header('content-type: application/json');
-            header($_SERVER["SERVER_PROTOCOL"]." 400");
-            echo json_encode(array('error'=>'password does not match'));
-        }
-
-        $SesCustomer  = Session::get('customer');
-        $customer = Mage::getModel("customer/customer");
-        $customer = $customer->load($SesCustomer['entity_id']);
-
-        $customer->setPassword($password);
-        $customer->save();
-
-        header('content-type: application/json');
-        header($_SERVER["SERVER_PROTOCOL"]." 200");
-        echo json_encode(array('data'=>array('message'=>'success')));
-    });
-
-    Route::get('/account/account-information/billing', 'AccountController@getCustomerBillingAddress'); //get customer billing address information
-    Route::post('/account/account-information/billing', 'AccountController@setCustomerBillingAddress'); //set customer billing address  information
-    Route::get('/account/account-information/shipping', 'AccountController@getCustomerShippingAddress'); //get customer address information
-    Route::post('/account/account-information/shipping', 'AccountController@setCustomerShippingAddress'); //set customer address information
-});
 
 /*
 |--------------------------------------------------------------------------

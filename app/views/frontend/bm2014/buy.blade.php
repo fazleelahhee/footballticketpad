@@ -11,7 +11,7 @@
          <a href="/ticket/sell/{{$node->id}}" class="btn bluebtn">SELL TICKETS</a>
      </span>
 <span class="club-effect">
-    @if($node->venue_image != '')
+    @if($node->feature_image != '')
     <img class="inner-banner" src="{{$node->feature_image}}" alt="banner image" />
     @else
     <img class="inner-banner" src="{{ Assets::Path('images/default.jpg') }}" alt="banner image" />
@@ -52,8 +52,8 @@
 
 
              <div class="columns five stadiumpicture">
-                 @if($node->venue_image != '')
-                 <img src="{{$node->venue_image}}" />
+                 @if($groundImage != '')
+                 <img src="{{$groundImage}}" />
                  @else
                  <img src="{{ Assets::Path('images/stadiumpic.png') }}" />
                  @endif
@@ -76,8 +76,13 @@
                      <div class="pull-right">
                          <select name="fiter_of_ticket">
                              <option value="-1"> Select Number of Ticket</option>
+                             <option value="1"> 1 </option>
+                             <option value="2"> 2 </option>
+                             <option value="3"> 3 </option>
+                             <option value="4"> 4 </option>
+                             <option value="5"> 5+</option>
                          </select>
-                         <select>
+                         <select name="ticket_type">
                              <option value="-1">Select type of tickets</option>
                          </select>
                      </div>
@@ -119,65 +124,96 @@
 {{ Assets::jsStart() }}
 <script type="text/javascript">
     (function ($) {
-        var numOfTicket = [];
+
         var ticketType = [];
         $(document).ready(function () {
-            $('.td-num-of-ticket').each(function () {
-                var t = $(this).data('number-of-ticket');
-                if(numOfTicket.indexOf(t) !==  '-1') {
-                    numOfTicket.push(t);
+
+            $('.td-ticket-type').each(function () {
+                var t = $(this).html();
+                console.log(ticketType.indexOf(t));
+                if(ticketType.indexOf(t) ==  '-1') {
+                    ticketType.push(t);
                 }
             });
 
-            if(numOfTicket.length > 0) {
-
+            if(ticketType.length > 0) {
+                for(var i = 0; i< ticketType.length; i++) {
+                    var option = '<option value="'+ticketType[i]+'">'+ticketType[i]+'</option>';
+                    $('select[name=ticket_type]').append(option);
+                }
             }
+
+
+            $('select[name=fiter_of_ticket]').change(function () {
+                var selectedNumberOfTicket = $(this).val();
+                $('.td-num-of-ticket').each(function () {
+                    var t = $(this).data('number-of-ticket');
+                    var parentTr =  $(this).closest('tr');
+
+                    if(selectedNumberOfTicket == '-1') {
+                        if(parentTr.data('type-filter') !== true) {
+                            parentTr.show();
+
+                        }
+                        parentTr.data('number-filter', false);
+
+                    }
+                    else if(parseInt(selectedNumberOfTicket) <= parseInt(t) ) {
+                        if(parentTr.data('type-filter') !== true) {
+                            parentTr.show();
+
+                        }
+                        parentTr.data('number-filter', false);
+                    } else {
+                        parentTr.data('number-filter', true);
+                        parentTr.hide();
+                    }
+                });
+            });
+
+
+            $('select[name=ticket_type]').change(function () {
+                var selectedNumberOfTicket = $(this).val();
+                $('.td-ticket-type').each(function () {
+                    var t = $(this).html();
+                    var parentTr =  $(this).closest('tr');
+
+                    if(selectedNumberOfTicket == '-1') {
+                        parentTr.data('type-filter', false);
+                        if(parentTr.data('number-filter') !== true) {
+                            parentTr.show();
+                        }
+
+                    }
+                    else if(selectedNumberOfTicket == t ) {
+                        parentTr.data('type-filter', false);
+                        if(parentTr.data('number-filter') !== true) {
+                            parentTr.show();
+                        }
+                    } else {
+                        parentTr.data('type-filter', true);
+                        parentTr.hide();
+                    }
+                });
+            });
+
 
         })
     })(jQuery)
 </script>
 {{ Assets::jsEnd() }}
 
-
-                 <H2>Other events for <strong>Manchester United</strong></H2>
-                 <ul class="othervents">
-
-                     <li>
-                         <span>FC Bayern vs Manchester united</span>
-                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
-
-
-                     </li>
-
-                     <li>
-                         <span>FC Bayern vs Manchester united</span>
-                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
-
-
-                     </li>
-
-
-                     <li>
-                         <span>FC Bayern vs Manchester united</span>
-                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
-
-
-                     </li>
-
-
-                     <li>
-                         <span>FC Bayern vs Manchester united</span>
-                         <span class="date-details">Saturday, 9th August 2024, 4:00pm, Allianz areba, Munchen, Germany</span>
-
-
-                     </li>
-
-
-
-                 </ul>
-
-
-
+@if(isset($homeTeamEvents) && count($homeTeamEvents) > 0 && isset($homeTeam->title))
+     <H2>Other events for <strong>{{$homeTeam->title}}</strong></H2>
+     <ul class="othervents">
+        @foreach($homeTeamEvents as $e)
+         <li>
+             <span>{{ $e->title }}</span>
+             <span class="date-details">{{date('l, dS F Y, h:ia', strtotime($e->datetime)) }}, {{$e->event_location}}</span>
+         </li>
+         @endforeach
+     </ul>
+@endif
 
 
                  <!---------FAZLEEEEEE listing------------>

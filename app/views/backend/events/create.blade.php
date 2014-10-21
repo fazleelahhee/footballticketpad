@@ -174,9 +174,12 @@
     <div class="control-group {{ $errors->has('ticket_type_ids') ? 'has-error' : '' }}">
         <label class="control-label" for="available-ticket-type">
             <a href="#" class="available-ticket-type">Select Available Ticket Type</a>
-            <input name="ticket_type_ids" value="" id="ticket-type-ids" type="hidden">
+            <input name="ticket_type_ids" value="{{ implode(',', array_keys($defaultTicketType)) }}" id="ticket-type-ids" type="hidden">
         </label>
         <div class="selected-types-container">
+            @foreach($defaultTicketType as $type)
+            <p>{{$type}}</p>
+            @endforeach
         </div>
     </div>
     <br>
@@ -184,10 +187,13 @@
     <div class="control-group {{ $errors->has('form_of_ticket_ids') ? 'has-error' : '' }}">
         <label class="control-label" for="form-of-ticket-ids">
             <a href="#" class="available-form-of-ticket-ids">Select available form of ticket</a>
-            <input name="form_of_ticket_ids" value="" id="form-of-ticket-ids" type="hidden">
+            <input name="form_of_ticket_ids" value="{{ implode(',', array_keys($defaultTicketFormType)) }}" id="form-of-ticket-ids" type="hidden">
         </label>
 
         <div class="selected-form-of-ticket-container">
+            @foreach($defaultTicketFormType as $type)
+            <p>{{$type}}</p>
+            @endforeach
         </div>
     </div>
     <br>
@@ -195,10 +201,13 @@
     <div class="control-group {{ $errors->has('ticket_restrictions_ids') ? 'has-error' : '' }}">
         <label class="control-label" for="ticket-restrictions-ids">
             <a href="#" class="available-ticket-restrictions-ids">Select available restrictions for this event</a>
-            <input name="ticket_restriction_ids" value="" id="ticket-restrictions-ids" type="hidden">
+            <input name="ticket_restriction_ids" value="{{ implode(',', array_keys($defaultTicketRestriction)) }}" id="ticket-restrictions-ids" type="hidden">
         </label>
 
         <div class="selected-restriction-ticket-container">
+            @foreach($defaultTicketRestriction as $type)
+            <p>{{$type}}</p>
+            @endforeach
         </div>
     </div>
     <br>
@@ -236,6 +245,8 @@
                 saveBtnElem = options.saveBtnElem,
                 selectElem  = options.selectElem,
                 addUrl      = options.addUrl,
+                delUrl      = options.delUrl,
+                delBtn      = options.delBtn,
                 loaded      = false,
                 types       = [],
                 self        = this;
@@ -340,6 +351,48 @@
                         .trigger('click');
                     self.displayOnForm();
                 });
+
+                body.on('change', 'select', function (e) {
+                    var parentDiv = $(this).closest('div.modal-body');
+                    var inputIdContainer = parentDiv.find('input.delete-ids');
+                    var removeBtn = parentDiv.find(delBtn);
+                    if(inputIdContainer.length > 0) {
+                        inputIdContainer.val($(this).val().join());
+                        removeBtn.css({display: 'block'});
+                    }
+                });
+
+                body.on('click', delBtn , function (e) {
+                    e.preventDefault();
+                    var parentDiv = $('.'+$(this).data('parent'));
+                    var ids  = parentDiv.find('input.delete-ids').val();
+                    if(ids  === '') {
+                        return;
+                    }
+                    var arrIds = ids.split(',');
+                    console.log(arrIds);
+                    var data = {
+                        ids:  parentDiv.find('input.delete-ids').val()
+                    }
+
+                    $.ajax({
+                        url: delUrl,
+                        data: data,
+                        type: 'post',
+                        dataType: 'json'
+
+                    });
+
+                    if(arrIds.length > 0 ) {
+                        for(var i=0; i<arrIds.length ; i++) {
+                            $(selectElem).find('option').each(function () {
+                                if($(this).attr('value') === arrIds[i]) {
+                                    $(this).remove();
+                                }
+                            });
+                        }
+                    }
+                });
                 return this;
             }
 
@@ -348,12 +401,27 @@
     })(jQuery);
 
     (function ($) {
+        function getTimes() {
+            var hour = ['08', '09','10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'];
+            var min = ['00', '05', '15', '20', '25', '30', '35', '40', '45', '50', '55']
+            var output = [];
+
+            for(var i=0; i<hour.length; i++) {
+                for(var j=0; j<min.length; j++) {
+                    output.push(hour[i]+':'+min[j]);
+                }
+            }
+
+            return output;
+        }
+
         $(document).ready(function () {
 
             $("#title").slug();
-
+            var $alloedTime = getTimes();
             $('#datetime').datetimepicker({
-                format:'Y-m-d H:i:s'
+                format:'d/m/Y H:i',
+                allowTimes: $alloedTime
             });
 
             if ($('#tag').length != 0) {
@@ -372,7 +440,9 @@
                 addInElem   : '.add-ticket-type-input',
                 addUrl      : '{{ route("ticket.events.ticket-types.add")}}',
                 saveBtnElem : '.selected-ticket-type',
-                selectElem  : '.ticket-types'
+                selectElem  : '.ticket-types',
+                delUrl      : '{{route("ticket.events.ticket-types.delete")}}',
+                delBtn      : '.remove-selected-ticket'
             }).init().events();
 
             new PopUpSelector({
@@ -386,7 +456,9 @@
                 addInElem   : '.add-ticket-type-input',
                 addUrl      : '{{ route("ticket.events.formOfTicket.add")}}',
                 saveBtnElem : '.set-form-of-ticket',
-                selectElem  : '.form-of-tickets'
+                selectElem  : '.form-of-tickets',
+                delUrl      : '{{route("ticket.events.formOfTicket.delete")}}',
+                delBtn      : '.remove-selected-ticket-type'
             }).init().events();
 
             new PopUpSelector({
@@ -400,11 +472,14 @@
                 addInElem   : '.add-restriction-input',
                 addUrl      : '{{ route("ticket.events.restriction.add")}}',
                 saveBtnElem : '.set-restriction-ticket',
-                selectElem  : '.restrictions-ticket'
-            }).init().events();
+                selectElem  : '.restrictions-ticket',
+                delUrl      : '{{route("ticket.events.restriction.delete")}}',
+                delBtn      : '.remove-selected-ticket-restriction'
 
-            //
+            }).init().events();
         });
+
+
 
     })(jQuery);
 </script>
@@ -432,6 +507,8 @@
                             <% }) %>
                         </select>
                     </div>
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" data-parent="available-ticket-type-template" value="Delete Ticket Type" class="btn remove-selected-ticket" style="display: none">
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -453,11 +530,11 @@
                     </button>
                     <h4 class="modal-title">Available Form of Ticket</h4>
                 </div>
-                <div class="modal-body ">
+                <div class="modal-body">
                     <p>
                     <div class="form-group">
                         <input name="ticket_type_ids" value="" type="text" class="form-control add-ticket-type-input">
-                        <input type="button" value="Add" class="btn add-form-ticket">
+                        <input type="button"  value="Add" class="btn add-form-ticket">
                     </div>
 
                     <div class="form-group">
@@ -467,6 +544,10 @@
                             <% }) %>
                         </select>
                     </div>
+
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" data-parent="available-form-of-ticket-template" value="Delete Ticket Type" class="btn remove-selected-ticket-type" style="display: none">
+
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -502,6 +583,9 @@
                             <% }) %>
                         </select>
                     </div>
+
+                    <input name="delete_ids[]" value="" type="hidden" class="form-control delete-ids">
+                    <input type="button" data-parent="available-restriction-ticket-template" value="Delete Ticket Type" class="btn remove-selected-ticket-restriction" style="display: none">
                     </p>
                 </div>
                 <div class="modal-footer">

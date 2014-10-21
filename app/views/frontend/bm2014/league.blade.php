@@ -71,7 +71,7 @@
 
              <div class="btnsgroup">
 
-                 <a href="{{ '/events/'.$ticket->slug }}" class="btn pinkbtn"> BUY </a>
+                 <a href="{{ FootBallEvent::getUrl($ticket) }}" class="btn pinkbtn"> BUY </a>
                  <a href="{{ '/ticket/sell/'.$ticket->id }}" class="btn bluebtn"> SELL </a>
 
              </div>
