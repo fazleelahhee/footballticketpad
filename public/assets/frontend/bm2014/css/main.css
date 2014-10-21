@@ -2033,6 +2033,12 @@ header .searcharea .bigbox-search-button {
     margin-left: 5px;
     padding: 2px 25px;
 }
+
+.clublist.columnlist {
+    list-style: none outside none;
+    margin-left: 0;
+}
+
 .ft-image-match {
     float: left;
     min-height: 90px;
