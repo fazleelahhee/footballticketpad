@@ -115,7 +115,7 @@
              @endif
 
              @if(!empty($upcomingEvents))
-             <div class="columns six">
+             <div class="columns five">
 
                  <h2>Upcoming Matches</h2>
                  <ul class="list-upcoming-matches">
