@@ -85,14 +85,22 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
     }
 
     public static function getLeagueRelatedTickets($tid = '') {
+        $output = array();
+
         $results = DB::table('events')
             ->select('events.*')
-            //->join('events_related_tickets','events_related_tickets.event_id','=','events.id')
             ->where('events.tournament_id', '=',$tid)
             ->where('events.feature_event', '=', '1')
             ->groupBy('events.id')
+            ->orderBy('events.datetime', 'DESC')
             ->take(6)
             ->get();
-        return $results;
+
+        foreach($results as $result) {
+            $result->homeTeamClubLog = FootballTicketMeta::getTicketMeta($result->home_team_id, 'club_logo');
+            $result->awayTeamClubLog = FootballTicketMeta::getTicketMeta($result->away_team_id, 'club_logo');
+            $output[] = $result;
+        }
+        return $output;
     }
 }

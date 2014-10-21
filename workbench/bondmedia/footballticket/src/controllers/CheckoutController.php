@@ -149,39 +149,7 @@ class CheckoutController extends BaseController {
                 'mode'      => 'customer'
             )));
 
-            // Set customer addresses, for example guest's addresses
-//            $arrAddresses = array(
-//                array(
-//                    "mode" => "shipping",
-//                    "firstname" => "testFirstname",
-//                    "lastname" => "testLastname",
-//                    "company" => "testCompany",
-//                    "street" => "testStreet",
-//                    "city" => "testCity",
-//                    "region" => "testRegion",
-//                    "postcode" => "testPostcode",
-//                    "country_id" => "id",
-//                    "telephone" => "0123456789",
-//                    "fax" => "0123456789",
-//                    "is_default_shipping" => 1,
-//                    "is_default_billing" => 0
-//                ),
-//                array(
-//                    "mode" => "billing",
-//                    "firstname" => "testFirstname",
-//                    "lastname" => "testLastname",
-//                    "company" => "testCompany",
-//                    "street" => "testStreet",
-//                    "city" => "testCity",
-//                    "region" => "testRegion",
-//                    "postcode" => "testPostcode",
-//                    "country_id" => "id",
-//                    "telephone" => "0123456789",
-//                    "fax" => "0123456789",
-//                    "is_default_shipping" => 0,
-//                    "is_default_billing" => 1
-//                )
-//            );
+
 
             $arrAddresses = array(
                 array(

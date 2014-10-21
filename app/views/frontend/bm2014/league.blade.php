@@ -55,7 +55,17 @@
          <!--repeater--->
          <div class="columns four topmatch">
              <div class="ft-image-match">
-                 <img src="{{$ticket->feature_image}}" alt="{{$ticket->title}}" />
+                 <a href="{{FootBallEvent::getUrl($ticket)}}">
+                     @if(isset($ticket->feature_image) && trim($ticket->feature_image) != '')
+                     <img src="{{$ticket->feature_image}}" alt="{{$ticket->title}}" />
+                     @else
+                     <div class="default-fallback">
+                         <img src="{{ @$ticket->homeTeamClubLog->value }}" />
+                         <span>vs</span>
+                         <img src="{{ @$ticket->awayTeamClubLog->value }}" />
+                     </div>
+                     @endif
+                 </a>
              </div>
 
              <span class="ftp-line">
@@ -64,8 +74,9 @@
                 <span class="pinkline"></span>
                 <span class="blueline"></span>
             </span>
-
-             <span class="gamematch">{{$ticket->title}}</span>
+             <a href="{{FootBallEvent::getUrl($ticket)}}">
+                <span class="gamematch">{{$ticket->title}}</span>
+             </a>
              <span class="stadium"><img src="{{ Assets::Path('images/stadium.png') }}" />{{$ticket->event_location}}</span>
              <span class="date-time"><img src="{{ Assets::Path('images/whistle.png') }}" />{{date('l dS F Y', strtotime($ticket->datetime))}}</span>
 

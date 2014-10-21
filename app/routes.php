@@ -71,6 +71,122 @@ Route::group(array('before'=> 'customer.account'), function () {
     Route::post('/account/account-information/shipping', 'AccountController@setCustomerShippingAddress'); //set customer address information
 });
 
+/*
+|--------------------------------------------------------------------------
+| Football tickets customer account
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/customer/account/login', function () {
+    header('Content-type: application/json');
+    $api_path = Config::get('api.mage_soap_api_path');
+    $data = Input::all();
+    $email = @$data['login']['username'];
+    $password = @$data['login']['password'];
+    require_once("{$api_path}app/Mage.php");
+    umask(0);
+    Mage::app('default');
+
+    Mage::getSingleton('core/session', array('name'=>'frontend'));
+    $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
+
+    if ($session->isLoggedIn()) {
+        echo  json_encode(array(
+            'data'      => array(
+                'message' => 'success',
+                'reason' => 'already logged in'
+            )
+        ));
+        return;
+    }
+
+    try {
+        if(empty($email) || empty($password)) {
+            throw new Exception ('Login and password are required.', 400);
+        }
+
+        try {
+            $session->login($email, $password);
+            echo json_encode(array(
+                'data'      => array(
+                    'message' => 'success'
+                )
+            ));
+
+            $customer = Mage::getSingleton('customer/session')->getCustomer()->getData();
+            Session::put('customer', $customer);
+
+        } catch (Mage_Core_Exception $e) {
+            switch ($e->getCode()) {
+                case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
+                    throw new Exception ( 'Email is not confirmed. <a href="#">Resend confirmation email.</a>', 400);
+                    break;
+                default:
+                    throw new Exception ($e->getMessage(), 400);
+            }
+        }
+    } catch (Exception $e) {
+        header($_SERVER["SERVER_PROTOCOL"]." {$e->getCode()}");
+        echo json_encode(array('error'=>$e->getMessage()));
+    }
+});
+
+
+Route::post('/customer/account/checkout/login', array('as'=>'customer.account.checkout.login', 'uses'=> function () {
+        header('Content-type: application/json');
+        $api_path = Config::get('api.mage_soap_api_path');
+        $data = Input::all();
+        $email = @$data['login']['username'];
+        $password = @$data['login']['password'];
+        require_once("{$api_path}app/Mage.php");
+        umask(0);
+        Mage::app('default');
+
+        Mage::getSingleton('core/session', array('name'=>'frontend'));
+        $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
+
+        if ($session->isLoggedIn()) {
+            echo  json_encode(array(
+                'data'      => array(
+                    'message' => 'success',
+                    'reason' => 'already logged in'
+                )
+            ));
+            return;
+        }
+
+        try {
+            if(empty($email) || empty($password)) {
+                throw new Exception ('Login and password are required.', 400);
+            }
+
+            try {
+                $session->login($email, $password);
+                echo json_encode(array(
+                    'data'      => array(
+                        'message' => 'success'
+                    )
+                ));
+
+                $customer = Mage::getSingleton('customer/session')->getCustomer()->getData();
+                Session::put('customer', $customer);
+
+            } catch (Mage_Core_Exception $e) {
+                switch ($e->getCode()) {
+                    case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
+                        throw new Exception ( 'Email is not confirmed. <a href="#">Resend confirmation email.</a>', 400);
+                        break;
+                    default:
+                        throw new Exception ($e->getMessage(), 400);
+                }
+            }
+        } catch (Exception $e) {
+            header($_SERVER["SERVER_PROTOCOL"]." {$e->getCode()}");
+            echo json_encode(array('error'=>$e->getMessage()));
+        }
+    }));
+
+
 
 Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch', 'after' => 'cache.put') : array(), function () {
 
@@ -391,65 +507,6 @@ Route::any('/search/ticket/category', array('as'=>'ticket.events.search.category
 //Route::get('/events/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
 Route::get('/{league}/{season}/{slug}', array('as'=>'ticket.events.display', 'uses'=>'FootballTicketController@displayEvents'));
 
-/*
-|--------------------------------------------------------------------------
-| Football tickets customer account
-|--------------------------------------------------------------------------
-*/
-
-Route::post('/customer/account/login', function () {
-    header('Content-type: application/json');
-    $api_path = Config::get('api.mage_soap_api_path');
-    $data = Input::all();
-    $email = @$data['login']['username'];
-    $password = @$data['login']['password'];
-    require_once("{$api_path}app/Mage.php");
-    umask(0);
-    Mage::app('default');
-
-    Mage::getSingleton('core/session', array('name'=>'frontend'));
-    $session = Mage::getSingleton('customer/session', array('name'=>'frontend'));
-
-    if ($session->isLoggedIn()) {
-        echo  json_encode(array(
-            'data'      => array(
-                'message' => 'success',
-                'reason' => 'already logged in'
-            )
-        ));
-        return;
-    }
-
-    try {
-        if(empty($email) || empty($password)) {
-            throw new Exception ('Login and password are required.', 400);
-        }
-
-        try {
-            $session->login($email, $password);
-            echo json_encode(array(
-                'data'      => array(
-                    'message' => 'success'
-                )
-            ));
-
-            $customer = Mage::getSingleton('customer/session')->getCustomer()->getData();
-            Session::put('customer', $customer);
-
-        } catch (Mage_Core_Exception $e) {
-            switch ($e->getCode()) {
-                case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
-                    throw new Exception ( 'Email is not confirmed. <a href="#">Resend confirmation email.</a>', 400);
-                    break;
-                default:
-                    throw new Exception ($e->getMessage(), 400);
-            }
-        }
-    } catch (Exception $e) {
-        header($_SERVER["SERVER_PROTOCOL"]." {$e->getCode()}");
-        echo json_encode(array('error'=>$e->getMessage()));
-    }
-});
 
 
 
