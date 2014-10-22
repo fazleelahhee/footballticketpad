@@ -107,7 +107,7 @@
                                 @endforeach
                              </td>
                              <td data-number-of-ticket="{{$ticket['ticketInformation']['number_of_ticket']}}" class="td-num-of-ticket">
-                                1 to {{$ticket['ticketInformation']['number_of_ticket']}}
+                                1 to {{$ticket['available_qty']}}
                              </td>
                              <td>
                                  &pound;{{$ticket['ticketInformation']['price']}}

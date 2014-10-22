@@ -366,10 +366,14 @@ class FootballTicketController extends BaseController {
 
         $groundImage = '';
         if(isset($node->id)) {
-            $results = DB::table('events_related_tickets')->where('event_id', '=', $node->id)->get();
+            $results = DB::table('events_related_tickets')
+                ->where('event_id', '=', $node->id)
+                ->where('available_qty', '>', 0)
+                ->get();
             foreach($results as $r) {
                 $temp = json_decode($r->ticket, true);
                 $temp['product_id'] = $r->product_id;
+                $temp['available_qty'] = $r->available_qty;
                 $tickets[] = $temp;
             }
 

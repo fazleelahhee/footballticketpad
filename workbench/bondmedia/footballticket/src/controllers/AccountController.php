@@ -28,6 +28,29 @@ class AccountController extends BaseController {
         View::share('body_class', 'ticket-purchase static');
         View::share('tabs', 'purchases');
         View::share('node', $node);
+        $customer = Session::get('customer');
+        $purchasedTickets = FootballTicketBuy::getTicketsByUserId($customer['entity_id']);
+        $puchasedTicketOutput = array();
+        $i = 0;
+        if( $purchasedTickets ) {
+            foreach($purchasedTickets as $pt) {
+                $puchasedTicketOutput[$i]  = $pt;
+                $puchasedTicketOutput[$i]->event = FootBallEvent::find($pt->event_id);
+                $puchasedTicketOutput[$i]->ticket = json_decode($pt->ticket, true);
+                $ticketType = $puchasedTicketOutput[$i]->event->getTicketTypes();
+
+                foreach($ticketType as $tt) {
+                    if($tt->id == $puchasedTicketOutput[$i]->ticket['ticketInformation']['ticket_type']) {
+                        $puchasedTicketOutput[$i]->ticketType = $tt->title;
+                    }
+                }
+
+                $i++;
+            }
+        }
+
+        View::share('purchasedTickets', $puchasedTicketOutput);
+        //View::share('events', $events);
         return View::make(Template::name('frontend.%s.purchases'));
     }
 

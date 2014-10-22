@@ -195,6 +195,22 @@ class CheckoutController extends BaseController {
 //            View::share('body_class', 'checkout');
 //            return View::make(Template::name('frontend.%s.checkout-confirmation'), array('orderNumber' => $resultOrderCreation));
 
+            $buyModel = new FootballTicketBuy();
+
+            $buyModel->fill(array(
+                'order_id'          => $resultOrderCreation,
+                'buyer_id'          => $customerId ,
+                'event_id'          => '',
+                'product_id'        => $id,
+                'qty'               => $input['qty'],
+                'amount'            => '',
+                'delivery_status'   => 'pending'
+            ));
+
+            $buyModel->save();
+
+            RelatedTicket::updateTicket($id, $input['qty']);
+
             $response = Response::make(json_encode(array('orderNumber'=>$resultOrderCreation)), '200');
             $response->header('Content-Type', 'application/json');
             return $response;

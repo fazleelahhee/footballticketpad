@@ -21,7 +21,7 @@ class RelatedTicket extends \Illuminate\Database\Eloquent\Model{
         $t = 'events_related_tickets';
         $e = 'events';
         $result= DB::table($t)
-            ->select("{$t}.ticket", "{$t}.event_id", "{$e}.title", "{$e}.datetime", "{$e}.event_location")
+            ->select("{$t}.ticket", "{$t}.event_id", "{$e}.title", "{$e}.datetime", "{$e}.event_location", "{$t}.available_qty")
             ->leftJoin($e, "{$t}.event_id", "=", "{$e}.id")
             ->where("{$t}.product_id",'=',$id)->get();
         if(count($result) > 0) {
@@ -46,5 +46,11 @@ class RelatedTicket extends \Illuminate\Database\Eloquent\Model{
             ->groupBy("{$t}.event_id")
             ->where("{$t}.user_id",'=',$id)->get();
         return $result;
+    }
+
+    public static function updateTicket($product_id, $qty) {
+        $ticket = RelatedTicket::where('product_id', '=', $product_id)->first();
+        $ticket->available_qty = $ticket->available_qty - $qty;
+        $ticket->save();
     }
 }

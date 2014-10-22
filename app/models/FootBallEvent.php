@@ -45,7 +45,10 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
 
     }
 
-    public function getTicketTypes() {
+    public function getTicketTypes($id='') {
+        if($id != '' && $id != $this->id) {
+            $this->find($id);
+        }
         if( !empty($this->ticket_type_ids) ) {
             $ArrTypes = explode(',', $this->ticket_type_ids);
             $types = new TicketType();
@@ -54,7 +57,10 @@ class FootBallEvent extends BaseModel implements BaseModelInterface {
         return array();
     }
 
-    public function getFormOfTickets() {
+    public function getFormOfTickets($id='') {
+        if($id != '' && $id != $this->id) {
+            $this->find($id);
+        }
         if( !empty($this->form_of_ticket_ids) ) {
             $ArrTypes = explode(',', $this->form_of_ticket_ids);
             $types = new FormOfTicket();

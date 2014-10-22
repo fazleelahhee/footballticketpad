@@ -50,7 +50,7 @@
                     <div class="label pinklabel">Number of tickets</div>
                     <div class="fields columns seven pull-right">
                         <select name="number_of_ticket">
-                            @for($i=1; $i<=$ticket->ticket->ticketInformation->number_of_ticket; $i++)
+                            @for($i=1; $i<=$ticket->available_qty; $i++)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
@@ -357,14 +357,51 @@ Assets::setScripts(
 <script type="text/javascript" charset="utf-8">
     ;(function ($) {
         var loginURL = "{{route('customer.account.checkout.login')}}";
-
+        var ticketContainer =  $('body');
         $(document).ready(function () {
-            $('body').on('click', '.login-btn', function () {
-                console.log('Should work....');
+            $('body').on('click', '.login-btn', function (e) {
+                var ticketContainer =  $('body');
+                e.preventDefault();
+
+                var data = {
+                    login: {
+                        username: $('#username').val(),
+                        password: $('#password').val()
+                    }
+                }
+                $.ajax({
+
+                    url: loginURL,
+                    type: 'post',
+                    dataType: 'json',
+                    data: data,
+                    beforeSend: function () {
+                        $(".ajax-loading-modal").remove();
+                        ticketContainer.append('<div class="ajax-loading-modal"></div>');
+                        ticketContainer.addClass("loading");
+                    },
+                    success: function (reponse) {
+
+                        var data = reponse.data;
+                        if(data.message && data.message == 'success') {
+                            window.location.href = '{{Request::url()}}';
+                        } else {
+                            ticketContainer.removeClass('loading');
+                        }
+                    },
+                    error: function (reponse) {
+                        var respObj = $.parseJSON(reponse.responseText);
+                        ticketContainer.removeClass('loading');
+                        if(respObj.error) {
+                            var html = template({message: respObj.error});
+                            alert(html);
+                        }
+                    }
+                });
             });
         });
 
-    });
+    })(jQuery);
 </script>
 
 <script type="text/javascript" charset="utf-8">

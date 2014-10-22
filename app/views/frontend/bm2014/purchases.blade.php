@@ -4,46 +4,26 @@
 @stop
 @section('content')
 
-
-
 @include(Template::name('frontend.%s._layout.account-tabs'))
-
-
 
 <!---------main content------------>
 <div class="accountarea">
 
+    <div class="site-content">
 
+        <!---------faz shortcode------------>
 
-
-
-
-
-
-
-     <div class="site-content">
-
-
-
-
-         <!---------faz shortcode------------>
-
-         <div class="row">
+        <div class="row">
             <h2> Bought tickets
             </h2>
-         </div>
+        </div>
 
-            <!---------toolbar------------>
-            <div class="row toolbar">
+        <!---------toolbar------------>
+        <div class="row toolbar">
 
-                <span class="filter-label pull-left offset-right">Filter by</span>
+            <span class="filter-label pull-left offset-right">Filter by</span>
 
-                <input type="text" placeholder="Filter by event" class="quickfilter  pull-left offset-right">
-
-
-
-
-
+            <input type="text" placeholder="Filter by event" class="quickfilter  pull-left offset-right">
 
                 <span class="ftp-line">
                     <span class="greenline"></span>
@@ -52,284 +32,81 @@
                     <span class="blueline"></span>
                 </span>
 
-            </div>
-            <!---------toolbar------------>
+        </div>
+        <!---------toolbar------------>
 
 
-
-
-
-         <!---------purchases------------>
+        <!---------purchases------------>
 
         <div class="row">
-         <table class="responsivetable nocolour">
+            <table class="responsivetable nocolour">
 
-             <thead>
-             <th>Event</th>
-             <th>Ticket Type</th>
-             <th>Block &amp; row</th>
-             <th>Qty</th>
-             <th>Price</th>
-             <th>Listing ID</th>
-             <th>Transaction date</th>
-             <th>Transaction status</th>
+                <thead>
+                <th>Event</th>
+                <th>Ticket Type</th>
+                <th>Block &amp; row</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Listing ID</th>
+                <th>Transaction date</th>
+                <th>Transaction status</th>
 
-             </thead>
+                </thead>
+                <tbody>
 
+                @if(isset($purchasedTickets) && count($purchasedTickets) > 0)
+                @foreach($purchasedTickets as $ticket)
+                <tr>
+                    <td>
+                        <div class="pull-left gamedetail nopadding">
 
+                            <span class="game">{{ $ticket->event->title}}</span>
+                            <span class="game-info pull-left  clearboth">{{date('d/m/Y, G:i', strtotime($ticket->event->datetime) ) }}</span>
+                        </div>
 
-             <tbody>
+                    </td>
 
+                    <td>{{ $ticket->ticketType }}</td>
 
+                    <td>Block: {{ $ticket->ticket['ticketInformation']['loc_block'] }}
+                        <br/>
+                        Row: {{ $ticket->ticket['ticketInformation']['loc_row'] }}
+                    </td>
 
+                    <td>{{ $ticket->qty }}</td>
 
-            <tr>
-             <td>
-                 <div class="pull-left gamedetail nopadding">
+                    <td>£{{ $ticket->amount }}</td>
 
-                     <span class="game">Barcelona vs Real Madrid</span>
-                     <span class="game-info pull-left  clearboth">23/03/14, 15:00</span>
+                    <td>{{ $ticket->product_id }}</td>
 
-                 </div>
+                    <td>{{ date('d/m/Y', strtotime($ticket->orderDate)) }}</td>
 
-             </td>
+                    <td>
+                        {{ $ticket->payment_status }}
+                        <br/><span class="paidID">{{$ticket->order_id}}</span>
+                    </td>
+                </tr>
+                @endforeach
+                @else
+                <tr>
+                    <td colspan="8">No purchased ticket found!</td>
+                </tr>
+                @endif
 
-             <td>Longside uppier tier</td>
 
-             <td>Block: Wu6
-             <br/>
-              Row: 20
-             </td>
+                </tbody>
 
-             <td>2</td>
 
-             <td>£892</td>
-
-             <td>2dd3333fccsd</td>
-
-             <td>23/03/12</td>
-
-             <td>Cancelled</td>
-            </tr>
-
-
-
-
-
-
-
-
-            <tr>
-                <td>
-                    <div class="pull-left gamedetail nopadding">
-
-                        <span class="game">Barcelona vs Real Madrid</span>
-                        <span class="game-info pull-left  clearboth">23/03/14, 15:00</span>
-
-                    </div>
-
-                </td>
-
-                <td>Longside uppier tier</td>
-
-                <td>Block: Wu6
-                    <br/>
-                    Row: 20
-                </td>
-
-                <td>2</td>
-
-                <td>£892</td>
-
-                <td>2dd3333fccsd</td>
-
-                <td>23/03/12</td>
-
-                <td>Paid
-                <br/><span class="paidID">AU3LTL3YLGLGY</span>
-                </td>
-            </tr>
-
-
-
-
-
-
-
-
-
-
-            <tr>
-                <td>
-                    <div class="pull-left gamedetail nopadding">
-
-                        <span class="game">Barcelona vs Real Madrid</span>
-                        <span class="game-info pull-left  clearboth">23/03/14, 15:00</span>
-
-                    </div>
-
-                </td>
-
-                <td>Longside uppier tier</td>
-
-                <td>Block: Wu6
-                    <br/>
-                    Row: 20
-                </td>
-
-                <td>2</td>
-
-                <td>£892</td>
-
-                <td>2dd3333fccsd</td>
-
-                <td>23/03/12</td>
-
-                <td>Paid
-                    <br/><span class="paidID">AU3LTL3YLGLGY</span>
-                </td>
-            </tr>
-
-
-
-
-
-
-
-
-
-
-            <tr>
-                <td>
-                    <div class="pull-left gamedetail nopadding">
-
-                        <span class="game">Barcelona vs Real Madrid</span>
-                        <span class="game-info pull-left  clearboth">23/03/14, 15:00</span>
-
-                    </div>
-
-                </td>
-
-                <td>Longside uppier tier</td>
-
-                <td>Block: Wu6
-                    <br/>
-                    Row: 20
-                </td>
-
-                <td>2</td>
-
-                <td>£892</td>
-
-                <td>2dd3333fccsd</td>
-
-                <td>23/03/12</td>
-
-                <td>Paid
-                    <br/><span class="paidID">AU3LTL3YLGLGY</span>
-                </td>
-            </tr>
-
-
-
-
-
-
-            <tr>
-                <td>
-                    <div class="pull-left gamedetail nopadding">
-
-                        <span class="game">Barcelona vs Real Madrid</span>
-                        <span class="game-info pull-left  clearboth">23/03/14, 15:00</span>
-
-                    </div>
-
-                </td>
-
-                <td>Longside uppier tier</td>
-
-                <td>Block: Wu6
-                    <br/>
-                    Row: 20
-                </td>
-
-                <td>2</td>
-
-                <td>£892</td>
-
-                <td>2dd3333fccsd</td>
-
-                <td>23/03/12</td>
-
-                <td>Paid
-                    <br/><span class="paidID">AU3LTL3YLGLGY</span>
-                </td>
-            </tr>
-
-
-
-
-
-
-            <tr>
-                <td>
-                    <div class="pull-left gamedetail nopadding">
-
-                        <span class="game">Barcelona vs Real Madrid</span>
-                        <span class="game-info pull-left  clearboth">23/03/14, 15:00</span>
-
-                    </div>
-
-                </td>
-
-                <td>Longside uppier tier</td>
-
-                <td>Block: Wu6
-                    <br/>
-                    Row: 20
-                </td>
-
-                <td>2</td>
-
-                <td>£892</td>
-
-                <td>2dd3333fccsd</td>
-
-                <td>23/03/12</td>
-
-                <td>Paid
-                    <br/><span class="paidID">AU3LTL3YLGLGY</span>
-                </td>
-            </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-             </tbody>
-
-
-         </table>
+            </table>
         </div>
 
-         <!---------purchases------------>
+        <!---------purchases------------>
 
 
+        <!---------faz shortcode------------>
 
 
-
-         <!---------faz shortcode------------>
-
-                            
-     </div>
+    </div>
 </div>
 <!---------main content------------>
 
