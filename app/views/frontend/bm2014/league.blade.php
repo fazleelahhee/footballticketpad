@@ -94,13 +94,15 @@
          <p> No match found! </p>
          @endif
 
-         <div class="row">
+
+         <hr>
+
              @if(!empty($clubs))
              <div class="columns six">
                  <h2>Search by Team</h2>
-                 <ul class="clublist columnlist">
+                 <ul class="clublist columnlist columns twelve">
                     @foreach($clubs as $club)
-                     <li class="columns six">
+                     <li class="columns six nopadding">
                          <a href="/group/club/{{$club->slug}}">
                              <img src="{{ @$club->clubLogo->value}}" />
                              <span>{{$club->title}}</span>
@@ -113,16 +115,16 @@
              @endif
 
              @if(!empty($upcomingEvents))
-             <div class="columns six">
+             <div class="columns five">
 
                  <h2>Upcoming Matches</h2>
                  <ul class="list-upcoming-matches">
                      @foreach($upcomingEvents as $e)
-                     <li >
-                          <span>
+                     <li class="columns twelve brderbtm upcominglist">
+                          <span  class="columns four nopadding">
                               {{date('M. d D')}}
                           </span>
-                         <div>
+                         <div  class="columns eight">
                              <a href="{{ FootBallEvent::getUrl($e) }}">{{$e->title}}</a>
                           </div>
                      </li>
@@ -133,7 +135,6 @@
 
              @endif
 
-         </div>
      </div>
 </div>
 <!---------main content------------>
