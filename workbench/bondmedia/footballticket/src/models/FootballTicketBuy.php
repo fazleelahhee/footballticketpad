@@ -15,4 +15,13 @@ class FootballTicketBuy extends BaseModel {
             ->get();
         return $results;
     }
+
+    public static function getSoldTicketsBySellerId($userId) {
+        $results = DB::table('events_ticket_buy')
+            ->join('events_related_tickets', 'events_ticket_buy.product_id', '=', 'events_related_tickets.product_id')
+            ->where('events_related_tickets.user_id', '=', $userId)
+            ->select('events_related_tickets.*', 'events_ticket_buy.qty', 'events_ticket_buy.amount','events_ticket_buy.payment_status', 'order_id', 'events_ticket_buy.created_at AS orderDate')
+            ->get();
+        return $results;
+    }
 }

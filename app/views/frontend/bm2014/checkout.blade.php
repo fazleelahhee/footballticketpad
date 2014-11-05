@@ -82,11 +82,9 @@
 <!--                </label>-->
 
                 <select class="countrieslist" name="other_country">
-                    <option value="-1">Select Country</option>
-                    <option value="uk">UK - Monday to Friday Special Delivery &pound;7</option>
-                    <option value="uk1">UK - Saturday Guarantee (pre 1pm) &pound;12 </option>
-                    <option value="uk2">UK - Hotel Delivery &pound;10 </option>
-                    <option value="internationl">International Delivery &pound;50</option>
+                    <option value="">Select Country</option>
+
+
                 </select>
                 <hr>
                 @if (!empty($customer))
@@ -477,6 +475,23 @@ Assets::setScripts(
 //                 body.append('<div class="ajax-loading-modal"></div>');
 //                 body.addClass("loading");
 //            });
+
+            //loading shipping informations
+            var shipping_url = '/ecomm/customer/shipping/index';
+
+            $.ajax({
+                url: shipping_url,
+                type: 'post',
+                dataType: 'json',
+                success: function (response) {
+                    if(response.data) {
+                        for(var i=0; i< response.data.length; i++ ) {
+                            var html = "<option value='"+response.data[i].value+"'>"+response.data[i].label+"</option>";
+                            $('.countrieslist').append(html);
+                        }
+                    }
+                }
+            })
         });
 
         $('.ajax-login').click(function (e) {

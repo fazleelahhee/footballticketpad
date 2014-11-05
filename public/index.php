@@ -5,7 +5,7 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylorotwell@gmail.com>
  */
-//$app_start = microtime(true);
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader

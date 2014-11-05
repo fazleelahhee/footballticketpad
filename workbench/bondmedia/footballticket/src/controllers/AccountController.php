@@ -60,6 +60,31 @@ class AccountController extends BaseController {
         View::share('body_class', 'ticket-sales static');
         View::share('tabs', 'sales');
         View::share('node', $node);
+
+        $customer = Session::get('customer');
+        $soldTickets = FootballTicketBuy::getSoldTicketsBySellerId($customer['entity_id']);
+
+        $puchasedTicketOutput = array();
+        $i = 0;
+        if( $soldTickets ) {
+            foreach($soldTickets as $pt) {
+                $puchasedTicketOutput[$i]  = $pt;
+                $puchasedTicketOutput[$i]->event = FootBallEvent::find($pt->event_id);
+                $puchasedTicketOutput[$i]->ticket = json_decode($pt->ticket, true);
+                $ticketType = $puchasedTicketOutput[$i]->event->getTicketTypes();
+
+                foreach($ticketType as $tt) {
+                    if($tt->id == $puchasedTicketOutput[$i]->ticket['ticketInformation']['ticket_type']) {
+                        $puchasedTicketOutput[$i]->ticketType = $tt->title;
+                    }
+                }
+
+                $i++;
+            }
+        }
+
+        View::share('soldTickets', $puchasedTicketOutput);
+
         return View::make(Template::name('frontend.%s.sales'));
     }
 

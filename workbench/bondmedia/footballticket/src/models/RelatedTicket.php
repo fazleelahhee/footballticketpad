@@ -53,4 +53,6 @@ class RelatedTicket extends \Illuminate\Database\Eloquent\Model{
         $ticket->available_qty = $ticket->available_qty - $qty;
         $ticket->save();
     }
+
+
 }

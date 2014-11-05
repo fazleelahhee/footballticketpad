@@ -196,6 +196,7 @@ class CheckoutController extends BaseController {
 //            return View::make(Template::name('frontend.%s.checkout-confirmation'), array('orderNumber' => $resultOrderCreation));
 
             $buyModel = new FootballTicketBuy();
+            $order = TicketSoap::process('sales_order.info', $resultOrderCreation);
 
             $buyModel->fill(array(
                 'order_id'          => $resultOrderCreation,
@@ -203,7 +204,7 @@ class CheckoutController extends BaseController {
                 'event_id'          => '',
                 'product_id'        => $id,
                 'qty'               => $input['qty'],
-                'amount'            => '',
+                'amount'            => $order['grand_total'],
                 'delivery_status'   => 'pending'
             ));
 
@@ -211,7 +212,9 @@ class CheckoutController extends BaseController {
 
             RelatedTicket::updateTicket($id, $input['qty']);
 
-            $response = Response::make(json_encode(array('orderNumber'=>$resultOrderCreation)), '200');
+
+
+            $response = Response::make(json_encode(array('orderNumber'=>$resultOrderCreation, 'order'=> $order )), '200');
             $response->header('Content-Type', 'application/json');
             return $response;
 

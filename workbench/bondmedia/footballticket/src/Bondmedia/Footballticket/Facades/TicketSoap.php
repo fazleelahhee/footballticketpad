@@ -21,7 +21,7 @@ class TicketSoap extends Facade {
         }
 
     }
-    public static function process($action, array $options = array()) {
+    public static function process($action, $options = array()) {
         if(!static::$client|| !static::$session) {
             static::connect();
         }

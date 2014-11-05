@@ -158,7 +158,9 @@
                     </div>
                 </div>
                 <br>
-                <!-- Meta Description -->
+                <!-- Meta Title -->
+
+
                 <div class="control-group {{ $errors->has('meta_description') ? 'has-error' : '' }}">
                     <label class="control-label" for="title">Meta Description</label>
 

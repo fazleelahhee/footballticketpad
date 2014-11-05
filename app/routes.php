@@ -233,6 +233,7 @@ Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch'
 
 Route::post('/contact', array('as' => 'dashboard.contact.post', 'uses' => 'FormPostController@postContact'), array('before' => 'csrf'));
 
+Route::any('/tests', 'IndexController@test');
 /*
 |--------------------------------------------------------------------------
 | Backend Routes
@@ -346,8 +347,9 @@ Route::group(array('prefix' => Config::get('bondcms.admin_prefix'), 'namespace' 
 
     // settings
     Route::get('/settings/website', array('as' => 'admin.settings', 'uses' => 'SettingController@index'));
-    Route::get('/settings/general', array('as' => 'admin.settings', 'uses' => 'SettingController@generalSettings'));
+    Route::get('/settings/general', array('as' => 'admin.settings.general', 'uses' => 'SettingController@generalSettings'));
     Route::post('/settings', array('as' => 'admin.settings.save', 'uses' => 'SettingController@save'), array('before' => 'csrf'));
+    Route::post('/settings/options', array('as' => 'admin.settings.save.options', 'uses' => 'SettingController@saveOptions'), array('before' => 'csrf'));
 
     // form post
     Route::resource('form-post', 'FormPostController', array('only' => array('index', 'show', 'destroy')));

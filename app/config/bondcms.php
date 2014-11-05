@@ -114,4 +114,15 @@ return array(
     */
     'upload_directory'  => 'uploads',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Allowed options
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
+    'options' => array(
+        'seller_commission', 'booking_fees', 'flatrate', 'flatrate2', 'flatrate3', 'flatrate4'
+    )
 );
