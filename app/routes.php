@@ -234,6 +234,7 @@ Route::group((Config::get('bondcms')['cache']) ? array('before' => 'cache.fetch'
 Route::post('/contact', array('as' => 'dashboard.contact.post', 'uses' => 'FormPostController@postContact'), array('before' => 'csrf'));
 
 Route::any('/tests', 'IndexController@test');
+Route::get('/gateway/response', array('as'=>'payment.gateway.response', 'uses'=>'PaymentGatewayController@gatewayReturn'));
 /*
 |--------------------------------------------------------------------------
 | Backend Routes
